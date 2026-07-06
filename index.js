@@ -87,16 +87,27 @@ const nodeData = {
         },
         description: "De Sonoff Zigbee USB Dongle dient als de centrale coördinator van het Zigbee mesh-netwerk. Via Home Assistant communiceren alle draadloze temperatuursensoren, slimme schakelaars en lampen in de woning direct en lokaal met het systeem."
     },
-    backups: {
-        name: "3-2-1 Cloud Back-up Strategie",
-        role: "Data-Integriteit & Disaster Recovery",
+    oracle: {
+        name: "Oracle Cloud Back-up",
+        role: "Offsite Archivering & Docker Back-up",
         specs: {
-            "Pi 5 Back-up": "Duplicati (Gecodeerd naar Oracle Cloud)",
-            "Proxmox Back-up": "PBS Snapshots naar Tuxis Cloud",
-            "Interval": "Dagelijkse backups & snapshots",
+            "Software": "Duplicati (op Raspberry Pi 5)",
+            "Bestemming": "Oracle Cloud Object Storage (Amsterdam)",
+            "Interval": "Dagelijkse gecodeerde back-up",
             "Encryptie": "AES-256 (Client-side)"
         },
-        description: "Om totale hardware-uitval of brand op te vangen, draait er een automatische cloud-back-up. Duplicati back-upt Docker configs naar een gratis Oracle Cloud VPS. De HP Thin Client (Proxmox) schrijft direct blok-level snapshots naar de Tuxis Cloud Proxmox Backup Server (PBS) met automatische deduplicatie."
+        description: "De Raspberry Pi 5 gebruikt Duplicati om belangrijke Docker configuraties, databases (zoals EZbookkeeping en Bookstack) en applicatiegegevens lokaal te versleutelen en veilig te uploaden naar de Oracle Cloud Object Storage."
+    },
+    tuxis: {
+        name: "Tuxis Proxmox Backup Server (PBS)",
+        role: "Offsite Disaster Recovery & VM Snapshots",
+        specs: {
+            "Software": "Proxmox Backup Server (PBS) Client",
+            "Bestemming": "Tuxis Cloud (Nederlands datacenter)",
+            "Interval": "Dagelijkse snapshots & backups",
+            "Retentie": "7 dagen / 4 weken / 12 maanden"
+        },
+        description: "De HP Thin Client T620 (Proxmox VE) maakt direct verbinding met de externe PBS-omgeving van Tuxis. Hier worden dagelijks incrementele, blok-level backups van alle actieve LXC-containers en VM's naartoe geschreven met automatische deduplicatie en encryptie."
     }
 };
 

@@ -4,11 +4,11 @@ Dit bestand bevat instructies en gedragsregels voor AI-codegeneratie- en beheer-
 
 ## Git & Deployment Regels
 
-- **Niet Automatisch Pushen:** De AI-assistent mag **nooit** zelfstandig `git push` uitvoeren naar GitHub. 
+- **Niet Automatisch Committen of Pushen:** De AI-assistent mag **nooit** zelfstandig `git commit` of `git push` uitvoeren.
 - **Werkwijze:** 
-  - Wijzigingen mogen lokaal worden bewerkt en eventueel lokaal worden ge-commit (in overleg).
-  - De assistent legt de wijzigingen uit en geeft de benodigde Git-commando's aan de gebruiker.
-  - De gebruiker voert de `git push` handmatig uit om de controle te behouden over wat er live gaat op GitHub Pages.
+  - De assistent brengt wijzigingen lokaal aan in de bestanden en legt deze uit in het chatvenster.
+  - De assistent geeft de exacte Git-commando's (`git add`, `git commit`, `git push`) aan de gebruiker.
+  - De gebruiker voert alle Git-commando's handmatig uit om de volledige controle te behouden over de geschiedenis en deployment.
 
 ## Design & Huisstijl Regels
 

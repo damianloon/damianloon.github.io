@@ -17,7 +17,7 @@ const nodeData = {
         specs: {
             "Model": "Standaard KPN Router",
             "Subnet": "192.168.2.0/24",
-            "Gateway IP": "192.168.2.1",
+            "Gateway IP": "192.168.2.254",
             "DNS Instelling": "Dual DNS (Pi-hole 1 & 2)"
         },
         description: "De centrale router van KPN beheert de internetverbinding (WAN), deelt lokale IP-adressen uit via DHCP en is handmatig geconfigureerd met twee DNS-servers: de primaire Pi-hole op de Raspberry Pi 5 en de back-up Pi-hole op Proxmox. Hierdoor is advertentievrij browsen gegarandeerd en blijft internet werken, zelfs als één van de servers offline gaat."
@@ -172,13 +172,19 @@ interactiveNodes.forEach(node => {
     node.addEventListener('click', (e) => {
         // Remove 'selected' class from all interactive nodes
         interactiveNodes.forEach(n => n.classList.remove('selected'));
-        
+
         // Find the node element (in case clicked on text/inner rect)
         const nodeGroup = e.target.closest('.interactive-node');
         if (nodeGroup) {
             nodeGroup.classList.add('selected');
             const nodeKey = nodeGroup.getAttribute('data-node');
             renderNodeDetails(nodeKey);
+
+            // Scroll smoothly to details card
+            const detailsCard = document.getElementById('details-card');
+            if (detailsCard) {
+                detailsCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
         }
     });
 });

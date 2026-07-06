@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Damian van Loon | ICT System Engineer & Homelab Portfolio</title>
+    <meta name="description" content="Portfolio en Homelab-infrastructuur van Damian van Loon. Systeembeheer, netwerken, Docker en smart home automatisering.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <!-- Top Navigation Header -->
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo-area">
+                <span class="terminal-prompt">$</span>
+                <span class="user-name">damianloon.github.io</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#infrastructuur">Infrastructuur</a>
+                <a href="#projecten">Projecten</a>
+                <a href="#ervaring">CV & Ervaring</a>
+            </nav>
+            <div class="header-actions">
+                <a href="mailto:damianloon@gmail.com" class="btn btn-secondary">Contact</a>
+                <a href="#" class="btn btn-primary" id="download-cv">Download CV (PDF)</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-badge">ICT System Engineer in Opleiding (Mbo 4)</div>
+            <h1>Damian van Loon</h1>
+            <p class="hero-subtitle">
+                Gepassioneerd helpdeskmedewerker en IT-engineer in wording met een passie voor Linux, Docker, netwerken en smart home automatisering. Bouwt en beheert een hoogwaardig homelab in de meterkast om enterprise-technologieën in de praktijk te testen.
+            </p>
+            <div class="quick-meta">
+                <span class="meta-item"><span class="meta-icon">📍</span> Ridderkerk, NL</span>
+                <span class="meta-item"><span class="meta-icon">💼</span> Helpdeskmedewerker @ Nedsoft B.V.</span>
+                <span class="meta-item"><span class="meta-icon">🎓</span> ROC Midden Nederland (Fast-track)</span>
+            </div>
+        </section>
+
+        <!-- Homelab Network Architecture Diagram & Details Section -->
+        <section id="infrastructuur" class="section-container">
+            <div class="section-header">
+                <h2>Netwerk Architectuur</h2>
+                <p>Klik op een element in het schema om de details en actieve services op dat apparaat te bekijken.</p>
+            </div>
+
+            <div class="infrastructure-grid">
+                <!-- SVG Network Diagram Container -->
+                <div class="diagram-card">
+                    <div class="card-header">
+                        <span class="status-indicator online"></span>
+                        <span class="card-title">Interactieve Netwerktekening</span>
+                        <span class="card-subtitle">Meterkast Setup (3D-Geprint)</span>
+                    </div>
+                    <div class="diagram-wrapper">
+                        <svg viewBox="0 0 800 500" class="network-svg">
+                            <!-- Definitions for markers/gradients -->
+                            <defs>
+                                <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#3f3f46" />
+                                </marker>
+                            </defs>
+
+                            <!-- Background Grid -->
+                            <g class="svg-grid" stroke="#1f1f23" stroke-width="1">
+                                <line x1="0" y1="50" x2="800" y2="50" />
+                                <line x1="0" y1="100" x2="800" y2="100" />
+                                <line x1="0" y1="150" x2="800" y2="150" />
+                                <line x1="0" y1="200" x2="800" y2="200" />
+                                <line x1="0" y1="250" x2="800" y2="250" />
+                                <line x1="0" y1="300" x2="800" y2="300" />
+                                <line x1="0" y1="350" x2="800" y2="350" />
+                                <line x1="0" y1="400" x2="800" y2="400" />
+                                <line x1="0" y1="450" x2="800" y2="450" />
+                                <line x1="100" y1="0" x2="100" y2="500" />
+                                <line x1="200" y1="0" x2="200" y2="500" />
+                                <line x1="300" y1="0" x2="300" y2="500" />
+                                <line x1="400" y1="0" x2="400" y2="500" />
+                                <line x1="500" y1="0" x2="500" y2="500" />
+                                <line x1="600" y1="0" x2="600" y2="500" />
+                                <line x1="700" y1="0" x2="700" y2="500" />
+                            </g>
+
+                            <!-- Connection Lines (Orthogonal / Clean grid style) -->
+                            <!-- WAN to Router -->
+                            <path d="M 400 35 L 400 90" stroke="#3f3f46" stroke-width="2" stroke-dasharray="4 4" />
+                            
+                            <!-- Router to Pi 5 (Wired) -->
+                            <path d="M 400 135 L 400 160 L 220 160 L 220 200" stroke="#52525b" stroke-width="2" />
+                            
+                            <!-- Router to Proxmox HP (Wired) -->
+                            <path d="M 400 135 L 400 160 L 580 160 L 580 200" stroke="#52525b" stroke-width="2" />
+                            
+                            <!-- Router to Voice Assistant (Wireless / Dot path) -->
+                            <path d="M 400 120 L 100 120 L 100 370" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.7" />
+                            
+                            <!-- Remote user to Tailscale -->
+                            <path d="M 340 45 L 340 100 L 260 100 L 260 215" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="2 2" opacity="0.6" />
+
+                            <!-- Pi 5 to Zigbee USB Dongle -->
+                            <path d="M 220 255 L 220 370" stroke="#0d9488" stroke-width="2" />
+                            
+                            <!-- Voice Assistant Wyoming to Home Assistant -->
+                            <path d="M 100 400 L 180 400 L 180 255" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="2 2" />
+
+                            <!-- Cross monitoring Uptime Kuma paths -->
+                            <path d="M 240 240 L 540 240" stroke="#71717a" stroke-dasharray="3 3" stroke-width="1" />
+
+                            <!-- Backups from Pi to Oracle Cloud -->
+                            <path d="M 220 255 L 220 340 L 740 340 L 740 370" stroke="#52525b" stroke-dasharray="3 3" stroke-width="1.5" />
+                            
+                            <!-- Backups from Proxmox to Tuxis Cloud -->
+                            <path d="M 580 255 L 580 340 L 760 340 L 760 370" stroke="#52525b" stroke-dasharray="3 3" stroke-width="1.5" />
+
+                            <!-- Nodes Groups -->
+                            <!-- WAN Node -->
+                            <g class="network-node static-node" id="node-internet">
+                                <circle cx="400" cy="25" r="16" fill="#18181b" stroke="#3f3f46" stroke-width="2" />
+                                <text x="400" y="29" font-family="sans-serif" font-size="14" text-anchor="middle" fill="#a1a1aa">🌐</text>
+                                <text x="400" y="5" font-family="sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="#71717a">KPN WAN</text>
+                            </g>
+
+                            <!-- Remote User Node -->
+                            <g class="network-node interactive-node" id="node-remote" data-node="remote">
+                                <rect x="290" y="10" width="100" height="30" rx="4" fill="#18181b" stroke="#27272a" stroke-width="1.5" />
+                                <text x="340" y="29" font-family="sans-serif" font-size="11" text-anchor="middle" fill="#a1a1aa">💻 Remote User</text>
+                            </g>
+
+                            <!-- KPN Router Node -->
+                            <g class="network-node interactive-node" id="node-router" data-node="router">
+                                <rect x="330" y="90" width="140" height="45" rx="6" fill="#18181b" stroke="#27272a" stroke-width="2" />
+                                <text x="400" y="112" font-family="sans-serif" font-weight="600" font-size="12" text-anchor="middle" fill="#fafafa">KPN Router</text>
+                                <text x="400" y="127" font-family="JetBrains Mono" font-size="9" text-anchor="middle" fill="#71717a">192.168.2.1</text>
+                            </g>
+
+                            <!-- Raspberry Pi 5 Node -->
+                            <g class="network-node interactive-node" id="node-pi" data-node="pi">
+                                <rect x="130" y="200" width="180" height="55" rx="6" fill="#18181b" stroke="#27272a" stroke-width="2" />
+                                <text x="220" y="222" font-family="sans-serif" font-weight="600" font-size="12" text-anchor="middle" fill="#fafafa">Raspberry Pi 5 (16GB)</text>
+                                <text x="220" y="235" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#a1a1aa">Primary Docker Host & NAS</text>
+                                <text x="220" y="247" font-family="JetBrains Mono" font-size="9" text-anchor="middle" fill="#71717a">192.168.2.10</text>
+                            </g>
+
+                            <!-- HP Thin Client T620 (Proxmox) Node -->
+                            <g class="network-node interactive-node" id="node-proxmox" data-node="proxmox">
+                                <rect x="490" y="200" width="180" height="55" rx="6" fill="#18181b" stroke="#27272a" stroke-width="2" />
+                                <text x="580" y="222" font-family="sans-serif" font-weight="600" font-size="12" text-anchor="middle" fill="#fafafa">HP Thin Client T620</text>
+                                <text x="580" y="235" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#a1a1aa">Proxmox VE Virtualisatie</text>
+                                <text x="580" y="247" font-family="JetBrains Mono" font-size="9" text-anchor="middle" fill="#71717a">192.168.2.20</text>
+                            </g>
+
+                            <!-- Local Smart Home Assistant (ESP32-S3) Node -->
+                            <g class="network-node interactive-node" id="node-voice" data-node="voice">
+                                <rect x="10" y="370" width="160" height="45" rx="6" fill="#18181b" stroke="#27272a" stroke-width="1.5" />
+                                <text x="90" y="392" font-family="sans-serif" font-weight="500" font-size="11" text-anchor="middle" fill="#fafafa">ESP32 Spraakassistent</text>
+                                <text x="90" y="405" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#3b82f6">Wi-Fi Connection</text>
+                            </g>
+
+                            <!-- Zigbee Mesh Node -->
+                            <g class="network-node interactive-node" id="node-zigbee" data-node="zigbee">
+                                <rect x="185" y="370" width="110" height="45" rx="6" fill="#18181b" stroke="#27272a" stroke-width="1.5" />
+                                <text x="240" y="392" font-family="sans-serif" font-weight="500" font-size="11" text-anchor="middle" fill="#fafafa">Zigbee Mesh</text>
+                                <text x="240" y="405" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#0d9488">Sonoff Dongle</text>
+                            </g>
+
+                            <!-- Cloud Backups Node -->
+                            <g class="network-node interactive-node" id="node-backups" data-node="backups">
+                                <rect x="690" y="370" width="100" height="45" rx="6" fill="#18181b" stroke="#27272a" stroke-width="1.5" />
+                                <text x="740" y="392" font-family="sans-serif" font-weight="500" font-size="11" text-anchor="middle" fill="#fafafa">Cloud Back-ups</text>
+                                <text x="740" y="405" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#71717a">Oracle & Tuxis</text>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Info Details Panel -->
+                <div class="details-card" id="details-card">
+                    <div class="card-header">
+                        <span class="card-title">Infrastructuur Details</span>
+                        <span class="card-subtitle">Selecteer een node voor details</span>
+                    </div>
+                    <div class="details-content" id="details-content">
+                        <div class="empty-state">
+                            <span class="empty-icon">🖱️</span>
+                            <h3>Geen element geselecteerd</h3>
+                            <p>Klik op een van de servers of netwerkcomponenten in de tekening om specificaties, IP-adressen en draaiende services te zien.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Portfolio Section -->
+        <section id="projecten" class="section-container">
+            <div class="section-header">
+                <h2>Homelab Projecten</h2>
+                <p>Een overzicht van concrete systemen en infrastructuren die ik zelfstandig heb ontworpen, gebouwd en onderhouden.</p>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-tags">
+                        <span class="tag">ESPHome</span>
+                        <span class="tag">Home Assistant</span>
+                        <span class="tag">ESP32-S3</span>
+                    </div>
+                    <h3>Lokale Privacy-Vriendelijke Spraakassistent</h3>
+                    <p class="project-desc">Een volledig lokaal draaiende spraakassistent die is geïntegreerd met Home Assistant, zonder cloud-afhankelijkheid.</p>
+                    
+                    <div class="project-details">
+                        <div class="detail-block">
+                            <h4>Het Probleem</h4>
+                            <p>Commerciële spraakassistenten sturen audiogegevens naar cloudservers, wat privacyrisico's oplevert en cloud-afhankelijkheid creëert.</p>
+                        </div>
+                        <div class="detail-block">
+                            <h4>De Oplossing</h4>
+                            <p>Een op maat gebouwde assistant met een ReSpeaker Lite (ESP32-S3) in een zelf-geprinte akoestische behuizing. Communiceert lokaal via Wyoming (Whisper & Piper).</p>
+                        </div>
+                        <div class="detail-block">
+                            <h4>Geleerde Lessen</h4>
+                            <p>Signaalverwerking en akoestische demping, microcontrollers configureren met ESPHome, en lokale AI-modellen optimaliseren op latency.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-tags">
+                        <span class="tag">Docker Compose</span>
+                        <span class="tag">Proxmox</span>
+                        <span class="tag">API Integration</span>
+                    </div>
+                    <h3>Gedistribueerde Media Pipeline & SambaNAS</h3>
+                    <p class="project-desc">Een volledig geautomatiseerde download- en mediapipeline verdeeld over de Raspberry Pi 5 en Proxmox.</p>
+                    
+                    <div class="project-details">
+                        <div class="detail-block">
+                            <h4>Het Probleem</h4>
+                            <p>Het handmatig downloaden en organiseren van media is tijdrovend. Dit moet centraal en veilig gebeuren zonder handmatige interventie.</p>
+                        </div>
+                        <div class="detail-block">
+                            <h4>De Oplossing</h4>
+                            <p>Opslag & downloaders (qBittorrent via VPN, SabNZB) op de Pi 5 (SambaNAS). Automatisering (Sonarr/Radarr) op Proxmox communiceren via API's en netwerkshares.</p>
+                        </div>
+                        <div class="detail-block">
+                            <h4>Geleerde Lessen</h4>
+                            <p>Multi-node API-integratie, container routing via VPN sidecars, en het mounten van gedeelde SMB/NFS netwerkmappen met PUID/PGID rechten.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-tags">
+                        <span class="tag">PBS</span>
+                        <span class="tag">Duplicati</span>
+                        <span class="tag">Disaster Recovery</span>
+                    </div>
+                    <h3>Gecentraliseerde Back-up & Cloud DR</h3>
+                    <p class="project-desc">Een geautomatiseerde 3-2-1 back-upstrategie voor disaster recovery bij totale hardware-uitval.</p>
+                    
+                    <div class="project-details">
+                        <div class="detail-block">
+                            <h4>Het Probleem</h4>
+                            <p>Hardwaredefecten of foutieve configuraties in een actief homelab kunnen leiden tot permanent dataverlies van databases en wiki's.</p>
+                        </div>
+                        <div class="detail-block">
+                            <h4>De Oplossing</h4>
+                            <p>Duplicati back-upt de docker volumes gecodeerd naar Oracle Cloud. Proxmox Backup Server (PBS) schrijft incrementele snapshots direct naar Tuxis Cloud.</p>
+                        </div>
+                        <div class="detail-block">
+                            <h4>Geleerde Lessen</h4>
+                            <p>Het inrichten van encryptiesleutels (en deze extern bewaren), blocks-level PBS deduplicatietechnieken en cloud-toegang via beveiligde API-keys.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CV / Experience Section -->
+        <section id="ervaring" class="section-container">
+            <div class="section-header">
+                <h2>Vaardigheden & Loopbaan</h2>
+                <p>Een overzicht van mijn technische vaardigheden, professionele achtergrond en studie.</p>
+            </div>
+
+            <!-- Skills Categories -->
+            <div class="skills-section">
+                <h3 class="skills-title">Kernvaardigheden</h3>
+                <div class="skills-grid">
+                    <div class="skills-card">
+                        <h4>Besturingssystemen</h4>
+                        <ul>
+                            <li>Linux (Ubuntu Server, Debian)</li>
+                            <li>Windows Server & Client</li>
+                            <li>ESPHome / Embedded firmware</li>
+                        </ul>
+                    </div>
+                    <div class="skills-card">
+                        <h4>Netwerken & Security</h4>
+                        <ul>
+                            <li>TCP/IP, IP-adressering & Subnetting</li>
+                            <li>DHCP & DNS (Dual Pi-hole setup)</li>
+                            <li>VPN (Tailscale / WireGuard)</li>
+                            <li>Nginx Proxy Manager proxying</li>
+                        </ul>
+                    </div>
+                    <div class="skills-card">
+                        <h4>Virtualisatie & Containers</h4>
+                        <ul>
+                            <li>Docker & Docker Compose</li>
+                            <li>Portainer containerbeheer</li>
+                            <li>Proxmox VE (LXC & VM)</li>
+                        </ul>
+                    </div>
+                    <div class="skills-card">
+                        <h4>Automatisering & Tools</h4>
+                        <ul>
+                            <li>YAML (Home Assistant & Dashboards)</li>
+                            <li>Bash scripting & Linux CLI</li>
+                            <li>Uptime Kuma cross-monitoring</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-title-wrapper">
+                <h3 class="skills-title">Werkervaring & Opleiding</h3>
+            </div>
+
+            <div class="timeline-container">
+                <!-- Timeline Item 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2025 - 2027 (Verwacht)</div>
+                        <h3>Mbo ICT System Engineer (Niveau 4)</h3>
+                        <span class="timeline-institution">ROC Midden Nederland (BBL)</span>
+                        <p class="timeline-details">
+                            <strong>Fast-track traject:</strong> Vanwege uitstekende resultaten en inzet ben ik na een half jaar in het eerste jaar direct overgezet naar het tweede leerjaar. Hiermee sla ik een heel studiejaar over en behaal ik mijn diploma in twee jaar in plaats van drie.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2019 - Heden</div>
+                        <h3>Helpdeskmedewerker (Fulltime)</h3>
+                        <span class="timeline-institution">Nedsoft B.V. / Loca / Nedtrack</span>
+                        <p class="timeline-details">
+                            Verantwoordelijk voor klantenondersteuning en troubleshooting (1e en 2e lijns support) voor GPS-tracking hardware en rittenregistratiesoftware. Analyseren van data, oplossen van connectiviteitsproblemen en bijdragen aan productverbetering op basis van feedback van gebruikers.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2017 - 2019</div>
+                        <h3>Mbo Medewerker Beheer ICT (Niveau 3)</h3>
+                        <span class="timeline-institution">ROC Da Vinci College</span>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2014 - 2017</div>
+                        <h3>VMBO Kader Leerweg ICT Route</h3>
+                        <span class="timeline-institution">Gemini Lekkerkerk</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p>&copy; 2026 Damian van Loon. Handgemaakt portfolio.</p>
+            <div class="footer-links">
+                <a href="https://github.com/damianloon" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.linkedin.com/in/damian-van-loon-9070428a/" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>

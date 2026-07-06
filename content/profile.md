@@ -3,11 +3,11 @@
 <!-- Dit bestand dient als de bron van waarheid voor je persoonlijke achtergrond, werkervaring en vaardigheden. Vul de onderstaande velden in. -->
 
 ## Algemene Informatie
-- **Naam:** Damian Loon
+- **Naam:** Damian van Loon
 - **Huidige Rol / Titel:** Helpdeskmedewerker & ICT System Engineer in opleiding (Mbo Niveau 4)
 - **Locatie:** Ridderkerk, Zuid-Holland, Nederland
-- **Contact e-mail:** [Je E-mailadres]
-- **LinkedIn:** [Link naar LinkedIn]
+- **Contact e-mail:** damianloon@gmail.com
+- **LinkedIn:** https://www.linkedin.com/in/damian-van-loon-9070428a/
 - **GitHub:** https://github.com/damianloon
 
 ---

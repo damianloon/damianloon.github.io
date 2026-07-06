@@ -14,12 +14,14 @@
         rel="stylesheet">
     <style>
         :root {
-            --bg-base: #09090b;
-            --bg-card: #18181b;
-            --border-color: #27272a;
+            --bg-base: #0c0d12;
+            --bg-card: #11213D;
+            --border-color: #26354d;
+            --border-hover: #808080;
             --text-primary: #fafafa;
-            --text-secondary: #a1a1aa;
-            --accent-blue: #3b82f6;
+            --text-secondary: #d1d5db;
+            --accent-blue: #BEA36B;
+            --accent-blue-dark: #a88c52;
             --font-sans: 'Geist', -apple-system, sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
         }
@@ -55,20 +57,21 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background-color: #1e1b4b;
-            color: #a5b4fc;
+            background-color: var(--accent-blue); /* Solid Gold: #BEA36B */
+            color: var(--bg-card); /* Deep Navy #11213D */
             font-family: var(--font-mono);
+            font-weight: 600;
             font-size: 0.75rem;
             padding: 0.25rem 0.75rem;
             border-radius: 9999px;
-            border: 1px solid #312e81;
+            border: 1px solid var(--accent-blue-dark);
             margin-bottom: 1.5rem;
         }
 
         .status-dot {
             width: 6px;
             height: 6px;
-            background-color: #6366f1;
+            background-color: var(--bg-card); /* Navy dot for high contrast */
             border-radius: 50%;
         }
 
@@ -114,29 +117,29 @@
         }
 
         .btn-primary {
-            background-color: var(--text-primary);
-            color: var(--bg-base);
+            background-color: var(--accent-blue); /* Gold: #BEA36B */
+            color: var(--bg-card); /* Navy: #11213D */
         }
 
         .btn-primary:hover {
-            background-color: #e4e4e7;
+            background-color: var(--accent-blue-dark);
         }
 
         .btn-secondary {
             background-color: transparent;
             color: var(--text-primary);
-            border-color: var(--border-color);
+            border-color: var(--border-hover); /* Gray: #808080 */
         }
 
         .btn-secondary:hover {
             background-color: var(--bg-base);
-            border-color: #3f3f46;
+            border-color: var(--text-primary);
         }
 
         .footer-note {
             margin-top: 2rem;
             font-size: 0.75rem;
-            color: #52525b;
+            color: var(--border-hover); /* Gray: #808080 */
             font-family: var(--font-mono);
         }
     </style>

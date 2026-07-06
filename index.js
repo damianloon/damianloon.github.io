@@ -206,3 +206,26 @@ if (downloadCvBtn) {
         window.print();
     });
 }
+
+// --- Theme Manager (Dark/Light mode pill switch) ---
+const themeToggle = document.getElementById('theme-toggle');
+
+// Load stored theme on load
+const currentTheme = localStorage.getItem('theme') || 'dark';
+if (currentTheme === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+}
+
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        
+        if (theme === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+        } else {
+            document.documentElement.removeAttribute('data-theme');
+        }
+        
+        localStorage.setItem('theme', theme);
+    });
+}

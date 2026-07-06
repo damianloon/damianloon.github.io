@@ -14,6 +14,11 @@
         href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="index.css">
+    <script>
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+        }
+    </script>
 </head>
 
 <body>
@@ -31,6 +36,28 @@
                 <a href="#ervaring">CV & Ervaring</a>
             </nav>
             <div class="header-actions">
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Schakel thema">
+                    <span class="toggle-track">
+                        <span class="toggle-thumb">
+                            <!-- Sun icon (shown in light mode) -->
+                            <svg class="toggle-icon sun-icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                            <!-- Moon icon (shown in dark mode) -->
+                            <svg class="toggle-icon moon-icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                            </svg>
+                        </span>
+                    </span>
+                </button>
                 <a href="mailto:damianloon@gmail.com" class="btn btn-secondary">Contact</a>
                 <a href="#" class="btn btn-primary" id="download-cv">Download CV (PDF)</a>
             </div>
@@ -137,85 +164,84 @@
                                 stroke-width="1.5" />
 
                             <!-- Nodes Groups -->
-                            <!-- WAN Node -->
                             <g class="network-node static-node" id="node-internet">
-                                <circle cx="400" cy="25" r="16" fill="#18181b" stroke="#3f3f46" stroke-width="2" />
+                                <circle cx="400" cy="25" r="16" class="svg-node-bg" stroke="#3f3f46" stroke-width="2" />
                                 <text x="400" y="29" font-family="sans-serif" font-size="14" text-anchor="middle"
-                                    fill="#a1a1aa">🌐</text>
+                                    class="svg-text-secondary">🌐</text>
                                 <text x="400" y="52" font-family="sans-serif" font-size="12" font-weight="bold"
-                                    text-anchor="middle" fill="#71717a">KPN WAN</text>
+                                    text-anchor="middle" class="svg-text-muted">KPN WAN</text>
                             </g>
-
+ 
                             <!-- Remote User Node -->
                             <g class="network-node interactive-node" id="node-remote" data-node="remote">
-                                <rect x="230" y="10" width="110" height="30" rx="4" fill="#18181b" stroke="#27272a"
+                                <rect x="230" y="10" width="110" height="30" rx="4" class="svg-node-bg" stroke="#27272a"
                                     stroke-width="1.5" />
                                 <text x="285" y="29" font-family="sans-serif" font-size="13" text-anchor="middle"
-                                    fill="#a1a1aa">💻 Remote User</text>
+                                    class="svg-text-secondary">💻 Remote User</text>
                             </g>
-
+ 
                             <!-- KPN Router Node -->
                             <g class="network-node interactive-node" id="node-router" data-node="router">
-                                <rect x="330" y="90" width="140" height="45" rx="6" fill="#18181b" stroke="#27272a"
+                                <rect x="330" y="90" width="140" height="45" rx="6" class="svg-node-bg" stroke="#27272a"
                                     stroke-width="2" />
                                 <text x="400" y="112" font-family="sans-serif" font-weight="600" font-size="14"
-                                    text-anchor="middle" fill="#fafafa">KPN Router</text>
+                                    text-anchor="middle" class="svg-text-primary">KPN Router</text>
                                 <text x="400" y="128" font-family="JetBrains Mono" font-size="11" text-anchor="middle"
-                                    fill="#71717a">192.168.2.254</text>
+                                    class="svg-text-muted">192.168.2.254</text>
                             </g>
-
+ 
                             <!-- Raspberry Pi 5 Node -->
                             <g class="network-node interactive-node" id="node-pi" data-node="pi">
-                                <rect x="120" y="200" width="200" height="55" rx="6" fill="#18181b" stroke="#27272a"
+                                <rect x="120" y="200" width="200" height="55" rx="6" class="svg-node-bg" stroke="#27272a"
                                     stroke-width="2" />
                                 <text x="220" y="222" font-family="sans-serif" font-weight="600" font-size="14"
-                                    text-anchor="middle" fill="#fafafa">Raspberry Pi 5 (16GB)</text>
+                                    text-anchor="middle" class="svg-text-primary">Raspberry Pi 5 (16GB)</text>
                                 <text x="220" y="235" font-family="sans-serif" font-size="11" text-anchor="middle"
-                                    fill="#a1a1aa">Primary Docker Host & NAS</text>
+                                    class="svg-text-secondary">Primary Docker Host & NAS</text>
                                 <text x="220" y="248" font-family="JetBrains Mono" font-size="11" text-anchor="middle"
-                                    fill="#71717a">192.168.2.10</text>
+                                    class="svg-text-muted">192.168.2.10</text>
                             </g>
-
+ 
                             <!-- HP Thin Client T620 (Proxmox) Node -->
                             <g class="network-node interactive-node" id="node-proxmox" data-node="proxmox">
-                                <rect x="480" y="200" width="200" height="55" rx="6" fill="#18181b" stroke="#27272a"
+                                <rect x="480" y="200" width="200" height="55" rx="6" class="svg-node-bg" stroke="#27272a"
                                     stroke-width="2" />
                                 <text x="580" y="222" font-family="sans-serif" font-weight="600" font-size="14"
-                                    text-anchor="middle" fill="#fafafa">HP Thin Client T620</text>
+                                    text-anchor="middle" class="svg-text-primary">HP Thin Client T620</text>
                                 <text x="580" y="235" font-family="sans-serif" font-size="11" text-anchor="middle"
-                                    fill="#a1a1aa">Proxmox VE Virtualisatie</text>
+                                    class="svg-text-secondary">Proxmox VE Virtualisatie</text>
                                 <text x="580" y="248" font-family="JetBrains Mono" font-size="11" text-anchor="middle"
-                                    fill="#71717a">192.168.2.20</text>
+                                    class="svg-text-muted">192.168.2.20</text>
                             </g>
-
+ 
                             <!-- Local Smart Home Assistant (ESP32-S3) Node -->
                             <g class="network-node interactive-node" id="node-voice" data-node="voice">
-                                <rect x="10" y="370" width="160" height="45" rx="6" fill="#18181b" stroke="#27272a"
+                                <rect x="10" y="370" width="160" height="45" rx="6" class="svg-node-bg" stroke="#27272a"
                                     stroke-width="1.5" />
                                 <text x="90" y="392" font-family="sans-serif" font-weight="500" font-size="13"
-                                    text-anchor="middle" fill="#fafafa">ESP32 Spraakassistent</text>
+                                    text-anchor="middle" class="svg-text-primary">ESP32 Spraakassistent</text>
                                 <text x="90" y="405" font-family="sans-serif" font-size="11" text-anchor="middle"
-                                    fill="#3b82f6">Wi-Fi Connectie</text>
+                                    class="svg-text-secondary">Wi-Fi Connectie</text>
                             </g>
-
+ 
                             <!-- Zigbee Mesh Node -->
                             <g class="network-node interactive-node" id="node-zigbee" data-node="zigbee">
-                                <rect x="185" y="370" width="110" height="45" rx="6" fill="#18181b" stroke="#27272a"
+                                <rect x="185" y="370" width="110" height="45" rx="6" class="svg-node-bg" stroke="#27272a"
                                     stroke-width="1.5" />
                                 <text x="240" y="392" font-family="sans-serif" font-weight="500" font-size="13"
-                                    text-anchor="middle" fill="#fafafa">Zigbee Mesh</text>
+                                    text-anchor="middle" class="svg-text-primary">Zigbee Mesh</text>
                                 <text x="240" y="405" font-family="sans-serif" font-size="11" text-anchor="middle"
-                                    fill="#0d9488">Sonoff Dongle</text>
+                                    class="svg-text-secondary">Sonoff Dongle</text>
                             </g>
-
+ 
                             <!-- Cloud Backups Node -->
                             <g class="network-node interactive-node" id="node-backups" data-node="backups">
-                                <rect x="690" y="370" width="100" height="45" rx="6" fill="#18181b" stroke="#27272a"
+                                <rect x="690" y="370" width="100" height="45" rx="6" class="svg-node-bg" stroke="#27272a"
                                     stroke-width="1.5" />
                                 <text x="740" y="392" font-family="sans-serif" font-weight="500" font-size="13"
-                                    text-anchor="middle" fill="#fafafa">Cloud Back-ups</text>
+                                    text-anchor="middle" class="svg-text-primary">Cloud Back-ups</text>
                                 <text x="740" y="405" font-family="sans-serif" font-size="11" text-anchor="middle"
-                                    fill="#71717a">Oracle & Tuxis</text>
+                                    class="svg-text-muted">Oracle & Tuxis</text>
                             </g>
                         </svg>
                     </div>

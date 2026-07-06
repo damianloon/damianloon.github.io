@@ -240,3 +240,15 @@ if (themeToggle) {
         localStorage.setItem('theme', theme);
     });
 }
+
+// --- Header Scroll Effect (fade/dim when scrolling down) ---
+const header = document.querySelector('.site-header');
+if (header) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 40) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    }, { passive: true });
+}

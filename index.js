@@ -142,19 +142,28 @@ function renderNodeDetails(nodeKey) {
     }
 
     // Combine into main details card layout
+    const hasServices = data.services && data.services.length > 0;
     detailsContent.innerHTML = `
-        <div class="detail-header-block">
-            <h3 class="detail-node-name">${data.name}</h3>
-            <p class="detail-node-role">${data.role}</p>
-            <div class="detail-specs-grid">
-                ${specsHtml}
+        <div class="details-content-inner ${hasServices ? 'has-services' : ''}">
+            <div class="details-main-column">
+                <div class="detail-header-block">
+                    <h3 class="detail-node-name">${data.name}</h3>
+                    <p class="detail-node-role">${data.role}</p>
+                    <div class="detail-specs-grid">
+                        ${specsHtml}
+                    </div>
+                </div>
+                <div class="detail-description-block">
+                    <h4 class="detail-section-title">Beschrijving & Werking</h4>
+                    <p class="detail-desc">${data.description}</p>
+                </div>
             </div>
+            ${hasServices ? `
+            <div class="details-services-column">
+                ${servicesHtml}
+            </div>
+            ` : ''}
         </div>
-        
-        ${servicesHtml}
-        
-        <h4 class="detail-section-title">Beschrijving & Werking</h4>
-        <p class="detail-desc">${data.description}</p>
     `;
 }
 

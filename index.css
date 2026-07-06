@@ -212,12 +212,11 @@ body {
     gap: 0.5rem;
 }
 
-/* --- Infrastructure Section (Diagram & Details Grid) --- */
+/* --- Infrastructure Section (Diagram & Details Layout) --- */
 .infrastructure-grid {
-    display: grid;
-    grid-template-columns: 1.3fr 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 1.5rem;
-    align-items: start;
 }
 
 .diagram-card, .details-card {
@@ -272,7 +271,7 @@ body {
 .network-svg {
     width: 100%;
     height: auto;
-    max-width: 800px;
+    max-width: 960px; /* Increased from 800px to expand diagram visual size */
 }
 
 /* --- Interactive SVG Styling --- */
@@ -309,7 +308,30 @@ body {
 /* --- Details Card Content --- */
 .details-content {
     padding: 1.5rem;
-    min-height: 440px;
+    min-height: 250px; /* Reduced min-height because full-width handles content layout better */
+    display: flex;
+    flex-direction: column;
+}
+
+.details-content-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .details-content-inner.has-services {
+        grid-template-columns: 1.2fr 1fr;
+    }
+}
+
+.details-main-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.details-services-column {
     display: flex;
     flex-direction: column;
 }

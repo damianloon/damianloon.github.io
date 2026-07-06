@@ -1,20 +1,23 @@
 /* --- Design System & CSS Variables --- */
 :root {
-    --bg-base: #09090b;        /* Zinc 950 */
-    --bg-card: #18181b;        /* Zinc 900 */
-    --bg-input: #27272a;       /* Zinc 800 */
-    --border-color: #27272a;   /* Zinc 800 */
-    --border-hover: #3f3f46;   /* Zinc 700 */
+    --bg-base: #0c0d12;        /* Off-black charcoal with dark blue tint */
+    --bg-card: #11213D;        /* Secondary Color: Deep Navy Blue */
+    --bg-input: #1a2d4c;       /* Lighter navy for text fields and inputs */
+    --border-color: #26354d;   /* Muted navy border to integrate card edges */
+    --border-hover: #808080;   /* Main Color: Gray */
     
-    --text-primary: #fafafa;   /* Zinc 50 */
-    --text-secondary: #a1a1aa; /* Zinc 400 */
-    --text-muted: #52525b;      /* Zinc 600 */
+    --text-primary: #fafafa;   /* Zinc 50 (Off-white) */
+    --text-secondary: #d1d5db; /* Light gray for excellent reading contrast */
+    --text-muted: #808080;      /* Main Color: Gray for secondary details */
     
-    --accent-blue: #3b82f6;    /* Muted Blue */
-    --accent-blue-dark: #1d4ed8;
-    --accent-blue-bg: #172554; /* Slate Blue Dark */
+    --accent-blue: #BEA36B;    /* Main Color: Gold/Bronze Accent */
+    --accent-blue-dark: #a88c52;
+    --accent-blue-bg: #22252c;  /* Warm dark grey background for selected states */
     
-    --accent-green: #10b981;   /* Emerald */
+    --gradient-start: #1863F6; /* Gradient Start: Royal Blue */
+    --gradient-end: #11213D;   /* Gradient End: Deep Navy Blue */
+    
+    --accent-green: #10b981;   /* Emerald Green */
     --accent-green-bg: #064e3b;
     
     --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -173,14 +176,14 @@ body {
 
 .hero-badge {
     display: inline-block;
-    background-color: #1e1b4b; /* Dark indigo tint */
-    color: #a5b4fc;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    color: var(--text-primary);
     font-size: 0.75rem;
     font-family: var(--font-mono);
     padding: 0.25rem 0.75rem;
     border-radius: 9999px;
     margin-bottom: 1.5rem;
-    border: 1px solid #312e81;
+    border: 1px solid var(--border-color);
 }
 
 .hero-section h1 {

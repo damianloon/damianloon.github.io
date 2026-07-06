@@ -7,9 +7,14 @@ Dit bestand definieert de esthetische en functionele richting van de website. He
 ## Esthetiek & Designrichtlijnen (Geen AI-Look, Geen Neon)
 
 ### Kleurenschema
-- **Achtergrond:** Zeer donkergrijs/antraciet (bijv. `#0d0f12` of Tailwind Zinc-950) voor een rustige, professionele basis.
-- **Accenten:** Subtiele, gedempte kleuren zoals koel grijsblauw (`#38bdf8` of `#60a5fa` op een subtiele manier gebruikt) of leigrijs. **Absoluut geen felle neon-kleuren, intense glow-effecten of RGB-achtige sferen.**
-- **Tekst:** Gebroken wit (`#f4f4f5` voor koppen) en zacht grijs (`#a1a1aa` voor bodytekst) voor een hoog contrast zonder vermoeiend te zijn voor de ogen.
+- **Hoofdkleuren (Main Colors):**
+  - Goud/Brons: `#BEA36B` (accenten, knoppen, selectie)
+  - Grijs: `#808080` (tekst, secundaire borders)
+- **Secundaire Kleur:**
+  - Diep marineblauw: `#11213D` (kaarten, containers en panelen)
+- **Achtergrond:** Zeer donkergrijs/antraciet (`#0c0d12` of `#09090b`)
+- **Gradiënt (indien nodig):**
+  - Van Koningsblauw naar Diep marineblauw: van `#1863F6` naar `#11213D`
 
 ### Lay-out & Typografie
 - **Stijl:** Geen zwevende, glimmende glassmorphism-kaarten met overdreven slagschaduwen. In plaats daarvan gebruiken we strakke, dunne randen (1px solid borders in een lichte grijstint zoals `#27272a`) en duidelijke, functionele grids. Het moet aanvoelen als een hoogwaardige technische documentatie of een professioneel dashboard (denk aan de stijl van Linear, Stripe, of Tailwind UI).

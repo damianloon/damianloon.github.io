@@ -57,8 +57,10 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background-color: var(--accent-blue); /* Solid Gold: #BEA36B */
-            color: var(--bg-card); /* Deep Navy #11213D */
+            background-color: var(--accent-blue);
+            /* Solid Gold: #BEA36B */
+            color: var(--bg-card);
+            /* Deep Navy #11213D */
             font-family: var(--font-mono);
             font-weight: 600;
             font-size: 0.75rem;
@@ -71,7 +73,8 @@
         .status-dot {
             width: 6px;
             height: 6px;
-            background-color: var(--bg-card); /* Navy dot for high contrast */
+            background-color: var(--bg-card);
+            /* Navy dot for high contrast */
             border-radius: 50%;
         }
 
@@ -117,8 +120,10 @@
         }
 
         .btn-primary {
-            background-color: var(--accent-blue); /* Gold: #BEA36B */
-            color: var(--bg-card); /* Navy: #11213D */
+            background-color: var(--accent-blue);
+            /* Gold: #BEA36B */
+            color: var(--bg-card);
+            /* Navy: #11213D */
         }
 
         .btn-primary:hover {
@@ -128,7 +133,8 @@
         .btn-secondary {
             background-color: transparent;
             color: var(--text-primary);
-            border-color: var(--border-hover); /* Gray: #808080 */
+            border-color: var(--border-hover);
+            /* Gray: #808080 */
         }
 
         .btn-secondary:hover {
@@ -139,10 +145,72 @@
         .footer-note {
             margin-top: 2rem;
             font-size: 0.75rem;
-            color: var(--border-hover); /* Gray: #808080 */
+            color: var(--border-hover);
+            /* Gray: #808080 */
             font-family: var(--font-mono);
         }
+
+        /* --- Dynamic Ambient Background CSS Variables & Styles --- */
+        :root {
+            --bg-path-color: rgba(38, 53, 77, 0.15);
+            --bg-packet-color: rgba(190, 163, 107, 0.35);
+            --bg-glow-color: rgba(190, 163, 107, 0.12);
+        }
+
+        .time-morning {
+            --bg-path-color: rgba(190, 163, 107, 0.15);
+            --bg-packet-color: rgba(190, 163, 107, 0.4);
+            --bg-glow-color: rgba(190, 163, 107, 0.18);
+        }
+
+        .time-afternoon {
+            --bg-path-color: rgba(24, 99, 246, 0.15);
+            --bg-packet-color: rgba(24, 99, 246, 0.4);
+            --bg-glow-color: rgba(24, 99, 246, 0.18);
+        }
+
+        .time-evening {
+            --bg-path-color: rgba(190, 163, 107, 0.18);
+            --bg-packet-color: rgba(190, 163, 107, 0.45);
+            --bg-glow-color: rgba(190, 163, 107, 0.22);
+        }
+
+        .time-night {
+            --bg-path-color: rgba(38, 53, 77, 0.2);
+            --bg-packet-color: rgba(24, 99, 246, 0.3);
+            --bg-glow-color: rgba(24, 99, 246, 0.12);
+        }
+
+        #ambient-bg-svg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        #ambient-orbit-path {
+            transition: stroke 1.5s ease-in-out;
+        }
+
+        .ambient-packet {
+            transition: fill 1.5s ease-in-out;
+        }
+
+        #ambient-master-node circle {
+            transition: fill 1.5s ease-in-out, stroke 1.5s ease-in-out;
+        }
+
+        #ambient-node-label {
+            transition: fill 1.5s ease-in-out;
+            letter-spacing: 0.05em;
+            user-select: none;
+            opacity: 0.85;
+        }
     </style>
+    <script src="bg-dynamic.js" defer></script>
 </head>
 
 <body>

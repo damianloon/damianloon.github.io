@@ -896,6 +896,99 @@ body {
     transition: fill 0.2s ease;
 }
 
+/* --- Dynamic Ambient Background CSS Variables & Styles --- */
+:root {
+    --bg-path-color: rgba(38, 53, 77, 0.15);     /* Very subtle navy/gray line */
+    --bg-packet-color: rgba(190, 163, 107, 0.35); /* Soft gold packets */
+    --bg-glow-color: rgba(190, 163, 107, 0.12);  /* Warm gold glow */
+}
+
+/* Time of Day Class Overrides (Dark Mode Base) */
+.time-morning {
+    --bg-path-color: rgba(190, 163, 107, 0.15);
+    --bg-packet-color: rgba(190, 163, 107, 0.4);
+    --bg-glow-color: rgba(190, 163, 107, 0.18);
+}
+
+.time-afternoon {
+    --bg-path-color: rgba(24, 99, 246, 0.15);
+    --bg-packet-color: rgba(24, 99, 246, 0.4);
+    --bg-glow-color: rgba(24, 99, 246, 0.18);
+}
+
+.time-evening {
+    --bg-path-color: rgba(190, 163, 107, 0.18);
+    --bg-packet-color: rgba(190, 163, 107, 0.45);
+    --bg-glow-color: rgba(190, 163, 107, 0.22);
+}
+
+.time-night {
+    --bg-path-color: rgba(38, 53, 77, 0.2);
+    --bg-packet-color: rgba(24, 99, 246, 0.3);
+    --bg-glow-color: rgba(24, 99, 246, 0.12);
+}
+
+/* Light Mode Overrides for extreme subtlety */
+:root[data-theme="light"] {
+    --bg-path-color: rgba(128, 128, 128, 0.08);
+    --bg-packet-color: rgba(128, 128, 128, 0.2);
+    --bg-glow-color: rgba(190, 163, 107, 0.05);
+}
+
+:root[data-theme="light"].time-morning {
+    --bg-path-color: rgba(190, 163, 107, 0.1);
+    --bg-packet-color: rgba(190, 163, 107, 0.25);
+    --bg-glow-color: rgba(190, 163, 107, 0.08);
+}
+
+:root[data-theme="light"].time-afternoon {
+    --bg-path-color: rgba(24, 99, 246, 0.08);
+    --bg-packet-color: rgba(24, 99, 246, 0.2);
+    --bg-glow-color: rgba(24, 99, 246, 0.08);
+}
+
+:root[data-theme="light"].time-evening {
+    --bg-path-color: rgba(190, 163, 107, 0.1);
+    --bg-packet-color: rgba(190, 163, 107, 0.28);
+    --bg-glow-color: rgba(190, 163, 107, 0.1);
+}
+
+:root[data-theme="light"].time-night {
+    --bg-path-color: rgba(128, 128, 128, 0.08);
+    --bg-packet-color: rgba(128, 128, 128, 0.15);
+    --bg-glow-color: rgba(128, 128, 128, 0.04);
+}
+
+/* Element Styling */
+#ambient-bg-svg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -2;
+}
+
+#ambient-orbit-path {
+    transition: stroke 1.5s ease-in-out;
+}
+
+.ambient-packet {
+    transition: fill 1.5s ease-in-out;
+}
+
+#ambient-master-node circle {
+    transition: fill 1.5s ease-in-out, stroke 1.5s ease-in-out;
+}
+
+#ambient-node-label {
+    transition: fill 1.5s ease-in-out;
+    letter-spacing: 0.05em;
+    user-select: none;
+    opacity: 0.85;
+}
+
 /* --- Print Stylesheet Override --- */
 @media print {
     body {
@@ -912,7 +1005,8 @@ body {
     .btn,
     .project-card,
     #projecten,
-    .skills-card li::before {
+    .skills-card li::before,
+    #ambient-bg-svg {
         display: none !important;
     }
 

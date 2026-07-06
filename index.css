@@ -176,14 +176,15 @@ body {
 
 .hero-badge {
     display: inline-block;
-    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-    color: var(--text-primary);
+    background-color: var(--accent-blue); /* Solid Gold: #BEA36B */
+    color: var(--bg-card); /* Deep Navy #11213D for legibility */
+    font-weight: 600;
     font-size: 0.75rem;
     font-family: var(--font-mono);
     padding: 0.25rem 0.75rem;
     border-radius: 9999px;
     margin-bottom: 1.5rem;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--accent-blue-dark);
 }
 
 .hero-section h1 {

@@ -47,21 +47,23 @@ Ik heb een gecentraliseerde en gedistribueerde media-infrastructuur opgezet, ver
 
 ---
 
-## Project 3: Gecentraliseerde Back-up & Cloud Disaster Recovery
-Een enterprise-achtige back-uparchitectuur die ervoor zorgt dat bij totale hardware-uitval of data-corruptie alle systemen binnen korte tijd volledig hersteld kunnen worden.
+## Project 3: 3D-Geprinte Mini Arcade Machine
+Een zelfgebouwde bartop arcade machine, ontworpen en geprint met een 3D-printer en aangedreven door een Raspberry Pi 3B met Batocera.
 
-- **Technologieën:** Proxmox Backup Server (PBS), Duplicati, Linux Administration, Cloud Storage (Oracle Cloud, Tuxis PBS).
-- **Type:** Backup, Security & Infrastructure Integrity.
+- **Technologieën:** 3D-printing (PLA), CAD/Slicing, Linux (Batocera OS), Emulatie, GPIO/USB interface, 2.1-kanaals audioversterking.
+- **Type:** Hardware Design, System Integration & Making.
 
 ### Het Probleem
-Een homelab is onderhevig aan experimenten, stroomstoringen en mogelijke hardwaredefecten (zoals een falende SSD of microSD-kaart). Zonder een gestructureerde en geautomatiseerde back-upstrategie riskeren configuraties, databases van Home Assistant en BookStack-documentatie permanent verloren te gaan, wat leidt tot uren aan herstelwerk.
+Het vinden van een compacte arcadekast met hoogwaardige controls en een authentiek 4:3 beeldscherm is lastig in de consumentenmarkt. Veel kant-en-klare kasten zijn groot, duur of maken gebruik van goedkope onderdelen en breedbeeldschermen die klassieke games vervormen.
 
 ### De Oplossing
-Ik heb een back-upstrategie opgezet die de 3-2-1 regel volgt (3 kopieën, 2 verschillende media, 1 offsite locatie):
-- **Duplicati op Raspberry Pi:** Maakt dagelijks een gecomprimeerde, gecodeerde back-up van kritieke Docker-volumes en configuratiebestanden en uploadt deze direct naar een **Oracle Cloud Server**.
-- **Proxmox Backup Server (PBS):** Voor mijn Proxmox virtualisatie-node gebruik ik de **Tuxis Cloud PBS**. Hiermee worden incrementele snapshots van complete VM's en LXC-containers direct naar de cloud geschreven. Door de deduplicatie van PBS neemt dit minimale bandbreedte en opslag in beslag.
+Ik heb een complete bartop arcadekast ontworpen en gebouwd:
+- **Behuizing:** Alle onderdelen (Panel A t/m L) zijn geprint in PLA met een 3D-printer en mechanisch gemonteerd met M3- en M4-bouten. De kast is voorzien van een sfeervolle, oplichtende marquee en led-strips aan de onderzijde.
+- **Hardware & Besturing:** Een Raspberry Pi 3B fungeert als het rekencentrum met Batocera OS. De joystick en knoppen zijn van het premium Japanse merk Sanwa, aangesloten via een Zero Delay USB encoder.
+- **Audio & Scherm:** Een 9.7 inch LG display met originele 4:3 verhouding (LP097X02) zorgt voor authentieke graphics. Het geluid wordt verzorgd door een ingebouwde AIYIMA 2.1 versterker met twee speakers en een actieve subwoofer voor krachtige bas.
 
 ### Wat ik heb geleerd
-- **Disaster Recovery:** Het belang van encryptiesleutels extern bewaren; een gecodeerde back-up is waardeloos als de sleutel lokaal op de gecrashte server stond.
-- **PBS-architectuur:** De voordelen van incrementele back-ups op blokniveau en deduplicatietechnieken.
-- **Cloud-integratie:** Veilig communiceren met cloud-endpoints via API's en SSH-tunnels.
+- **Mechanische Assemblage:** Slicen en printen van grote functionele 3D-onderdelen, rekening houdend met toleranties en passingen voor schroefverbindingen.
+- **Systeembedrading & Power Management:** Het berekenen en splitsen van de stroomvoorziening via een dual-voeding (12V 12.5A voor algemeen stroomverbruik en 12V 3A voor de audio) met een step-down converter voor de Pi.
+- **Audio-integratie:** Het configureren van een lokaal 2.1 versterkersysteem, inclusief impedantiematch en fysieke montage van een subwoofer.
+

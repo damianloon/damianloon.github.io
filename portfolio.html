@@ -347,33 +347,31 @@
                 </div>
 
                 <!-- Project 3 -->
-                <div class="project-card">
+                <div class="project-card interactive-project" id="project-arcade" style="cursor: pointer;">
                     <div class="project-tags">
-                        <span class="tag">PBS</span>
-                        <span class="tag">Duplicati</span>
-                        <span class="tag">Disaster Recovery</span>
+                        <span class="tag">3D Printing</span>
+                        <span class="tag">Raspberry Pi</span>
+                        <span class="tag">Retro Gaming</span>
+                        <span class="tag">Sanwa Controls</span>
                     </div>
-                    <h3>Gecentraliseerde Back-up & Cloud DR</h3>
-                    <p class="project-desc">Een geautomatiseerde 3-2-1 back-upstrategie voor disaster recovery bij
-                        totale hardware-uitval.</p>
+                    <h3>3D-Geprinte Mini Arcade Machine</h3>
+                    <p class="project-desc">Een zelfgebouwde bartop arcade machine aangedreven door een Raspberry Pi met Batocera en premium Sanwa arcade-besturing.</p>
 
                     <div class="project-details">
                         <div class="detail-block">
-                            <h4>Het Probleem</h4>
-                            <p>Hardwaredefecten of foutieve configuraties in een actief homelab kunnen leiden tot
-                                permanent dataverlies van databases en wiki's.</p>
+                            <h4>Het Concept</h4>
+                            <p>Een compact tafelmodel arcadekast, geprint in PLA, uitgerust met een authentiek 4:3 LCD-scherm, geïntegreerd 2.1-geluid en sfeervolle LED-verlichting.</p>
                         </div>
                         <div class="detail-block">
-                            <h4>De Oplossing</h4>
-                            <p>Duplicati back-upt de docker volumes gecodeerd naar Oracle Cloud. Proxmox Backup Server
-                                (PBS) schrijft incrementele snapshots direct naar Tuxis Cloud.</p>
+                            <h4>De Elektronica</h4>
+                            <p>Raspberry Pi 3B, Zero Delay USB encoder, audioversterker met actieve subwoofer en een dual-voedingssysteem voor stabiele stroomvoorziening.</p>
                         </div>
                         <div class="detail-block">
-                            <h4>Geleerde Lessen</h4>
-                            <p>Het inrichten van encryptiesleutels (en deze extern bewaren), blocks-level PBS
-                                deduplicatietechnieken en cloud-toegang via beveiligde API-keys.</p>
+                            <h4>Het Bouwproces</h4>
+                            <p>Klik op deze kaart om de volledige handleiding en stap-voor-stap foto's van de fysieke montage en bedrading te bekijken.</p>
                         </div>
                     </div>
+                    <button class="btn btn-primary" id="open-arcade-btn" style="width: 100%; margin-top: 1.5rem; justify-content: center;">Bekijk Bouwstappen</button>
                 </div>
             </div>
         </section>
@@ -532,6 +530,176 @@
             </div>
         </div>
     </footer>
+
+    <!-- Arcade Machine Modal -->
+    <div id="arcade-modal" class="modal-overlay" aria-hidden="true">
+        <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <button class="modal-close" id="modal-close-btn" aria-label="Sluit pop-up">&times;</button>
+            
+            <div class="modal-header">
+                <h2 id="modal-title">3D-Geprinte Mini Arcade Machine</h2>
+                <div class="modal-subtitle">Bartop retro console & homelab project</div>
+                
+                <!-- Modal Tabs -->
+                <div class="modal-tabs">
+                    <button class="modal-tab active" data-tab="overview">Specificaties & Materialen</button>
+                    <button class="modal-tab" data-tab="steps">Stap-voor-stap Montage</button>
+                </div>
+            </div>
+            
+            <!-- Tab Contents -->
+            <div class="modal-body">
+                <!-- Overview Tab -->
+                <div class="tab-content active" id="tab-overview">
+                    <div class="overview-grid">
+                        <div class="overview-desc-block">
+                            <h3>Het Project</h3>
+                            <p>
+                                Dit project is een volledig functionele mini-bartop arcade machine, geprint met een 3D-printer en aangedreven door een Raspberry Pi 3B. De machine is uitgerust met premium Sanwa controls, een kristalhelder 4:3 LCD-scherm dat perfect is voor klassieke retro games, en een geïntegreerd 2.1-audiosysteem met een actieve subwoofer voor diepe, volle retro geluidseffecten.
+                            </p>
+                            <p style="margin-top: 1rem;">
+                                De software draait op het Batocera retro-gaming besturingssysteem, geladen op een 128 GB micro-SD-kaart. Hiermee worden legendarische consoles zoals NES, SNES, Sega Genesis, MAME (arcade) en meer vlekkeloos geëmuleerd.
+                            </p>
+                            
+                            <h3 style="margin-top: 1.5rem;">Specificaties</h3>
+                            <div class="specs-mini-grid">
+                                <div class="spec-mini-item"><strong>Formaat:</strong> Bartop (tafelmodel)</div>
+                                <div class="spec-mini-item"><strong>Beeldscherm:</strong> 9.7 inch LG LCD 4:3 (1024x768)</div>
+                                <div class="spec-mini-item"><strong>Processor:</strong> Raspberry Pi 3B (Quad-core)</div>
+                                <div class="spec-mini-item"><strong>Controls:</strong> Sanwa Joystick (JLF) & OBSF-24 knoppen</div>
+                                <div class="spec-mini-item"><strong>Geluid:</strong> 2.1 Kanaal + Actieve Subwoofer (AIYIMA)</div>
+                                <div class="spec-mini-item"><strong>Verlichting:</strong> Instelbare LED-strips (onder & marquee)</div>
+                                <div class="spec-mini-item"><strong>Besturingssysteem:</strong> Batocera OS (128GB MicroSD)</div>
+                                <div class="spec-mini-item"><strong>Materialen:</strong> PLA (3D-print), acryl diffuser, vinyl</div>
+                            </div>
+                        </div>
+                        
+                        <div class="overview-bom-block">
+                            <h3>Belangrijkste Materialen (BOM)</h3>
+                            <p class="bom-intro">Voor dit project waren diverse mechanische en elektronische onderdelen nodig. Hier zijn de belangrijkste componenten:</p>
+                            <ul class="bom-list">
+                                <li>
+                                    <span class="bom-bullet"></span>
+                                    <div class="bom-item-text">
+                                        <strong>Raspberry Pi 3B/3B+</strong>
+                                        <span>Het hart van de arcade dat de emulatie draait.</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="bom-bullet"></span>
+                                    <div class="bom-item-text">
+                                        <strong>LG LCD LP097X02 Scherm + Driver kit</strong>
+                                        <span>9.7" LCD-scherm met originele 4:3 verhouding voor authentieke retro-weergave.</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="bom-bullet"></span>
+                                    <div class="bom-item-text">
+                                        <strong>Sanwa Joystick JLF & OBSF-24 Knoppen</strong>
+                                        <span>Professionele Japanse arcade-besturing, bekend om zijn precisie en duurzaamheid.</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="bom-bullet"></span>
+                                    <div class="bom-item-text">
+                                        <strong>AIYIMA 2.1 Versterker & 3" Subwoofer</strong>
+                                        <span>Geluidssysteem voor krachtige bas en heldere retro-geluidseffecten.</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="bom-bullet"></span>
+                                    <div class="bom-item-text">
+                                        <strong>Zero Delay USB Encoder</strong>
+                                        <span>Zorgt voor ultralage input lag van de joysticks en knoppen naar de Pi.</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="bom-bullet"></span>
+                                    <div class="bom-item-text">
+                                        <strong>Dual Voeding Setup (150W + 36W)</strong>
+                                        <span>Aparte 12V 12.5A voeding voor algemeen vermogen en 12V 3A voeding voor de audio.</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="bom-bullet"></span>
+                                    <div class="bom-item-text">
+                                        <strong>3D-Geprinte Behuizing (Panelen A t/m L)</strong>
+                                        <span>Geprinte panelen die samen de volledige bartop-behuizing vormen.</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Steps Tab -->
+                <div class="tab-content" id="tab-steps">
+                    <div class="steps-layout">
+                        <!-- Left Navigation Sidebar for steps -->
+                        <div class="steps-sidebar">
+                            <div class="phase-selector-title">Kies een Bouwstap</div>
+                            <div class="steps-nav-list" id="steps-menu">
+                                <!-- Generated by JS -->
+                            </div>
+                        </div>
+                        
+                        <!-- Right Active Step Content Area -->
+                        <div class="step-detail-view">
+                            <div class="step-header">
+                                <span class="step-phase-badge" id="step-phase-name">Fase 1</span>
+                                <h3 id="step-title-display">Stap 1: Montage Rechterzijpaneel (Panel A)</h3>
+                            </div>
+                            
+                            <div class="step-grid">
+                                <div class="step-text-column">
+                                    <div class="step-card-info">
+                                        <h4>Onderdelen voor deze stap:</h4>
+                                        <ul class="step-parts-list" id="step-parts">
+                                            <!-- Generated by JS -->
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="step-instruction-card">
+                                        <h4>Instructie:</h4>
+                                        <p id="step-description">Beschrijving van de stap...</p>
+                                    </div>
+                                    
+                                    <!-- Prev/Next Controls -->
+                                    <div class="step-navigation-controls">
+                                        <button class="btn btn-secondary" id="prev-step-btn">Vorige</button>
+                                        <span class="step-progress-indicator" id="step-counter">Stap 1 van 10</span>
+                                        <button class="btn btn-primary" id="next-step-btn">Volgende</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="step-images-column">
+                                    <div class="image-tabs">
+                                        <button class="img-tab-btn active" data-img-type="manual">Bouwtekening</button>
+                                        <button class="img-tab-btn" data-img-type="photo" id="photo-tab-btn">Mijn Foto</button>
+                                    </div>
+                                    <div class="image-display-frame">
+                                        <!-- Manual Illustration SVG / Img -->
+                                        <div class="image-view active" id="manual-view">
+                                            <div id="manual-illustration-container"></div>
+                                        </div>
+                                        
+                                        <!-- Actual Photo of user's build -->
+                                        <div class="image-view" id="photo-view">
+                                            <img id="step-photo" src="" alt="Mijn bouwfoto" />
+                                            <div class="photo-placeholder" id="photo-placeholder">
+                                                <div class="placeholder-icon">📷</div>
+                                                <p id="photo-placeholder-text">Er is geen foto beschikbaar voor deze tussenstap. De tekening hiernaast toont de instructie.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="index.js"></script>
 </body>

@@ -221,12 +221,13 @@ body {
 }
 
 .btn-primary {
-    background-color: var(--text-primary);
-    color: var(--bg-base);
+    background-color: var(--accent-blue); /* Gold: #BEA36B */
+    color: var(--bg-card); /* Navy: #11213D for high contrast */
+    font-weight: 600;
 }
 
 .btn-primary:hover {
-    background-color: #e4e4e7;
+    background-color: var(--accent-blue-dark); /* Muted gold: #a88c52 */
 }
 
 .btn-secondary {
@@ -976,7 +977,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 4px;
+    border-radius: 9999px;
     transition: background-color 0.2s ease;
 }
 
@@ -1272,3 +1273,587 @@ body {
         border-bottom: 2px solid #000000 !important;
     }
 }
+
+/* --- Arcade Modal Popup Styles --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(12, 13, 18, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 1.5rem;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-container {
+    background-color: var(--bg-card);
+    border: 1px solid rgba(190, 163, 107, 0.25);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 1100px;
+    height: 90vh;
+    max-height: 800px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    transform: scale(0.95) translateY(10px);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.modal-overlay.active .modal-container {
+    transform: scale(1) translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.5rem;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    z-index: 10;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.modal-close:hover {
+    color: var(--accent-blue);
+    background-color: var(--bg-input);
+}
+
+.modal-header {
+    padding: 1.75rem 2.5rem 1rem 2.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modal-header h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.25rem;
+}
+
+.modal-subtitle {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+}
+
+.modal-tabs {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.modal-tab {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.modal-tab:hover {
+    color: var(--text-primary);
+}
+
+.modal-tab.active {
+    color: var(--accent-blue);
+    border-bottom-color: var(--accent-blue);
+}
+
+.modal-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 2rem 2.5rem;
+}
+
+.tab-content {
+    display: none;
+    height: 100%;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* --- Overview Tab Styling --- */
+.overview-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 3rem;
+}
+
+.overview-desc-block h3, 
+.overview-bom-block h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+    border-left: 3px solid var(--accent-blue);
+    padding-left: 0.75rem;
+}
+
+.overview-desc-block p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.specs-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.spec-mini-item {
+    background-color: var(--bg-inset);
+    border: 1px solid var(--border-color);
+    padding: 0.6rem 0.85rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.spec-mini-item strong {
+    color: var(--text-primary);
+    display: block;
+    margin-bottom: 0.15rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+
+.bom-intro {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.bom-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.bom-list li {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+}
+
+.bom-bullet {
+    width: 6px;
+    height: 6px;
+    background-color: var(--accent-blue);
+    border-radius: 50%;
+    margin-top: 0.5rem;
+    flex-shrink: 0;
+}
+
+.bom-item-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.bom-item-text strong {
+    font-size: 0.85rem;
+    color: var(--text-primary);
+}
+
+.bom-item-text span {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+/* --- Steps Tab Styling --- */
+.steps-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 2rem;
+    height: 100%;
+}
+
+.steps-sidebar {
+    border-right: 1px solid var(--border-color);
+    padding-right: 1.25rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-height: 600px;
+}
+
+.phase-selector-title {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+}
+
+.steps-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.step-nav-item {
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--text-secondary);
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.15s ease;
+    line-height: 1.3;
+}
+
+.step-nav-item:hover {
+    background-color: var(--bg-input);
+    color: var(--text-primary);
+}
+
+.step-nav-item.active {
+    background-color: var(--accent-blue-bg);
+    border-color: rgba(190, 163, 107, 0.3);
+    color: var(--accent-blue);
+    font-weight: 500;
+}
+
+.step-detail-view {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.step-header {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.75rem;
+}
+
+.step-phase-badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--accent-blue);
+    background-color: var(--accent-blue-bg);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    border: 1px solid rgba(190, 163, 107, 0.25);
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+}
+
+.step-header h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.step-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 2rem;
+}
+
+.step-card-info {
+    background-color: var(--bg-inset);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.step-card-info h4,
+.step-instruction-card h4 {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.step-parts-list {
+    list-style: none;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+}
+
+.step-parts-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.step-parts-list li::before {
+    content: "•";
+    color: var(--accent-blue);
+}
+
+.step-instruction-card {
+    background-color: var(--bg-inset);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.step-instruction-card p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.step-navigation-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.step-progress-indicator {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* --- Image container column --- */
+.step-images-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.image-tabs {
+    display: flex;
+    gap: 0.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.img-tab-btn {
+    background-color: var(--bg-inset);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.img-tab-btn:hover {
+    border-color: var(--border-hover);
+}
+
+.img-tab-btn.active {
+    background-color: var(--accent-blue);
+    color: var(--bg-card);
+    border-color: var(--accent-blue);
+}
+
+.image-display-frame {
+    background-color: var(--bg-inset);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.image-view {
+    display: none;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-view#manual-view {
+    padding: 1.5rem;
+}
+
+.image-view#photo-view {
+    padding: 0;
+}
+
+.image-view.active {
+    display: flex;
+}
+
+.image-view img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 11px;
+}
+
+.photo-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-muted);
+}
+
+.placeholder-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.photo-placeholder p {
+    font-size: 0.8rem;
+    max-width: 250px;
+    line-height: 1.4;
+}
+
+/* --- SVG Schematic Drawings --- */
+.manual-svg {
+    width: 100%;
+    height: 100%;
+    max-height: 300px;
+}
+
+.manual-svg path, 
+.manual-svg rect, 
+.manual-svg circle, 
+.manual-svg line {
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.svg-wireframe {
+    stroke: var(--border-color);
+    fill: none;
+    stroke-width: 1.5;
+    transition: all 0.3s ease;
+}
+
+.svg-placed {
+    stroke: #2e4a7a;
+    fill: none;
+    stroke-width: 1.5;
+    transition: all 0.3s ease;
+}
+
+.svg-highlight {
+    stroke: var(--accent-blue);
+    fill: none;
+    stroke-width: 2.5;
+    filter: drop-shadow(0 0 4px rgba(190, 163, 107, 0.4));
+    animation: svg-glow 2s infinite alternate;
+}
+
+.svg-accent {
+    stroke: #1863F6;
+    fill: none;
+    stroke-width: 1.5;
+}
+
+@keyframes svg-glow {
+    from {
+        filter: drop-shadow(0 0 2px rgba(190, 163, 107, 0.3));
+        stroke-width: 2;
+    }
+    to {
+        filter: drop-shadow(0 0 6px rgba(190, 163, 107, 0.6));
+        stroke-width: 2.8;
+    }
+}
+
+/* --- Responsive Adaptations for Modal --- */
+@media (max-width: 900px) {
+    .modal-container {
+        height: 95vh;
+        max-height: 95vh;
+    }
+    
+    .overview-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .steps-layout {
+        grid-template-columns: 180px 1fr;
+    }
+    
+    .step-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .image-display-frame {
+        height: 280px;
+    }
+}
+
+@media (max-width: 680px) {
+    .steps-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .steps-sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding-right: 0;
+        padding-bottom: 1rem;
+        flex-direction: row;
+        max-height: 120px;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    
+    .steps-nav-list {
+        flex-direction: row;
+        gap: 0.5rem;
+    }
+    
+    .step-nav-item {
+        display: inline-block;
+        padding: 0.4rem 0.7rem;
+    }
+}
+

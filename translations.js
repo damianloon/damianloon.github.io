@@ -369,7 +369,7 @@ const translations = {
                     "Schroef M3x14 DIN-912 (14x)"
                 ],
                 description: "Na het dubbelchecken van alle bedrading en stroomcircuits, legde ik Panel L (linkerzijpaneel) op het kabinet. Ik schoof 14 vierkante M3-moeren in de corresponderende montage-slots van de verbindende panelen (I, J, K, B, C, D, E). Vervolgens schroefde ik Panel L met 14 stuks M3x14 bouten vast om de behuizing volledig te sluiten.",
-                photo: "assets/logos/arcade/Stap_9_Mijn_Foto.jpg",
+                photo: "assets/logos/arcade/photo-assembly-1.jpg",
                 manualImage: "assets/logos/arcade/bouwtekeningen/Stap_9.png"
             },
             {
@@ -383,7 +383,7 @@ const translations = {
                     "Marquee plexiglas & Marquee poster (1x)"
                 ],
                 description: "Als laatste schoof ik Panel H (achterpaneel) op zijn plek en zette dit vast met vier M3x14 schroeven. Ik plaatste de geprinte marquee-poster achter het plexiglas aan de voorzijde. Daarna was het tijd voor de eerste boot-test: de Raspberry Pi startte perfect op in Batocera, de controls reageerden direct en het 2.1-geluid klonk fantastisch!",
-                photo: "assets/logos/arcade/Stap_10_Mijn_Foto.jpg",
+                photo: "assets/logos/arcade/Final-Look-Kast.jpg",
                 inActionPhoto: "assets/logos/arcade/In_actie_tetris.jpg",
                 manualImage: "assets/logos/arcade/bouwtekeningen/Stap_10.png"
             }
@@ -760,7 +760,7 @@ const translations = {
                     "Screw M3x14 DIN-912 (14x)"
                 ],
                 description: "After double-checking all wiring and power circuits, I placed Panel L (left side panel) onto the cabinet. I slid 14 square M3 nuts into the corresponding mounting slots of the connecting panels (I, J, K, B, C, D, E). Then, I secured Panel L using 14 M3x14 bolts to fully close the enclosure.",
-                photo: "assets/logos/arcade/Stap_9_Mijn_Foto.jpg",
+                photo: "assets/logos/arcade/photo-assembly-1.jpg",
                 manualImage: "assets/logos/arcade/bouwtekeningen/Stap_9.png"
             },
             {
@@ -774,7 +774,7 @@ const translations = {
                     "Marquee plexiglass & Marquee poster (1x)"
                 ],
                 description: "Finally, I slid Panel H (back panel) into place and secured it with four M3x14 screws. I placed the printed marquee poster behind the plexiglass at the front. Then, it was time for the first boot test: the Raspberry Pi booted perfectly into Batocera, the controls responded immediately, and the 2.1 audio sounded fantastic!",
-                photo: "assets/logos/arcade/Stap_10_Mijn_Foto.jpg",
+                photo: "assets/logos/arcade/Final-Look-Kast.jpg",
                 inActionPhoto: "assets/logos/arcade/In_actie_tetris.jpg",
                 manualImage: "assets/logos/arcade/bouwtekeningen/Stap_10.png"
             }
@@ -1149,7 +1149,7 @@ const translations = {
                     "Schraube M3x14 DIN-912 (14x)"
                 ],
                 description: "Nachdem ich alle Verkabelungen und Stromkreise überprüft hatte, legte ich Platte L (linke Seitenwand) auf das Gehäuse. Ich schob 14 Vierkantmuttern M3 in die entsprechenden Montageschlitze der verbindenden Platten (I, J, K, B, C, D, E). Dann sicherte ich Platte L mit 14 M3x14 Schrauben, um das Gehäuse vollständig zu schließen.",
-                photo: "assets/logos/arcade/Stap_9_Mijn_Foto.jpg",
+                photo: "assets/logos/arcade/photo-assembly-1.jpg",
                 manualImage: "assets/logos/arcade/bouwtekeningen/Stap_9.png"
             },
             {
@@ -1163,7 +1163,7 @@ const translations = {
                     "Marquee-Plexiglas & Marquee-Poster (1x)"
                 ],
                 description: "Schließlich schob ich Platte H (Rückwand) an ihren Platz und befestigte sie mit vier M3x14 Schrauben. Ich platzierte das gedruckte Marquee-Poster hinter dem Plexiglas an der Vorderseite. Dann war es Zeit für den ersten Boot-Test: Der Raspberry Pi startete perfekt in Batocera, die Steuerung reagierte sofort und der 2.1-Sound klang fantastisch!",
-                photo: "assets/logos/arcade/Stap_10_Mijn_Foto.jpg",
+                photo: "assets/logos/arcade/Final-Look-Kast.jpg",
                 inActionPhoto: "assets/logos/arcade/In_actie_tetris.jpg",
                 manualImage: "assets/logos/arcade/bouwtekeningen/Stap_10.png"
             }

@@ -401,8 +401,8 @@ body {
     cursor: pointer;
 }
 
-.interactive-node rect,
-.interactive-node circle {
+.interactive-node > rect,
+.interactive-node > circle {
     fill: var(--bg-card);
     stroke: var(--border-color);
     transition: all 0.15s ease-in-out;
@@ -412,22 +412,17 @@ body {
     user-select: none;
 }
 
-.interactive-node:hover rect,
-.interactive-node:hover circle {
+.interactive-node:hover > rect,
+.interactive-node:hover > circle {
     stroke: var(--text-secondary);
 }
 
 /* Active node state */
-.interactive-node.selected rect,
-.interactive-node.selected circle {
+.interactive-node.selected > rect,
+.interactive-node.selected > circle {
     stroke: var(--accent-blue);
     stroke-width: 2px;
     fill: var(--accent-blue-bg);
-}
-
-/* Connective paths when corresponding node is active */
-.interactive-node.selected path {
-    stroke: var(--accent-blue);
 }
 
 /* --- Details Card Content --- */

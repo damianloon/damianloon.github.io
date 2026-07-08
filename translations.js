@@ -312,7 +312,7 @@ const translations = {
                     "Schroef voor plastic D3x12 (2x)"
                 ],
                 description: "Ik plakte de LED-strip aan de binnenkant van Panel F voor de verlichting van de marquee (de lichtbak aan de bovenkant) en sloot deze aan op een DC Jack adapter. Op Panel H (het achterpaneel) monteerde ik de Raspberry Pi 4B met vier kleine schroeven rechtstreeks op de 3D-geprinte standoffs.",
-                photo: "",
+                photo: "assets/logos/arcade/Stap_5-6_Mijn_Foto.jpg",
                 manualImage: "assets/logos/arcade/bouwtekeningen/Stap_5.png"
             },
             {
@@ -327,7 +327,7 @@ const translations = {
                     "Schroef M3x14 DIN-912 & vierkante moer M3 (6x)"
                 ],
                 description: "Ik legde Panel A plat neer en schoof vierkante M3-moeren in de slots van Panel I, J en K. Vervolgens schroefde ik deze drie panelen rechtop vast aan Panel A met M3x14 bouten. Hierdoor ontstond de basisvorm en de rechterhelft van het arcade-kabinet.",
-                photo: "assets/logos/arcade/Stap_6_Mijn_Foto.jpg",
+                photo: "assets/logos/arcade/Stap_5-6_Mijn_Foto.jpg",
                 manualImage: "assets/logos/arcade/bouwtekeningen/Stap_6.png"
             },
             {
@@ -384,6 +384,7 @@ const translations = {
                 ],
                 description: "Als laatste schoof ik Panel H (achterpaneel) op zijn plek en zette dit vast met vier M3x14 schroeven. Ik plaatste de geprinte marquee-poster achter het plexiglas aan de voorzijde. Daarna was het tijd voor de eerste boot-test: de Raspberry Pi startte perfect op in Batocera, de controls reageerden direct en het 2.1-geluid klonk fantastisch!",
                 photo: "assets/logos/arcade/Stap_10_Mijn_Foto.jpg",
+                inActionPhoto: "assets/logos/arcade/In_actie_tetris.jpg",
                 manualImage: "assets/logos/arcade/bouwtekeningen/Stap_10.png"
             }
         ]
@@ -702,7 +703,7 @@ const translations = {
                     "Screw for plastic D3x12 (2x)"
                 ],
                 description: "I taped the LED strip to the inside of Panel F to light up the marquee (the lightbox at the top) and connected it to a DC Jack adapter. On Panel H (the back panel), I mounted the Raspberry Pi 4B with four small screws directly onto the 3D-printed standoffs.",
-                photo: "",
+                photo: "assets/logos/arcade/Stap_5-6_Mijn_Foto.jpg",
                 manualImage: "assets/logos/arcade/bouwtekeningen/Stap_5.png"
             },
             {
@@ -717,7 +718,7 @@ const translations = {
                     "Screw M3x14 DIN-912 & square nut M3 (6x)"
                 ],
                 description: "I laid Panel A flat and slid square M3 nuts into the slots of Panels I, J, and K. Next, I screwed these three panels upright onto Panel A using M3x14 bolts. This established the base shape and the right half of the arcade cabinet.",
-                photo: "assets/logos/arcade/Stap_6_Mijn_Foto.jpg",
+                photo: "assets/logos/arcade/Stap_5-6_Mijn_Foto.jpg",
                 manualImage: "assets/logos/arcade/bouwtekeningen/Stap_6.png"
             },
             {
@@ -774,6 +775,7 @@ const translations = {
                 ],
                 description: "Finally, I slid Panel H (back panel) into place and secured it with four M3x14 screws. I placed the printed marquee poster behind the plexiglass at the front. Then, it was time for the first boot test: the Raspberry Pi booted perfectly into Batocera, the controls responded immediately, and the 2.1 audio sounded fantastic!",
                 photo: "assets/logos/arcade/Stap_10_Mijn_Foto.jpg",
+                inActionPhoto: "assets/logos/arcade/In_actie_tetris.jpg",
                 manualImage: "assets/logos/arcade/bouwtekeningen/Stap_10.png"
             }
         ]
@@ -1090,7 +1092,7 @@ const translations = {
                     "Schraube für Kunststoff D3x12 (2x)"
                 ],
                 description: "Ich klebte den LED-Streifen auf die Innenseite von Platte F, um das Marquee (den Leuchtkasten oben) zu beleuchten, und schloss ihn an einen DC-Klinkenadapter an. Auf Platte H (der Rückwand) montierte ich den Raspberry Pi 4B mit vier kleinen Schrauben direkt auf den 3D-gedruckten Abstandshaltern.",
-                photo: "",
+                photo: "assets/logos/arcade/Stap_5-6_Mijn_Foto.jpg",
                 manualImage: "assets/logos/arcade/bouwtekeningen/Stap_5.png"
             },
             {
@@ -1105,7 +1107,7 @@ const translations = {
                     "Schraube M3x14 DIN-912 & Vierkantmutter M3 (6x)"
                 ],
                 description: "Ich legte Platte A flach hin und schob Vierkantmuttern M3 in die Schlitze der Platten I, J und K. Als Nächstes schraubte ich diese drei Platten mit M3x14 Schrauben aufrecht auf Platte A. Dadurch entstanden die Grundform und die rechte Hälfte des Arcade-Gehäuses.",
-                photo: "assets/logos/arcade/Stap_6_Mijn_Foto.jpg",
+                photo: "assets/logos/arcade/Stap_5-6_Mijn_Foto.jpg",
                 manualImage: "assets/logos/arcade/bouwtekeningen/Stap_6.png"
             },
             {
@@ -1162,6 +1164,7 @@ const translations = {
                 ],
                 description: "Schließlich schob ich Platte H (Rückwand) an ihren Platz und befestigte sie mit vier M3x14 Schrauben. Ich platzierte das gedruckte Marquee-Poster hinter dem Plexiglas an der Vorderseite. Dann war es Zeit für den ersten Boot-Test: Der Raspberry Pi startete perfekt in Batocera, die Steuerung reagierte sofort und der 2.1-Sound klang fantastisch!",
                 photo: "assets/logos/arcade/Stap_10_Mijn_Foto.jpg",
+                inActionPhoto: "assets/logos/arcade/In_actie_tetris.jpg",
                 manualImage: "assets/logos/arcade/bouwtekeningen/Stap_10.png"
             }
         ]

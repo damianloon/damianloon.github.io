@@ -307,7 +307,7 @@
             display: inline-block;
             vertical-align: middle;
             border-radius: 1px;
-            box-shadow: 0 0 1px rgba(0,0,0,0.2);
+            box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
         }
     </style>
     <script src="translations.js"></script>
@@ -353,27 +353,27 @@
             <ul class="dropdown-menu" role="listbox">
                 <li class="dropdown-item" data-lang="nl" role="option">
                     <svg class="flag-icon" viewBox="0 0 9 6" width="16" height="12">
-                        <rect width="9" height="6" fill="#21468B"/>
-                        <rect width="9" height="4" fill="#FFFFFF"/>
-                        <rect width="9" height="2" fill="#AE1C28"/>
+                        <rect width="9" height="6" fill="#21468B" />
+                        <rect width="9" height="4" fill="#FFFFFF" />
+                        <rect width="9" height="2" fill="#AE1C28" />
                     </svg>
                     <span>NL</span>
                 </li>
                 <li class="dropdown-item" data-lang="en" role="option">
                     <svg class="flag-icon" viewBox="0 0 50 30" width="16" height="12">
-                        <rect width="50" height="30" fill="#012169"/>
-                        <path d="M0,0 L50,30 M50,0 L0,30" stroke="#fff" stroke-width="6"/>
-                        <path d="M0,0 L50,30 M50,0 L0,30" stroke="#c8102e" stroke-width="4"/>
-                        <path d="M25,0 v30 M0,15 h50" stroke="#fff" stroke-width="10"/>
-                        <path d="M25,0 v30 M0,15 h50" stroke="#c8102e" stroke-width="6"/>
+                        <rect width="50" height="30" fill="#012169" />
+                        <path d="M0,0 L50,30 M50,0 L0,30" stroke="#fff" stroke-width="6" />
+                        <path d="M0,0 L50,30 M50,0 L0,30" stroke="#c8102e" stroke-width="4" />
+                        <path d="M25,0 v30 M0,15 h50" stroke="#fff" stroke-width="10" />
+                        <path d="M25,0 v30 M0,15 h50" stroke="#c8102e" stroke-width="6" />
                     </svg>
                     <span>EN</span>
                 </li>
                 <li class="dropdown-item" data-lang="de" role="option">
                     <svg class="flag-icon" viewBox="0 0 9 6" width="16" height="12">
-                        <rect width="9" height="6" fill="#FFCC00"/>
-                        <rect width="9" height="4" fill="#DD0000"/>
-                        <rect width="9" height="2" fill="#000000"/>
+                        <rect width="9" height="6" fill="#FFCC00" />
+                        <rect width="9" height="4" fill="#DD0000" />
+                        <rect width="9" height="2" fill="#000000" />
                     </svg>
                     <span>DE</span>
                 </li>
@@ -388,7 +388,7 @@
             const trigger = document.querySelector('.dropdown-trigger');
             const triggerContainer = document.querySelector('.current-flag-container');
             const dropdownItems = document.querySelectorAll('.dropdown-item');
-            
+
             function getLanguage() {
                 const saved = localStorage.getItem('language');
                 if (saved && ['nl', 'en', 'de'].includes(saved)) return saved;
@@ -396,11 +396,11 @@
                 if (['nl', 'en', 'de'].includes(browserLang)) return browserLang;
                 return 'nl';
             }
-            
+
             function setLanguage(lang) {
                 localStorage.setItem('language', lang);
                 document.documentElement.lang = lang;
-                
+
                 // Update page title & meta
                 if (translations[lang]?.ui?.maintenance_title) {
                     document.title = translations[lang].ui.maintenance_title;
@@ -409,7 +409,7 @@
                 if (metaDesc && translations[lang]?.ui?.maintenance_desc) {
                     metaDesc.content = translations[lang].ui.maintenance_desc;
                 }
-                
+
                 // Update all elements with data-i18n
                 document.querySelectorAll('[data-i18n]').forEach(el => {
                     const key = el.getAttribute('data-i18n');
@@ -417,12 +417,12 @@
                         el.innerHTML = translations[lang].ui[key];
                     }
                 });
-                
+
                 // Update active state in custom dropdown
                 const activeItem = document.querySelector(`.dropdown-item[data-lang="${lang}"]`);
                 if (activeItem && triggerContainer) {
                     triggerContainer.innerHTML = activeItem.innerHTML;
-                    
+
                     dropdownItems.forEach(item => {
                         if (item.getAttribute('data-lang') === lang) {
                             item.classList.add('active');
@@ -432,7 +432,7 @@
                     });
                 }
             }
-            
+
             if (trigger && dropdown) {
                 trigger.addEventListener('click', (e) => {
                     e.stopPropagation();
@@ -440,22 +440,23 @@
                     dropdown.classList.toggle('open', !isOpen);
                     trigger.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
                 });
-                
+
                 document.addEventListener('click', () => {
                     dropdown.classList.remove('open');
                     trigger.setAttribute('aria-expanded', 'false');
                 });
             }
-            
+
             dropdownItems.forEach(item => {
                 item.addEventListener('click', () => {
                     setLanguage(item.getAttribute('data-lang'));
                 });
             });
-            
+
             // Initial load
             setLanguage(getLanguage());
         });
     </script>
 </body>
+
 </html>

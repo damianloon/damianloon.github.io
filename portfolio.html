@@ -725,6 +725,44 @@
                                         <div class="image-view" id="action-view">
                                             <img id="action-photo" src="" alt="Arcade in actie" />
                                         </div>
+
+                                        <!-- Tetris Start Overlay -->
+                                        <div id="tetris-start-overlay" class="tetris-overlay" style="display: none;">
+                                            <div class="overlay-content">
+                                                <span class="overlay-icon">🕹️</span>
+                                                <h3>Speel Classic Tetris</h3>
+                                                <p>Klik om de ingebouwde retro-emulator te starten en te spelen!</p>
+                                                <button class="btn btn-primary" id="start-tetris-btn">Start Game</button>
+                                            </div>
+                                        </div>
+
+                                        <!-- Tetris Game View -->
+                                        <div class="image-view" id="tetris-view">
+                                            <button class="tetris-minimize-btn" id="tetris-minimize-btn" aria-label="Sluit Tetris">&minus; Minimaliseer</button>
+                                            <div class="tetris-game-layout">
+                                                <canvas id="tetris-canvas"></canvas>
+                                                <div class="tetris-sidebar">
+                                                    <div class="tetris-panel">
+                                                        <h5>SCORE</h5>
+                                                        <div id="tetris-score">000000</div>
+                                                    </div>
+                                                    <div class="tetris-panel">
+                                                        <h5>LINES</h5>
+                                                        <div id="tetris-lines">000</div>
+                                                    </div>
+                                                    <div class="tetris-panel">
+                                                        <h5>LEVEL</h5>
+                                                        <div id="tetris-level">00</div>
+                                                    </div>
+                                                    <div class="tetris-panel">
+                                                        <h5>NEXT</h5>
+                                                        <div class="tetris-next-box">
+                                                            <canvas id="tetris-next-canvas" width="60" height="60"></canvas>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

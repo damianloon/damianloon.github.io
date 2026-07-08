@@ -1,52 +1,79 @@
 /* --- Design System & CSS Variables --- */
 :root {
-    --bg-base: #0c0d12;        /* Off-black charcoal with dark blue tint */
-    --bg-card: #11213D;        /* Secondary Color: Deep Navy Blue */
-    --bg-input: #1a2d4c;       /* Lighter navy for text fields and inputs */
-    --border-color: #26354d;   /* Muted navy border to integrate card edges */
-    --border-hover: #808080;   /* Main Color: Gray */
-    
-    --text-primary: #fafafa;   /* Zinc 50 (Off-white) */
-    --text-secondary: #d1d5db; /* Light gray for excellent reading contrast */
-    --text-muted: #808080;      /* Main Color: Gray for secondary details */
-    
-    --accent-blue: #BEA36B;    /* Main Color: Gold/Bronze Accent */
+    --bg-base: #0c0d12;
+    /* Off-black charcoal with dark blue tint */
+    --bg-card: #11213D;
+    /* Secondary Color: Deep Navy Blue */
+    --bg-input: #1a2d4c;
+    /* Lighter navy for text fields and inputs */
+    --border-color: #26354d;
+    /* Muted navy border to integrate card edges */
+    --border-hover: #808080;
+    /* Main Color: Gray */
+
+    --text-primary: #fafafa;
+    /* Zinc 50 (Off-white) */
+    --text-secondary: #d1d5db;
+    /* Light gray for excellent reading contrast */
+    --text-muted: #808080;
+    /* Main Color: Gray for secondary details */
+
+    --accent-blue: #BEA36B;
+    /* Main Color: Gold/Bronze Accent */
     --accent-blue-dark: #a88c52;
-    --accent-blue-bg: #22252c;  /* Warm dark grey background for selected states */
-    
-    --gradient-start: #1863F6; /* Gradient Start: Royal Blue */
-    --gradient-end: #11213D;   /* Gradient End: Deep Navy Blue */
-    
-    --accent-green: #10b981;   /* Emerald Green */
+    --accent-blue-bg: #22252c;
+    /* Warm dark grey background for selected states */
+
+    --gradient-start: #1863F6;
+    /* Gradient Start: Royal Blue */
+    --gradient-end: #11213D;
+    /* Gradient End: Deep Navy Blue */
+
+    --accent-green: #10b981;
+    /* Emerald Green */
     --accent-green-bg: #064e3b;
-    
-    --bg-header: rgba(12, 13, 18, 0.8);  /* Theme base with opacity */
-    --bg-inset: #0c0c0e;                 /* Dark background for internal sections */
-    
+
+    --bg-header: rgba(12, 13, 18, 0.8);
+    /* Theme base with opacity */
+    --bg-inset: #0c0c0e;
+    /* Dark background for internal sections */
+
     --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-mono: 'JetBrains Mono', "SFMono-Regular", Consolas, monospace;
 }
 
 :root[data-theme="light"] {
-    --bg-base: #f4f5f7;         /* Clean light grey background */
-    --bg-card: #ffffff;         /* Pure white cards */
-    --bg-input: #e4e7eb;        /* Light grey inputs/badges */
-    --border-color: #d1d5db;    /* Soft grey borders */
-    --border-hover: #808080;    /* Main Color: Gray */
-    
-    --text-primary: #111827;    /* Slate 900 (Off-black) */
-    --text-secondary: #4b5563;  /* Slate 600 (Dark grey) */
-    --text-muted: #808080;       /* Main Color: Gray */
-    
-    --accent-blue: #BEA36B;     /* Main Color: Gold remains identical */
+    --bg-base: #f4f5f7;
+    /* Clean light grey background */
+    --bg-card: #ffffff;
+    /* Pure white cards */
+    --bg-input: #e4e7eb;
+    /* Light grey inputs/badges */
+    --border-color: #d1d5db;
+    /* Soft grey borders */
+    --border-hover: #808080;
+    /* Main Color: Gray */
+
+    --text-primary: #111827;
+    /* Slate 900 (Off-black) */
+    --text-secondary: #4b5563;
+    /* Slate 600 (Dark grey) */
+    --text-muted: #808080;
+    /* Main Color: Gray */
+
+    --accent-blue: #BEA36B;
+    /* Main Color: Gold remains identical */
     --accent-blue-dark: #a88c52;
-    --accent-blue-bg: #fcf9f2;   /* Soft warm gold background tint for selected states */
-    
-    --accent-green: #059669;    /* Slightly darker green for contrast */
+    --accent-blue-bg: #fcf9f2;
+    /* Soft warm gold background tint for selected states */
+
+    --accent-green: #059669;
+    /* Slightly darker green for contrast */
     --accent-green-bg: #d1fae5;
-    
+
     --bg-header: rgba(244, 245, 247, 0.8);
-    --bg-inset: #eef1f6;        /* Light background for internal sections */
+    --bg-inset: #eef1f6;
+    /* Light background for internal sections */
 }
 
 /* --- Base Reset --- */
@@ -102,9 +129,11 @@ body {
 }
 
 .site-header {
-    background-color: rgba(17, 33, 61, 0.7); /* Deep Navy Translucent */
+    background-color: rgba(17, 33, 61, 0.7);
+    /* Deep Navy Translucent */
     backdrop-filter: blur(16px);
-    border: 1px solid rgba(190, 163, 107, 0.15); /* Gold border */
+    border: 1px solid rgba(190, 163, 107, 0.15);
+    /* Gold border */
     border-radius: 16px;
     position: sticky;
     top: 1.25rem;
@@ -144,7 +173,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.75rem 1.5rem; /* Slightly more compact padding */
+    padding: 0.75rem 1.5rem;
+    /* Slightly more compact padding */
 }
 
 .logo-area {
@@ -188,7 +218,8 @@ body {
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: var(--accent-blue); /* Gold accent */
+    background-color: var(--accent-blue);
+    /* Gold accent */
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
 }
@@ -213,7 +244,8 @@ body {
     padding: 0.5rem 1rem;
     font-size: 0.85rem;
     font-weight: 500;
-    border-radius: 8px; /* Upgraded to rounder corners */
+    border-radius: 8px;
+    /* Upgraded to rounder corners */
     text-decoration: none;
     transition: all 0.15s ease;
     cursor: pointer;
@@ -221,13 +253,16 @@ body {
 }
 
 .btn-primary {
-    background-color: var(--accent-blue); /* Gold: #BEA36B */
-    color: var(--bg-card); /* Navy: #11213D for high contrast */
+    background-color: var(--accent-blue);
+    /* Gold: #BEA36B */
+    color: var(--bg-card);
+    /* Navy: #11213D for high contrast */
     font-weight: 600;
 }
 
 .btn-primary:hover {
-    background-color: var(--accent-blue-dark); /* Muted gold: #a88c52 */
+    background-color: var(--accent-blue-dark);
+    /* Muted gold: #a88c52 */
 }
 
 .btn-secondary {
@@ -249,8 +284,10 @@ body {
 
 .hero-badge {
     display: inline-block;
-    background-color: var(--accent-blue); /* Solid Gold: #BEA36B */
-    color: var(--bg-card); /* Deep Navy #11213D for legibility */
+    background-color: var(--accent-blue);
+    /* Solid Gold: #BEA36B */
+    color: var(--bg-card);
+    /* Deep Navy #11213D for legibility */
     font-weight: 600;
     font-size: 0.75rem;
     font-family: var(--font-mono);
@@ -296,10 +333,12 @@ body {
     gap: 1.5rem;
 }
 
-.diagram-card, .details-card {
+.diagram-card,
+.details-card {
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 12px; /* Upgraded to modern rounded cards */
+    border-radius: 12px;
+    /* Upgraded to modern rounded cards */
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -341,14 +380,16 @@ body {
     padding: 1.5rem;
     display: flex;
     justify-content: center;
-    background-color: var(--bg-inset); /* Uses themeable background for contrast */
+    background-color: var(--bg-inset);
+    /* Uses themeable background for contrast */
     overflow-x: auto;
 }
 
 .network-svg {
     width: 100%;
     height: auto;
-    max-width: 960px; /* Increased from 800px to expand diagram visual size */
+    max-width: 960px;
+    /* Increased from 800px to expand diagram visual size */
 }
 
 /* --- Interactive SVG Styling --- */
@@ -360,7 +401,8 @@ body {
     cursor: pointer;
 }
 
-.interactive-node rect, .interactive-node circle {
+.interactive-node rect,
+.interactive-node circle {
     fill: var(--bg-card);
     stroke: var(--border-color);
     transition: all 0.15s ease-in-out;
@@ -370,12 +412,14 @@ body {
     user-select: none;
 }
 
-.interactive-node:hover rect, .interactive-node:hover circle {
+.interactive-node:hover rect,
+.interactive-node:hover circle {
     stroke: var(--text-secondary);
 }
 
 /* Active node state */
-.interactive-node.selected rect, .interactive-node.selected circle {
+.interactive-node.selected rect,
+.interactive-node.selected circle {
     stroke: var(--accent-blue);
     stroke-width: 2px;
     fill: var(--accent-blue-bg);
@@ -389,7 +433,8 @@ body {
 /* --- Details Card Content --- */
 .details-content {
     padding: 1.5rem;
-    min-height: 250px; /* Reduced min-height because full-width handles content layout better */
+    min-height: 250px;
+    /* Reduced min-height because full-width handles content layout better */
     display: flex;
     flex-direction: column;
 }
@@ -466,9 +511,11 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 0.75rem;
-    background-color: var(--bg-inset); /* Themeable inset background */
+    background-color: var(--bg-inset);
+    /* Themeable inset background */
     padding: 0.75rem;
-    border-radius: 8px; /* Rounded corners for inner grid */
+    border-radius: 8px;
+    /* Rounded corners for inner grid */
     border: 1px solid var(--border-color);
 }
 
@@ -550,7 +597,8 @@ body {
 .project-card {
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 12px; /* Upgraded to modern rounded cards */
+    border-radius: 12px;
+    /* Upgraded to modern rounded cards */
     padding: 1.75rem;
     display: flex;
     flex-direction: column;
@@ -569,7 +617,8 @@ body {
     font-family: var(--font-mono);
     font-size: 0.7rem;
     padding: 0.15rem 0.5rem;
-    border-radius: 6px; /* Rounded tags */
+    border-radius: 6px;
+    /* Rounded tags */
     border: 1px solid var(--border-color);
 }
 
@@ -655,7 +704,8 @@ body {
 .timeline-content {
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 12px; /* Upgraded to modern rounded cards */
+    border-radius: 12px;
+    /* Upgraded to modern rounded cards */
     padding: 1.5rem;
 }
 
@@ -675,7 +725,8 @@ body {
     color: var(--accent-blue);
     background-color: var(--accent-blue-bg);
     padding: 0.15rem 0.5rem;
-    border-radius: 8px; /* Rounded date badge */
+    border-radius: 8px;
+    /* Rounded date badge */
     border: 1px solid rgba(59, 130, 246, 0.3);
 }
 
@@ -705,10 +756,13 @@ body {
 }
 
 .company-logo {
-    height: 38px; /* Increased from 24px for much better visibility */
-    max-width: 120px; /* Increased from 80px */
+    height: 38px;
+    /* Increased from 24px for much better visibility */
+    max-width: 120px;
+    /* Increased from 80px */
     object-fit: contain;
-    border-radius: 6px; /* Rounded corners on the logo image itself */
+    border-radius: 6px;
+    /* Rounded corners on the logo image itself */
     opacity: 0.9;
     transition: all 0.2s ease;
 }
@@ -720,9 +774,11 @@ body {
 
 /* --- Footer --- */
 .site-footer {
-    background-color: rgba(17, 33, 61, 0.7); /* Deep Navy Translucent */
+    background-color: rgba(17, 33, 61, 0.7);
+    /* Deep Navy Translucent */
     backdrop-filter: blur(16px);
-    border: 1px solid rgba(190, 163, 107, 0.15); /* Gold border */
+    border: 1px solid rgba(190, 163, 107, 0.15);
+    /* Gold border */
     border-radius: 16px;
     padding: 2rem 0;
     margin: 5rem auto 2.5rem auto;
@@ -794,7 +850,8 @@ body {
 }
 
 .status-indicator.online {
-    background-color: #10b981; /* Emerald green */
+    background-color: #10b981;
+    /* Emerald green */
 }
 
 @keyframes beacon-pulse {
@@ -802,10 +859,12 @@ body {
         transform: scale(0.9);
         box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
     }
+
     70% {
         transform: scale(1);
         box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
     }
+
     100% {
         transform: scale(0.9);
         box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
@@ -832,14 +891,16 @@ body {
     padding: 0.45rem 0.85rem;
     border-radius: 8px;
     border: 1px solid var(--border-color);
-    background-color: rgba(12, 13, 18, 0.3); /* dark inset fill */
+    background-color: rgba(12, 13, 18, 0.3);
+    /* dark inset fill */
     transition: all 0.2s ease;
 }
 
 .footer-links a:hover {
     color: var(--accent-blue);
     border-color: var(--accent-blue);
-    background-color: rgba(190, 163, 107, 0.05); /* warm tint */
+    background-color: rgba(190, 163, 107, 0.05);
+    /* warm tint */
     transform: translateY(-2px);
 }
 
@@ -867,11 +928,11 @@ body {
         text-align: center;
         align-items: center;
     }
-    
+
     .footer-left {
         align-items: center;
     }
-    
+
     .status-panel {
         justify-content: center;
     }
@@ -882,14 +943,15 @@ body {
     .infrastructure-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .diagram-wrapper {
         overflow-x: auto;
         justify-content: flex-start;
     }
-    
+
     .network-svg {
-        min-width: 700px; /* Force minimum width on mobile to make it scrollable/readable */
+        min-width: 700px;
+        /* Force minimum width on mobile to make it scrollable/readable */
     }
 }
 
@@ -897,13 +959,13 @@ body {
     .hero-section h1 {
         font-size: 2.2rem;
     }
-    
+
     .header-container {
         flex-direction: column;
         gap: 1rem;
         text-align: center;
     }
-    
+
     .nav-links {
         margin: 0.5rem 0;
     }
@@ -932,7 +994,8 @@ body {
 .skills-card {
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 12px; /* Upgraded to modern rounded cards */
+    border-radius: 12px;
+    /* Upgraded to modern rounded cards */
     padding: 1.25rem;
 }
 
@@ -990,7 +1053,8 @@ body {
     height: 24px;
     border-radius: 9999px;
     border: 1.5px solid var(--border-color);
-    background-color: #1a2d4c; /* Darker navy background for track in dark mode */
+    background-color: #1a2d4c;
+    /* Darker navy background for track in dark mode */
     display: flex;
     align-items: center;
     padding: 2px;
@@ -999,7 +1063,8 @@ body {
 }
 
 :root[data-theme="light"] .toggle-track {
-    background-color: #e4e7eb; /* Matches the light grey background from the reference picture */
+    background-color: #e4e7eb;
+    /* Matches the light grey background from the reference picture */
     border-color: #d1d5db;
 }
 
@@ -1007,18 +1072,21 @@ body {
     width: 18px;
     height: 18px;
     border-radius: 50%;
-    background-color: #ffffff; /* Always clean white knob */
+    background-color: #ffffff;
+    /* Always clean white knob */
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
     transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    transform: translateX(20px); /* Dark Mode: thumb on the right */
+    transform: translateX(20px);
+    /* Dark Mode: thumb on the right */
     position: relative;
 }
 
 :root[data-theme="light"] .toggle-thumb {
-    transform: translateX(0); /* Light Mode: thumb on the left, as in your picture */
+    transform: translateX(0);
+    /* Light Mode: thumb on the left, as in your picture */
 }
 
 .toggle-icon {
@@ -1029,13 +1097,15 @@ body {
 .sun-icon {
     opacity: 0;
     transform: scale(0.6) rotate(-45deg);
-    color: #111827; /* Dark charcoal color for the sun icon */
+    color: #111827;
+    /* Dark charcoal color for the sun icon */
 }
 
 .moon-icon {
     opacity: 1;
     transform: scale(1) rotate(0);
-    color: #9ca3af; /* Grey moon in dark mode */
+    color: #9ca3af;
+    /* Grey moon in dark mode */
 }
 
 :root[data-theme="light"] .sun-icon {
@@ -1071,9 +1141,12 @@ body {
 
 /* --- Dynamic Ambient Background CSS Variables & Styles --- */
 :root {
-    --bg-path-color: rgba(38, 53, 77, 0.15);     /* Very subtle navy/gray line */
-    --bg-packet-color: rgba(190, 163, 107, 0.35); /* Soft gold packets */
-    --bg-glow-color: rgba(190, 163, 107, 0.12);  /* Warm gold glow */
+    --bg-path-color: rgba(38, 53, 77, 0.15);
+    /* Very subtle navy/gray line */
+    --bg-packet-color: rgba(190, 163, 107, 0.35);
+    /* Soft gold packets */
+    --bg-glow-color: rgba(190, 163, 107, 0.12);
+    /* Warm gold glow */
 }
 
 /* Time of Day Class Overrides (Dark Mode Base) */
@@ -1170,10 +1243,10 @@ body {
         font-size: 11pt !important;
     }
 
-    .site-header, 
-    .site-footer, 
-    #infrastructuur, 
-    .hero-badge, 
+    .site-header,
+    .site-footer,
+    #infrastructuur,
+    .hero-badge,
     .quick-meta,
     .btn,
     .project-card,
@@ -1415,7 +1488,7 @@ body {
     gap: 3rem;
 }
 
-.overview-desc-block h3, 
+.overview-desc-block h3,
 .overview-bom-block h3 {
     font-size: 1.2rem;
     font-weight: 600;
@@ -1716,7 +1789,8 @@ body {
     background-color: #ffffff;
 }
 
-.image-view#manual-view img {
+.image-view#manual-view img,
+.image-view#action-view img {
     object-fit: contain;
 }
 
@@ -1768,9 +1842,9 @@ body {
     max-height: 300px;
 }
 
-.manual-svg path, 
-.manual-svg rect, 
-.manual-svg circle, 
+.manual-svg path,
+.manual-svg rect,
+.manual-svg circle,
 .manual-svg line {
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -1809,6 +1883,7 @@ body {
         filter: drop-shadow(0 0 2px rgba(190, 163, 107, 0.3));
         stroke-width: 2;
     }
+
     to {
         filter: drop-shadow(0 0 6px rgba(190, 163, 107, 0.6));
         stroke-width: 2.8;
@@ -1821,21 +1896,21 @@ body {
         height: 95vh;
         max-height: 95vh;
     }
-    
+
     .overview-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
-    
+
     .steps-layout {
         grid-template-columns: 180px 1fr;
     }
-    
+
     .step-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
-    
+
     .image-display-frame {
         height: 280px;
     }
@@ -1845,7 +1920,7 @@ body {
     .steps-layout {
         grid-template-columns: 1fr;
     }
-    
+
     .steps-sidebar {
         border-right: none;
         border-bottom: 1px solid var(--border-color);
@@ -1856,15 +1931,173 @@ body {
         overflow-x: auto;
         white-space: nowrap;
     }
-    
+
     .steps-nav-list {
         flex-direction: row;
         gap: 0.5rem;
     }
-    
+
     .step-nav-item {
         display: inline-block;
         padding: 0.4rem 0.7rem;
     }
 }
 
+/* --- Tetris Game & Easter Egg Styling --- */
+.image-display-frame {
+    transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.step-grid.tetris-active {
+    grid-template-columns: 0fr 1fr;
+    gap: 0;
+}
+
+.step-grid.tetris-active .step-text-column {
+    display: none;
+}
+
+.step-grid.tetris-active .image-display-frame {
+    height: 480px;
+}
+
+/* Tetris Start Overlay */
+.tetris-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(12, 13, 18, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 10;
+    padding: 2rem;
+    border-radius: 11px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+}
+
+.image-display-frame:hover .tetris-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.tetris-overlay .overlay-content {
+    max-width: 280px;
+}
+
+.tetris-overlay .overlay-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+.tetris-overlay h3 {
+    font-family: var(--font-sans);
+    color: #BEA36B;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.tetris-overlay p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+    line-height: 1.4;
+}
+
+/* Tetris Game View Layout */
+.image-view#tetris-view {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 1.5rem 1rem 1rem 1rem;
+    background-color: #0c0d12;
+    position: relative;
+}
+
+.tetris-minimize-btn {
+    position: absolute;
+    top: 0.75rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.tetris-minimize-btn:hover {
+    color: #BEA36B;
+}
+
+.tetris-game-layout {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+#tetris-canvas {
+    background-color: #000000;
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.9);
+    width: 200px;
+    height: 400px;
+}
+
+.tetris-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 90px;
+}
+
+.tetris-panel {
+    background-color: #11213D;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 0.4rem;
+    text-align: center;
+    font-family: var(--font-mono);
+}
+
+.tetris-panel h5 {
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    margin-bottom: 0.15rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.tetris-panel div {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #BEA36B;
+}
+
+.tetris-next-box {
+    width: 60px;
+    height: 60px;
+    margin: 0.25rem auto 0 auto;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#tetris-next-canvas {
+    display: block;
+}

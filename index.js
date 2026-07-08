@@ -230,13 +230,13 @@ if (currentTheme === 'light') {
 if (themeToggle) {
     themeToggle.addEventListener('click', () => {
         const theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-        
+
         if (theme === 'light') {
             document.documentElement.setAttribute('data-theme', 'light');
         } else {
             document.documentElement.removeAttribute('data-theme');
         }
-        
+
         localStorage.setItem('theme', theme);
     });
 }
@@ -329,7 +329,7 @@ const arcadeSteps = [
             "200mm LED-strip wit (1x)"
         ],
         description: "Voor het bovenpaneel schroefde ik de marquee LED-houder en de 12V 3A voeding op Panel F. Daarna plakte ik de witte LED-strip in de houder. Voor het elektronicapaneel monteerde ik het elektronicahouder-frame op Panel G met M3x14 schroeven. Vervolgens bevestigde ik de Raspberry Pi 3B en de 12V-naar-5V step-down converter (voor de stroomvoorziening van de Pi) met M3x6 schroeven op het frame.",
-        photo: "",
+        photo: "assets/logos/arcade/Stap_5-6_Mijn_Foto.jpg",
         manualImage: "assets/logos/arcade/bouwtekeningen/Stap_5.png"
     },
     {
@@ -344,7 +344,7 @@ const arcadeSteps = [
             "Schroef M3x8 (12x) & moer M3 (2x), M3 vierkante moer (12x)"
         ],
         description: "Voor de ventilatie en het frame schoof ik vierkante moeren in de slots van Panel H en I. Voor het servicepaneel schroefde ik de serviceplaat op Panel J. Vervolgens bevestigde ik de stroomaansluiting met schakelaar en zekering met M3-moeren en schroeven. Tot slot monteerde ik de AIYIMA versterker en de dubbele USB-verlengkabel op de serviceplaat, zodat de knoppen en poorten vanaf de buitenkant bereikbaar zijn.",
-        photo: "",
+        photo: "assets/logos/arcade/Stap_5-6_Mijn_Foto.jpg",
         manualImage: "assets/logos/arcade/bouwtekeningen/Stap_6.png"
     },
     {
@@ -448,6 +448,17 @@ function closeModal() {
         arcadeModal.classList.remove('active');
         arcadeModal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
+        
+        // Stop Tetris game if active
+        if (typeof tetrisIsActive !== 'undefined' && tetrisIsActive) {
+            tetrisIsActive = false;
+            if (typeof isSoftDropping !== 'undefined') isSoftDropping = false;
+            window.removeEventListener('keydown', handleKeyDown);
+            window.removeEventListener('keyup', handleKeyUp);
+            if (stepGrid) stepGrid.classList.remove('tetris-active');
+            if (tetrisView) tetrisView.classList.remove('active');
+            imgTabBtns.forEach(btn => btn.style.pointerEvents = 'auto');
+        }
     }
 }
 
@@ -490,7 +501,7 @@ modalTabs.forEach(tab => {
     tab.addEventListener('click', () => {
         modalTabs.forEach(t => t.classList.remove('active'));
         tabContents.forEach(c => c.classList.remove('active'));
-        
+
         tab.classList.add('active');
         const targetId = `tab-${tab.getAttribute('data-tab')}`;
         const targetContent = document.getElementById(targetId);
@@ -515,6 +526,34 @@ function initStepsMenu() {
         });
         stepsMenu.appendChild(btn);
     });
+}
+
+// Helper to update Tetris overlay visibility based on step and image type
+function updateTetrisOverlayState(stepNum, imgType) {
+    if (typeof tetrisStartOverlay === 'undefined' || !tetrisStartOverlay) return;
+    
+    if (stepNum === 10 && imgType === 'action') {
+        tetrisStartOverlay.style.display = 'flex';
+        if (actionView) {
+            actionView.style.cursor = 'pointer';
+            actionView.onclick = openTetrisFromFrame;
+        }
+    } else {
+        tetrisStartOverlay.style.display = 'none';
+        if (actionView) {
+            actionView.style.cursor = 'default';
+            actionView.onclick = null;
+        }
+        if (typeof tetrisIsActive !== 'undefined' && tetrisIsActive) {
+            tetrisIsActive = false;
+            if (typeof isSoftDropping !== 'undefined') isSoftDropping = false;
+            window.removeEventListener('keydown', handleKeyDown);
+            window.removeEventListener('keyup', handleKeyUp);
+            if (stepGrid) stepGrid.classList.remove('tetris-active');
+            if (tetrisView) tetrisView.classList.remove('active');
+            imgTabBtns.forEach(btn => btn.style.pointerEvents = 'auto');
+        }
+    }
 }
 
 // Update Active Step Display
@@ -601,6 +640,19 @@ function updateStepView() {
         }
     }
 
+    // Handle Tetris start overlay on Step 10
+    updateTetrisOverlayState(step.number, currentImgType);
+    
+    // Remove click-to-play handlers from manual and photo views
+    if (manualView) {
+        manualView.style.cursor = 'default';
+        manualView.onclick = null;
+    }
+    if (photoView) {
+        photoView.style.cursor = 'default';
+        photoView.onclick = null;
+    }
+
     // Keep active visual selection
     showImageView(currentImgType);
 }
@@ -629,6 +681,9 @@ function showImageView(type) {
         if (photoView) photoView.classList.remove('active');
         if (actionView) actionView.classList.add('active');
     }
+
+    // Toggle Tetris start overlay display based on current step and type
+    updateTetrisOverlayState(currentStep, type);
 }
 
 imgTabBtns.forEach(btn => {
@@ -659,13 +714,13 @@ if (nextStepBtn) {
 function renderStepSvg(stepNum) {
     const container = document.getElementById('manual-illustration-container');
     if (!container) return;
-    
+
     const step = arcadeSteps.find(s => s.number === stepNum);
     if (!step || !step.manualImage) {
         container.innerHTML = '';
         return;
     }
-    
+
     container.innerHTML = `<img src="${step.manualImage}" alt="Bouwtekening Stap ${stepNum}" />`;
 }
 
@@ -673,3 +728,468 @@ function renderStepSvg(stepNum) {
 window.addEventListener('DOMContentLoaded', () => {
     initStepsMenu();
 });
+
+// --- Tetris Game Engine & Easter Egg Logic ---
+const tetrisStartOverlay = document.getElementById('tetris-start-overlay');
+const startTetrisBtn = document.getElementById('start-tetris-btn');
+const tetrisView = document.getElementById('tetris-view');
+const tetrisMinimizeBtn = document.getElementById('tetris-minimize-btn');
+const tetrisCanvas = document.getElementById('tetris-canvas');
+const tetrisNextCanvas = document.getElementById('tetris-next-canvas');
+const tetrisScore = document.getElementById('tetris-score');
+const tetrisLines = document.getElementById('tetris-lines');
+const tetrisLevel = document.getElementById('tetris-level');
+const stepGrid = document.querySelector('.step-grid');
+
+let tetrisCtx = null;
+let tetrisNextCtx = null;
+let tetrisBoard = [];
+let tetrisActivePiece = null;
+let tetrisNextPiece = null;
+let tetrisScoreVal = 0;
+let tetrisLinesVal = 0;
+let tetrisLevelVal = 0;
+let tetrisGameOver = false;
+let tetrisIsPaused = false;
+let tetrisIsActive = false;
+let lastTime = 0;
+let dropCounter = 0;
+let isSoftDropping = false;
+
+const COLS = 10;
+const ROWS = 20;
+const BLOCK_SIZE = 20;
+
+const COLORS = [
+    null,
+    '#BEA36B', // Golden accent (NES style highlight)
+    '#1863F6', // Royal blue
+    '#ef4444', // Red
+    '#10b981', // Green
+    '#a000f0', // Purple
+    '#f0a000', // Orange
+    '#f0f000'  // Yellow
+];
+
+const SHAPES = [
+    null,
+    [[0,0,0,0],[1,1,1,1],[0,0,0,0],[0,0,0,0]], // I
+    [[1,0,0],[1,1,1],[0,0,0]],                 // J
+    [[0,0,1],[1,1,1],[0,0,0]],                 // L
+    [[1,1],[1,1]],                             // O
+    [[0,1,1],[1,1,0],[0,0,0]],                 // S
+    [[1,1,0],[0,1,1],[0,0,0]],                 // Z
+    [[0,1,0],[1,1,1],[0,0,0]]                  // T
+];
+
+function createMatrix(w, h) {
+    const matrix = [];
+    while (h--) {
+        matrix.push(new Array(w).fill(0));
+    }
+    return matrix;
+}
+
+function drawBlock(ctx, x, y, colorId, size = BLOCK_SIZE) {
+    const color = COLORS[colorId];
+    ctx.fillStyle = color;
+    ctx.fillRect(x * size, y * size, size, size);
+    
+    // Light reflection border (retro look)
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+    ctx.fillRect(x * size, y * size, size, 2);
+    ctx.fillRect(x * size, y * size, 2, size);
+    
+    // Shadow bevel (retro look)
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
+    ctx.fillRect(x * size, (y + 1) * size - 2, size, 2);
+    ctx.fillRect((x + 1) * size - 2, y * size, 2, size);
+}
+
+function collide(board, player) {
+    const [m, o] = [player.matrix, player.pos];
+    for (let y = 0; y < m.length; ++y) {
+        for (let x = 0; x < m[y].length; ++x) {
+            if (m[y][x] !== 0 &&
+               (board[y + o.y] === undefined ||
+                board[y + o.y][x + o.x] === undefined ||
+                board[y + o.y][x + o.x] !== 0)) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+function rotateMatrix(matrix, dir) {
+    for (let y = 0; y < matrix.length; ++y) {
+        for (let x = 0; x < y; ++x) {
+            [
+                matrix[x][y],
+                matrix[y][x],
+            ] = [
+                matrix[y][x],
+                matrix[x][y],
+            ];
+        }
+    }
+    if (dir > 0) {
+        matrix.forEach(row => row.reverse());
+    } else {
+        matrix.reverse();
+    }
+}
+
+function randomPiece() {
+    const pieces = 'ILJSZTO';
+    const rand = pieces[Math.floor(Math.random() * pieces.length)];
+    let matrix;
+    let colorId;
+    if (rand === 'I') { matrix = SHAPES[1]; colorId = 1; }
+    else if (rand === 'J') { matrix = SHAPES[2]; colorId = 2; }
+    else if (rand === 'L') { matrix = SHAPES[3]; colorId = 3; }
+    else if (rand === 'O') { matrix = SHAPES[4]; colorId = 4; }
+    else if (rand === 'S') { matrix = SHAPES[5]; colorId = 5; }
+    else if (rand === 'Z') { matrix = SHAPES[6]; colorId = 6; }
+    else if (rand === 'T') { matrix = SHAPES[7]; colorId = 7; }
+    
+    return {
+        matrix: JSON.parse(JSON.stringify(matrix)),
+        colorId: colorId
+    };
+}
+
+function playerReset() {
+    if (!tetrisNextPiece) {
+        tetrisNextPiece = randomPiece();
+    }
+    tetrisActivePiece = tetrisNextPiece;
+    tetrisActivePiece.pos = { x: Math.floor(COLS / 2) - Math.floor(tetrisActivePiece.matrix[0].length / 2), y: 0 };
+    tetrisNextPiece = randomPiece();
+    
+    drawNext();
+    
+    if (collide(tetrisBoard, tetrisActivePiece)) {
+        tetrisGameOver = true;
+        tetrisIsActive = false;
+        draw();
+    }
+}
+
+function playerMove(dir) {
+    tetrisActivePiece.pos.x += dir;
+    if (collide(tetrisBoard, tetrisActivePiece)) {
+        tetrisActivePiece.pos.x -= dir;
+    }
+}
+
+function playerRotate(dir) {
+    const pos = tetrisActivePiece.pos.x;
+    let offset = 1;
+    rotateMatrix(tetrisActivePiece.matrix, dir);
+    while (collide(tetrisBoard, tetrisActivePiece)) {
+        tetrisActivePiece.pos.x += offset;
+        offset = -(offset + (offset > 0 ? 1 : -1));
+        if (offset > tetrisActivePiece.matrix[0].length) {
+            rotateMatrix(tetrisActivePiece.matrix, -dir);
+            tetrisActivePiece.pos.x = pos;
+            return;
+        }
+    }
+}
+
+function getDropInterval() {
+    if (isSoftDropping) {
+        return 40;
+    }
+    const intervals = [800, 720, 630, 550, 470, 380, 300, 220, 130, 100];
+    return intervals[Math.min(tetrisLevelVal, 9)];
+}
+
+function playerDrop() {
+    tetrisActivePiece.pos.y++;
+    if (collide(tetrisBoard, tetrisActivePiece)) {
+        tetrisActivePiece.pos.y--;
+        merge(tetrisBoard, tetrisActivePiece);
+        arenaSweep();
+        playerReset();
+    }
+    dropCounter = 0;
+}
+
+function playerHardDrop() {
+    while (!collide(tetrisBoard, tetrisActivePiece)) {
+        tetrisActivePiece.pos.y++;
+        tetrisScoreVal += 2;
+    }
+    tetrisActivePiece.pos.y--;
+    merge(tetrisBoard, tetrisActivePiece);
+    arenaSweep();
+    playerReset();
+    dropCounter = 0;
+}
+
+function merge(board, player) {
+    player.matrix.forEach((row, y) => {
+        row.forEach((value, x) => {
+            if (value !== 0) {
+                board[y + player.pos.y][x + player.pos.x] = player.colorId;
+            }
+        });
+    });
+}
+
+function arenaSweep() {
+    let rowCount = 0;
+    outer: for (let y = tetrisBoard.length - 1; y >= 0; --y) {
+        for (let x = 0; x < tetrisBoard[y].length; ++x) {
+            if (tetrisBoard[y][x] === 0) {
+                continue outer;
+            }
+        }
+        
+        const row = tetrisBoard.splice(y, 1)[0].fill(0);
+        tetrisBoard.unshift(row);
+        ++y;
+        rowCount++;
+    }
+    
+    if (rowCount > 0) {
+        tetrisLinesVal += rowCount;
+        const scoreTable = [0, 40, 100, 300, 1200];
+        tetrisScoreVal += scoreTable[Math.min(rowCount, 4)] * (tetrisLevelVal + 1);
+        tetrisLevelVal = Math.floor(tetrisLinesVal / 10);
+        updateDisplays();
+    }
+}
+
+function updateDisplays() {
+    if (tetrisScore) tetrisScore.textContent = String(tetrisScoreVal).padStart(6, '0');
+    if (tetrisLines) tetrisLines.textContent = String(tetrisLinesVal).padStart(3, '0');
+    if (tetrisLevel) tetrisLevel.textContent = String(tetrisLevelVal).padStart(2, '0');
+}
+
+function drawNext() {
+    if (!tetrisNextCtx) return;
+    tetrisNextCtx.clearRect(0, 0, tetrisNextCanvas.width, tetrisNextCanvas.height);
+    
+    if (tetrisNextPiece) {
+        const matrix = tetrisNextPiece.matrix;
+        const size = 10;
+        const offsetX = (tetrisNextCanvas.width - matrix[0].length * size) / 2;
+        const offsetY = (tetrisNextCanvas.height - matrix.length * size) / 2;
+        
+        matrix.forEach((row, y) => {
+            row.forEach((value, x) => {
+                if (value !== 0) {
+                    drawBlock(tetrisNextCtx, (offsetX / size) + x, (offsetY / size) + y, tetrisNextPiece.colorId, size);
+                }
+            });
+        });
+    }
+}
+
+function draw() {
+    if (!tetrisCtx) return;
+    tetrisCtx.fillStyle = '#000';
+    tetrisCtx.fillRect(0, 0, tetrisCanvas.width, tetrisCanvas.height);
+    
+    // Draw background grid lines
+    tetrisCtx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
+    tetrisCtx.lineWidth = 1;
+    for (let c = 0; c <= COLS; c++) {
+        tetrisCtx.beginPath();
+        tetrisCtx.moveTo(c * BLOCK_SIZE, 0);
+        tetrisCtx.lineTo(c * BLOCK_SIZE, tetrisCanvas.height);
+        tetrisCtx.stroke();
+    }
+    for (let r = 0; r <= ROWS; r++) {
+        tetrisCtx.beginPath();
+        tetrisCtx.moveTo(0, r * BLOCK_SIZE);
+        tetrisCtx.lineTo(tetrisCanvas.width, r * BLOCK_SIZE);
+        tetrisCtx.stroke();
+    }
+    
+    // Draw grid blocks
+    tetrisBoard.forEach((row, y) => {
+        row.forEach((value, x) => {
+            if (value !== 0) {
+                drawBlock(tetrisCtx, x, y, value);
+            }
+        });
+    });
+    
+    // Draw falling piece
+    if (tetrisActivePiece) {
+        tetrisActivePiece.matrix.forEach((row, y) => {
+            row.forEach((value, x) => {
+                if (value !== 0) {
+                    drawBlock(tetrisCtx, x + tetrisActivePiece.pos.x, y + tetrisActivePiece.pos.y, tetrisActivePiece.colorId);
+                }
+            });
+        });
+    }
+    
+    // Overlays
+    if (tetrisIsPaused && !tetrisGameOver) {
+        tetrisCtx.fillStyle = 'rgba(0, 0, 0, 0.65)';
+        tetrisCtx.fillRect(0, 0, tetrisCanvas.width, tetrisCanvas.height);
+        tetrisCtx.fillStyle = '#BEA36B';
+        tetrisCtx.font = 'bold 15px monospace';
+        tetrisCtx.textAlign = 'center';
+        tetrisCtx.fillText('GEPAUZEERD', tetrisCanvas.width / 2, tetrisCanvas.height / 2);
+    }
+    
+    if (tetrisGameOver) {
+        tetrisCtx.fillStyle = 'rgba(0, 0, 0, 0.8)';
+        tetrisCtx.fillRect(0, 0, tetrisCanvas.width, tetrisCanvas.height);
+        
+        tetrisCtx.fillStyle = '#ef4444';
+        tetrisCtx.font = 'bold 18px monospace';
+        tetrisCtx.textAlign = 'center';
+        tetrisCtx.fillText('GAME OVER', tetrisCanvas.width / 2, tetrisCanvas.height / 2 - 10);
+        
+        tetrisCtx.fillStyle = '#ffffff';
+        tetrisCtx.font = '10px monospace';
+        tetrisCtx.fillText('Druk op SPATIE', tetrisCanvas.width / 2, tetrisCanvas.height / 2 + 15);
+        tetrisCtx.fillText('om te herstarten', tetrisCanvas.width / 2, tetrisCanvas.height / 2 + 28);
+    }
+}
+
+function togglePause() {
+    tetrisIsPaused = !tetrisIsPaused;
+    if (!tetrisIsPaused) {
+        lastTime = performance.now();
+        requestAnimationFrame(update);
+    } else {
+        draw();
+    }
+}
+
+function update(time = 0) {
+    if (!tetrisIsActive || tetrisIsPaused || tetrisGameOver) return;
+    
+    const deltaTime = time - lastTime;
+    lastTime = time;
+    
+    dropCounter += deltaTime;
+    if (dropCounter > getDropInterval()) {
+        playerDrop();
+    }
+    
+    draw();
+    requestAnimationFrame(update);
+}
+
+function startLoop() {
+    lastTime = performance.now();
+    tetrisIsActive = true;
+    tetrisIsPaused = false;
+    tetrisGameOver = false;
+    requestAnimationFrame(update);
+}
+
+function initGame() {
+    tetrisBoard = createMatrix(COLS, ROWS);
+    tetrisScoreVal = 0;
+    tetrisLinesVal = 0;
+    tetrisLevelVal = 0;
+    tetrisGameOver = false;
+    tetrisIsPaused = false;
+    tetrisNextPiece = null;
+    updateDisplays();
+    playerReset();
+    startLoop();
+}
+
+function handleKeyDown(e) {
+    if (!tetrisIsActive && !tetrisGameOver) return;
+    
+    const activeKeys = ['ArrowLeft', 'ArrowRight', 'ArrowDown', 'ArrowUp', 'KeyA', 'KeyD', 'KeyS', 'KeyW', 'Space', 'KeyP', 'Escape'];
+    if (activeKeys.includes(e.code) || activeKeys.includes(e.key)) {
+        e.preventDefault();
+    }
+    
+    if (tetrisGameOver) {
+        if (e.code === 'Space' || e.key === ' ') {
+            initGame();
+        }
+        return;
+    }
+    
+    if (e.code === 'KeyP' || e.key === 'p' || e.key === 'P' || e.key === 'Escape') {
+        togglePause();
+        return;
+    }
+    
+    if (tetrisIsPaused) return;
+    
+    if (e.code === 'ArrowLeft' || e.key === 'ArrowLeft' || e.code === 'KeyA' || e.key === 'a' || e.key === 'A') {
+        playerMove(-1);
+    } else if (e.code === 'ArrowRight' || e.key === 'ArrowRight' || e.code === 'KeyD' || e.key === 'd' || e.key === 'D') {
+        playerMove(1);
+    } else if (e.code === 'ArrowDown' || e.key === 'ArrowDown' || e.code === 'KeyS' || e.key === 's' || e.key === 'S') {
+        if (!isSoftDropping) {
+            isSoftDropping = true;
+            playerDrop();
+        }
+    } else if (e.code === 'ArrowUp' || e.key === 'ArrowUp' || e.code === 'KeyW' || e.key === 'w' || e.key === 'W' || e.code === 'Space' || e.key === ' ') {
+        playerRotate(1);
+    }
+}
+
+function handleKeyUp(e) {
+    if (e.code === 'ArrowDown' || e.key === 'ArrowDown' || e.code === 'KeyS' || e.key === 's' || e.key === 'S') {
+        isSoftDropping = false;
+    }
+}
+
+function openTetrisFromFrame() {
+    if (currentStep === 10 && currentImgType === 'action' && startTetrisBtn) {
+        startTetrisBtn.click();
+    }
+}
+
+if (startTetrisBtn) {
+    startTetrisBtn.addEventListener('click', () => {
+        if (tetrisStartOverlay) tetrisStartOverlay.style.display = 'none';
+        if (stepGrid) stepGrid.classList.add('tetris-active');
+        
+        if (manualView) manualView.classList.remove('active');
+        if (photoView) photoView.classList.remove('active');
+        if (actionView) actionView.classList.remove('active');
+        if (tetrisView) tetrisView.classList.add('active');
+        
+        imgTabBtns.forEach(btn => btn.style.pointerEvents = 'none');
+        
+        if (!tetrisCtx && tetrisCanvas) {
+            tetrisCanvas.width = COLS * BLOCK_SIZE;
+            tetrisCanvas.height = ROWS * BLOCK_SIZE;
+            tetrisCtx = tetrisCanvas.getContext('2d');
+        }
+        if (!tetrisNextCtx && tetrisNextCanvas) {
+            tetrisNextCtx = tetrisNextCanvas.getContext('2d');
+        }
+        
+        initGame();
+        window.addEventListener('keydown', handleKeyDown);
+        window.addEventListener('keyup', handleKeyUp);
+    });
+}
+
+if (tetrisMinimizeBtn) {
+    tetrisMinimizeBtn.addEventListener('click', () => {
+        tetrisIsActive = false;
+        isSoftDropping = false;
+        window.removeEventListener('keydown', handleKeyDown);
+        window.removeEventListener('keyup', handleKeyUp);
+        
+        if (stepGrid) stepGrid.classList.remove('tetris-active');
+        if (tetrisView) tetrisView.classList.remove('active');
+        
+        imgTabBtns.forEach(btn => btn.style.pointerEvents = 'auto');
+        showImageView('action');
+        
+        if (tetrisStartOverlay) tetrisStartOverlay.style.display = 'flex';
+    });
+}

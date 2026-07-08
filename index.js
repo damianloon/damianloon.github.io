@@ -11,7 +11,7 @@
                 setTimeout(() => {
                     splash.remove();
                 }, 800);
-            }, 1800);
+            }, 3000);
             sessionStorage.setItem('splashPlayed', 'true');
         }
     }

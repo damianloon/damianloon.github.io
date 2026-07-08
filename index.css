@@ -2317,3 +2317,24 @@ html.splash-active .site-header {
     opacity: 0;
     transform: translateY(20px);
 }
+
+/* --- Network Diagram Status Indicator (Active LEDs for server nodes) --- */
+.status-indicator {
+    pointer-events: none;
+}
+
+.status-pulse-ring {
+    animation: status-ring-pulse 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+    transform-origin: center;
+}
+
+@keyframes status-ring-pulse {
+    0% {
+        r: 3px;
+        opacity: 1;
+    }
+    100% {
+        r: 9px;
+        opacity: 0;
+    }
+}

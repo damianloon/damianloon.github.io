@@ -29,12 +29,26 @@
 </head>
 
 <body>
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="splash-screen">
+        <div class="splash-content">
+            <div class="splash-glow"></div>
+            <img src="assets/logos/Goud_DVL_Logo.png" alt="Damian van Loon Logo" class="splash-logo">
+        </div>
+    </div>
+    <script>
+        if (sessionStorage.getItem('splashPlayed') === 'true') {
+            document.getElementById('splash-screen').style.display = 'none';
+        } else {
+            document.documentElement.classList.add('splash-active');
+        }
+    </script>
 
     <!-- Top Navigation Header -->
     <header class="site-header">
         <div class="header-container">
             <div class="logo-area">
-                <span class="terminal-prompt">@</span>
+                <img src="assets/logos/Goud_DVL_Logo.png" alt="Damian van Loon Logo" class="header-logo">
                 <span class="user-name">Damian van Loon</span>
             </div>
             <nav class="nav-links">

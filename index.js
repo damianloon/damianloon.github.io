@@ -1,3 +1,22 @@
+// --- Splash Screen Handler ---
+(function() {
+    const splash = document.getElementById('splash-screen');
+    if (splash) {
+        if (sessionStorage.getItem('splashPlayed') === 'true') {
+            splash.remove();
+        } else {
+            setTimeout(() => {
+                splash.classList.add('splash-fade-out');
+                document.documentElement.classList.remove('splash-active');
+                setTimeout(() => {
+                    splash.remove();
+                }, 800);
+            }, 1800);
+            sessionStorage.setItem('splashPlayed', 'true');
+        }
+    }
+})();
+
 // --- Network Diagram Node Data ---
 const nodeData = {
     remote: {

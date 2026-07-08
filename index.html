@@ -215,11 +215,26 @@
             user-select: none;
             opacity: 0.85;
         }
+
+        .bg-logo-watermark {
+            position: fixed;
+            top: 50%;
+            right: 5%;
+            transform: translateY(-50%);
+            width: 45vw;
+            max-width: 600px;
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: -1;
+            filter: grayscale(1);
+        }
     </style>
     <script src="bg-dynamic.js" defer></script>
 </head>
 
 <body>
+    <!-- Background Logo Watermark -->
+    <img src="assets/logos/Zilver_DVL_Logo.png" alt="Damian van Loon Logo Watermark" class="bg-logo-watermark">
 
     <div class="maintenance-container">
         <div class="status-badge">

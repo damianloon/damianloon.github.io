@@ -326,6 +326,11 @@ body {
     gap: 0.5rem;
 }
 
+.meta-icon-svg {
+    color: var(--accent-blue);
+    flex-shrink: 0;
+}
+
 /* --- Infrastructure Section (Diagram & Details Layout) --- */
 .infrastructure-grid {
     display: flex;

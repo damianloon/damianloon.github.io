@@ -2258,7 +2258,7 @@ body {
 
 /* --- Personal Logo & Watermark Styling --- */
 .header-logo {
-    height: 18px;
+    height: 34px;
     width: auto;
     object-fit: contain;
     transition: filter 0.3s ease;

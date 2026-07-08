@@ -281,7 +281,7 @@
         <section id="projecten" class="section-container">
             <div class="section-header">
                 <h2>Projecten</h2>
-                <p>Een overzicht van concrete systemen en infrastructuren die ik zelfstandig heb ontworpen, gebouwd en
+                <p>Een overzicht van concrete systemen en infrastructuren die ik zelfstandig heb gebouwd en
                     onderhouden.</p>
             </div>
 
@@ -294,24 +294,28 @@
                         <span class="tag">API Integration</span>
                     </div>
                     <h3>Homelab</h3>
-                    <p class="project-desc">Een volledig geautomatiseerde download- en mediapipeline verdeeld over de
-                        Raspberry Pi 5 en Proxmox.</p>
+                    <p class="project-desc">Een geavanceerde en redundante test- en productieomgeving in mijn meterkast,
+                        ingericht met Proxmox VE, Docker en op maat gemaakte 3D-geprinte hardware.</p>
 
                     <div class="project-details">
                         <div class="detail-block">
                             <h4>Het Probleem</h4>
-                            <p>Het handmatig downloaden en organiseren van media is tijdrovend. Dit moet centraal en
-                                veilig gebeuren zonder handmatige interventie.</p>
+                            <p>Om theorieën uit mijn ICT-opleiding en systeembeheer in de praktijk te testen, en
+                                services (zoals DNS, smart home en media) centraal en veilig binnen het huishouden te
+                                hosten, is een flexibele, betrouwbare en efficiënte infrastructuur vereist.</p>
                         </div>
                         <div class="detail-block">
                             <h4>De Oplossing</h4>
-                            <p>Opslag & downloaders (qBittorrent via VPN, SabNZB) op de Pi 5 (SambaNAS). Automatisering
-                                (Sonarr/Radarr) op Proxmox communiceren via API's en netwerkshares.</p>
+                            <p>Een dual-node lab bestaande uit een Raspberry Pi 5 (Docker-host & SambaNAS-opslag) en een
+                                HP Thin Client T620 (Proxmox VE hypervisor). De opzet is redundant uitgevoerd met een
+                                dubbele Pi-hole (DNS failover), cross-monitoring via Uptime Kuma, en automatische,
+                                versleutelde off-site backups naar Oracle Cloud en Tuxis PBS.</p>
                         </div>
                         <div class="detail-block">
                             <h4>Geleerde Lessen</h4>
-                            <p>Multi-node API-integratie, container routing via VPN sidecars, en het mounten van
-                                gedeelde SMB/NFS netwerkmappen met PUID/PGID rechten.</p>
+                            <p>Ervaring met virtualisatie (LXC/VM's), Linux-systeembeheer (Ubuntu Server CLI),
+                                opslagprotocollen (SMB/NFS), netwerkbeheer (Tailscale VPN gateway) en het implementeren
+                                van een solide 3-2-1 back-up- en disaster recovery-strategie.</p>
                         </div>
                     </div>
                     <button class="btn btn-primary" id="btn-view-infrastructure"

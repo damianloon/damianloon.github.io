@@ -267,8 +267,9 @@ const arcadeSteps = [
             "Schroef M3x6 DIN-912 & sluitring M3 (2x)",
             "Schroef voor plastic D2x12 (4x)"
         ],
-        description: "Begin met het leggen van Panel A (rechterzijpaneel) op een vlakke ondergrond. Monteer de grote 12V 12.5A voeding en de 3D-geprinte support voor de USB-encoder op het paneel met M3x6 schroeven. Bevestig vervolgens de Zero Delay USB-encoder op de support met de vier plastic schroeven. Let op de oriëntatie van de voeding: de 12V-uitgang moet naar de bovenkant wijzen.",
-        photo: ""
+        description: "Ik begon met het leggen van Panel A (rechterzijpaneel) op een vlakke ondergrond. Vervolgens monteerde ik de grote 12V 12.5A voeding en de 3D-geprinte support voor de USB-encoder op het paneel met M3x6 schroeven. Daarna bevestigde ik de Zero Delay USB-encoder op de support met de vier plastic schroeven. Hierbij lette ik goed op de oriëntatie van de voeding: de 12V-uitgang moest naar de bovenkant wijzen.",
+        photo: "assets/logos/arcade/Stap_1_Mijn_Foto.jpg",
+        manualImage: "assets/logos/arcade/bouwtekeningen/Stap_1.png"
     },
     {
         number: 2,
@@ -279,8 +280,9 @@ const arcadeSteps = [
             "Sanwa push button OBSF-24 (Rood) (1x)",
             "M3 vierkante moer DIN-557 (2x)"
         ],
-        description: "Schuif twee vierkante M3-moeren in de montage-slots aan de uiteinden van Panel B. Druk vervolgens de rode Sanwa 24mm drukknop in het ronde gat aan de voorzijde van het paneel. Deze knop fungeert als de 'Insert Coin' knop voor arcade-emulatie.",
-        photo: ""
+        description: "Ik schoof twee vierkante M3-moeren in de montage-slots aan de uiteinden van Panel B. Vervolgens drukte ik de rode Sanwa 24mm drukknop in het ronde gat aan de voorzijde van het paneel. Deze knop fungeert als de 'Insert Coin' knop voor de arcade-emulatie.",
+        photo: "",
+        manualImage: "assets/logos/arcade/bouwtekeningen/Stap_2.png"
     },
     {
         number: 3,
@@ -294,8 +296,9 @@ const arcadeSteps = [
             "Schroef M5x12 ISO-7380 & borgmoer M5 (4x)",
             "Schroef M3x14 DIN-912 & vierkante moer M3 (4x)"
         ],
-        description: "Assembleer eerst de Sanwa joystick op de groene 3D-geprinte joystick adapterplaat met de M5-bouten, sluitringen en borgmoeren. Bevestig deze adapter aan de onderzijde van Panel C met vier M3x14 schroeven en vierkante moeren. Druk daarna de 6 gekleurde Sanwa-knoppen en de 5 mini-schakelaars in de gaten aan de bovenzijde van het bedieningspaneel.",
-        photo: ""
+        description: "Ik assembleerde eerst de Sanwa joystick op de groene 3D-geprinte joystick adapterplaat met de M5-bouten, sluitringen en borgmoeren. Deze adapter bevestigde ik aan de onderzijde van Panel C met vier M3x14 schroeven en vierkante moeren. Daarna drukte ik de 6 gekleurde Sanwa-knoppen en de 5 mini-schakelaars in de gaten aan de bovenzijde van het bedieningspaneel.",
+        photo: "",
+        manualImage: "assets/logos/arcade/bouwtekeningen/Stap_3.png"
     },
     {
         number: 4,
@@ -309,8 +312,9 @@ const arcadeSteps = [
             "Schroef M3x10 (8x), M3x16 (8x) & vierkante moer M3 (11x)",
             "Schroef voor plastic D2.5x10 (6x)"
         ],
-        description: "Scherm: Schuif 9 vierkante M3-moeren in Panel D. Plaats het LCD-scherm, sluit de LVDS-kabel aan, leg het controller-frame eroverheen en schroef het vast met 8 M3x10 schroeven. Schroef het driver board en de inverter aan de achterzijde vast. Speakers: Monteer de luidsprekers en roosters op Panel E met 8 M3x16 schroeven, ringen en zelfborgende moeren.",
-        photo: ""
+        description: "Voor het scherm schoof ik 9 vierkante M3-moeren in Panel D. Ik plaatste het LCD-scherm, sloot de LVDS-kabel aan, legde het controller-frame eroverheen en schroefde het vast met 8 M3x10 schroeven. Ook schroefde ik het driver board en de inverter aan de achterzijde vast. Voor de speakers monteerde ik de luidsprekers en roosters op Panel E met 8 M3x16 schroeven, ringen en zelfborgende moeren.",
+        photo: "",
+        manualImage: "assets/logos/arcade/bouwtekeningen/Stap_4.png"
     },
     {
         number: 5,
@@ -324,8 +328,9 @@ const arcadeSteps = [
             "Schroef M3x14 (11x), M3x10 (2x), M3x6 (8x)",
             "200mm LED-strip wit (1x)"
         ],
-        description: "Bovenpaneel: Schroef de marquee LED-houder en de 12V 3A voeding op Panel F. Plak de witte LED-strip in de houder. Elektronicapaneel: Monteer het elektronicahouder-frame op Panel G met M3x14 schroeven. Bevestig de Raspberry Pi 3B en de 12V-naar-5V step-down converter (voor stroomvoorziening van de Pi) met M3x6 schroeven op het frame.",
-        photo: ""
+        description: "Voor het bovenpaneel schroefde ik de marquee LED-houder en de 12V 3A voeding op Panel F. Daarna plakte ik de witte LED-strip in de houder. Voor het elektronicapaneel monteerde ik het elektronicahouder-frame op Panel G met M3x14 schroeven. Vervolgens bevestigde ik de Raspberry Pi 3B en de 12V-naar-5V step-down converter (voor de stroomvoorziening van de Pi) met M3x6 schroeven op het frame.",
+        photo: "",
+        manualImage: "assets/logos/arcade/bouwtekeningen/Stap_5.png"
     },
     {
         number: 6,
@@ -338,8 +343,9 @@ const arcadeSteps = [
             "Dubbele USB-verlengkabel 30cm (1x)",
             "Schroef M3x8 (12x) & moer M3 (2x), M3 vierkante moer (12x)"
         ],
-        description: "Ventilatie & Frame: Schuif vierkante moeren in de slots van Panel H en I. Servicepaneel: Schroef de serviceplaat op Panel J. Bevestig de stroomaansluiting met schakelaar en zekering met M3-moeren en schroeven. Monteer de AIYIMA versterker en de dubbele USB-verlengkabel op de serviceplaat, zodat de knoppen en poorten aan de buitenkant bereikbaar zijn.",
-        photo: ""
+        description: "Voor de ventilatie en het frame schoof ik vierkante moeren in de slots van Panel H en I. Voor het servicepaneel schroefde ik de serviceplaat op Panel J. Vervolgens bevestigde ik de stroomaansluiting met schakelaar en zekering met M3-moeren en schroeven. Tot slot monteerde ik de AIYIMA versterker en de dubbele USB-verlengkabel op de serviceplaat, zodat de knoppen en poorten vanaf de buitenkant bereikbaar zijn.",
+        photo: "",
+        manualImage: "assets/logos/arcade/bouwtekeningen/Stap_6.png"
     },
     {
         number: 7,
@@ -352,22 +358,12 @@ const arcadeSteps = [
             "Silicone voetjes 8mm (4x)",
             "Schroef M4x16 (4x) & borgmoer M4 (4x), Schroef M3x8 (8x)"
         ],
-        description: "Schuif 11 vierkante moeren in de sleuven van Panel K. Bevestig de AIYIMA subwoofer aan de bovenzijde met vier M4x16 bouten en zelfborgende moeren. Draai het paneel om, monteer de twee LED-houders met de gekleurde RGB led-strips, plak de vier siliconen voetjes op de hoeken en sluit de beschermplaat aan de onderkant met 8 M3x8 schroeven.",
-        photo: "assets/logos/arcade/photo-assembly-2.jpg"
+        description: "Ik schoof 11 vierkante moeren in de sleuven van Panel K. Vervolgens bevestigde ik de AIYIMA subwoofer aan de bovenzijde met vier M4x16 bouten en zelfborgende moeren. Daarna draaide ik het paneel om, monteerde de twee LED-houders met de gekleurde RGB led-strips, plakte de vier siliconen voetjes op de hoeken en sloot de beschermplaat aan de onderkant met 8 M3x8 schroeven.",
+        photo: "assets/logos/arcade/photo-assembly-2.jpg",
+        manualImage: "assets/logos/arcade/bouwtekeningen/Stap_7.png"
     },
     {
         number: 8,
-        title: "Samenvoegen Behuizing",
-        phase: "Fase 2: Assemblage",
-        parts: [
-            "Voorbereide panelen A, B, C, D, E, F en G (1x)",
-            "Schroef M3x14 DIN-912 (11x)"
-        ],
-        description: "Leg het rechterzijpaneel (Panel A) plat. Schuif de nokken van Panel B (muntinworp) en Panel C (controls) in de sleuven en schroef ze vast met M3x14 schroeven. Lijn vervolgens Panel D (scherm) en Panel E (speakers) uit en schroef ze eveneens vast. Schuif Panel F (top) erin en zet deze vast. Schuif till slot Panel G (elektronica) in de geleiders (dit paneel wordt niet geschroefd voor gemakkelijke toegang).",
-        photo: "assets/logos/arcade/photo-assembly-1.jpg"
-    },
-    {
-        number: 9,
         title: "Bekabeling & Sluiten Kast",
         phase: "Fase 3: Bekabeling & Afwerking",
         parts: [
@@ -376,8 +372,21 @@ const arcadeSteps = [
             "HDMI-kabel 30cm & Audiokabel 3.5mm jack (1x)",
             "Schroef M3x14 (33x) & Schroef M3x8 ISO-7380 (12x)"
         ],
-        description: "Sluit alle kabels intern aan: de knoppen op de encoder, HDMI tussen Pi en scherm, audio jack naar de versterker, en stroomkabels van de voedingen naar de stepdown, versterker en LED's. Schuif Panel J (service), K (bodem) en H (ventilatie) op hun plek. Leg de kast op zijn kant en schroef het linkerzijpaneel (Panel L) vast met 19 M3x14 schroeven. Monteer het achterframe (Panel I) en sluit de kast met de Space Invader achterklep met 12 M3x8 schroeven.",
-        photo: "assets/logos/arcade/photo-back-cover.jpg"
+        description: "Ik sloot alle kabels intern aan: de knoppen op de encoder, HDMI tussen de Pi en het scherm, de audiojack naar de versterker, en de stroomkabels van de voedingen naar de step-down converter, versterker en LED's. Daarna schoof ik Panel J (service), K (bodem) en H (ventilatie) op hun plek. Ik legde de kast op zijn kant en schroefde het linkerzijpaneel (Panel L) vast met 19 M3x14 schroeven. Tot slot monteerde ik het achterframe (Panel I) en sloot ik de kast met de Space Invader achterklep met 12 M3x8 schroeven.",
+        photo: "assets/logos/arcade/Stap_8_Mijn_Foto.jpg",
+        manualImage: "assets/logos/arcade/bouwtekeningen/Stap_9.png"
+    },
+    {
+        number: 9,
+        title: "Samenvoegen Behuizing",
+        phase: "Fase 3: Bekabeling & Afwerking",
+        parts: [
+            "Voorbereide panelen A, B, C, D, E, F en G (1x)",
+            "Schroef M3x14 DIN-912 (11x)"
+        ],
+        description: "Ik legde het rechterzijpaneel (Panel A) plat. Danach schoof ik de nokken van Panel B (muntinworp) en Panel C (controls) in de sleuven en schroefde ze vast met M3x14 schroeven. Vervolgens lijnde ik Panel D (scherm) en Panel E (speakers) uit en schroefde ze eveneens vast. Ik schoof Panel F (top) erin en zette deze vast. Tot slot schoof ik Panel G (elektronica) in de geleiders (dit paneel heb ik niet vastgeschroefd voor gemakkelijke toegang).",
+        photo: "assets/logos/arcade/photo-assembly-1.jpg",
+        manualImage: "assets/logos/arcade/bouwtekeningen/Stap_8.png"
     },
     {
         number: 10,
@@ -388,8 +397,10 @@ const arcadeSteps = [
             "Netsnoer (1x)",
             "128 GB Micro-SD kaart met Batocera OS (1x)"
         ],
-        description: "Plaats de micro-SD-kaart met Batocera in de Raspberry Pi 3B. Sluit het netsnoer aan op het servicepaneel aan de achterkant, zet de schakelaar om en start de machine op. De marquee en bodemverlichting lichten op, Batocera start op en u kunt direct genieten van duizenden klassieke retro games met de authentieke en uiterst precieze Sanwa-besturing!",
-        photo: "assets/logos/arcade/Final-Look-Kast.jpg"
+        description: "Ik plaatste de micro-SD-kaart met Batocera in de Raspberry Pi 3B. Vervolgens sloot ik het netsnoer aan op het servicepaneel aan de achterkant, zette de schakelaar om en startte de machine op. De marquee en bodemverlichting lichtten op, Batocera startte netjes op en ik kon direct genieten van duizenden klassieke retro games met de authentieke en uiterst precieze Sanwa-besturing!",
+        photo: "assets/logos/arcade/Final-Look-Kast.jpg",
+        manualImage: "assets/logos/arcade/bouwtekeningen/Stap_10.png",
+        inActionPhoto: "assets/logos/arcade/In_actie_tetris.jpg"
     }
 ];
 
@@ -416,6 +427,9 @@ const manualView = document.getElementById('manual-view');
 const photoView = document.getElementById('photo-view');
 const stepPhoto = document.getElementById('step-photo');
 const photoPlaceholder = document.getElementById('photo-placeholder');
+const actionTabBtn = document.getElementById('action-tab-btn');
+const actionView = document.getElementById('action-view');
+const actionPhoto = document.getElementById('action-photo');
 
 // Open and Close Modal Functions
 function openModal() {
@@ -567,11 +581,31 @@ function updateStepView() {
         }
     }
 
+    // Update Action Photo or Hide Button
+    if (step.inActionPhoto) {
+        if (actionPhoto) {
+            actionPhoto.src = step.inActionPhoto;
+        }
+        if (actionTabBtn) {
+            actionTabBtn.style.display = 'inline-block';
+        }
+    } else {
+        if (actionPhoto) {
+            actionPhoto.src = '';
+        }
+        if (actionTabBtn) {
+            actionTabBtn.style.display = 'none';
+        }
+        if (currentImgType === 'action') {
+            currentImgType = 'manual';
+        }
+    }
+
     // Keep active visual selection
     showImageView(currentImgType);
 }
 
-// Show drawing vs actual photo
+// Show drawing vs actual photo vs action photo
 function showImageView(type) {
     currentImgType = type;
     imgTabBtns.forEach(btn => {
@@ -585,9 +619,15 @@ function showImageView(type) {
     if (type === 'manual') {
         if (manualView) manualView.classList.add('active');
         if (photoView) photoView.classList.remove('active');
-    } else {
+        if (actionView) actionView.classList.remove('active');
+    } else if (type === 'photo') {
         if (manualView) manualView.classList.remove('active');
         if (photoView) photoView.classList.add('active');
+        if (actionView) actionView.classList.remove('active');
+    } else if (type === 'action') {
+        if (manualView) manualView.classList.remove('active');
+        if (photoView) photoView.classList.remove('active');
+        if (actionView) actionView.classList.add('active');
     }
 }
 
@@ -620,209 +660,13 @@ function renderStepSvg(stepNum) {
     const container = document.getElementById('manual-illustration-container');
     if (!container) return;
     
-    let svgContent = '';
-    const baseProfile = "M 30,30 L 130,30 L 200,60 L 200,110 L 160,180 L 230,220 L 230,270 L 30,270 Z";
-    
-    svgContent = `
-        <svg viewBox="0 0 260 300" class="manual-svg">
-            <!-- Background Cabinet Outline -->
-            <path d="${baseProfile}" class="svg-wireframe" stroke-dasharray="2 2" />
-    `;
-
-    if (stepNum === 1) {
-        // Step 1: Right Panel A + Power Supply + USB Encoder
-        svgContent += `
-            <path d="${baseProfile}" class="svg-highlight" fill="rgba(190, 163, 107, 0.05)" />
-            <!-- Power Supply -->
-            <rect x="50" y="90" width="35" height="90" rx="3" class="svg-highlight" />
-            <line x1="50" y1="105" x2="85" y2="105" class="svg-highlight" />
-            <line x1="50" y1="120" x2="85" y2="120" class="svg-highlight" />
-            <line x1="50" y1="135" x2="85" y2="135" class="svg-highlight" />
-            <!-- USB Encoder -->
-            <rect x="100" y="200" width="30" height="20" rx="2" class="svg-highlight" fill="rgba(16, 185, 129, 0.1)" />
-            <circle cx="106" cy="206" r="2" class="svg-highlight" />
-            <circle cx="124" cy="206" r="2" class="svg-highlight" />
-        `;
-    } else if (stepNum === 2) {
-        // Step 2: Panel B (Coin Panel) + Coin Button
-        svgContent += `
-            <!-- Placed Panel A -->
-            <path d="${baseProfile}" class="svg-placed" />
-            <!-- Panel B -->
-            <line x1="230" y1="220" x2="230" y2="270" class="svg-highlight" stroke-width="4" />
-            <!-- Coin Button -->
-            <circle cx="238" cy="245" r="5" class="svg-highlight" fill="#ef4444" />
-        `;
-    } else if (stepNum === 3) {
-        // Step 3: Panel C (Control Panel) + Joystick + Buttons
-        svgContent += `
-            <!-- Placed Parts -->
-            <path d="${baseProfile}" class="svg-placed" />
-            <line x1="230" y1="220" x2="230" y2="270" class="svg-placed" stroke-width="3" />
-            <!-- Panel C -->
-            <line x1="160" y1="180" x2="230" y2="220" class="svg-highlight" stroke-width="4" />
-            <!-- Joystick -->
-            <line x1="195" y1="200" x2="205" y2="175" class="svg-highlight" />
-            <circle cx="205" cy="175" r="7" class="svg-highlight" fill="#ef4444" />
-            <!-- Buttons -->
-            <circle cx="178" cy="192" r="3" class="svg-highlight" />
-            <circle cx="188" cy="198" r="3" class="svg-highlight" />
-            <circle cx="215" cy="212" r="3" class="svg-highlight" />
-        `;
-    } else if (stepNum === 4) {
-        // Step 4: Panel D & E (Screen & Speaker Panels)
-        svgContent += `
-            <!-- Placed Parts -->
-            <path d="${baseProfile}" class="svg-placed" />
-            <line x1="230" y1="220" x2="230" y2="270" class="svg-placed" stroke-width="3" />
-            <line x1="160" y1="180" x2="230" y2="220" class="svg-placed" stroke-width="3" />
-            
-            <!-- Panel D (Screen Panel) -->
-            <line x1="160" y1="180" x2="200" y2="110" class="svg-highlight" stroke-width="4" />
-            <!-- LCD Screen Frame -->
-            <rect x="170" y="125" width="20" height="40" transform="rotate(-30 170 125)" class="svg-highlight" fill="rgba(24, 99, 246, 0.1)" />
-            
-            <!-- Panel E (Speaker Panel) -->
-            <line x1="200" y1="110" x2="200" y2="60" class="svg-highlight" stroke-width="4" />
-            <!-- Speakers -->
-            <ellipse cx="200" cy="75" rx="4" ry="8" class="svg-highlight" />
-            <ellipse cx="200" cy="95" rx="4" ry="8" class="svg-highlight" />
-        `;
-    } else if (stepNum === 5) {
-        // Step 5: Panel F (Top Panel) & Panel G (Pi / Electronics)
-        svgContent += `
-            <!-- Placed Parts -->
-            <path d="${baseProfile}" class="svg-placed" />
-            <line x1="230" y1="220" x2="230" y2="270" class="svg-placed" stroke-width="3" />
-            <line x1="160" y1="180" x2="230" y2="220" class="svg-placed" stroke-width="3" />
-            <line x1="160" y1="180" x2="200" y2="110" class="svg-placed" stroke-width="3" />
-            <line x1="200" y1="110" x2="200" y2="60" class="svg-placed" stroke-width="3" />
-            
-            <!-- Panel F (Top Panel) -->
-            <line x1="130" y1="30" x2="200" y2="60" class="svg-highlight" stroke-width="4" />
-            
-            <!-- Panel G (Electronics Panel Inside) -->
-            <line x1="65" y1="90" x2="65" y2="220" class="svg-highlight" stroke-width="4" />
-            <!-- Raspberry Pi -->
-            <rect x="58" y="130" width="14" height="28" rx="2" class="svg-highlight" fill="rgba(16, 185, 129, 0.1)" />
-            <rect x="58" y="170" width="14" height="20" rx="1" class="svg-highlight" />
-        `;
-    } else if (stepNum === 6) {
-        // Step 6: Panel H, I & J (Service, Vent, Back Frame)
-        svgContent += `
-            <!-- Placed Parts -->
-            <path d="${baseProfile}" class="svg-placed" />
-            <line x1="230" y1="220" x2="230" y2="270" class="svg-placed" stroke-width="3" />
-            <line x1="160" y1="180" x2="230" y2="220" class="svg-placed" stroke-width="3" />
-            <line x1="160" y1="180" x2="200" y2="110" class="svg-placed" stroke-width="3" />
-            <line x1="200" y1="110" x2="200" y2="60" class="svg-placed" stroke-width="3" />
-            <line x1="130" y1="30" x2="200" y2="60" class="svg-placed" stroke-width="3" />
-            <line x1="65" y1="90" x2="65" y2="220" class="svg-placed" stroke-width="2" />
-            
-            <!-- Panel H (Ventilation Panel) -->
-            <line x1="30" y1="30" x2="30" y2="80" class="svg-highlight" stroke-width="4" />
-            <!-- Vent Lines -->
-            <line x1="26" y1="45" x2="34" y2="45" class="svg-highlight" stroke-width="1" />
-            <line x1="26" y1="55" x2="34" y2="55" class="svg-highlight" stroke-width="1" />
-            <line x1="26" y1="65" x2="34" y2="65" class="svg-highlight" stroke-width="1" />
-            
-            <!-- Panel I (Back Frame) -->
-            <line x1="30" y1="80" x2="30" y2="220" class="svg-highlight" stroke-width="3" />
-            
-            <!-- Panel J (Service Panel) -->
-            <line x1="30" y1="220" x2="30" y2="270" class="svg-highlight" stroke-width="4" />
-            <!-- Power Socket Knob -->
-            <rect x="25" y="240" width="10" height="15" class="svg-highlight" />
-        `;
-    } else if (stepNum === 7) {
-        // Step 7: Panel K (Bottom Panel) + Subwoofer
-        svgContent += `
-            <!-- Placed Parts -->
-            <path d="${baseProfile}" class="svg-placed" />
-            <line x1="230" y1="220" x2="230" y2="270" class="svg-placed" stroke-width="3" />
-            <line x1="160" y1="180" x2="230" y2="220" class="svg-placed" stroke-width="3" />
-            <line x1="160" y1="180" x2="200" y2="110" class="svg-placed" stroke-width="3" />
-            <line x1="200" y1="110" x2="200" y2="60" class="svg-placed" stroke-width="3" />
-            <line x1="130" y1="30" x2="200" y2="60" class="svg-placed" stroke-width="3" />
-            <line x1="65" y1="90" x2="65" y2="220" class="svg-placed" stroke-width="2" />
-            <line x1="30" y1="30" x2="30" y2="80" class="svg-placed" stroke-width="3" />
-            <line x1="30" y1="80" x2="30" y2="220" class="svg-placed" stroke-width="2" />
-            <line x1="30" y1="220" x2="30" y2="270" class="svg-placed" stroke-width="3" />
-            
-            <!-- Panel K (Bottom Panel) -->
-            <line x1="30" y1="270" x2="230" y2="270" class="svg-highlight" stroke-width="4" />
-            <!-- Subwoofer speaker drawing under bottom -->
-            <path d="M 100,270 A 25,25 0 0,0 150,270" class="svg-highlight" fill="rgba(190, 163, 107, 0.1)" />
-            <rect x="115" y="270" width="20" height="20" class="svg-highlight" />
-            <!-- Silicone Feet -->
-            <circle cx="45" cy="273" r="3" class="svg-highlight" />
-            <circle cx="215" cy="273" r="3" class="svg-highlight" />
-        `;
-    } else if (stepNum === 8) {
-        // Step 8: Samenvoegen Behuizing (Showing joined panels)
-        svgContent += `
-            <!-- Drawing all panels joining together -->
-            <path d="${baseProfile}" class="svg-placed" fill="rgba(24, 99, 246, 0.05)" stroke-width="2" />
-            <line x1="230" y1="220" x2="230" y2="270" class="svg-highlight" stroke-width="3" />
-            <line x1="160" y1="180" x2="230" y2="220" class="svg-highlight" stroke-width="3" />
-            <line x1="160" y1="180" x2="200" y2="110" class="svg-highlight" stroke-width="3" />
-            <line x1="200" y1="110" x2="200" y2="60" class="svg-highlight" stroke-width="3" />
-            <line x1="130" y1="30" x2="200" y2="60" class="svg-highlight" stroke-width="3" />
-            <line x1="30" y1="30" x2="30" y2="80" class="svg-highlight" stroke-width="3" />
-            <line x1="30" y1="80" x2="30" y2="220" class="svg-highlight" stroke-width="2" />
-            <line x1="30" y1="220" x2="30" y2="270" class="svg-highlight" stroke-width="3" />
-            <line x1="30" y1="270" x2="230" y2="270" class="svg-highlight" stroke-width="3" />
-            
-            <!-- Highlights on joints -->
-            <circle cx="230" cy="220" r="4" class="svg-highlight" fill="var(--accent-blue)" />
-            <circle cx="160" cy="180" r="4" class="svg-highlight" fill="var(--accent-blue)" />
-            <circle cx="200" cy="110" r="4" class="svg-highlight" fill="var(--accent-blue)" />
-            <circle cx="200" cy="60" r="4" class="svg-highlight" fill="var(--accent-blue)" />
-            <circle cx="130" cy="30" r="4" class="svg-highlight" fill="var(--accent-blue)" />
-            <circle cx="30" cy="30" r="4" class="svg-highlight" fill="var(--accent-blue)" />
-            <circle cx="30" cy="270" r="4" class="svg-highlight" fill="var(--accent-blue)" />
-            <circle cx="230" cy="270" r="4" class="svg-highlight" fill="var(--accent-blue)" />
-        `;
-    } else if (stepNum === 9) {
-        // Step 9: Wiring Connections and Left Panel L
-        svgContent += `
-            <path d="${baseProfile}" class="svg-placed" />
-            
-            <!-- Wiring Lines (glowing paths) -->
-            <!-- Power: Voeding to Stepdown to Pi -->
-            <path d="M 68,100 Q 95,95 65,130" class="svg-accent" stroke="#ef4444" stroke-width="1.5" />
-            <!-- HDMI: Pi to LCD Board -->
-            <path d="M 65,145 Q 120,130 175,135" class="svg-accent" stroke="#3b82f6" stroke-width="1.5" />
-            <!-- Control: Buttons to USB encoder -->
-            <path d="M 195,195 Q 150,210 115,210" class="svg-accent" stroke="#BEA36B" stroke-width="1.5" />
-            
-            <!-- Left Panel L (Dashed outline on top) -->
-            <path d="${baseProfile}" class="svg-highlight" stroke-dasharray="4 4" fill="none" stroke-width="2" />
-        `;
-    } else if (stepNum === 10) {
-        // Step 10: Enjoy (Speelklare Kast)
-        svgContent += `
-            <path d="${baseProfile}" class="svg-placed" fill="rgba(17, 33, 61, 0.4)" stroke-width="2" />
-            <!-- Screen glow content -->
-            <polygon points="172,130 196,115 186,165 163,165" class="svg-highlight" fill="rgba(16, 185, 129, 0.25)" stroke="#10b981" />
-            <!-- Text on screen -->
-            <text x="175" y="145" font-family="sans-serif" font-size="8" fill="#10b981" transform="rotate(-30 175 145)">TETRIS</text>
-            
-            <!-- Marquee text glow -->
-            <polygon points="135,35 195,60 195,50 135,30" class="svg-highlight" fill="rgba(24, 99, 246, 0.2)" stroke="#1863F6" />
-            <text x="160" y="48" font-family="sans-serif" font-size="6" fill="#fafafa" transform="rotate(20 160 48)">ARCADE</text>
-            
-            <!-- Controls detail -->
-            <line x1="195" y1="200" x2="205" y2="175" class="svg-placed" stroke-width="2" />
-            <circle cx="205" cy="175" r="7" class="svg-highlight" fill="#ef4444" />
-        `;
+    const step = arcadeSteps.find(s => s.number === stepNum);
+    if (!step || !step.manualImage) {
+        container.innerHTML = '';
+        return;
     }
-
-    svgContent += `
-        </svg>
-    `;
     
-    container.innerHTML = svgContent;
+    container.innerHTML = `<img src="${step.manualImage}" alt="Bouwtekening Stap ${stepNum}" />`;
 }
 
 // Initialize step menu on page load

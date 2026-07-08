@@ -209,6 +209,35 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// --- View Infrastructure and Pulse Pi/Proxmox Nodes ---
+const btnViewInfrastructure = document.getElementById('btn-view-infrastructure');
+if (btnViewInfrastructure) {
+    btnViewInfrastructure.addEventListener('click', () => {
+        const infraSection = document.getElementById('infrastructuur');
+        if (infraSection) {
+            infraSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        const piNode = document.getElementById('node-pi');
+        const proxmoxNode = document.getElementById('node-proxmox');
+
+        if (piNode) piNode.classList.add('pulse-highlight');
+        if (proxmoxNode) proxmoxNode.classList.add('pulse-highlight');
+
+        setTimeout(() => {
+            if (piNode) piNode.classList.remove('pulse-highlight');
+            if (proxmoxNode) proxmoxNode.classList.remove('pulse-highlight');
+        }, 2400);
+
+        // Select the Pi 5 node and show its details
+        interactiveNodes.forEach(n => n.classList.remove('selected'));
+        if (piNode) {
+            piNode.classList.add('selected');
+            renderNodeDetails('pi');
+        }
+    });
+}
+
 // --- CV PDF Download / Print Trigger ---
 const downloadCvBtn = document.getElementById('download-cv');
 if (downloadCvBtn) {

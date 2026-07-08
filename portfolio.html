@@ -286,7 +286,38 @@
             </div>
 
             <div class="projects-grid">
-                <!-- Project 1 -->
+                <!-- Project 1 (Homelab) -->
+                <div class="project-card">
+                    <div class="project-tags">
+                        <span class="tag">Docker Compose</span>
+                        <span class="tag">Proxmox</span>
+                        <span class="tag">API Integration</span>
+                    </div>
+                    <h3>Homelab</h3>
+                    <p class="project-desc">Een volledig geautomatiseerde download- en mediapipeline verdeeld over de
+                        Raspberry Pi 5 en Proxmox.</p>
+
+                    <div class="project-details">
+                        <div class="detail-block">
+                            <h4>Het Probleem</h4>
+                            <p>Het handmatig downloaden en organiseren van media is tijdrovend. Dit moet centraal en
+                                veilig gebeuren zonder handmatige interventie.</p>
+                        </div>
+                        <div class="detail-block">
+                            <h4>De Oplossing</h4>
+                            <p>Opslag & downloaders (qBittorrent via VPN, SabNZB) op de Pi 5 (SambaNAS). Automatisering
+                                (Sonarr/Radarr) op Proxmox communiceren via API's en netwerkshares.</p>
+                        </div>
+                        <div class="detail-block">
+                            <h4>Geleerde Lessen</h4>
+                            <p>Multi-node API-integratie, container routing via VPN sidecars, en het mounten van
+                                gedeelde SMB/NFS netwerkmappen met PUID/PGID rechten.</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" id="btn-view-infrastructure" style="margin-top: 1.25rem; width: 100%;">Bekijk Netwerktekening</button>
+                </div>
+
+                <!-- Project 2 (Lokale Spraakassistent) -->
                 <div class="project-card">
                     <div class="project-tags">
                         <span class="tag">ESPHome</span>
@@ -312,36 +343,6 @@
                             <h4>Geleerde Lessen</h4>
                             <p>Signaalverwerking en akoestische demping, microcontrollers configureren met ESPHome, en
                                 lokale AI-modellen optimaliseren op latency.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="project-card">
-                    <div class="project-tags">
-                        <span class="tag">Docker Compose</span>
-                        <span class="tag">Proxmox</span>
-                        <span class="tag">API Integration</span>
-                    </div>
-                    <h3>Gedistribueerde Media Pipeline & SambaNAS</h3>
-                    <p class="project-desc">Een volledig geautomatiseerde download- en mediapipeline verdeeld over de
-                        Raspberry Pi 5 en Proxmox.</p>
-
-                    <div class="project-details">
-                        <div class="detail-block">
-                            <h4>Het Probleem</h4>
-                            <p>Het handmatig downloaden en organiseren van media is tijdrovend. Dit moet centraal en
-                                veilig gebeuren zonder handmatige interventie.</p>
-                        </div>
-                        <div class="detail-block">
-                            <h4>De Oplossing</h4>
-                            <p>Opslag & downloaders (qBittorrent via VPN, SabNZB) op de Pi 5 (SambaNAS). Automatisering
-                                (Sonarr/Radarr) op Proxmox communiceren via API's en netwerkshares.</p>
-                        </div>
-                        <div class="detail-block">
-                            <h4>Geleerde Lessen</h4>
-                            <p>Multi-node API-integratie, container routing via VPN sidecars, en het mounten van
-                                gedeelde SMB/NFS netwerkmappen met PUID/PGID rechten.</p>
                         </div>
                     </div>
                 </div>
@@ -444,7 +445,7 @@
                         <h3>Mbo ICT System Engineer (Niveau 4)</h3>
                         <span class="timeline-institution">ROC Midden Nederland (BBL)</span>
                         <p class="timeline-details">
-                            <strong>Fast-track traject:</strong> Vanwege uitstekende resultaten en inzet ben ik na een
+                            <strong>Versnelde Leerweg:</strong> Vanwege inzet en goede resultaten ben ik na een
                             half jaar in het eerste jaar direct overgezet naar het tweede leerjaar. Hiermee sla ik een
                             heel studiejaar over en behaal ik mijn diploma in twee jaar in plaats van drie.
                         </p>

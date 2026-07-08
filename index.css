@@ -802,9 +802,26 @@ body {
 
 .footer-left {
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.footer-left-content {
+    display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    align-items: flex-start;
+    gap: 0.4rem;
+}
+
+.footer-logo {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+    transition: filter 0.3s ease;
+}
+
+:root[data-theme="light"] .footer-logo {
+    filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.25));
 }
 
 .copyright {
@@ -926,7 +943,14 @@ body {
     }
 
     .footer-left {
+        flex-direction: column;
         align-items: center;
+        gap: 0.75rem;
+    }
+
+    .footer-left-content {
+        align-items: center;
+        text-align: center;
     }
 
     .status-panel {

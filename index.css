@@ -1267,6 +1267,56 @@ body {
     transition: fill 0.2s ease;
 }
 
+.svg-grid {
+    stroke: #1f1f23;
+    transition: stroke 0.2s ease;
+}
+
+.svg-zone-label-muted {
+    fill: rgba(128, 128, 128, 0.45);
+    transition: fill 0.2s ease;
+}
+
+.svg-zone-label-lan {
+    fill: rgba(24, 99, 246, 0.45);
+    transition: fill 0.2s ease;
+}
+
+.svg-zone-label-iot {
+    fill: rgba(190, 163, 107, 0.45);
+    transition: fill 0.2s ease;
+}
+
+.svg-zone-label-offsite {
+    fill: rgba(128, 128, 128, 0.45);
+    transition: fill 0.2s ease;
+}
+
+/* Light Theme overrides for SVG components to increase readability/contrast */
+:root[data-theme="light"] .svg-grid {
+    stroke: #e2e8f0;
+}
+
+:root[data-theme="light"] .svg-text-muted {
+    fill: #4b5563; /* Slate 600 instead of `#808080` */
+}
+
+:root[data-theme="light"] .svg-zone-label-muted {
+    fill: rgba(75, 85, 99, 0.7);
+}
+
+:root[data-theme="light"] .svg-zone-label-lan {
+    fill: rgba(24, 99, 246, 0.75);
+}
+
+:root[data-theme="light"] .svg-zone-label-iot {
+    fill: rgba(168, 140, 82, 0.85); /* Slightly darker gold/bronze tint */
+}
+
+:root[data-theme="light"] .svg-zone-label-offsite {
+    fill: rgba(75, 85, 99, 0.7);
+}
+
 /* --- Dynamic Ambient Background CSS Variables & Styles --- */
 :root {
     --bg-path-color: rgba(38, 53, 77, 0.15);

@@ -61,117 +61,64 @@
 })();
 
 // --- Network Diagram Node Data ---
-const nodeData = {
-    remote: {
-        name: "Remote Client (Tailscale)",
-        role: "Veilige toegang op afstand",
-        specs: {
-            "Protocol": "WireGuard / Tailscale",
-            "Toegang": "Versleuteld (Zero-Trust)",
-            "Poorten": "Geen poorten geopend",
-            "Routing": "Via docker-container op Pi 5"
-        },
-        description: "Wanneer ik buitenshuis ben, maak ik verbinding via de Tailscale VPN-client. Omdat Tailscale draait als een Docker-container op de Raspberry Pi 5, kan ik mijn volledige netwerk (inclusief Proxmox-omgeving) veilig bereiken zonder poortdoorsturing (port forwarding) in mijn KPN router in te hoeven stellen."
-    },
-    router: {
-        name: "KPN Router (Gateway)",
-        role: "Centraal Netwerkbeheer",
-        specs: {
-            "Model": "Standaard KPN Router",
-            "Subnet": "192.168.2.0/24",
-            "Gateway IP": "192.168.2.254",
-            "DNS Instelling": "Dual DNS (Pi-hole 1 & 2)"
-        },
-        description: "De centrale router van KPN beheert de internetverbinding (WAN), deelt lokale IP-adressen uit via DHCP en is handmatig geconfigureerd met twee DNS-servers: de primaire Pi-hole op de Raspberry Pi 5 en de back-up Pi-hole op Proxmox. Hierdoor is advertentievrij browsen gegarandeerd en blijft internet werken, zelfs als één van de servers offline gaat."
-    },
-    pi: {
-        name: "Raspberry Pi 5",
-        role: "Hoofd Applicaties & Opslag (SambaNAS)",
-        specs: {
-            "Processor": "Broadcom BCM2712 (Quad-core)",
-            "Geheugen": "16 GB LPDDR5 RAM",
-            "Opslag": "32GB MicroSD + 2TB USB SSD",
-            "Montage": "Meterkast (3D-Bracket)"
-        },
-        description: "De Raspberry Pi 5 draait 24/7 en host de primaire productieve services voor het huishouden. Via Samba deelt hij de 2 TB SSD met het netwerk als SambaNAS share voor algemene back-ups en media.",
-        services: [
-            { name: "Home Assistant", desc: "Centrale domotica hub met Zigbee integratie" },
-            { name: "Plex & Jellyfin", desc: "Dual media streaming servers" },
-            { name: "SambaNAS", desc: "SMB netwerkshares voor opslag en back-ups" },
-            { name: "Immich", desc: "Privacy-vriendelijke foto en video backup" },
-            { name: "BookStack Wiki", desc: "Systeemen- en netwerkdocumentatie" },
-            { name: "Pi-hole (Primair)", desc: "Netwerkbrede adblocking & primary DNS" },
-            { name: "EZbookkeeping", desc: "Persoonlijk financieel administratiesysteem" },
-            { name: "qBittorrent & SabNZB", desc: "Download-clients (qBittorrent achter VPN)" },
-            { name: "Tailscale", desc: "VPN gateway voor remote netwerktoegang" },
-            { name: "Uptime Kuma (Pi)", desc: "Monitort Proxmox (cross-checking)" },
-            { name: "Portainer", desc: "Grafisch beheerpaneel voor Docker containers" }
-        ]
-    },
-    proxmox: {
-        name: "HP Thin Client T620 (Proxmox VE)",
-        role: "Virtualisatie & Management Node",
-        specs: {
-            "Processor": "AMD GX-420GI Quad-Core",
-            "Geheugen": "16 GB DDR3 RAM",
-            "Opslag": "1 TB Externe Harde Schijf",
-            "Montage": "Meterkast (3D-Bracket)"
-        },
-        description: "De HP Thin Client draait Proxmox VE en is ingericht voor het draaien van lichtere Linux containers (LXC) en virtuele machines. Dit scheidt de automatisering van de daadwerkelijke data-opslag op de Pi.",
-        services: [
-            { name: "Nginx Proxy Manager", desc: "Reverse proxy met automatische SSL/HTTPS" },
-            { name: "Pi-hole (Secundair)", desc: "Backup DNS server bij onderhoud/uitval Pi" },
-            { name: "Sonarr & Radarr", desc: "Automatische indexering van series en films" },
-            { name: "Prowlarr & Overseerr", desc: "Indexer management en media request interface" },
-            { name: "Speedtest Tracker", desc: "Periodiek loggen en plotten van internetsnelheid" },
-            { name: "Uptime Kuma (Px)", desc: "Monitort Pi 5 Docker containers (cross-checking)" }
-        ]
-    },
-    voice: {
-        name: "ESP32-S3 Spraakassistent",
-        role: "Lokale, Privacy-Vriendelijke Voice AI",
-        specs: {
-            "Chipset": "ESP32-S3 Dual-Core Xtensa",
-            "Audio/Mic": "ReSpeaker Lite 2-Mic Array & 3W Speaker",
-            "Behuizing": "3D-Geprint met akoestische demping",
-            "Connectie": "Wi-Fi (Lokale netwerk)"
-        },
-        description: "Een custom-built spraakassistent die volledig lokaal werkt (geen Google/Alexa cloud verbinding). Hij stuurt audiogegevens via ESPHome en het Wyoming-protocol naar Home Assistant op de Pi 5, waar Whisper (STT) en Piper (TTS) de verwerking afhandelen."
-    },
-    zigbee: {
-        name: "Zigbee Mesh Netwerk",
-        role: "Draadloze Domotica Aansturing",
-        specs: {
-            "Coordinator": "Sonoff Zigbee 3.0 USB Dongle Plus",
-            "Aansluiting": "USB (op de Raspberry Pi 5)",
-            "Protocol": "Zigbee 3.0 (IEEE 802.15.4)",
-            "Apparaten": "Slimme lampen, sensoren en schakelaars"
-        },
-        description: "De Sonoff Zigbee USB Dongle dient als de centrale coördinator van het Zigbee mesh-netwerk. Via Home Assistant communiceren alle draadloze temperatuursensoren, slimme schakelaars en lampen in de woning direct en lokaal met het systeem."
-    },
-    oracle: {
-        name: "Oracle Cloud Back-up",
-        role: "Offsite Archivering & Docker Back-up",
-        specs: {
-            "Software": "Duplicati (op Raspberry Pi 5)",
-            "Bestemming": "Oracle Cloud Object Storage (Amsterdam)",
-            "Interval": "Dagelijkse gecodeerde back-up",
-            "Encryptie": "AES-256 (Client-side)"
-        },
-        description: "De Raspberry Pi 5 gebruikt Duplicati om belangrijke Docker configuraties, databases (zoals EZbookkeeping en Bookstack) en applicatiegegevens lokaal te versleutelen en veilig te uploaden naar de Oracle Cloud Object Storage."
-    },
-    tuxis: {
-        name: "Tuxis Proxmox Backup Server (PBS)",
-        role: "Offsite Disaster Recovery & VM Snapshots",
-        specs: {
-            "Software": "Proxmox Backup Server (PBS) Client",
-            "Bestemming": "Tuxis Cloud (Nederlands datacenter)",
-            "Interval": "Dagelijkse snapshots & backups",
-            "Retentie": "7 dagen / 4 weken / 12 maanden"
-        },
-        description: "De HP Thin Client T620 (Proxmox VE) maakt direct verbinding met de externe PBS-omgeving van Tuxis. Hier worden dagelijks incrementele, blok-level backups van alle actieve LXC-containers en VM's naartoe geschreven met automatische deduplicatie en encryptie."
+// --- Language Dictionary Logic (i18n) ---
+function getLanguage() {
+    const saved = localStorage.getItem('language');
+    if (saved && (saved === 'nl' || saved === 'en' || saved === 'de')) {
+        return saved;
     }
-};
+    const browserLang = navigator.language.substring(0, 2).toLowerCase();
+    if (browserLang === 'nl' || browserLang === 'en' || browserLang === 'de') {
+        return browserLang;
+    }
+    return 'nl';
+}
+
+let nodeData = {};
+let arcadeSteps = [];
+
+function setLanguage(lang) {
+    localStorage.setItem('language', lang);
+    document.documentElement.lang = lang;
+    
+    // Update language switcher active states
+    document.querySelectorAll('.language-switcher .lang-btn').forEach(btn => {
+        if (btn.getAttribute('data-lang') === lang) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+    
+    // Update all static i18n text fields
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (typeof translations !== 'undefined' && translations[lang] && translations[lang].ui && translations[lang].ui[key]) {
+            el.innerHTML = translations[lang].ui[key];
+        }
+    });
+    
+    // Dynamically update the nodes and steps arrays
+    if (typeof translations !== 'undefined' && translations[lang]) {
+        nodeData = translations[lang].nodeData;
+        arcadeSteps = translations[lang].arcadeSteps;
+    }
+    
+    // Refresh the details panel if a node is currently selected
+    const activeNode = document.querySelector('.interactive-node.selected');
+    if (activeNode) {
+        const nodeKey = activeNode.getAttribute('data-node');
+        renderNodeDetails(nodeKey);
+    }
+    
+    // Refresh steps UI
+    if (typeof initStepsMenu === 'function') {
+        initStepsMenu();
+    }
+    if (typeof updateStepView === 'function') {
+        updateStepView();
+    }
+}
 
 // --- DOM elements ---
 const interactiveNodes = document.querySelectorAll('.interactive-node');
@@ -181,6 +128,10 @@ const detailsContent = document.getElementById('details-content');
 function renderNodeDetails(nodeKey) {
     const data = nodeData[nodeKey];
     if (!data) return;
+
+    const lang = getLanguage();
+    const activeServicesText = (typeof translations !== 'undefined' && translations[lang] && translations[lang].ui && translations[lang].ui.details_active_services) || 'Actieve Services';
+    const descriptionText = (typeof translations !== 'undefined' && translations[lang] && translations[lang].ui && translations[lang].ui.details_description_title) || 'Beschrijving & Werking';
 
     // Generate specifications HTML
     let specsHtml = '';
@@ -207,7 +158,7 @@ function renderNodeDetails(nodeKey) {
             `;
         });
         servicesHtml = `
-            <h4 class="detail-section-title">Actieve Services</h4>
+            <h4 class="detail-section-title">${activeServicesText}</h4>
             <ul class="services-list">
                 ${items}
             </ul>
@@ -227,7 +178,7 @@ function renderNodeDetails(nodeKey) {
                     </div>
                 </div>
                 <div class="detail-description-block">
-                    <h4 class="detail-section-title">Beschrijving & Werking</h4>
+                    <h4 class="detail-section-title">${descriptionText}</h4>
                     <p class="detail-desc">${data.description}</p>
                 </div>
             </div>
@@ -262,8 +213,20 @@ interactiveNodes.forEach(node => {
     });
 });
 
-// --- Pre-select the Raspberry Pi 5 on Page Load ---
+// --- Pre-select the Raspberry Pi 5 on Page Load & Initialize Language ---
 window.addEventListener('DOMContentLoaded', () => {
+    // 1. Setup switcher buttons
+    document.querySelectorAll('.language-switcher .lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const selectedLang = btn.getAttribute('data-lang');
+            setLanguage(selectedLang);
+        });
+    });
+
+    // 2. Load the initial language
+    setLanguage(getLanguage());
+
+    // 3. Pre-select the Raspberry Pi 5
     const piNode = document.querySelector('[data-node="pi"]');
     if (piNode) {
         piNode.classList.add('selected');
@@ -345,155 +308,6 @@ if (header) {
 }
 
 // --- 3D-Geprinte Arcade Machine Project Logic ---
-const arcadeSteps = [
-    {
-        number: 1,
-        title: "Montage Rechterzijpaneel (Panel A)",
-        phase: "Fase 1: Panelen Voorbereiden",
-        parts: [
-            "Panel A (Rechterzijpaneel) (1x)",
-            "Power supply 12V 12.5A 150W S-150-12 (1x)",
-            "USB encoder support (1x)",
-            "Zero delay USB encoder (1x)",
-            "Schroef M3x6 DIN-912 & sluitring M3 (2x)",
-            "Schroef voor plastic D2x12 (4x)"
-        ],
-        description: "Ik begon met het leggen van Panel A (rechterzijpaneel) op een vlakke ondergrond. Vervolgens monteerde ik de grote 12V 12.5A voeding en de 3D-geprinte support voor de USB-encoder op het paneel met M3x6 schroeven. Daarna bevestigde ik de Zero Delay USB-encoder op de support met de vier plastic schroeven. Hierbij lette ik goed op de oriëntatie van de voeding: de 12V-uitgang moest naar de bovenkant wijzen.",
-        photo: "assets/logos/arcade/Stap_1_Mijn_Foto.jpg",
-        manualImage: "assets/logos/arcade/bouwtekeningen/Stap_1.png"
-    },
-    {
-        number: 2,
-        title: "Muntinworp Paneel (Panel B)",
-        phase: "Fase 1: Panelen Voorbereiden",
-        parts: [
-            "Panel B (Muntinworp paneel) (1x)",
-            "Sanwa push button OBSF-24 (Rood) (1x)",
-            "M3 vierkante moer DIN-557 (2x)"
-        ],
-        description: "Ik schoof twee vierkante M3-moeren in de montage-slots aan de uiteinden van Panel B. Vervolgens drukte ik de rode Sanwa 24mm drukknop in het ronde gat aan de voorzijde van het paneel. Deze knop fungeert als de 'Insert Coin' knop voor de arcade-emulatie.",
-        photo: "",
-        manualImage: "assets/logos/arcade/bouwtekeningen/Stap_2.png"
-    },
-    {
-        number: 3,
-        title: "Het Bedieningspaneel (Panel C)",
-        phase: "Fase 1: Panelen Voorbereiden",
-        parts: [
-            "Panel C (Bedieningspaneel) (1x)",
-            "Sanwa joystick JLF-TP-8Y & Joystick adapter (1x)",
-            "Sanwa push button OBSF-24 (Gekleurd) (6x)",
-            "Mini Switch 12mm PBS-33b (4x gekleurd, 1x wit)",
-            "Schroef M5x12 ISO-7380 & borgmoer M5 (4x)",
-            "Schroef M3x14 DIN-912 & vierkante moer M3 (4x)"
-        ],
-        description: "Ik assembleerde eerst de Sanwa joystick op de groene 3D-geprinte joystick adapterplaat met de M5-bouten, sluitringen en borgmoeren. Deze adapter bevestigde ik aan de onderzijde van Panel C met vier M3x14 schroeven en vierkante moeren. Daarna drukte ik de 6 gekleurde Sanwa-knoppen en de 5 mini-schakelaars in de gaten aan de bovenzijde van het bedieningspaneel.",
-        photo: "",
-        manualImage: "assets/logos/arcade/bouwtekeningen/Stap_3.png"
-    },
-    {
-        number: 4,
-        title: "Scherm & Audio (Panel D & E)",
-        phase: "Fase 1: Panelen Voorbereiden",
-        parts: [
-            "Panel D (Schermpaneel) & Panel E (Speakerpaneel) (1x)",
-            "LG LCD 4:3 display (LP097X02) + Controller frame (1x)",
-            "Display driver board & inverter (1x)",
-            "Luidspreker 5W 8Ω 30x70mm & Speaker grids (2x)",
-            "Schroef M3x10 (8x), M3x16 (8x) & vierkante moer M3 (11x)",
-            "Schroef voor plastic D2.5x10 (6x)"
-        ],
-        description: "Voor het scherm schoof ik 9 vierkante M3-moeren in Panel D. Ik plaatste het LCD-scherm, sloot de LVDS-kabel aan, legde het controller-frame eroverheen en schroefde het vast met 8 M3x10 schroeven. Ook schroefde ik het driver board en de inverter aan de achterzijde vast. Voor de speakers monteerde ik de luidsprekers en roosters op Panel E met 8 M3x16 schroeven, ringen en zelfborgende moeren.",
-        photo: "",
-        manualImage: "assets/logos/arcade/bouwtekeningen/Stap_4.png"
-    },
-    {
-        number: 5,
-        title: "Bovenpaneel & Raspberry Pi (Panel F & G)",
-        phase: "Fase 1: Panelen Voorbereiden",
-        parts: [
-            "Panel F (Bovenpaneel) & Panel G (Elektronicapaneel) (1x)",
-            "Power supply 12V 3A (1x) & LED strip support (1x)",
-            "Raspberry Pi 3B & 12V naar 5V step-down converter (1x)",
-            "Electronic frame (1x)",
-            "Schroef M3x14 (11x), M3x10 (2x), M3x6 (8x)",
-            "200mm LED-strip wit (1x)"
-        ],
-        description: "Voor het bovenpaneel schroefde ik de marquee LED-houder en de 12V 3A voeding op Panel F. Daarna plakte ik de witte LED-strip in de houder. Voor het elektronicapaneel monteerde ik het elektronicahouder-frame op Panel G met M3x14 schroeven. Vervolgens bevestigde ik de Raspberry Pi 3B en de 12V-naar-5V step-down converter (voor de stroomvoorziening van de Pi) met M3x6 schroeven op het frame.",
-        photo: "assets/logos/arcade/Stap_5-6_Mijn_Foto.jpg",
-        manualImage: "assets/logos/arcade/bouwtekeningen/Stap_5.png"
-    },
-    {
-        number: 6,
-        title: "Service- & Ventilatiepanelen (Panel H, I & J)",
-        phase: "Fase 2: Assemblage",
-        parts: [
-            "Panel H (Ventilatie), Panel I (Achterframe) & Panel J (Service) (1x)",
-            "AIYIMA 2.1 versterker board (1x) & Service plate (1x)",
-            "Stroomaansluiting met schakelaar & Fused plug (1x)",
-            "Dubbele USB-verlengkabel 30cm (1x)",
-            "Schroef M3x8 (12x) & moer M3 (2x), M3 vierkante moer (12x)"
-        ],
-        description: "Voor de ventilatie en het frame schoof ik vierkante moeren in de slots van Panel H en I. Voor het servicepaneel schroefde ik de serviceplaat op Panel J. Vervolgens bevestigde ik de stroomaansluiting met schakelaar en zekering met M3-moeren en schroeven. Tot slot monteerde ik de AIYIMA versterker en de dubbele USB-verlengkabel op de serviceplaat, zodat de knoppen en poorten vanaf de buitenkant bereikbaar zijn.",
-        photo: "assets/logos/arcade/Stap_5-6_Mijn_Foto.jpg",
-        manualImage: "assets/logos/arcade/bouwtekeningen/Stap_6.png"
-    },
-    {
-        number: 7,
-        title: "Bodempaneel & Subwoofer (Panel K)",
-        phase: "Fase 2: Assemblage",
-        parts: [
-            "Panel K (Bodempaneel) (1x)",
-            "AIYIMA 3\" subwoofer 25W 4Ω (1x)",
-            "LED-strip houders (2x) & 100mm LED-strips kleur (2x)",
-            "Silicone voetjes 8mm (4x)",
-            "Schroef M4x16 (4x) & borgmoer M4 (4x), Schroef M3x8 (8x)"
-        ],
-        description: "Ik schoof 11 vierkante moeren in de sleuven van Panel K. Vervolgens bevestigde ik de AIYIMA subwoofer aan de bovenzijde met vier M4x16 bouten en zelfborgende moeren. Daarna draaide ik het paneel om, monteerde de twee LED-houders met de gekleurde RGB led-strips, plakte de vier siliconen voetjes op de hoeken en sloot de beschermplaat aan de onderkant met 8 M3x8 schroeven.",
-        photo: "assets/logos/arcade/photo-assembly-2.jpg",
-        manualImage: "assets/logos/arcade/bouwtekeningen/Stap_7.png"
-    },
-    {
-        number: 8,
-        title: "Bekabeling & Sluiten Kast",
-        phase: "Fase 3: Bekabeling & Afwerking",
-        parts: [
-            "Voorbereide panelen H, I, J, K en L (1x)",
-            "Back service cover (Achterklep) (1x)",
-            "HDMI-kabel 30cm & Audiokabel 3.5mm jack (1x)",
-            "Schroef M3x14 (33x) & Schroef M3x8 ISO-7380 (12x)"
-        ],
-        description: "Ik sloot alle kabels intern aan: de knoppen op de encoder, HDMI tussen de Pi en het scherm, de audiojack naar de versterker, en de stroomkabels van de voedingen naar de step-down converter, versterker en LED's. Daarna schoof ik Panel J (service), K (bodem) en H (ventilatie) op hun plek. Ik legde de kast op zijn kant en schroefde het linkerzijpaneel (Panel L) vast met 19 M3x14 schroeven. Tot slot monteerde ik het achterframe (Panel I) en sloot ik de kast met de Space Invader achterklep met 12 M3x8 schroeven.",
-        photo: "assets/logos/arcade/Stap_8_Mijn_Foto.jpg",
-        manualImage: "assets/logos/arcade/bouwtekeningen/Stap_9.png"
-    },
-    {
-        number: 9,
-        title: "Samenvoegen Behuizing",
-        phase: "Fase 3: Bekabeling & Afwerking",
-        parts: [
-            "Voorbereide panelen A, B, C, D, E, F en G (1x)",
-            "Schroef M3x14 DIN-912 (11x)"
-        ],
-        description: "Ik legde het rechterzijpaneel (Panel A) plat. Danach schoof ik de nokken van Panel B (muntinworp) en Panel C (controls) in de sleuven en schroefde ze vast met M3x14 schroeven. Vervolgens lijnde ik Panel D (scherm) en Panel E (speakers) uit en schroefde ze eveneens vast. Ik schoof Panel F (top) erin en zette deze vast. Tot slot schoof ik Panel G (elektronica) in de geleiders (dit paneel heb ik niet vastgeschroefd voor gemakkelijke toegang).",
-        photo: "assets/logos/arcade/photo-assembly-1.jpg",
-        manualImage: "assets/logos/arcade/bouwtekeningen/Stap_8.png"
-    },
-    {
-        number: 10,
-        title: "Het Eindresultaat!",
-        phase: "Fase 3: Bekabeling & Afwerking",
-        parts: [
-            "Geassembleerde Mini Arcade Machine (1x)",
-            "Netsnoer (1x)",
-            "128 GB Micro-SD kaart met Batocera OS (1x)"
-        ],
-        description: "Ik plaatste de micro-SD-kaart met Batocera in de Raspberry Pi 3B. Vervolgens sloot ik het netsnoer aan op het servicepaneel aan de achterkant, zette de schakelaar om en startte de machine op. De marquee en bodemverlichting lichtten op, Batocera startte netjes op en ik kon direct genieten van duizenden klassieke retro games met de authentieke en uiterst precieze Sanwa-besturing!",
-        photo: "assets/logos/arcade/Final-Look-Kast.jpg",
-        manualImage: "assets/logos/arcade/bouwtekeningen/Stap_10.png",
-        inActionPhoto: "assets/logos/arcade/In_actie_tetris.jpg"
-    }
-];
 
 let currentStep = 1;
 let currentImgType = 'manual'; // 'manual' or 'photo'
@@ -610,7 +424,11 @@ function initStepsMenu() {
         const btn = document.createElement('button');
         btn.className = `step-nav-item ${step.number === currentStep ? 'active' : ''}`;
         btn.setAttribute('data-step', step.number);
-        btn.innerHTML = `<strong>Stap ${step.number}</strong><br>${step.title}`;
+        
+        const lang = getLanguage();
+        const stepLabel = (typeof translations !== 'undefined' && translations[lang] && translations[lang].ui && translations[lang].ui.modal_progress_prefix) || 'Stap';
+        btn.innerHTML = `<strong>${stepLabel} ${step.number}</strong><br>${step.title}`;
+        
         btn.addEventListener('click', () => {
             currentStep = step.number;
             updateStepView();
@@ -664,11 +482,16 @@ function updateStepView() {
         }
     });
 
+    const lang = getLanguage();
+    const stepLabel = (typeof translations !== 'undefined' && translations[lang] && translations[lang].ui && translations[lang].ui.modal_progress_prefix) || 'Stap';
+    const ofLabel = (typeof translations !== 'undefined' && translations[lang] && translations[lang].ui && translations[lang].ui.modal_progress_of) || 'van';
+    const photoLabel = (typeof translations !== 'undefined' && translations[lang] && translations[lang].ui && translations[lang].ui.modal_tab_photo) || 'Mijn Foto';
+
     // Update Step Text Fields
-    if (stepTitleDisplay) stepTitleDisplay.textContent = `Stap ${step.number}: ${step.title}`;
+    if (stepTitleDisplay) stepTitleDisplay.textContent = `${stepLabel} ${step.number}: ${step.title}`;
     if (stepPhaseName) stepPhaseName.textContent = step.phase;
     if (stepDescription) stepDescription.textContent = step.description;
-    if (stepCounter) stepCounter.textContent = `Stap ${step.number} van ${arcadeSteps.length}`;
+    if (stepCounter) stepCounter.textContent = `${stepLabel} ${step.number} ${ofLabel} ${arcadeSteps.length}`;
 
     // Update Parts List
     if (stepParts) {
@@ -697,7 +520,7 @@ function updateStepView() {
         if (photoPlaceholder) photoPlaceholder.style.display = 'none';
         if (photoTabBtn) {
             photoTabBtn.classList.add('has-photo');
-            photoTabBtn.innerHTML = 'Mijn Foto';
+            photoTabBtn.innerHTML = photoLabel;
         }
     } else {
         if (stepPhoto) {
@@ -707,7 +530,7 @@ function updateStepView() {
         if (photoPlaceholder) photoPlaceholder.style.display = 'flex';
         if (photoTabBtn) {
             photoTabBtn.classList.remove('has-photo');
-            photoTabBtn.innerHTML = 'Mijn Foto';
+            photoTabBtn.innerHTML = photoLabel;
         }
     }
 

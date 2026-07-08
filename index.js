@@ -81,14 +81,20 @@ function setLanguage(lang) {
     localStorage.setItem('language', lang);
     document.documentElement.lang = lang;
     
-    // Update language switcher active states
-    document.querySelectorAll('.language-switcher .lang-btn').forEach(btn => {
-        if (btn.getAttribute('data-lang') === lang) {
-            btn.classList.add('active');
-        } else {
-            btn.classList.remove('active');
-        }
-    });
+    // Update active state in custom dropdown
+    const activeItem = document.querySelector(`.dropdown-item[data-lang="${lang}"]`);
+    const triggerContainer = document.querySelector('.current-flag-container');
+    if (activeItem && triggerContainer) {
+        triggerContainer.innerHTML = activeItem.innerHTML;
+        
+        document.querySelectorAll('.dropdown-item').forEach(item => {
+            if (item.getAttribute('data-lang') === lang) {
+                item.classList.add('active');
+            } else {
+                item.classList.remove('active');
+            }
+        });
+    }
     
     // Update all static i18n text fields
     document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -215,10 +221,28 @@ interactiveNodes.forEach(node => {
 
 // --- Pre-select the Raspberry Pi 5 on Page Load & Initialize Language ---
 window.addEventListener('DOMContentLoaded', () => {
-    // 1. Setup switcher buttons
-    document.querySelectorAll('.language-switcher .lang-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const selectedLang = btn.getAttribute('data-lang');
+    const dropdown = document.querySelector('.lang-dropdown');
+    const trigger = document.querySelector('.dropdown-trigger');
+    const dropdownItems = document.querySelectorAll('.dropdown-item');
+
+    // 1. Setup switcher event listeners
+    if (trigger && dropdown) {
+        trigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = dropdown.classList.contains('open');
+            dropdown.classList.toggle('open', !isOpen);
+            trigger.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+        });
+
+        document.addEventListener('click', () => {
+            dropdown.classList.remove('open');
+            trigger.setAttribute('aria-expanded', 'false');
+        });
+    }
+
+    dropdownItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const selectedLang = item.getAttribute('data-lang');
             setLanguage(selectedLang);
         });
     });

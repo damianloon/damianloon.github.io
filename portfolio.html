@@ -615,14 +615,43 @@
                     <span class="status-item font-mono" data-i18n="footer_vpn">[VPN: SECURE]</span>
                 </div>
             </div>
-            <div class="footer-middle">
-                <div class="language-switcher">
-                    <button class="lang-btn" data-lang="nl">NL</button>
-                    <button class="lang-btn" data-lang="en">EN</button>
-                    <button class="lang-btn" data-lang="de">DE</button>
-                </div>
-            </div>
             <div class="footer-links">
+                <div class="lang-dropdown">
+                    <button class="dropdown-trigger" aria-haspopup="listbox" aria-expanded="false">
+                        <span class="current-flag-container">
+                            <!-- Dynamic -->
+                        </span>
+                        <span class="dropdown-arrow">&#9652;</span>
+                    </button>
+                    <ul class="dropdown-menu" role="listbox">
+                        <li class="dropdown-item" data-lang="nl" role="option">
+                            <svg class="flag-icon" viewBox="0 0 9 6" width="16" height="12">
+                                <rect width="9" height="6" fill="#21468B"/>
+                                <rect width="9" height="4" fill="#FFFFFF"/>
+                                <rect width="9" height="2" fill="#AE1C28"/>
+                            </svg>
+                            <span>NL</span>
+                        </li>
+                        <li class="dropdown-item" data-lang="en" role="option">
+                            <svg class="flag-icon" viewBox="0 0 50 30" width="16" height="12">
+                                <rect width="50" height="30" fill="#012169"/>
+                                <path d="M0,0 L50,30 M50,0 L0,30" stroke="#fff" stroke-width="6"/>
+                                <path d="M0,0 L50,30 M50,0 L0,30" stroke="#c8102e" stroke-width="4"/>
+                                <path d="M25,0 v30 M0,15 h50" stroke="#fff" stroke-width="10"/>
+                                <path d="M25,0 v30 M0,15 h50" stroke="#c8102e" stroke-width="6"/>
+                            </svg>
+                            <span>EN</span>
+                        </li>
+                        <li class="dropdown-item" data-lang="de" role="option">
+                            <svg class="flag-icon" viewBox="0 0 9 6" width="16" height="12">
+                                <rect width="9" height="6" fill="#FFCC00"/>
+                                <rect width="9" height="4" fill="#DD0000"/>
+                                <rect width="9" height="2" fill="#000000"/>
+                            </svg>
+                            <span>DE</span>
+                        </li>
+                    </ul>
+                </div>
                 <a href="https://github.com/damianloon" target="_blank" rel="noopener">
                     <svg class="footer-icon" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"
                         aria-hidden="true">

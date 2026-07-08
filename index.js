@@ -1,20 +1,63 @@
-// --- Splash Screen Handler ---
+// --- Splash Screen Handler & Replay (Option B) ---
 (function() {
     const splash = document.getElementById('splash-screen');
-    if (splash) {
-        if (sessionStorage.getItem('splashPlayed') === 'true') {
-            splash.remove();
-        } else {
-            setTimeout(() => {
-                splash.classList.add('splash-fade-out');
-                document.documentElement.classList.remove('splash-active');
-                setTimeout(() => {
-                    splash.remove();
-                }, 800);
-            }, 3000);
-            sessionStorage.setItem('splashPlayed', 'true');
-        }
+    if (!splash) return;
+    
+    // Create a deep copy of the original splash screen to use for replays
+    const splashTemplate = splash.cloneNode(true);
+    
+    // Function to run the splash hide sequence
+    function hideSplash(element) {
+        element.classList.add('splash-fade-out');
+        document.documentElement.classList.remove('splash-active');
+        setTimeout(() => {
+            element.style.display = 'none';
+        }, 800);
     }
+    
+    // Initial load handler
+    if (sessionStorage.getItem('splashPlayed') === 'true') {
+        splash.style.display = 'none';
+    } else {
+        setTimeout(() => {
+            hideSplash(splash);
+        }, 3000);
+        sessionStorage.setItem('splashPlayed', 'true');
+    }
+    
+    // Logo / Name click trigger for replay
+    document.addEventListener('DOMContentLoaded', () => {
+        const logoArea = document.querySelector('.logo-area');
+        if (logoArea) {
+            logoArea.style.cursor = 'pointer';
+            logoArea.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Scroll to the top instantly
+                window.scrollTo({ top: 0 });
+                
+                // Find current splash element in DOM
+                const currentSplash = document.getElementById('splash-screen');
+                if (currentSplash) {
+                    // Create a fresh clone from template
+                    const newSplash = splashTemplate.cloneNode(true);
+                    newSplash.style.display = 'flex';
+                    newSplash.classList.remove('splash-fade-out');
+                    
+                    // Replace in DOM to restart CSS animations
+                    currentSplash.parentNode.replaceChild(newSplash, currentSplash);
+                    
+                    // Lock scrolling
+                    document.documentElement.classList.add('splash-active');
+                    
+                    // Run the 3-second show then fade-out sequence
+                    setTimeout(() => {
+                        hideSplash(newSplash);
+                    }, 3000);
+                }
+            });
+        }
+    });
 })();
 
 // --- Network Diagram Node Data ---

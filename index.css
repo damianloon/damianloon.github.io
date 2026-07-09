@@ -2198,8 +2198,8 @@ body {
     line-height: 1.4;
 }
 
-.tetris-overlay[style*="display: flex"],
-.tetris-overlay.active {
+#tetris-highscore-overlay[style*="display: flex"],
+#tetris-highscore-overlay.active {
     opacity: 1 !important;
     pointer-events: auto !important;
 }

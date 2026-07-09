@@ -117,6 +117,13 @@ function setLanguage(lang) {
         renderNodeDetails(nodeKey);
     }
     
+    // Refresh pipeline details panel if a pipeline node is currently selected
+    const activePipelineNode = document.querySelector('.pipeline-node.selected');
+    if (activePipelineNode) {
+        const nodeKey = activePipelineNode.getAttribute('data-node');
+        renderPipelineDetails(nodeKey);
+    }
+    
     // Refresh steps UI
     if (typeof initStepsMenu === 'function') {
         initStepsMenu();
@@ -1142,4 +1149,116 @@ function minimizeTetrisGame() {
 
 if (tetrisMinimizeBtn) {
     tetrisMinimizeBtn.addEventListener('click', minimizeTetrisGame);
+}
+
+// --- DOM Elements for Pipeline Modal ---
+const pipelineModal = document.getElementById('pipeline-modal');
+const openPipelineBtn = document.getElementById('btn-view-pipeline');
+const closePipelineBtn = document.getElementById('close-pipeline-modal');
+const pipelineNodes = document.querySelectorAll('.pipeline-node');
+const pipelineDetailsContent = document.getElementById('pipeline-details-content');
+
+function openPipelineModal() {
+    if (pipelineModal) {
+        pipelineModal.classList.add('active');
+        pipelineModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        
+        // Select Overseerr by default on open
+        selectPipelineNode('overseerr');
+    }
+}
+
+function closePipelineModal() {
+    if (pipelineModal) {
+        pipelineModal.classList.remove('active');
+        pipelineModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+}
+
+if (openPipelineBtn) {
+    openPipelineBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openPipelineModal();
+    });
+}
+
+if (closePipelineBtn) {
+    closePipelineBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closePipelineModal();
+    });
+}
+
+if (pipelineModal) {
+    pipelineModal.addEventListener('click', (e) => {
+        if (e.target === pipelineModal) {
+            closePipelineModal();
+        }
+    });
+}
+
+function selectPipelineNode(nodeKey) {
+    // Highlight node in SVG
+    pipelineNodes.forEach(node => {
+        if (node.getAttribute('data-node') === nodeKey) {
+            node.classList.add('selected');
+        } else {
+            node.classList.remove('selected');
+        }
+    });
+
+    // Render details
+    renderPipelineDetails(nodeKey);
+}
+
+// Add click listeners to pipeline nodes
+pipelineNodes.forEach(node => {
+    node.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const nodeGroup = e.target.closest('.pipeline-node');
+        if (nodeGroup) {
+            const nodeKey = nodeGroup.getAttribute('data-node');
+            selectPipelineNode(nodeKey);
+        }
+    });
+});
+
+function renderPipelineDetails(nodeKey) {
+    const lang = getLanguage();
+    const translationObject = translations[lang];
+    if (!translationObject || !translationObject.pipelineData) return;
+    
+    const data = translationObject.pipelineData[nodeKey];
+    if (!data) return;
+
+    const descriptionTitle = translationObject.ui.pipeline_desc_title || 'Beschrijving & Werking';
+
+    // Generate specs list
+    let specsHtml = '';
+    for (const [key, value] of Object.entries(data.specs)) {
+        specsHtml += `
+            <div class="pipeline-spec-item">
+                <span class="pipeline-spec-label">${key}</span>
+                <span class="pipeline-spec-value">${value}</span>
+            </div>
+        `;
+    }
+
+    if (pipelineDetailsContent) {
+        pipelineDetailsContent.innerHTML = `
+            <div class="pipeline-details-header">
+                <h3 style="color: #BEA36B; margin: 0 0 0.25rem 0; font-size: 1.25rem; font-weight: bold;">${data.name}</h3>
+                <p style="color: var(--text-secondary); margin: 0 0 1rem 0; font-size: 0.9rem; font-style: italic;">${data.role}</p>
+            </div>
+            <div class="pipeline-specs-list" style="margin-bottom: 1.25rem;">
+                ${specsHtml}
+            </div>
+            <div class="pipeline-desc-block">
+                <h4 class="pipeline-desc-title">${descriptionTitle}</h4>
+                <p class="pipeline-desc-text" style="margin: 0; font-size: 0.9rem; line-height: 1.5; color: var(--text-secondary);">${data.description}</p>
+            </div>
+        `;
+    }
 }

@@ -2520,3 +2520,122 @@ html.splash-active .site-header {
         opacity: 0;
     }
 }
+
+/* --- Pipeline Modal & Diagram CSS Styles --- */
+.pipeline-grid {
+    display: grid;
+    grid-template-columns: 1.8fr 1.2fr;
+    gap: 1.5rem;
+    height: 100%;
+    min-height: 0;
+}
+
+@media (max-width: 968px) {
+    .pipeline-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        overflow-y: auto;
+    }
+}
+
+.pipeline-diagram-container {
+    background-color: rgba(12, 13, 18, 0.4);
+    border: 1px solid rgba(128, 128, 128, 0.15);
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 380px;
+}
+
+.pipeline-svg {
+    width: 100%;
+    height: auto;
+    max-height: 480px;
+}
+
+.pipeline-details-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.pipeline-details-card {
+    background-color: var(--bg-card);
+    border: 1px solid rgba(128, 128, 128, 0.15);
+    border-radius: 8px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.pipeline-details-content {
+    padding: 1.25rem;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.pipeline-spec-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+    font-size: 0.9rem;
+}
+
+.pipeline-spec-label {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.pipeline-spec-value {
+    color: var(--text-primary);
+    font-family: monospace;
+}
+
+.pipeline-desc-block {
+    margin-top: 1.25rem;
+}
+
+.pipeline-desc-title {
+    color: #BEA36B;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.pipeline-desc-text {
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+}
+
+/* Pipeline SVG Node Interactions */
+.pipeline-node {
+    cursor: pointer;
+}
+
+.pipeline-node > rect,
+.pipeline-node > circle {
+    fill: var(--bg-card);
+    stroke: var(--border-color);
+    transition: all 0.15s ease-in-out;
+}
+
+.pipeline-node text {
+    user-select: none;
+}
+
+.pipeline-node:hover > rect,
+.pipeline-node:hover > circle {
+    stroke: var(--text-secondary);
+}
+
+.pipeline-node.selected > rect,
+.pipeline-node.selected > circle {
+    stroke: #BEA36B;
+    stroke-width: 2px;
+    fill: rgba(190, 163, 107, 0.08);
+}

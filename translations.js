@@ -119,7 +119,11 @@ const translations = {
             modal_tetris_title: "Speel Classic Tetris",
             modal_tetris_desc: "Klik om de ingebouwde retro-emulator te starten en te spelen!",
             modal_tetris_start: "Start Game",
-            modal_tetris_minimize: "&minus; Minimaliseer"
+            modal_tetris_minimize: "&minus; Minimaliseer",
+            project_view_pipeline: "Bekijk Gegevensstroom",
+            modal_pipeline_title: "Media Pipeline Gegevensstroom",
+            pipeline_details_title: "Component Details",
+            pipeline_desc_title: "Beschrijving & Werking"
         },
         nodeData: {
             remote: {
@@ -230,6 +234,106 @@ const translations = {
                     "Retentie": "7 dagen / 4 weken / 12 maanden"
                 },
                 description: "De HP Thin Client T620 (Proxmox VE) maakt direct verbinding met de externe PBS-omgeving van Tuxis. Hier worden dagelijks incrementele, blok-level backups van alle actieve LXC-containers en VM's naartoe geschreven met automatische deduplicatie en encryptie."
+            }
+        },
+        pipelineData: {
+            client: {
+                name: "Client / Gebruiker",
+                role: "LAN / Tailscale Client",
+                specs: {
+                    "Type": "Smartphone / TV / PC",
+                    "VPN": "Tailscale Actief",
+                    "Protocollen": "HTTP / Plex-app"
+                },
+                description: "De eindgebruiker die media aanvraagt en streamt. Dit kan lokaal binnen het thuisnetwerk (LAN) of buitenshuis via een beveiligde Tailscale VPN-tunnel, waardoor er geen poorten opengezet hoeven te worden op de router."
+            },
+            overseerr: {
+                name: "Overseerr",
+                role: "Verzoekenbeheerder (LXC)",
+                specs: {
+                    "Type": "LXC Container",
+                    "OS": "Debian 12",
+                    "Poort": "5055 (HTTP)",
+                    "Netwerk": "LAN & Tailscale"
+                },
+                description: "De front-end interface van de pipeline. Hier kunnen gebruikers eenvoudig films en series zoeken en aanvragen. Overseerr controleert automatisch of media al aanwezig is in Plex en stuurt nieuwe verzoeken door naar Sonarr/Radarr via API-koppelingen."
+            },
+            prowlarr: {
+                name: "Prowlarr",
+                role: "Indexer Manager (LXC)",
+                specs: {
+                    "Type": "LXC Container",
+                    "OS": "Debian 12",
+                    "Poort": "9696 (HTTP)",
+                    "Netwerk": "Intern Netwerk"
+                },
+                description: "Beheert en synchroniseert alle Usenet- en torrent-indexers (zoekmachines). Zodra een nieuwe indexer wordt toegevoegd aan Prowlarr, synchroniseert hij deze direct via API's met Sonarr en Radarr, zodat de downloaders altijd over de nieuwste zoekbronnen beschikken."
+            },
+            sonarr_radarr: {
+                name: "Sonarr & Radarr",
+                role: "Media Beheerders (LXC)",
+                specs: {
+                    "Type": "LXC Containers",
+                    "OS": "Debian 12 (x2)",
+                    "Poort": "8989 / 7878",
+                    "Netwerk": "Intern Netwerk"
+                },
+                description: "Monitoren de gewenste media. Radarr beheert films, Sonarr beheert series. Ze zoeken automatisch via Prowlarr naar releases, sturen opdrachten naar SabNZBD/qBittorrent via API's, en verplaatsen/hernoemen de voltooide bestanden naar de SambaNAS-shares."
+            },
+            vpn: {
+                name: "Gluetun VPN",
+                role: "VPN Gateway Container (Docker)",
+                specs: {
+                    "Type": "Docker Container",
+                    "OS": "Raspberry Pi OS",
+                    "Protocol": "WireGuard",
+                    "Beveiliging": "Actieve Kill-Switch"
+                },
+                description: "Zorgt voor een veilige netwerkroutering. De qBittorrent-container is gekoppeld aan de Gluetun-netwerkstack. Als de VPN-verbinding wegvalt, blokkeert de kill-switch direct al het inkomende en uitgaande verkeer om datalekken te voorkomen."
+            },
+            qbittorrent: {
+                name: "qBittorrent",
+                role: "Veilige Torrent Downloader (Docker)",
+                specs: {
+                    "Type": "Docker Container",
+                    "OS": "Raspberry Pi OS",
+                    "Poort": "8080 (Web UI)",
+                    "Netwerk": "Gerouteerd via VPN"
+                },
+                description: "Verwerkt torrent-downloads. De qBittorrent-container deelt de netwerkstack van de Gluetun VPN-container. Hierdoor wordt al het torrent-verkeer versleuteld en anoniem afgehandeld over de VPN-tunnel."
+            },
+            sabnzbd: {
+                name: "SabNZBD",
+                role: "Usenet Downloader (Docker)",
+                specs: {
+                    "Type": "Docker Container",
+                    "OS": "Raspberry Pi OS",
+                    "Poort": "8085 (Web UI)",
+                    "Netwerk": "SSL Direct"
+                },
+                description: "Downloadt media met maximale snelheid via nieuwsgroepen (Usenet). Maakt gebruik van directe SSL-verbindingen met nieuwsservers, waardoor er geen extra VPN nodig is voor privacy en veiligheid tijdens het downloaden."
+            },
+            nas: {
+                name: "SambaNAS Opslag",
+                role: "Centrale Netwerkopslag",
+                specs: {
+                    "Type": "Fysieke Pi 5 NVMe",
+                    "Protocol": "Samba (SMB)",
+                    "Rechten": "PUID/PGID Beheer",
+                    "Mappen": "/Plex/Downloads, /Movies, /Series"
+                },
+                description: "De centrale opslaglocatie voor alle media. De LXC-containers op de HP Thin Client hebben direct toegang via bind-mounts in hun .conf bestanden. Hierdoor kunnen Sonarr en Radarr bestanden direct op de NAS hernoemen en verplaatsen zonder netwerkoverhead."
+            },
+            plex: {
+                name: "Plex Media Server",
+                role: "Streaming & Transcoding (Docker)",
+                specs: {
+                    "Type": "Docker Container",
+                    "OS": "Raspberry Pi OS",
+                    "Poort": "32400 (Web)",
+                    "Database": "SambaNAS Gekoppeld"
+                },
+                description: "Scant de `/Plex/Movies` en `/Plex/Series` mappen op de SambaNAS. Organiseert media met metadata, posters en ondertitels, en streamt films en series in hoge kwaliteit naar tv's, telefoons en mobiele apparaten (lokaal en extern)."
             }
         },
         arcadeSteps: [
@@ -510,7 +614,11 @@ const translations = {
             modal_tetris_title: "Play Classic Tetris",
             modal_tetris_desc: "Click to start the built-in retro emulator and play!",
             modal_tetris_start: "Start Game",
-            modal_tetris_minimize: "&minus; Minimize"
+            modal_tetris_minimize: "&minus; Minimize",
+            project_view_pipeline: "View Data Flow",
+            modal_pipeline_title: "Media Pipeline Data Flow",
+            pipeline_details_title: "Component Details",
+            pipeline_desc_title: "Description & Operation"
         },
         nodeData: {
             remote: {
@@ -621,6 +729,106 @@ const translations = {
                     "Retention": "7 days / 4 weeks / 12 months"
                 },
                 description: "The HP Thin Client T620 (Proxmox VE) connects directly to Tuxis's external PBS environment. Daily incremental, block-level backups of all active LXC containers and VMs are written here with automatic deduplication and encryption."
+            }
+        },
+        pipelineData: {
+            client: {
+                name: "Client / User",
+                role: "LAN / Tailscale Client",
+                specs: {
+                    "Type": "Smartphone / TV / PC",
+                    "VPN": "Tailscale Active",
+                    "Protocols": "HTTP / Plex app"
+                },
+                description: "The end user requesting and streaming media. This can be done locally within the home network (LAN) or remotely via a secure Tailscale VPN tunnel, eliminating the need to expose ports on the router."
+            },
+            overseerr: {
+                name: "Overseerr",
+                role: "Request Manager (LXC)",
+                specs: {
+                    "Type": "LXC Container",
+                    "OS": "Debian 12",
+                    "Port": "5055 (HTTP)",
+                    "Network": "LAN & Tailscale"
+                },
+                description: "The front-end user interface of the pipeline. Here, users can easily search and request movies and series. Overseerr automatically checks if the media is already present in Plex and forwards new requests to Sonarr/Radarr via APIs."
+            },
+            prowlarr: {
+                name: "Prowlarr",
+                role: "Indexer Manager (LXC)",
+                specs: {
+                    "Type": "LXC Container",
+                    "OS": "Debian 12",
+                    "Port": "9696 (HTTP)",
+                    "Network": "Internal Network"
+                },
+                description: "Manages and synchronizes all Usenet and torrent indexers (search engines). When a new indexer is added to Prowlarr, it immediately syncs it via APIs with Sonarr and Radarr, ensuring downloaders always have the latest search sources."
+            },
+            sonarr_radarr: {
+                name: "Sonarr & Radarr",
+                role: "Media Managers (LXC)",
+                specs: {
+                    "Type": "LXC Containers",
+                    "OS": "Debian 12 (x2)",
+                    "Port": "8989 / 7878",
+                    "Network": "Internal Network"
+                },
+                description: "Monitor desired media. Radarr manages movies, Sonarr manages series. They automatically search for releases via Prowlarr, send download commands to SabNZBD/qBittorrent via APIs, and move/rename completed files to the SambaNAS shares."
+            },
+            vpn: {
+                name: "Gluetun VPN",
+                role: "VPN Gateway Container (Docker)",
+                specs: {
+                    "Type": "Docker Container",
+                    "OS": "Raspberry Pi OS",
+                    "Protocol": "WireGuard",
+                    "Security": "Active Kill-Switch"
+                },
+                description: "Ensures secure network routing. The qBittorrent container is bound to the Gluetun network stack. If the VPN connection drops, the kill switch instantly blocks all traffic to prevent IP leaks."
+            },
+            qbittorrent: {
+                name: "qBittorrent",
+                role: "Secure Torrent Downloader (Docker)",
+                specs: {
+                    "Type": "Docker Container",
+                    "OS": "Raspberry Pi OS",
+                    "Port": "8080 (Web UI)",
+                    "Network": "Routed via VPN"
+                },
+                description: "Processes torrent downloads. The qBittorrent container shares the network stack of the Gluetun VPN container, meaning all torrent traffic is encrypted and handled anonymously over the VPN tunnel."
+            },
+            sabnzbd: {
+                name: "SabNZBD",
+                role: "Usenet Downloader (Docker)",
+                specs: {
+                    "Type": "Docker Container",
+                    "OS": "Raspberry Pi OS",
+                    "Port": "8085 (Web UI)",
+                    "Network": "SSL Direct"
+                },
+                description: "Downloads media at maximum speed via newsgroups (Usenet). Uses direct SSL connections with news servers, eliminating the need for an additional VPN for privacy and security while downloading."
+            },
+            nas: {
+                name: "SambaNAS Storage",
+                role: "Central Network Storage",
+                specs: {
+                    "Type": "Physical Pi 5 NVMe",
+                    "Protocol": "Samba (SMB)",
+                    "Permissions": "PUID/PGID Managed",
+                    "Folders": "/Plex/Downloads, /Movies, /Series"
+                },
+                description: "The central storage location for all media. The LXC containers on the HP Thin Client have direct access via bind-mounts in their .conf files. This allows Sonarr and Radarr to rename and move files directly on the NAS without network overhead."
+            },
+            plex: {
+                name: "Plex Media Server",
+                role: "Streaming & Transcoding (Docker)",
+                specs: {
+                    "Type": "Docker Container",
+                    "OS": "Raspberry Pi OS",
+                    "Port": "32400 (Web)",
+                    "Database": "SambaNAS Linked"
+                },
+                description: "Scans the `/Plex/Movies` and `/Plex/Series` folders on the SambaNAS. Organizes media with metadata, posters and subtitles, and streams movies and series in high quality to TVs, phones, and mobile devices (locally and remotely)."
             }
         },
         arcadeSteps: [

@@ -474,8 +474,8 @@
                                 kill-switch worden geleid om datalekken te voorkomen.</p>
                         </div>
                     </div>
-                    <button class="btn btn-primary" id="btn-view-pipeline"
-                        style="margin-top: 1.25rem; width: 100%;" data-i18n="project_view_pipeline">Bekijk
+                    <button class="btn btn-primary" id="btn-view-pipeline" style="margin-top: 1.25rem; width: 100%;"
+                        data-i18n="project_view_pipeline">Bekijk
                         Gegevensstroom</button>
                 </div>
 
@@ -530,14 +530,14 @@
             <!-- Skills Categories -->
             <div class="skills-section">
                 <h3 class="skills-title" data-i18n="skills_core_title">Kernvaardigheden</h3>
-                
+
                 <div class="skills-layout-container">
                     <!-- Left: Interactive Topology SVG -->
                     <div class="skills-topology-wrapper">
-                        <svg class="skills-topology-svg" viewBox="-150 0 800 320" width="100%" height="100%">
+                        <svg class="skills-topology-svg" viewBox="-150 0 800 320" width="100%" height="100%" overflow="hidden">
                             <!-- Defs for filter glow -->
                             <defs>
-                                <filter id="node-glow" x="-50%" y="-50%" width="200%" height="200%">
+                                <filter id="node-glow" x="-30%" y="-30%" width="160%" height="160%">
                                     <feGaussianBlur stdDeviation="3" result="blur" />
                                     <feMerge>
                                         <feMergeNode in="blur" />
@@ -548,10 +548,14 @@
 
                             <!-- Connection Lines (Backbone) -->
                             <g class="topo-links-backbone">
-                                <path class="topo-link" id="link-cat_systems_cloud" d="M 250 160 L 190 160 L 140 110 L 140 80" />
-                                <path class="topo-link" id="link-cat_net_sec" d="M 250 160 L 190 160 L 140 210 L 140 240" />
-                                <path class="topo-link" id="link-cat_iot_auto" d="M 250 160 L 310 160 L 360 110 L 360 80" />
-                                <path class="topo-link" id="link-cat_support" d="M 250 160 L 310 160 L 360 210 L 360 240" />
+                                <path class="topo-link" id="link-cat_systems_cloud"
+                                    d="M 250 160 L 190 160 L 140 110 L 140 80" />
+                                <path class="topo-link" id="link-cat_net_sec"
+                                    d="M 250 160 L 190 160 L 140 210 L 140 240" />
+                                <path class="topo-link" id="link-cat_iot_auto"
+                                    d="M 250 160 L 310 160 L 360 110 L 360 80" />
+                                <path class="topo-link" id="link-cat_support"
+                                    d="M 250 160 L 310 160 L 360 210 L 360 240" />
                             </g>
 
                             <!-- Connection Lines (Systems & Cloud Branch) -->
@@ -590,21 +594,26 @@
                             </g>
 
                             <!-- Category Hubs -->
-                            <g class="topo-node hub-node" data-category="cat_systems_cloud" data-skill="cat_systems_cloud">
+                            <g class="topo-node hub-node" data-category="cat_systems_cloud"
+                                data-skill="cat_systems_cloud">
                                 <circle cx="140" cy="80" r="7" />
-                                <text x="140" y="65" text-anchor="middle" data-i18n="skills_systems_cloud">Systemen & Cloud</text>
+                                <text x="140" y="65" text-anchor="middle" data-i18n="skills_systems_cloud">Systemen &
+                                    Cloud</text>
                             </g>
                             <g class="topo-node hub-node" data-category="cat_net_sec" data-skill="cat_net_sec">
                                 <circle cx="140" cy="240" r="7" />
-                                <text x="140" y="225" text-anchor="middle" data-i18n="skills_net_sec">Netwerken & Security</text>
+                                <text x="140" y="225" text-anchor="middle" data-i18n="skills_net_sec">Netwerken &
+                                    Security</text>
                             </g>
                             <g class="topo-node hub-node" data-category="cat_iot_auto" data-skill="cat_iot_auto">
                                 <circle cx="360" cy="80" r="7" />
-                                <text x="360" y="65" text-anchor="middle" data-i18n="skills_iot_auto">IoT & Automatisering</text>
+                                <text x="360" y="65" text-anchor="middle" data-i18n="skills_iot_auto">IoT &
+                                    Automatisering</text>
                             </g>
                             <g class="topo-node hub-node" data-category="cat_support" data-skill="cat_support">
                                 <circle cx="360" cy="240" r="7" />
-                                <text x="360" y="225" text-anchor="middle" data-i18n="skills_support">Support & Communicatie</text>
+                                <text x="360" y="225" text-anchor="middle" data-i18n="skills_support">Support &
+                                    Communicatie</text>
                             </g>
 
                             <!-- Systems & Cloud Sub-nodes -->
@@ -670,15 +679,18 @@
                         <div class="skills-details-inner">
                             <h4 id="skill-details-title" data-i18n="skills_core_title">Kernvaardigheden</h4>
                             <div class="skills-details-content">
-                                <p id="skill-details-desc">Beweeg je muis over een onderdeel in het diagram om details, beheersingsniveau en homelab-integratie te bekijken.</p>
-                                
+                                <p id="skill-details-desc">Beweeg je muis over een onderdeel in het diagram om details,
+                                    beheersingsniveau en homelab-integratie te bekijken.</p>
+
                                 <div id="skill-details-meta" style="display: none;">
                                     <div class="skill-meta-item">
-                                        <span class="meta-label" data-i18n="skills_meta_proficiency_label">Beheersing:</span>
+                                        <span class="meta-label"
+                                            data-i18n="skills_meta_proficiency_label">Beheersing:</span>
                                         <span id="skill-meta-proficiency" class="proficiency-badge"></span>
                                     </div>
                                     <div class="skill-meta-item">
-                                        <span class="meta-label" data-i18n="skills_meta_integration_label">Homelab Integratie:</span>
+                                        <span class="meta-label" data-i18n="skills_meta_integration_label">Homelab
+                                            Integratie:</span>
                                         <p id="skill-meta-integration"></p>
                                     </div>
                                 </div>
@@ -1050,16 +1062,27 @@
                                         </div>
 
                                         <!-- Tetris Highscore Submission Overlay -->
-                                        <div id="tetris-highscore-overlay" class="tetris-overlay" style="display: none;">
+                                        <div id="tetris-highscore-overlay" class="tetris-overlay"
+                                            style="display: none;">
                                             <div class="overlay-content">
-                                                <h3 style="color: #BEA36B; margin: 0 0 0.5rem 0; font-size: 1.25rem;">Nieuwe Highscore!</h3>
-                                                <p style="font-size: 0.85rem; margin-bottom: 1rem; color: var(--text-secondary); line-height: 1.4;">Je hebt met <strong id="highscore-value-display" style="color: #BEA36B;">0</strong> punten de top 5 bereikt! Voer je naam in voor het scorebord:</p>
-                                                <div style="display: flex; flex-direction: column; gap: 0.75rem; align-items: center; width: 100%; max-width: 240px; margin: 0 auto 1.25rem;">
-                                                    <input type="text" id="highscore-name-input" maxlength="15" placeholder="Jouw Naam" style="background: rgba(17, 33, 61, 0.9); border: 1px solid var(--border-hover); color: var(--text-primary); padding: 0.5rem; border-radius: 6px; font-family: inherit; font-size: 0.9rem; width: 100%; text-align: center; box-sizing: border-box;" />
+                                                <h3 style="color: #BEA36B; margin: 0 0 0.5rem 0; font-size: 1.25rem;">
+                                                    Nieuwe Highscore!</h3>
+                                                <p
+                                                    style="font-size: 0.85rem; margin-bottom: 1rem; color: var(--text-secondary); line-height: 1.4;">
+                                                    Je hebt met <strong id="highscore-value-display"
+                                                        style="color: #BEA36B;">0</strong> punten de top 5 bereikt! Voer
+                                                    je naam in voor het scorebord:</p>
+                                                <div
+                                                    style="display: flex; flex-direction: column; gap: 0.75rem; align-items: center; width: 100%; max-width: 240px; margin: 0 auto 1.25rem;">
+                                                    <input type="text" id="highscore-name-input" maxlength="15"
+                                                        placeholder="Jouw Naam"
+                                                        style="background: rgba(17, 33, 61, 0.9); border: 1px solid var(--border-hover); color: var(--text-primary); padding: 0.5rem; border-radius: 6px; font-family: inherit; font-size: 0.9rem; width: 100%; text-align: center; box-sizing: border-box;" />
                                                 </div>
                                                 <div style="display: flex; gap: 0.5rem; justify-content: center;">
-                                                    <button class="btn btn-primary" id="submit-highscore-btn" style="min-width: 100px;">Opslaan</button>
-                                                    <button class="btn btn-secondary" id="cancel-highscore-btn" style="min-width: 100px;">Annuleren</button>
+                                                    <button class="btn btn-primary" id="submit-highscore-btn"
+                                                        style="min-width: 100px;">Opslaan</button>
+                                                    <button class="btn btn-secondary" id="cancel-highscore-btn"
+                                                        style="min-width: 100px;">Annuleren</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -1115,36 +1138,40 @@
     <div id="pipeline-modal" class="modal-overlay" aria-hidden="true">
         <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="pipeline-modal-title">
             <button class="modal-close" id="close-pipeline-modal" aria-label="Sluit pop-up">&times;</button>
-            
+
             <div class="modal-header">
                 <h2 id="pipeline-modal-title" data-i18n="modal_pipeline_title">Media Pipeline Gegevensstroom</h2>
             </div>
-            
+
             <div class="modal-body" style="height: 100%; overflow: hidden; padding: 1.5rem;">
                 <div class="pipeline-grid">
                     <div class="pipeline-diagram-container" style="position: relative;">
                         <!-- Flow Controls Panel -->
                         <div class="pipeline-controls">
-                            <button id="btn-toggle-flow" class="pipeline-control-btn" title="Schakel Gegevensstroom uit/aan" aria-label="Schakel Gegevensstroom uit/aan">
+                            <button id="btn-toggle-flow" class="pipeline-control-btn"
+                                title="Schakel Gegevensstroom uit/aan" aria-label="Schakel Gegevensstroom uit/aan">
                                 <svg class="control-icon icon-pause" viewBox="0 0 24 24" width="16" height="16">
                                     <rect x="6" y="4" width="4" height="16" fill="currentColor" rx="1" />
                                     <rect x="14" y="4" width="4" height="16" fill="currentColor" rx="1" />
                                 </svg>
-                                <svg class="control-icon icon-play" viewBox="0 0 24 24" width="16" height="16" style="display: none;">
+                                <svg class="control-icon icon-play" viewBox="0 0 24 24" width="16" height="16"
+                                    style="display: none;">
                                     <path d="M 8 5 L 19 12 L 8 19 Z" fill="currentColor" />
                                 </svg>
                             </button>
                         </div>
-                        
+
                         <svg viewBox="0 0 800 400" class="pipeline-svg">
                             <defs>
-                                <marker id="pipeline-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                                <marker id="pipeline-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5"
+                                    markerHeight="5" orient="auto-start-reverse">
                                     <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#808080" />
                                 </marker>
-                                <marker id="pipeline-arrow-active" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                                <marker id="pipeline-arrow-active" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5"
+                                    markerHeight="5" orient="auto-start-reverse">
                                     <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#BEA36B" />
                                 </marker>
-                                
+
                                 <!-- Enterprise Glow Filter for laser dot simulation -->
                                 <filter id="pipeline-glow" x="-30%" y="-30%" width="160%" height="160%">
                                     <feGaussianBlur stdDeviation="3.5" result="blur" />
@@ -1154,7 +1181,7 @@
                                     </feMerge>
                                 </filter>
                             </defs>
-                            
+
                             <!-- Background Grid -->
                             <g class="svg-grid" stroke-width="1">
                                 <line x1="0" y1="50" x2="800" y2="50" />
@@ -1164,7 +1191,7 @@
                                 <line x1="0" y1="250" x2="800" y2="250" />
                                 <line x1="0" y1="300" x2="800" y2="300" />
                                 <line x1="0" y1="350" x2="800" y2="350" />
-                                
+
                                 <line x1="100" y1="0" x2="100" y2="400" />
                                 <line x1="200" y1="0" x2="200" y2="400" />
                                 <line x1="300" y1="0" x2="300" y2="400" />
@@ -1173,128 +1200,183 @@
                                 <line x1="600" y1="0" x2="600" y2="400" />
                                 <line x1="700" y1="0" x2="700" y2="400" />
                             </g>
-                            
+
                             <!-- HP Thin Client Zone -->
-                            <rect x="155" y="15" width="235" height="370" rx="8" fill="rgba(24, 99, 246, 0.02)" stroke="rgba(24, 99, 246, 0.12)" stroke-width="1.2" stroke-dasharray="4 4" />
-                            <text x="165" y="32" font-family="sans-serif" font-size="10" font-weight="bold" fill="var(--text-secondary)" opacity="0.6">HP THIN CLIENT (PROXMOX VE)</text>
-                            
+                            <rect x="155" y="15" width="235" height="370" rx="8" fill="rgba(24, 99, 246, 0.02)"
+                                stroke="rgba(24, 99, 246, 0.12)" stroke-width="1.2" stroke-dasharray="4 4" />
+                            <text x="165" y="32" font-family="sans-serif" font-size="10" font-weight="bold"
+                                fill="var(--text-secondary)" opacity="0.6">HP THIN CLIENT (PROXMOX VE)</text>
+
                             <!-- Pi 5 Zone -->
-                            <rect x="415" y="15" width="375" height="370" rx="8" fill="rgba(190, 163, 107, 0.02)" stroke="rgba(190, 163, 107, 0.12)" stroke-width="1.2" stroke-dasharray="4 4" />
-                            <text x="425" y="32" font-family="sans-serif" font-size="10" font-weight="bold" fill="#BEA36B" opacity="0.8">RASPBERRY PI 5 (DOCKER & NAS)</text>
-                            
+                            <rect x="415" y="15" width="375" height="370" rx="8" fill="rgba(190, 163, 107, 0.02)"
+                                stroke="rgba(190, 163, 107, 0.12)" stroke-width="1.2" stroke-dasharray="4 4" />
+                            <text x="425" y="32" font-family="sans-serif" font-size="10" font-weight="bold"
+                                fill="#BEA36B" opacity="0.8">RASPBERRY PI 5 (DOCKER & NAS)</text>
+
                             <!-- Connection lines -->
                             <!-- Client to Overseerr -->
-                            <path d="M 125 195 L 175 195" stroke="#808080" stroke-width="2" marker-end="url(#pipeline-arrow)" />
-                            
+                            <path d="M 125 195 L 175 195" stroke="#808080" stroke-width="2"
+                                marker-end="url(#pipeline-arrow)" />
+
                             <!-- Overseerr to Sonarr/Radarr -->
-                            <path d="M 275 225 L 275 285" stroke="#808080" stroke-width="2" marker-end="url(#pipeline-arrow)" />
-                            
+                            <path d="M 275 225 L 275 285" stroke="#808080" stroke-width="2"
+                                marker-end="url(#pipeline-arrow)" />
+
                             <!-- Prowlarr <-> Sonarr/Radarr -->
-                            <path d="M 350 105 L 350 285" stroke="#808080" stroke-width="1.5" marker-end="url(#pipeline-arrow)" />
-                            <path d="M 350 285 L 350 105" stroke="#808080" stroke-width="1.5" marker-end="url(#pipeline-arrow)" />
-                            
+                            <path d="M 350 105 L 350 285" stroke="#808080" stroke-width="1.5"
+                                marker-end="url(#pipeline-arrow)" />
+                            <path d="M 350 285 L 350 105" stroke="#808080" stroke-width="1.5"
+                                marker-end="url(#pipeline-arrow)" />
+
                             <!-- Sonarr/Radarr to Gluetun VPN (API request to qBittorrent exposed port) -->
-                            <path d="M 375 305 C 410 305, 410 105, 440 105" stroke="#808080" stroke-width="2" marker-end="url(#pipeline-arrow)" />
-                            
+                            <path d="M 375 305 C 410 305, 410 105, 440 105" stroke="#808080" stroke-width="2"
+                                marker-end="url(#pipeline-arrow)" />
+
                             <!-- Gluetun VPN to qBittorrent (Exposed container network namespace) -->
-                            <path d="M 520 130 L 520 155" stroke="#1863F6" stroke-width="2" marker-end="url(#pipeline-arrow)" />
-                            
+                            <path d="M 520 130 L 520 155" stroke="#1863F6" stroke-width="2"
+                                marker-end="url(#pipeline-arrow)" />
+
                             <!-- Sonarr/Radarr to SabNZBd -->
-                            <path d="M 375 315 L 440 315" stroke="#808080" stroke-width="2" marker-end="url(#pipeline-arrow)" />
-                            
+                            <path d="M 375 315 L 440 315" stroke="#808080" stroke-width="2"
+                                marker-end="url(#pipeline-arrow)" />
+
                             <!-- qBittorrent & SabNZBd to SambaNAS -->
-                            <path d="M 600 185 C 615 185, 615 235, 635 235" stroke="#808080" stroke-width="2" marker-end="url(#pipeline-arrow)" />
-                            <path d="M 600 315 C 615 315, 615 295, 635 295" stroke="#808080" stroke-width="2" marker-end="url(#pipeline-arrow)" />
-                            
+                            <path d="M 600 185 C 615 185, 615 235, 635 235" stroke="#808080" stroke-width="2"
+                                marker-end="url(#pipeline-arrow)" />
+                            <path d="M 600 315 C 615 315, 615 295, 635 295" stroke="#808080" stroke-width="2"
+                                marker-end="url(#pipeline-arrow)" />
+
                             <!-- SambaNAS to Plex -->
-                            <path d="M 705 215 L 705 105" stroke="#BEA36B" stroke-width="2" marker-end="url(#pipeline-arrow)" />
-                            
+                            <path d="M 705 215 L 705 105" stroke="#BEA36B" stroke-width="2"
+                                marker-end="url(#pipeline-arrow)" />
+
                             <!-- Bind Mount virtual loops -->
-                            <path d="M 705 345 L 705 375 L 275 375 L 275 345" stroke="#BEA36B" stroke-width="1.5" stroke-dasharray="3 3" marker-end="url(#pipeline-arrow-active)" />
-                            <text x="490" y="367" font-family="sans-serif" font-size="9.5" fill="#BEA36B" text-anchor="middle" font-weight="bold" data-i18n="pipeline_bind_mount_label">LXC Bind-mount: Bestandsimport (Downloads &rarr; Media)</text>
-                            
+                            <path d="M 705 345 L 705 375 L 275 375 L 275 345" stroke="#BEA36B" stroke-width="1.5"
+                                stroke-dasharray="3 3" marker-end="url(#pipeline-arrow-active)" />
+                            <text x="490" y="367" font-family="sans-serif" font-size="9.5" fill="#BEA36B"
+                                text-anchor="middle" font-weight="bold" data-i18n="pipeline_bind_mount_label">LXC
+                                Bind-mount: Bestandsimport (Downloads &rarr; Media)</text>
+
                             <!-- Plex Streaming to Client -->
-                            <path d="M 705 45 L 705 8 L 70 8 L 70 170" stroke="#1863F6" stroke-width="1.8" stroke-dasharray="4 4" marker-end="url(#pipeline-arrow)" />
-                            <text x="385" y="22" font-family="sans-serif" font-size="10.5" fill="#1863F6" text-anchor="middle" font-weight="bold">Streaming (Plex / Jellyfin)</text>
-                            
+                            <path d="M 705 45 L 705 8 L 70 8 L 70 170" stroke="#1863F6" stroke-width="1.8"
+                                stroke-dasharray="4 4" marker-end="url(#pipeline-arrow)" />
+                            <text x="385" y="22" font-family="sans-serif" font-size="10.5" fill="#1863F6"
+                                text-anchor="middle" font-weight="bold">Streaming (Plex / Jellyfin)</text>
+
                             <!-- Animated Flow Paths (Mathematically aligned to connections, rendered on top of connections but behind nodes) -->
-                            <path id="flow-path-usenet" class="pipeline-flow-path" d="M 125 195 L 175 195 L 275 225 L 275 285 L 375 315 L 440 315 L 600 315 C 615 315, 615 295, 635 295 L 705 215 L 705 105 L 705 45 L 705 8 L 70 8 L 70 170" stroke="#BEA36B" />
-                            <path id="flow-path-torrent" class="pipeline-flow-path" d="M 125 195 L 175 195 L 275 225 L 275 285 L 375 305 C 410 305, 410 105, 440 105 L 520 105 L 520 130 L 520 155 L 600 185 C 615 185, 615 235, 635 235 L 705 215 L 705 105 L 705 45 L 705 8 L 70 8 L 70 170" stroke="#1863F6" />
-                            
+                            <path id="flow-path-usenet" class="pipeline-flow-path"
+                                d="M 125 195 L 175 195 L 275 225 L 275 285 L 375 315 L 440 315 L 600 315 C 615 315, 615 295, 635 295 L 705 215 L 705 105 L 705 45 L 705 8 L 70 8 L 70 170"
+                                stroke="#BEA36B" />
+                            <path id="flow-path-torrent" class="pipeline-flow-path"
+                                d="M 125 195 L 175 195 L 275 225 L 275 285 L 375 305 C 410 305, 410 105, 440 105 L 520 105 L 520 130 L 520 155 L 600 185 C 615 185, 615 235, 635 235 L 705 215 L 705 105 L 705 45 L 705 8 L 70 8 L 70 170"
+                                stroke="#1863F6" />
+
                             <!-- Nodes -->
                             <!-- Client -->
                             <g class="pipeline-node" data-node="client">
-                                <rect x="15" y="170" width="110" height="50" rx="6" class="svg-node-bg" stroke="#808080" stroke-width="1.5" />
-                                <text x="70" y="194" font-family="sans-serif" font-size="13" font-weight="bold" class="svg-text-primary" text-anchor="middle">Client</text>
-                                <text x="70" y="212" font-family="sans-serif" font-size="10" class="svg-text-muted" text-anchor="middle">LAN / Tailscale</text>
+                                <rect x="15" y="170" width="110" height="50" rx="6" class="svg-node-bg" stroke="#808080"
+                                    stroke-width="1.5" />
+                                <text x="70" y="194" font-family="sans-serif" font-size="13" font-weight="bold"
+                                    class="svg-text-primary" text-anchor="middle">Client</text>
+                                <text x="70" y="212" font-family="sans-serif" font-size="10" class="svg-text-muted"
+                                    text-anchor="middle">LAN / Tailscale</text>
                             </g>
-                            
+
                             <!-- Overseerr -->
                             <g class="pipeline-node" data-node="overseerr">
-                                <rect x="175" y="165" width="200" height="60" rx="6" class="svg-node-bg" stroke="#808080" stroke-width="1.5" />
-                                <text x="275" y="190" font-family="sans-serif" font-size="13.5" font-weight="bold" class="svg-text-primary" text-anchor="middle">Overseerr</text>
-                                <text x="275" y="208" font-family="sans-serif" font-size="10.5" class="svg-text-muted" text-anchor="middle">Request Manager (Port 5055)</text>
+                                <rect x="175" y="165" width="200" height="60" rx="6" class="svg-node-bg"
+                                    stroke="#808080" stroke-width="1.5" />
+                                <text x="275" y="190" font-family="sans-serif" font-size="13.5" font-weight="bold"
+                                    class="svg-text-primary" text-anchor="middle">Overseerr</text>
+                                <text x="275" y="208" font-family="sans-serif" font-size="10.5" class="svg-text-muted"
+                                    text-anchor="middle">Request Manager (Port 5055)</text>
                             </g>
-                            
+
                             <!-- Prowlarr -->
                             <g class="pipeline-node" data-node="prowlarr">
-                                <rect x="175" y="45" width="200" height="60" rx="6" class="svg-node-bg" stroke="#808080" stroke-width="1.5" />
-                                <text x="275" y="70" font-family="sans-serif" font-size="13.5" font-weight="bold" class="svg-text-primary" text-anchor="middle">Prowlarr</text>
-                                <text x="275" y="88" font-family="sans-serif" font-size="10.5" class="svg-text-muted" text-anchor="middle">Indexer Sync (Port 9696)</text>
+                                <rect x="175" y="45" width="200" height="60" rx="6" class="svg-node-bg" stroke="#808080"
+                                    stroke-width="1.5" />
+                                <text x="275" y="70" font-family="sans-serif" font-size="13.5" font-weight="bold"
+                                    class="svg-text-primary" text-anchor="middle">Prowlarr</text>
+                                <text x="275" y="88" font-family="sans-serif" font-size="10.5" class="svg-text-muted"
+                                    text-anchor="middle">Indexer Sync (Port 9696)</text>
                             </g>
-                            
+
                             <!-- Sonarr/Radarr -->
                             <g class="pipeline-node" data-node="sonarr_radarr">
-                                <rect x="175" y="285" width="200" height="60" rx="6" class="svg-node-bg" stroke="#808080" stroke-width="1.5" />
-                                <text x="275" y="310" font-family="sans-serif" font-size="13.5" font-weight="bold" class="svg-text-primary" text-anchor="middle">Sonarr & Radarr</text>
-                                <text x="275" y="328" font-family="sans-serif" font-size="10.5" class="svg-text-muted" text-anchor="middle">Media Managers (8989/7878)</text>
+                                <rect x="175" y="285" width="200" height="60" rx="6" class="svg-node-bg"
+                                    stroke="#808080" stroke-width="1.5" />
+                                <text x="275" y="310" font-family="sans-serif" font-size="13.5" font-weight="bold"
+                                    class="svg-text-primary" text-anchor="middle">Sonarr & Radarr</text>
+                                <text x="275" y="328" font-family="sans-serif" font-size="10.5" class="svg-text-muted"
+                                    text-anchor="middle">Media Managers (8989/7878)</text>
                             </g>
-                            
+
                             <!-- Gluetun VPN -->
                             <g class="pipeline-node" data-node="vpn">
-                                <rect x="440" y="80" width="160" height="50" rx="6" class="svg-node-bg" stroke="#1863F6" stroke-width="1.5" />
-                                <text x="520" y="102" font-family="sans-serif" font-size="12.5" font-weight="bold" class="svg-text-primary" text-anchor="middle">Gluetun VPN</text>
-                                <text x="520" y="118" font-family="sans-serif" font-size="10" fill="#1863F6" text-anchor="middle">WireGuard Tunnel</text>
+                                <rect x="440" y="80" width="160" height="50" rx="6" class="svg-node-bg" stroke="#1863F6"
+                                    stroke-width="1.5" />
+                                <text x="520" y="102" font-family="sans-serif" font-size="12.5" font-weight="bold"
+                                    class="svg-text-primary" text-anchor="middle">Gluetun VPN</text>
+                                <text x="520" y="118" font-family="sans-serif" font-size="10" fill="#1863F6"
+                                    text-anchor="middle">WireGuard Tunnel</text>
                             </g>
-                            
+
                             <!-- qBittorrent -->
                             <g class="pipeline-node" data-node="qbittorrent">
-                                <rect x="440" y="155" width="160" height="60" rx="6" class="svg-node-bg" stroke="#808080" stroke-width="1.5" />
-                                <text x="520" y="180" font-family="sans-serif" font-size="13.5" font-weight="bold" class="svg-text-primary" text-anchor="middle">qBittorrent</text>
-                                <text x="520" y="198" font-family="sans-serif" font-size="10.5" class="svg-text-muted" text-anchor="middle">Torrent Client (Port 8080)</text>
+                                <rect x="440" y="155" width="160" height="60" rx="6" class="svg-node-bg"
+                                    stroke="#808080" stroke-width="1.5" />
+                                <text x="520" y="180" font-family="sans-serif" font-size="13.5" font-weight="bold"
+                                    class="svg-text-primary" text-anchor="middle">qBittorrent</text>
+                                <text x="520" y="198" font-family="sans-serif" font-size="10.5" class="svg-text-muted"
+                                    text-anchor="middle">Torrent Client (Port 8080)</text>
                             </g>
-                            
+
                             <!-- SabNZBd -->
                             <g class="pipeline-node" data-node="sabnzbd">
-                                <rect x="440" y="285" width="160" height="60" rx="6" class="svg-node-bg" stroke="#808080" stroke-width="1.5" />
-                                <text x="520" y="310" font-family="sans-serif" font-size="13.5" font-weight="bold" class="svg-text-primary" text-anchor="middle">SabNZBD</text>
-                                <text x="520" y="328" font-family="sans-serif" font-size="10.5" class="svg-text-muted" text-anchor="middle">Usenet Client (Port 8089)</text>
+                                <rect x="440" y="285" width="160" height="60" rx="6" class="svg-node-bg"
+                                    stroke="#808080" stroke-width="1.5" />
+                                <text x="520" y="310" font-family="sans-serif" font-size="13.5" font-weight="bold"
+                                    class="svg-text-primary" text-anchor="middle">SabNZBD</text>
+                                <text x="520" y="328" font-family="sans-serif" font-size="10.5" class="svg-text-muted"
+                                    text-anchor="middle">Usenet Client (Port 8089)</text>
                             </g>
-                            
+
                             <!-- SambaNAS -->
                             <g class="pipeline-node" data-node="nas">
-                                <rect x="635" y="215" width="140" height="130" rx="6" class="svg-node-bg" stroke="#808080" stroke-width="1.5" />
-                                <text x="705" y="240" font-family="sans-serif" font-size="13.5" font-weight="bold" class="svg-text-primary" text-anchor="middle">SambaNAS</text>
-                                <text x="705" y="255" font-family="sans-serif" font-size="10.5" class="svg-text-muted" text-anchor="middle">Central Storage</text>
-                                
-                                <rect x="645" y="270" width="120" height="65" rx="4" fill="rgba(190, 163, 107, 0.05)" stroke="rgba(190, 163, 107, 0.2)" stroke-width="1" />
-                                <text x="705" y="285" font-family="JetBrains Mono" font-size="9.5" fill="#BEA36B" text-anchor="middle">/Plex/Downloads</text>
-                                <text x="705" y="300" font-family="JetBrains Mono" font-size="9.5" fill="#BEA36B" text-anchor="middle">/Plex/Movies</text>
-                                <text x="705" y="315" font-family="JetBrains Mono" font-size="9.5" fill="#BEA36B" text-anchor="middle">/Plex/Series</text>
+                                <rect x="635" y="215" width="140" height="130" rx="6" class="svg-node-bg"
+                                    stroke="#808080" stroke-width="1.5" />
+                                <text x="705" y="240" font-family="sans-serif" font-size="13.5" font-weight="bold"
+                                    class="svg-text-primary" text-anchor="middle">SambaNAS</text>
+                                <text x="705" y="255" font-family="sans-serif" font-size="10.5" class="svg-text-muted"
+                                    text-anchor="middle">Central Storage</text>
+
+                                <rect x="645" y="270" width="120" height="65" rx="4" fill="rgba(190, 163, 107, 0.05)"
+                                    stroke="rgba(190, 163, 107, 0.2)" stroke-width="1" />
+                                <text x="705" y="285" font-family="JetBrains Mono" font-size="9.5" fill="#BEA36B"
+                                    text-anchor="middle">/Plex/Downloads</text>
+                                <text x="705" y="300" font-family="JetBrains Mono" font-size="9.5" fill="#BEA36B"
+                                    text-anchor="middle">/Plex/Movies</text>
+                                <text x="705" y="315" font-family="JetBrains Mono" font-size="9.5" fill="#BEA36B"
+                                    text-anchor="middle">/Plex/Series</text>
                             </g>
-                            
+
                             <!-- Plex -->
                             <g class="pipeline-node" data-node="plex">
-                                <rect x="635" y="45" width="140" height="60" rx="6" class="svg-node-bg" stroke="#808080" stroke-width="1.5" />
-                                <text x="705" y="70" font-family="sans-serif" font-size="13" font-weight="bold" class="svg-text-primary" text-anchor="middle">Plex Media Server</text>
-                                <text x="705" y="88" font-family="sans-serif" font-size="10.5" class="svg-text-muted" text-anchor="middle">Streamer (Port 32400)</text>
+                                <rect x="635" y="45" width="140" height="60" rx="6" class="svg-node-bg" stroke="#808080"
+                                    stroke-width="1.5" />
+                                <text x="705" y="70" font-family="sans-serif" font-size="13" font-weight="bold"
+                                    class="svg-text-primary" text-anchor="middle">Plex Media Server</text>
+                                <text x="705" y="88" font-family="sans-serif" font-size="10.5" class="svg-text-muted"
+                                    text-anchor="middle">Streamer (Port 32400)</text>
                             </g>
                         </svg>
                     </div>
-                    
+
                     <div class="pipeline-details-container">
                         <div class="pipeline-details-card">
-                            <div class="card-header" style="border-bottom: 1px solid rgba(128, 128, 128, 0.15); display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem;">
+                            <div class="card-header"
+                                style="border-bottom: 1px solid rgba(128, 128, 128, 0.15); display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem;">
                                 <span class="status-indicator online pulsing"></span>
                                 <span class="card-title" data-i18n="pipeline_details_title">Component Details</span>
                             </div>

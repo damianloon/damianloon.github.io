@@ -874,28 +874,29 @@ function updateSkillLabels(lang) {
     });
 }
 
-// Logo mapping per skill — Simple Icons CDN met huisstijl goudkleur
+// Logo mapping per skill — officiële brandkleuren via Simple Icons CDN
 // Let op: Microsoft-logo's zijn verwijderd van Simple Icons (trademark verzoek 2024)
-// Windows logo is embedded als inline SVG data-URI
-const WINDOWS_LOGO_SVG = `data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23BEA36B' d='M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801'/></svg>`;
+// Windows logo is embedded als inline SVG data-URI in officieel Windows-blauw
+const WINDOWS_LOGO_SVG = `data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%230078D4' d='M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801'/></svg>`;
 
 const SKILL_LOGOS = {
-    linux:            'https://cdn.simpleicons.org/linux/BEA36B',
+    linux:            'https://cdn.simpleicons.org/linux',
     windows_ad:       WINDOWS_LOGO_SVG,
-    virt_cloud:       'https://cdn.simpleicons.org/proxmox/BEA36B',
-    net_mgmt:         'https://cdn.simpleicons.org/pihole/BEA36B',
-    vpn_security:     'https://cdn.simpleicons.org/wireguard/BEA36B',
-    monitoring:       'https://cdn.simpleicons.org/uptimekuma/BEA36B',
-    iot_integration:  'https://cdn.simpleicons.org/homeassistant/BEA36B',
-    docker_backup:    'https://cdn.simpleicons.org/docker/BEA36B',
-    sys_automation:   'https://cdn.simpleicons.org/gnubash/BEA36B',
-    customer_support: 'https://cdn.simpleicons.org/zendesk/BEA36B',
-    troubleshooting:  'https://cdn.simpleicons.org/jira/BEA36B',
-    documentation:    'https://cdn.simpleicons.org/bookstack/BEA36B',
-    cat_systems_cloud:'https://cdn.simpleicons.org/proxmox/BEA36B',
-    cat_net_sec:      'https://cdn.simpleicons.org/wireshark/BEA36B',
-    cat_iot_auto:     'https://cdn.simpleicons.org/homeassistant/BEA36B',
-    cat_support:      'https://cdn.simpleicons.org/zendesk/BEA36B',
+    virt_cloud:       'https://cdn.simpleicons.org/proxmox',
+    net_mgmt:         'https://cdn.simpleicons.org/pihole',
+    vpn_security:     'https://cdn.simpleicons.org/wireguard',
+    monitoring:       'https://cdn.simpleicons.org/uptimekuma',
+    iot_integration:  'https://cdn.simpleicons.org/homeassistant',
+    docker_backup:    'https://cdn.simpleicons.org/docker',
+    sys_automation:   null,
+    customer_support: null,
+    troubleshooting:  null,
+    documentation:    null,
+    // Categorie-nodes krijgen geen logo
+    cat_systems_cloud: null,
+    cat_net_sec:       null,
+    cat_iot_auto:      null,
+    cat_support:       null,
 };
 
 function setSkillLogo(skillKey) {

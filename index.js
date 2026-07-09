@@ -1166,6 +1166,20 @@ function openPipelineModal() {
         
         // Select Overseerr by default on open
         selectPipelineNode('overseerr');
+        
+        // Reset toggle button UI to running
+        isPipelineFlowRunning = true;
+        const btn = document.getElementById('btn-toggle-flow');
+        if (btn) {
+            const pauseIcon = btn.querySelector('.icon-pause');
+            const playIcon = btn.querySelector('.icon-play');
+            if (pauseIcon) pauseIcon.style.display = 'block';
+            if (playIcon) playIcon.style.display = 'none';
+            btn.setAttribute('title', 'Schakel Gegevensstroom uit');
+        }
+
+        // Start simulated data flow
+        startPipelineFlowAnimation();
     }
 }
 
@@ -1174,6 +1188,9 @@ function closePipelineModal() {
         pipelineModal.classList.remove('active');
         pipelineModal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
+        
+        // Stop simulated data flow
+        stopPipelineFlowAnimation();
     }
 }
 
@@ -1261,4 +1278,80 @@ function renderPipelineDetails(nodeKey) {
             </div>
         `;
     }
+}
+
+// --- Gegevensstroom (Flow) Simulation Animation Switcher ---
+let pipelineFlowInterval = null;
+let currentFlowType = 'usenet'; // 'usenet' or 'torrent'
+let isPipelineFlowRunning = true;
+
+function startPipelineFlowAnimation() {
+    stopPipelineFlowAnimation();
+    
+    const usenetPath = document.getElementById('flow-path-usenet');
+    const torrentPath = document.getElementById('flow-path-torrent');
+    
+    if (usenetPath && torrentPath) {
+        usenetPath.classList.add('active');
+        torrentPath.classList.remove('active');
+        currentFlowType = 'usenet';
+    }
+
+    pipelineFlowInterval = setInterval(() => {
+        const uPath = document.getElementById('flow-path-usenet');
+        const tPath = document.getElementById('flow-path-torrent');
+        if (!uPath || !tPath) return;
+
+        if (currentFlowType === 'usenet') {
+            uPath.classList.remove('active');
+            tPath.classList.add('active');
+            currentFlowType = 'torrent';
+        } else {
+            tPath.classList.remove('active');
+            uPath.classList.add('active');
+            currentFlowType = 'usenet';
+        }
+    }, 3000); // Switches path flow every 3 seconds
+}
+
+function stopPipelineFlowAnimation() {
+    if (pipelineFlowInterval) {
+        clearInterval(pipelineFlowInterval);
+        pipelineFlowInterval = null;
+    }
+    const usenetPath = document.getElementById('flow-path-usenet');
+    const torrentPath = document.getElementById('flow-path-torrent');
+    if (usenetPath) usenetPath.classList.remove('active');
+    if (torrentPath) torrentPath.classList.remove('active');
+}
+
+function togglePipelineFlowAnimation() {
+    const btn = document.getElementById('btn-toggle-flow');
+    if (!btn) return;
+    
+    const pauseIcon = btn.querySelector('.icon-pause');
+    const playIcon = btn.querySelector('.icon-play');
+    
+    if (isPipelineFlowRunning) {
+        stopPipelineFlowAnimation();
+        isPipelineFlowRunning = false;
+        if (pauseIcon) pauseIcon.style.display = 'none';
+        if (playIcon) playIcon.style.display = 'block';
+        btn.setAttribute('title', 'Schakel Gegevensstroom in');
+    } else {
+        startPipelineFlowAnimation();
+        isPipelineFlowRunning = true;
+        if (pauseIcon) pauseIcon.style.display = 'block';
+        if (playIcon) playIcon.style.display = 'none';
+        btn.setAttribute('title', 'Schakel Gegevensstroom uit');
+    }
+}
+
+// Bind controls panel toggle button
+const btnToggleFlow = document.getElementById('btn-toggle-flow');
+if (btnToggleFlow) {
+    btnToggleFlow.addEventListener('click', (e) => {
+        e.stopPropagation();
+        togglePipelineFlowAnimation();
+    });
 }

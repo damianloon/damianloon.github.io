@@ -2644,3 +2644,85 @@ html.splash-active .site-header {
     stroke-width: 2px;
     fill: rgba(190, 163, 107, 0.08);
 }
+
+/* --- Animated Gegevensstroom (Flow) Styles --- */
+.pipeline-flow-path {
+    fill: none;
+    stroke-width: 6px; /* Diameter of the dot */
+    stroke-linecap: round;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    pointer-events: none;
+    filter: url(#pipeline-glow); /* Enterprise laser glow effect */
+}
+
+.pipeline-flow-path.active {
+    opacity: 0.9;
+    animation: pipeline-flow-anim 0.8s linear infinite; /* Light-speed data flow */
+}
+
+@keyframes pipeline-flow-anim {
+    0% {
+        stroke-dasharray: 0.1, 70; /* Wider spacing to make individual high-speed pulses distinct */
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dasharray: 0.1, 70;
+        stroke-dashoffset: -140px; /* Seamless loop multiple of spacing */
+    }
+}
+
+/* --- Enterprise Flow Controls Overlay --- */
+.pipeline-controls {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.pipeline-control-btn {
+    background: rgba(17, 33, 61, 0.7);
+    border: 1px solid rgba(128, 128, 128, 0.25);
+    color: var(--text-primary);
+    padding: 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+    width: 32px;
+    height: 32px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.pipeline-control-btn:hover {
+    background: rgba(190, 163, 107, 0.18);
+    border-color: #BEA36B;
+    color: #BEA36B;
+    transform: translateY(-1px);
+}
+
+.pipeline-control-btn:active {
+    transform: translateY(0);
+}
+
+:root[data-theme="light"] .pipeline-control-btn {
+    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(0, 0, 0, 0.12);
+    color: var(--text-primary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+:root[data-theme="light"] .pipeline-control-btn:hover {
+    background: rgba(190, 163, 107, 0.12);
+    border-color: #BEA36B;
+    color: #BEA36B;
+}
+
+.control-icon {
+    display: block;
+    pointer-events: none;
+}

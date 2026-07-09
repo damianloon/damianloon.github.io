@@ -978,7 +978,20 @@
             
             <div class="modal-body" style="height: 100%; overflow: hidden; padding: 1.5rem;">
                 <div class="pipeline-grid">
-                    <div class="pipeline-diagram-container">
+                    <div class="pipeline-diagram-container" style="position: relative;">
+                        <!-- Flow Controls Panel -->
+                        <div class="pipeline-controls">
+                            <button id="btn-toggle-flow" class="pipeline-control-btn" title="Schakel Gegevensstroom uit/aan" aria-label="Schakel Gegevensstroom uit/aan">
+                                <svg class="control-icon icon-pause" viewBox="0 0 24 24" width="16" height="16">
+                                    <rect x="6" y="4" width="4" height="16" fill="currentColor" rx="1" />
+                                    <rect x="14" y="4" width="4" height="16" fill="currentColor" rx="1" />
+                                </svg>
+                                <svg class="control-icon icon-play" viewBox="0 0 24 24" width="16" height="16" style="display: none;">
+                                    <path d="M 8 5 L 19 12 L 8 19 Z" fill="currentColor" />
+                                </svg>
+                            </button>
+                        </div>
+                        
                         <svg viewBox="0 0 800 400" class="pipeline-svg">
                             <defs>
                                 <marker id="pipeline-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
@@ -987,6 +1000,15 @@
                                 <marker id="pipeline-arrow-active" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
                                     <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#BEA36B" />
                                 </marker>
+                                
+                                <!-- Enterprise Glow Filter for laser dot simulation -->
+                                <filter id="pipeline-glow" x="-30%" y="-30%" width="160%" height="160%">
+                                    <feGaussianBlur stdDeviation="3.5" result="blur" />
+                                    <feMerge>
+                                        <feMergeNode in="blur" />
+                                        <feMergeNode in="SourceGraphic" />
+                                    </feMerge>
+                                </filter>
                             </defs>
                             
                             <!-- Background Grid -->
@@ -1027,14 +1049,14 @@
                             <path d="M 350 105 L 350 285" stroke="#808080" stroke-width="1.5" marker-end="url(#pipeline-arrow)" />
                             <path d="M 350 285 L 350 105" stroke="#808080" stroke-width="1.5" marker-end="url(#pipeline-arrow)" />
                             
-                            <!-- Sonarr/Radarr to qBittorrent -->
-                            <path d="M 375 305 C 405 305, 405 185, 440 185" stroke="#808080" stroke-width="2" marker-end="url(#pipeline-arrow)" />
+                            <!-- Sonarr/Radarr to Gluetun VPN (API request to qBittorrent exposed port) -->
+                            <path d="M 375 305 C 410 305, 410 105, 440 105" stroke="#808080" stroke-width="2" marker-end="url(#pipeline-arrow)" />
+                            
+                            <!-- Gluetun VPN to qBittorrent (Exposed container network namespace) -->
+                            <path d="M 520 130 L 520 155" stroke="#1863F6" stroke-width="2" marker-end="url(#pipeline-arrow)" />
                             
                             <!-- Sonarr/Radarr to SabNZBd -->
                             <path d="M 375 315 L 440 315" stroke="#808080" stroke-width="2" marker-end="url(#pipeline-arrow)" />
-                            
-                            <!-- qBittorrent to Gluetun VPN -->
-                            <path d="M 520 155 L 520 130" stroke="#1863F6" stroke-width="2" marker-end="url(#pipeline-arrow)" />
                             
                             <!-- qBittorrent & SabNZBd to SambaNAS -->
                             <path d="M 600 185 C 615 185, 615 235, 635 235" stroke="#808080" stroke-width="2" marker-end="url(#pipeline-arrow)" />
@@ -1050,6 +1072,10 @@
                             <!-- Plex Streaming to Client -->
                             <path d="M 705 45 L 705 8 L 70 8 L 70 170" stroke="#1863F6" stroke-width="1.8" stroke-dasharray="4 4" marker-end="url(#pipeline-arrow)" />
                             <text x="385" y="22" font-family="sans-serif" font-size="10.5" fill="#1863F6" text-anchor="middle" font-weight="bold">Streaming (Plex / Jellyfin)</text>
+                            
+                            <!-- Animated Flow Paths (Mathematically aligned to connections, rendered on top of connections but behind nodes) -->
+                            <path id="flow-path-usenet" class="pipeline-flow-path" d="M 125 195 L 175 195 L 275 225 L 275 285 L 375 315 L 440 315 L 600 315 C 615 315, 615 295, 635 295 L 705 215 L 705 105 L 705 45 L 705 8 L 70 8 L 70 170" stroke="#BEA36B" />
+                            <path id="flow-path-torrent" class="pipeline-flow-path" d="M 125 195 L 175 195 L 275 225 L 275 285 L 375 305 C 410 305, 410 105, 440 105 L 520 105 L 520 130 L 520 155 L 600 185 C 615 185, 615 235, 635 235 L 705 215 L 705 105 L 705 45 L 705 8 L 70 8 L 70 170" stroke="#1863F6" />
                             
                             <!-- Nodes -->
                             <!-- Client -->

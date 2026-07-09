@@ -1188,13 +1188,21 @@ body {
     opacity: 0.05;
 }
 
+/* Onzichtbare hitzone voor makkelijker hoveren/klikken */
+.node-hitzone {
+    fill: transparent;
+    stroke: none;
+    pointer-events: all;
+    cursor: pointer;
+}
+
 /* Node circle/text styling */
 .topo-node {
     cursor: pointer;
     will-change: opacity;
 }
 
-.topo-node circle {
+.topo-node circle:not(.node-hitzone) {
     fill: var(--bg-card);
     stroke: var(--border-color);
     stroke-width: 1.5px;
@@ -1210,7 +1218,9 @@ body {
     fill: var(--text-muted);
     transition: fill 0.3s ease, font-weight 0.3s ease, opacity 0.3s ease;
     user-select: none;
-    pointer-events: none;
+    /* Tekst ook klikbaar maken als onderdeel van de node-hitzone */
+    pointer-events: all;
+    cursor: pointer;
 }
 
 /* Center node specifics */
@@ -1228,7 +1238,7 @@ body {
 }
 
 /* Category hub node specifics */
-.hub-node circle {
+.hub-node circle:not(.node-hitzone) {
     fill: var(--bg-card);
     stroke: var(--text-muted);
     stroke-width: 1.5px;
@@ -1242,8 +1252,8 @@ body {
 }
 
 /* Hover node overrides */
-.topo-node:hover circle,
-.topo-node.active circle {
+.topo-node:hover circle:not(.node-hitzone),
+.topo-node.active circle:not(.node-hitzone) {
     fill: #BEA36B;
     stroke: #BEA36B;
     filter: url(#node-glow);

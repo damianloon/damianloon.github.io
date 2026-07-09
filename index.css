@@ -398,7 +398,8 @@ body {
 }
 
 /* --- Interactive SVG Styling --- */
-.network-svg path {
+.network-svg path,
+.pipeline-svg path {
     fill: none;
 }
 
@@ -2524,7 +2525,7 @@ html.splash-active .site-header {
 /* --- Pipeline Modal & Diagram CSS Styles --- */
 .pipeline-grid {
     display: grid;
-    grid-template-columns: 1.8fr 1.2fr;
+    grid-template-columns: 2.2fr 0.8fr;
     gap: 1.5rem;
     height: 100%;
     min-height: 0;

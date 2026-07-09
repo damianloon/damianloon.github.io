@@ -439,36 +439,28 @@
                         Netwerktekening</button>
                 </div>
 
-                <!-- Project 2 (Lokale Spraakassistent) -->
+                <!-- Project 2 (Geautomatiseerde Media Pipeline & SambaNAS) -->
                 <div class="project-card">
                     <div class="project-tags">
-                        <span class="tag">ESPHome</span>
-                        <span class="tag">Home Assistant</span>
-                        <span class="tag">ESP32-S3</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">Samba (SMB)</span>
+                        <span class="tag">VPN Routing</span>
                     </div>
-                    <h3 data-i18n="project_voice_title">Lokale Privacy-Vriendelijke Spraakassistent</h3>
-                    <p class="project-desc" data-i18n="project_voice_desc">Een volledig lokaal draaiende spraakassistent
-                        die is geïntegreerd met Home
-                        Assistant, zonder cloud-afhankelijkheid.</p>
+                    <h3 data-i18n="project_nas_title">Geautomatiseerde Media Pipeline & SambaNAS</h3>
+                    <p class="project-desc" data-i18n="project_nas_desc">Een gecentraliseerde netwerkopslag (NAS) en geautomatiseerde download- en mediapipeline draaiend op een energiezuinige Raspberry Pi 5.</p>
 
                     <div class="project-details">
                         <div class="detail-block">
-                            <h4 data-i18n="project_voice_prob_title">Het Probleem</h4>
-                            <p data-i18n="project_voice_prob_desc">Commerciële spraakassistenten sturen audiogegevens
-                                naar cloudservers, wat privacyrisico's
-                                oplevert en cloud-afhankelijkheid creëert.</p>
+                            <h4 data-i18n="project_nas_prob_title">Het Probleem</h4>
+                            <p data-i18n="project_nas_prob_desc">Het handmatig downloaden, hernoemen, sorteren en streamen van media naar verschillende apparaten in huis is tijdrovend. Daarnaast is downloaden via openbare netwerken onveilig en is er een centrale, veilige opslaglocatie nodig.</p>
                         </div>
                         <div class="detail-block">
-                            <h4 data-i18n="project_voice_sol_title">De Oplossing</h4>
-                            <p data-i18n="project_voice_sol_desc">Een op maat gebouwde assistant met een ReSpeaker Lite
-                                (ESP32-S3) in een zelf-geprinte
-                                akoestische behuizing. Communiceert lokaal via Wyoming (Whisper & Piper).</p>
+                            <h4 data-i18n="project_nas_sol_title">De Oplossing</h4>
+                            <p data-i18n="project_nas_sol_desc">Een gedistribueerde media-infrastructuur over twee nodes: een Raspberry Pi 5 (Docker-host & SambaNAS-opslag) en een HP Thin Client (Proxmox hypervisor). De automatiseringstools (Sonarr/Radarr) communiceren direct via API's met de Pi 5.</p>
                         </div>
                         <div class="detail-block">
-                            <h4 data-i18n="project_voice_lessons_title">Geleerde Lessen</h4>
-                            <p data-i18n="project_voice_lessons_desc">Signaalverwerking en akoestische demping,
-                                microcontrollers configureren met ESPHome, en
-                                lokale AI-modellen optimaliseren op latency.</p>
+                            <h4 data-i18n="project_nas_lessons_title">Geleerde Lessen</h4>
+                            <p data-i18n="project_nas_lessons_desc">Configuratie van API-communicatie tussen fysieke servers (Multi-Node), containerverkeer routeren via een VPN-container met kill-switch, en rechtenbeheer (PUID/PGID) bij SMB/NFS-shares.</p>
                         </div>
                     </div>
                 </div>

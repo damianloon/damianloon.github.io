@@ -1142,15 +1142,18 @@ body {
     justify-content: center;
     position: relative;
     overflow: hidden;
-    /* Vergrendel de hoogte zodat SVG-filters de layout niet verschuiven */
-    min-height: 320px;
-    max-height: 420px;
+    /* Vaste hoogte zodat de wrapper nooit kan verschuiven */
+    height: 360px;
 }
 
 .skills-topology-svg {
     overflow: hidden;
     display: block;
-    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    /* Vaste aspect-ratio op basis van de viewBox (800x320) */
+    aspect-ratio: 800 / 320;
+    max-height: 320px;
 }
 
 /* Subtiele raster-achtergrondwatermerk */
@@ -1206,10 +1209,9 @@ body {
     fill: var(--bg-card);
     stroke: var(--border-color);
     stroke-width: 1.5px;
-    transition: fill 0.3s ease, stroke 0.3s ease, stroke-width 0.3s ease;
+    transition: fill 0.3s ease, stroke 0.3s ease, stroke-width 0.3s ease, filter 0.3s ease;
     transform-box: fill-box;
     transform-origin: center;
-    will-change: filter;
 }
 
 .topo-node text {
@@ -1256,13 +1258,14 @@ body {
 .topo-node.active circle:not(.node-hitzone) {
     fill: #BEA36B;
     stroke: #BEA36B;
-    filter: url(#node-glow);
+    /* CSS drop-shadow ipv SVG filter — veroorzaakt geen layout-shift */
+    filter: drop-shadow(0 0 4px rgba(190, 163, 107, 0.8));
 }
 
 .topo-node:hover text,
 .topo-node.active text {
     fill: var(--text-primary);
-    font-weight: 600;
+    /* font-weight NIET aanpassen: dat vergroot de tekst en veroorzaakt layout-shift */
     opacity: 1;
 }
 

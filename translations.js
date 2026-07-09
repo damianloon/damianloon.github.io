@@ -123,7 +123,8 @@ const translations = {
             project_view_pipeline: "Bekijk Gegevensstroom",
             modal_pipeline_title: "Media Pipeline Gegevensstroom",
             pipeline_details_title: "Component Details",
-            pipeline_desc_title: "Beschrijving & Werking"
+            pipeline_desc_title: "Beschrijving & Werking",
+            pipeline_bind_mount_label: "LXC Bind-mount: Bestandsimport (Downloads &rarr; Media)"
         },
         nodeData: {
             remote: {
@@ -308,7 +309,7 @@ const translations = {
                 specs: {
                     "Type": "Docker Container",
                     "OS": "Raspberry Pi OS",
-                    "Poort": "8085 (Web UI)",
+                    "Poort": "8089 (Web UI)",
                     "Netwerk": "SSL Direct"
                 },
                 description: "Downloadt media met maximale snelheid via nieuwsgroepen (Usenet). Maakt gebruik van directe SSL-verbindingen met nieuwsservers, waardoor er geen extra VPN nodig is voor privacy en veiligheid tijdens het downloaden."
@@ -618,7 +619,8 @@ const translations = {
             project_view_pipeline: "View Data Flow",
             modal_pipeline_title: "Media Pipeline Data Flow",
             pipeline_details_title: "Component Details",
-            pipeline_desc_title: "Description & Operation"
+            pipeline_desc_title: "Description & Operation",
+            pipeline_bind_mount_label: "LXC Bind-mount: File Import (Downloads &rarr; Media)"
         },
         nodeData: {
             remote: {
@@ -803,7 +805,7 @@ const translations = {
                 specs: {
                     "Type": "Docker Container",
                     "OS": "Raspberry Pi OS",
-                    "Port": "8085 (Web UI)",
+                    "Port": "8089 (Web UI)",
                     "Network": "SSL Direct"
                 },
                 description: "Downloads media at maximum speed via newsgroups (Usenet). Uses direct SSL connections with news servers, eliminating the need for an additional VPN for privacy and security while downloading."

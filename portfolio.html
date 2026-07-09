@@ -989,6 +989,25 @@
                                 </marker>
                             </defs>
                             
+                            <!-- Background Grid -->
+                            <g class="svg-grid" stroke-width="1">
+                                <line x1="0" y1="50" x2="800" y2="50" />
+                                <line x1="0" y1="100" x2="800" y2="100" />
+                                <line x1="0" y1="150" x2="800" y2="150" />
+                                <line x1="0" y1="200" x2="800" y2="200" />
+                                <line x1="0" y1="250" x2="800" y2="250" />
+                                <line x1="0" y1="300" x2="800" y2="300" />
+                                <line x1="0" y1="350" x2="800" y2="350" />
+                                
+                                <line x1="100" y1="0" x2="100" y2="400" />
+                                <line x1="200" y1="0" x2="200" y2="400" />
+                                <line x1="300" y1="0" x2="300" y2="400" />
+                                <line x1="400" y1="0" x2="400" y2="400" />
+                                <line x1="500" y1="0" x2="500" y2="400" />
+                                <line x1="600" y1="0" x2="600" y2="400" />
+                                <line x1="700" y1="0" x2="700" y2="400" />
+                            </g>
+                            
                             <!-- HP Thin Client Zone -->
                             <rect x="155" y="15" width="235" height="370" rx="8" fill="rgba(24, 99, 246, 0.02)" stroke="rgba(24, 99, 246, 0.12)" stroke-width="1.2" stroke-dasharray="4 4" />
                             <text x="165" y="32" font-family="sans-serif" font-size="10" font-weight="bold" fill="var(--text-secondary)" opacity="0.6">HP THIN CLIENT (PROXMOX VE)</text>
@@ -1026,7 +1045,7 @@
                             
                             <!-- Bind Mount virtual loops -->
                             <path d="M 705 345 L 705 375 L 275 375 L 275 345" stroke="#BEA36B" stroke-width="1.5" stroke-dasharray="3 3" marker-end="url(#pipeline-arrow-active)" />
-                            <text x="490" y="367" font-family="sans-serif" font-size="9.5" fill="#BEA36B" text-anchor="middle">LXC Conf Bind-mount Import Loop</text>
+                            <text x="490" y="367" font-family="sans-serif" font-size="9.5" fill="#BEA36B" text-anchor="middle" font-weight="bold" data-i18n="pipeline_bind_mount_label">LXC Bind-mount: Bestandsimport (Downloads &rarr; Media)</text>
                             
                             <!-- Plex Streaming to Client -->
                             <path d="M 705 45 L 705 8 L 70 8 L 70 170" stroke="#1863F6" stroke-width="1.8" stroke-dasharray="4 4" marker-end="url(#pipeline-arrow)" />
@@ -1035,58 +1054,58 @@
                             <!-- Nodes -->
                             <!-- Client -->
                             <g class="pipeline-node" data-node="client">
-                                <rect x="15" y="170" width="110" height="50" rx="6" fill="#11213D" stroke="#808080" stroke-width="1.5" />
-                                <text x="70" y="194" font-family="sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Client</text>
-                                <text x="70" y="212" font-family="sans-serif" font-size="10" fill="#808080" text-anchor="middle">LAN / Tailscale</text>
+                                <rect x="15" y="170" width="110" height="50" rx="6" class="svg-node-bg" stroke="#808080" stroke-width="1.5" />
+                                <text x="70" y="194" font-family="sans-serif" font-size="13" font-weight="bold" class="svg-text-primary" text-anchor="middle">Client</text>
+                                <text x="70" y="212" font-family="sans-serif" font-size="10" class="svg-text-muted" text-anchor="middle">LAN / Tailscale</text>
                             </g>
                             
                             <!-- Overseerr -->
                             <g class="pipeline-node" data-node="overseerr">
-                                <rect x="175" y="165" width="200" height="60" rx="6" fill="#11213D" stroke="#808080" stroke-width="1.5" />
-                                <text x="275" y="190" font-family="sans-serif" font-size="13.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Overseerr</text>
-                                <text x="275" y="208" font-family="sans-serif" font-size="10.5" fill="#808080" text-anchor="middle">Request Manager (Port 5055)</text>
+                                <rect x="175" y="165" width="200" height="60" rx="6" class="svg-node-bg" stroke="#808080" stroke-width="1.5" />
+                                <text x="275" y="190" font-family="sans-serif" font-size="13.5" font-weight="bold" class="svg-text-primary" text-anchor="middle">Overseerr</text>
+                                <text x="275" y="208" font-family="sans-serif" font-size="10.5" class="svg-text-muted" text-anchor="middle">Request Manager (Port 5055)</text>
                             </g>
                             
                             <!-- Prowlarr -->
                             <g class="pipeline-node" data-node="prowlarr">
-                                <rect x="175" y="45" width="200" height="60" rx="6" fill="#11213D" stroke="#808080" stroke-width="1.5" />
-                                <text x="275" y="70" font-family="sans-serif" font-size="13.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Prowlarr</text>
-                                <text x="275" y="88" font-family="sans-serif" font-size="10.5" fill="#808080" text-anchor="middle">Indexer Sync (Port 9696)</text>
+                                <rect x="175" y="45" width="200" height="60" rx="6" class="svg-node-bg" stroke="#808080" stroke-width="1.5" />
+                                <text x="275" y="70" font-family="sans-serif" font-size="13.5" font-weight="bold" class="svg-text-primary" text-anchor="middle">Prowlarr</text>
+                                <text x="275" y="88" font-family="sans-serif" font-size="10.5" class="svg-text-muted" text-anchor="middle">Indexer Sync (Port 9696)</text>
                             </g>
                             
                             <!-- Sonarr/Radarr -->
                             <g class="pipeline-node" data-node="sonarr_radarr">
-                                <rect x="175" y="285" width="200" height="60" rx="6" fill="#11213D" stroke="#808080" stroke-width="1.5" />
-                                <text x="275" y="310" font-family="sans-serif" font-size="13.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Sonarr & Radarr</text>
-                                <text x="275" y="328" font-family="sans-serif" font-size="10.5" fill="#808080" text-anchor="middle">Media Managers (8989/7878)</text>
+                                <rect x="175" y="285" width="200" height="60" rx="6" class="svg-node-bg" stroke="#808080" stroke-width="1.5" />
+                                <text x="275" y="310" font-family="sans-serif" font-size="13.5" font-weight="bold" class="svg-text-primary" text-anchor="middle">Sonarr & Radarr</text>
+                                <text x="275" y="328" font-family="sans-serif" font-size="10.5" class="svg-text-muted" text-anchor="middle">Media Managers (8989/7878)</text>
                             </g>
                             
                             <!-- Gluetun VPN -->
                             <g class="pipeline-node" data-node="vpn">
-                                <rect x="440" y="80" width="160" height="50" rx="6" fill="#11213D" stroke="#1863F6" stroke-width="1.5" />
-                                <text x="520" y="102" font-family="sans-serif" font-size="12.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Gluetun VPN</text>
+                                <rect x="440" y="80" width="160" height="50" rx="6" class="svg-node-bg" stroke="#1863F6" stroke-width="1.5" />
+                                <text x="520" y="102" font-family="sans-serif" font-size="12.5" font-weight="bold" class="svg-text-primary" text-anchor="middle">Gluetun VPN</text>
                                 <text x="520" y="118" font-family="sans-serif" font-size="10" fill="#1863F6" text-anchor="middle">WireGuard Tunnel</text>
                             </g>
                             
                             <!-- qBittorrent -->
                             <g class="pipeline-node" data-node="qbittorrent">
-                                <rect x="440" y="155" width="160" height="60" rx="6" fill="#11213D" stroke="#808080" stroke-width="1.5" />
-                                <text x="520" y="180" font-family="sans-serif" font-size="13.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">qBittorrent</text>
-                                <text x="520" y="198" font-family="sans-serif" font-size="10.5" fill="#808080" text-anchor="middle">Torrent Client (Port 8080)</text>
+                                <rect x="440" y="155" width="160" height="60" rx="6" class="svg-node-bg" stroke="#808080" stroke-width="1.5" />
+                                <text x="520" y="180" font-family="sans-serif" font-size="13.5" font-weight="bold" class="svg-text-primary" text-anchor="middle">qBittorrent</text>
+                                <text x="520" y="198" font-family="sans-serif" font-size="10.5" class="svg-text-muted" text-anchor="middle">Torrent Client (Port 8080)</text>
                             </g>
                             
                             <!-- SabNZBd -->
                             <g class="pipeline-node" data-node="sabnzbd">
-                                <rect x="440" y="285" width="160" height="60" rx="6" fill="#11213D" stroke="#808080" stroke-width="1.5" />
-                                <text x="520" y="310" font-family="sans-serif" font-size="13.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">SabNZBD</text>
-                                <text x="520" y="328" font-family="sans-serif" font-size="10.5" fill="#808080" text-anchor="middle">Usenet Client (Port 8085)</text>
+                                <rect x="440" y="285" width="160" height="60" rx="6" class="svg-node-bg" stroke="#808080" stroke-width="1.5" />
+                                <text x="520" y="310" font-family="sans-serif" font-size="13.5" font-weight="bold" class="svg-text-primary" text-anchor="middle">SabNZBD</text>
+                                <text x="520" y="328" font-family="sans-serif" font-size="10.5" class="svg-text-muted" text-anchor="middle">Usenet Client (Port 8089)</text>
                             </g>
                             
                             <!-- SambaNAS -->
                             <g class="pipeline-node" data-node="nas">
-                                <rect x="635" y="215" width="140" height="130" rx="6" fill="#11213D" stroke="#808080" stroke-width="1.5" />
-                                <text x="705" y="240" font-family="sans-serif" font-size="13.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">SambaNAS</text>
-                                <text x="705" y="255" font-family="sans-serif" font-size="10.5" fill="#808080" text-anchor="middle">Central Storage</text>
+                                <rect x="635" y="215" width="140" height="130" rx="6" class="svg-node-bg" stroke="#808080" stroke-width="1.5" />
+                                <text x="705" y="240" font-family="sans-serif" font-size="13.5" font-weight="bold" class="svg-text-primary" text-anchor="middle">SambaNAS</text>
+                                <text x="705" y="255" font-family="sans-serif" font-size="10.5" class="svg-text-muted" text-anchor="middle">Central Storage</text>
                                 
                                 <rect x="645" y="270" width="120" height="65" rx="4" fill="rgba(190, 163, 107, 0.05)" stroke="rgba(190, 163, 107, 0.2)" stroke-width="1" />
                                 <text x="705" y="285" font-family="JetBrains Mono" font-size="9.5" fill="#BEA36B" text-anchor="middle">/Plex/Downloads</text>
@@ -1096,9 +1115,9 @@
                             
                             <!-- Plex -->
                             <g class="pipeline-node" data-node="plex">
-                                <rect x="635" y="45" width="140" height="60" rx="6" fill="#11213D" stroke="#808080" stroke-width="1.5" />
-                                <text x="705" y="70" font-family="sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Plex Media Server</text>
-                                <text x="705" y="88" font-family="sans-serif" font-size="10.5" fill="#808080" text-anchor="middle">Streamer (Port 32400)</text>
+                                <rect x="635" y="45" width="140" height="60" rx="6" class="svg-node-bg" stroke="#808080" stroke-width="1.5" />
+                                <text x="705" y="70" font-family="sans-serif" font-size="13" font-weight="bold" class="svg-text-primary" text-anchor="middle">Plex Media Server</text>
+                                <text x="705" y="88" font-family="sans-serif" font-size="10.5" class="svg-text-muted" text-anchor="middle">Streamer (Port 32400)</text>
                             </g>
                         </svg>
                     </div>

@@ -2550,6 +2550,10 @@ html.splash-active .site-header {
     min-height: 380px;
 }
 
+:root[data-theme="light"] .pipeline-diagram-container {
+    background-color: rgba(248, 250, 252, 0.8);
+}
+
 .pipeline-svg {
     width: 100%;
     height: auto;

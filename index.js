@@ -471,12 +471,12 @@ function initStepsMenu() {
     });
 }
 
-// Helper to update Tetris overlay visibility based on step and image type
 function updateTetrisOverlayState(stepNum, imgType) {
     if (typeof tetrisStartOverlay === 'undefined' || !tetrisStartOverlay) return;
 
     if (stepNum === 10 && imgType === 'action') {
         tetrisStartOverlay.style.display = 'flex';
+        updateLeaderboardUI(); // Refresh global highscores
         if (actionView) {
             actionView.style.cursor = 'pointer';
             actionView.onclick = openTetrisFromFrame;
@@ -682,7 +682,160 @@ function renderStepSvg(stepNum) {
 // Initialize step menu on page load
 window.addEventListener('DOMContentLoaded', () => {
     initStepsMenu();
+    
+    // Bind highscore submit & cancel event listeners
+    const submitBtn = document.getElementById('submit-highscore-btn');
+    if (submitBtn) {
+        submitBtn.addEventListener('click', handleHighscoreSubmission);
+    }
+
+    const cancelBtn = document.getElementById('cancel-highscore-btn');
+    if (cancelBtn) {
+        cancelBtn.addEventListener('click', closeHighscoreOverlay);
+    }
+    
+    // Support submitting by pressing Enter in the input field
+    const nameInput = document.getElementById('highscore-name-input');
+    if (nameInput) {
+        nameInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                handleHighscoreSubmission();
+            }
+        });
+    }
 });
+
+// --- Supabase Connection for Tetris Leaderboard ---
+const supabaseUrl = 'https://mmeucjfhxdejlbwvcbxt.supabase.co';
+const supabaseKey = 'sb_publishable_6XslWYpajXk_8Ynoc7wfew_RWOrgnpP';
+let supabaseClient = null;
+
+if (typeof supabase !== 'undefined') {
+    supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+}
+
+let isHighscoreOverlayOpen = false;
+let globalTopScores = [];
+
+// Fetch global highscores from Supabase
+async function fetchGlobalHighscores() {
+    if (!supabaseClient) return [];
+    try {
+        const { data, error } = await supabaseClient
+            .from('highscores')
+            .select('name, score')
+            .order('score', { ascending: false })
+            .limit(5);
+
+        if (error) throw error;
+        return data || [];
+    } catch (err) {
+        console.error('Fout bij ophalen highscores:', err);
+        return [];
+    }
+}
+
+// Render the highscore list to the DOM
+async function updateLeaderboardUI() {
+    const listElement = document.getElementById('tetris-leaderboard-list');
+    if (!listElement) return;
+
+    listElement.innerHTML = '<li>Laden van scores...</li>';
+    globalTopScores = await fetchGlobalHighscores();
+
+    if (globalTopScores.length === 0) {
+        listElement.innerHTML = '<li>Geen scores gevonden of offline</li>';
+        return;
+    }
+
+    listElement.innerHTML = '';
+    globalTopScores.forEach((entry) => {
+        const li = document.createElement('li');
+        const cleanName = entry.name.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        li.innerHTML = `${cleanName} <span class="score">${entry.score.toLocaleString()}</span>`;
+        listElement.appendChild(li);
+    });
+}
+
+// Checks if score is in the top 5 and opens the submission overlay if it qualifies
+function checkAndSubmitHighScore(score) {
+    if (!supabaseClient || score <= 0) return;
+
+    // A score qualifies if:
+    // - There are fewer than 5 scores on the leaderboard
+    // - OR the current score is higher than the 5th place score
+    const qualifies = globalTopScores.length < 5 || score > globalTopScores[globalTopScores.length - 1].score;
+
+    if (qualifies) {
+        const overlay = document.getElementById('tetris-highscore-overlay');
+        const scoreDisplay = document.getElementById('highscore-value-display');
+        const nameInput = document.getElementById('highscore-name-input');
+        
+        if (overlay && scoreDisplay && nameInput) {
+            scoreDisplay.textContent = score.toLocaleString();
+            nameInput.value = '';
+            isHighscoreOverlayOpen = true;
+            overlay.style.display = 'flex';
+            
+            // Focus input box immediately
+            setTimeout(() => nameInput.focus(), 100);
+        }
+    }
+}
+
+// Submit score function
+async function handleHighscoreSubmission() {
+    const nameInput = document.getElementById('highscore-name-input');
+    if (!nameInput) return;
+
+    const rawName = nameInput.value.trim();
+    if (!rawName) {
+        alert('Voer een geldige naam in.');
+        return;
+    }
+
+    const cleanName = rawName.replace(/[^a-zA-Z0-9\s-_]/g, '').substring(0, 15);
+    if (!cleanName) {
+        alert('Je naam mag alleen letters, cijfers, spaties of -/_ bevatten.');
+        return;
+    }
+
+    const submitBtn = document.getElementById('submit-highscore-btn');
+    if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Bezig...';
+    }
+
+    try {
+        const { error } = await supabaseClient
+            .from('highscores')
+            .insert([{ name: cleanName, score: tetrisScoreVal }]);
+
+        if (error) throw error;
+        
+        closeHighscoreOverlay();
+        await updateLeaderboardUI();
+    } catch (err) {
+        console.error('Fout bij opslaan:', err);
+        alert('Er ging iets fout bij het opslaan van je score. Probeer het opnieuw.');
+        if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Opslaan';
+        }
+    }
+}
+
+function closeHighscoreOverlay() {
+    const overlay = document.getElementById('tetris-highscore-overlay');
+    if (overlay) {
+        overlay.style.display = 'none';
+    }
+    isHighscoreOverlayOpen = false;
+    
+    // Focus back on the game canvas
+    if (tetrisCanvas) tetrisCanvas.focus();
+}
 
 // --- Tetris Game Engine & Easter Egg Logic ---
 const tetrisStartOverlay = document.getElementById('tetris-start-overlay');
@@ -828,6 +981,7 @@ function playerReset() {
         tetrisGameOver = true;
         tetrisIsActive = false;
         draw();
+        checkAndSubmitHighScore(tetrisScoreVal);
     }
 }
 
@@ -1058,6 +1212,7 @@ function initGame() {
 }
 
 function handleKeyDown(e) {
+    if (isHighscoreOverlayOpen) return; // Ignore keys if highscore submission dialog is open
     if (!tetrisIsActive && !tetrisGameOver) return;
 
     const activeKeys = ['ArrowLeft', 'ArrowRight', 'ArrowDown', 'ArrowUp', 'KeyA', 'KeyD', 'KeyS', 'KeyW', 'Space', 'KeyP', 'Escape'];
@@ -1137,6 +1292,11 @@ function minimizeTetrisGame() {
     isSoftDropping = false;
     window.removeEventListener('keydown', handleKeyDown);
     window.removeEventListener('keyup', handleKeyUp);
+
+    // Hide highscore overlay if it was open
+    const hsOverlay = document.getElementById('tetris-highscore-overlay');
+    if (hsOverlay) hsOverlay.style.display = 'none';
+    isHighscoreOverlayOpen = false;
 
     if (stepGrid) stepGrid.classList.remove('tetris-active');
     if (tetrisView) tetrisView.classList.remove('active');

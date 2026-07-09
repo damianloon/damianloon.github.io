@@ -2198,6 +2198,63 @@ body {
     line-height: 1.4;
 }
 
+.tetris-overlay[style*="display: flex"],
+.tetris-overlay.active {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+/* Global Leaderboard Styles */
+.tetris-leaderboard-box {
+    margin-top: 1.25rem;
+    padding: 0.75rem;
+    background: rgba(17, 33, 61, 0.55);
+    border: 1px solid rgba(190, 163, 107, 0.15);
+    border-radius: 8px;
+    width: 100%;
+    max-width: 250px;
+    box-sizing: border-box;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+:root[data-theme="light"] .tetris-leaderboard-box {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(190, 163, 107, 0.3);
+}
+
+.leaderboard-title {
+    color: #BEA36B;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin: 0 0 0.5rem 0;
+    text-align: center;
+    letter-spacing: 1.5px;
+}
+
+#tetris-leaderboard-list {
+    margin: 0;
+    padding: 0 0 0 1.25rem;
+    text-align: left;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+#tetris-leaderboard-list li {
+    margin-bottom: 0.35rem;
+    line-height: 1.4;
+}
+
+#tetris-leaderboard-list li::marker {
+    color: var(--text-muted);
+}
+
+#tetris-leaderboard-list li span.score {
+    float: right;
+    color: #BEA36B;
+    font-weight: bold;
+}
+
 /* Tetris Game View Layout */
 .image-view#tetris-view {
     flex-direction: column;

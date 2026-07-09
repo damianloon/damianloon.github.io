@@ -530,39 +530,160 @@
             <!-- Skills Categories -->
             <div class="skills-section">
                 <h3 class="skills-title" data-i18n="skills_core_title">Kernvaardigheden</h3>
-                <div class="skills-grid">
-                    <div class="skills-card">
-                        <h4 data-i18n="skills_os">Besturingssystemen</h4>
-                        <ul>
-                            <li>Linux (Ubuntu Server, Debian)</li>
-                            <li>Windows Server & Client</li>
-                            <li>ESPHome / Embedded firmware</li>
-                        </ul>
+                
+                <div class="skills-layout-container">
+                    <!-- Left: Interactive Topology SVG -->
+                    <div class="skills-topology-wrapper">
+                        <svg class="skills-topology-svg" viewBox="-150 0 800 320" width="100%" height="100%">
+                            <!-- Defs for filter glow -->
+                            <defs>
+                                <filter id="node-glow" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur stdDeviation="3" result="blur" />
+                                    <feMerge>
+                                        <feMergeNode in="blur" />
+                                        <feMergeNode in="SourceGraphic" />
+                                    </feMerge>
+                                </filter>
+                            </defs>
+
+                            <!-- Connection Lines (Backbone) -->
+                            <g class="topo-links-backbone">
+                                <path class="topo-link" id="link-cat_os" d="M 250 160 L 190 160 L 140 110 L 140 80" />
+                                <path class="topo-link" id="link-cat_net_sec" d="M 250 160 L 190 160 L 140 210 L 140 240" />
+                                <path class="topo-link" id="link-cat_virt_cont" d="M 250 160 L 310 160 L 360 110 L 360 80" />
+                                <path class="topo-link" id="link-cat_auto_tools" d="M 250 160 L 310 160 L 360 210 L 360 240" />
+                            </g>
+
+                            <!-- Connection Lines (OS Branch) -->
+                            <g class="topo-links-branch cat_os">
+                                <path class="topo-link" id="link-linux" d="M 140 80 L 140 50 L 40 50" />
+                                <path class="topo-link" id="link-windows" d="M 140 80 L 140 85 L 40 85" />
+                                <path class="topo-link" id="link-esphome" d="M 140 80 L 140 120 L 40 120" />
+                            </g>
+
+                            <!-- Connection Lines (NetSec Branch) -->
+                            <g class="topo-links-branch cat_net_sec">
+                                <path class="topo-link" id="link-tcpip" d="M 140 240 L 140 205 L 40 205" />
+                                <path class="topo-link" id="link-dns_dhcp" d="M 140 240 L 40 240" />
+                                <path class="topo-link" id="link-vpn" d="M 140 240 L 140 275 L 40 275" />
+                            </g>
+
+                            <!-- Connection Lines (VirtCont Branch) -->
+                            <g class="topo-links-branch cat_virt_cont">
+                                <path class="topo-link" id="link-docker" d="M 360 80 L 360 50 L 460 50" />
+                                <path class="topo-link" id="link-portainer" d="M 360 80 L 360 85 L 460 85" />
+                                <path class="topo-link" id="link-proxmox" d="M 360 80 L 360 120 L 460 120" />
+                            </g>
+
+                            <!-- Connection Lines (AutoTools Branch) -->
+                            <g class="topo-links-branch cat_auto_tools">
+                                <path class="topo-link" id="link-yaml" d="M 360 240 L 360 205 L 460 205" />
+                                <path class="topo-link" id="link-bash" d="M 360 240 L 460 240" />
+                                <path class="topo-link" id="link-uptime_kuma" d="M 360 240 L 360 275 L 460 275" />
+                            </g>
+
+                            <!-- Nodes & Text Elements -->
+                            <!-- Center Engine -->
+                            <g class="topo-node center-node" data-category="center">
+                                <circle cx="250" cy="160" r="9" />
+                                <text x="250" y="143" text-anchor="middle">SYSTEM ENG.</text>
+                            </g>
+
+                            <!-- Category Hubs -->
+                            <g class="topo-node hub-node" data-category="cat_os" data-skill="cat_os">
+                                <circle cx="140" cy="80" r="7" />
+                                <text x="140" y="65" text-anchor="middle" data-i18n="skills_os">Besturingssystemen</text>
+                            </g>
+                            <g class="topo-node hub-node" data-category="cat_net_sec" data-skill="cat_net_sec">
+                                <circle cx="140" cy="240" r="7" />
+                                <text x="140" y="225" text-anchor="middle" data-i18n="skills_net_sec">Netwerken & Security</text>
+                            </g>
+                            <g class="topo-node hub-node" data-category="cat_virt_cont" data-skill="cat_virt_cont">
+                                <circle cx="360" cy="80" r="7" />
+                                <text x="360" y="65" text-anchor="middle" data-i18n="skills_virt_cont">Virtualisatie & Containers</text>
+                            </g>
+                            <g class="topo-node hub-node" data-category="cat_auto_tools" data-skill="cat_auto_tools">
+                                <circle cx="360" cy="240" r="7" />
+                                <text x="360" y="225" text-anchor="middle" data-i18n="skills_auto_tools">Automatisering & Tools</text>
+                            </g>
+
+                            <!-- OS Sub-nodes -->
+                            <g class="topo-node sub-node" data-category="cat_os" data-skill="linux">
+                                <circle cx="40" cy="50" r="5" />
+                                <text x="30" y="54" text-anchor="end">Linux (Debian/Ubuntu)</text>
+                            </g>
+                            <g class="topo-node sub-node" data-category="cat_os" data-skill="windows">
+                                <circle cx="40" cy="85" r="5" />
+                                <text x="30" y="89" text-anchor="end">Windows Server & Client</text>
+                            </g>
+                            <g class="topo-node sub-node" data-category="cat_os" data-skill="esphome">
+                                <circle cx="40" cy="120" r="5" />
+                                <text x="30" y="124" text-anchor="end">ESPHome & Embedded</text>
+                            </g>
+
+                            <!-- NetSec Sub-nodes -->
+                            <g class="topo-node sub-node" data-category="cat_net_sec" data-skill="tcpip">
+                                <circle cx="40" cy="205" r="5" />
+                                <text x="30" y="209" text-anchor="end">TCP/IP & Subnetting</text>
+                            </g>
+                            <g class="topo-node sub-node" data-category="cat_net_sec" data-skill="dns_dhcp">
+                                <circle cx="40" cy="240" r="5" />
+                                <text x="30" y="244" text-anchor="end">DHCP & DNS (Pi-hole)</text>
+                            </g>
+                            <g class="topo-node sub-node" data-category="cat_net_sec" data-skill="vpn">
+                                <circle cx="40" cy="275" r="5" />
+                                <text x="30" y="279" text-anchor="end">VPN (WireGuard/Tailscale)</text>
+                            </g>
+
+                            <!-- VirtCont Sub-nodes -->
+                            <g class="topo-node sub-node" data-category="cat_virt_cont" data-skill="docker">
+                                <circle cx="460" cy="50" r="5" />
+                                <text x="470" y="54" text-anchor="start">Docker & Compose</text>
+                            </g>
+                            <g class="topo-node sub-node" data-category="cat_virt_cont" data-skill="portainer">
+                                <circle cx="460" cy="85" r="5" />
+                                <text x="470" y="89" text-anchor="start">Portainer</text>
+                            </g>
+                            <g class="topo-node sub-node" data-category="cat_virt_cont" data-skill="proxmox">
+                                <circle cx="460" cy="120" r="5" />
+                                <text x="470" y="124" text-anchor="start">Proxmox VE</text>
+                            </g>
+
+                            <!-- AutoTools Sub-nodes -->
+                            <g class="topo-node sub-node" data-category="cat_auto_tools" data-skill="yaml">
+                                <circle cx="460" cy="205" r="5" />
+                                <text x="470" y="209" text-anchor="start">YAML & Home Assistant</text>
+                            </g>
+                            <g class="topo-node sub-node" data-category="cat_auto_tools" data-skill="bash">
+                                <circle cx="460" cy="240" r="5" />
+                                <text x="470" y="244" text-anchor="start">Bash & Linux CLI</text>
+                            </g>
+                            <g class="topo-node sub-node" data-category="cat_auto_tools" data-skill="uptime_kuma">
+                                <circle cx="460" cy="275" r="5" />
+                                <text x="470" y="279" text-anchor="start">Uptime Kuma</text>
+                            </g>
+                        </svg>
                     </div>
-                    <div class="skills-card">
-                        <h4 data-i18n="skills_net_sec">Netwerken & Security</h4>
-                        <ul>
-                            <li>TCP/IP, IP-adressering & Subnetting</li>
-                            <li>DHCP & DNS (Dual Pi-hole setup)</li>
-                            <li>VPN (Tailscale / WireGuard)</li>
-                            <li>Nginx Proxy Manager proxying</li>
-                        </ul>
-                    </div>
-                    <div class="skills-card">
-                        <h4 data-i18n="skills_virt_cont">Virtualisatie & Containers</h4>
-                        <ul>
-                            <li>Docker & Docker Compose</li>
-                            <li>Portainer containerbeheer</li>
-                            <li>Proxmox VE (LXC & VM)</li>
-                        </ul>
-                    </div>
-                    <div class="skills-card">
-                        <h4 data-i18n="skills_auto_tools">Automatisering & Tools</h4>
-                        <ul>
-                            <li>YAML (Home Assistant & Dashboards)</li>
-                            <li>Bash scripting & Linux CLI</li>
-                            <li>Uptime Kuma cross-monitoring</li>
-                        </ul>
+
+                    <!-- Right: Info Details Panel -->
+                    <div class="skills-details-sidebar">
+                        <div class="skills-details-inner">
+                            <h4 id="skill-details-title" data-i18n="skills_core_title">Kernvaardigheden</h4>
+                            <div class="skills-details-content">
+                                <p id="skill-details-desc">Beweeg je muis over een onderdeel in het diagram om details, beheersingsniveau en homelab-integratie te bekijken.</p>
+                                
+                                <div id="skill-details-meta" style="display: none;">
+                                    <div class="skill-meta-item">
+                                        <span class="meta-label" data-i18n="skills_meta_proficiency_label">Beheersing:</span>
+                                        <span id="skill-meta-proficiency" class="proficiency-badge"></span>
+                                    </div>
+                                    <div class="skill-meta-item">
+                                        <span class="meta-label" data-i18n="skills_meta_integration_label">Homelab Integratie:</span>
+                                        <p id="skill-meta-integration"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

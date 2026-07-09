@@ -1123,46 +1123,202 @@ body {
     padding-bottom: 0.5rem;
 }
 
-.skills-grid {
+/* Layout container */
+.skills-layout-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: 1.65fr 0.85fr;
+    gap: 1.75rem;
+    align-items: stretch;
 }
 
-.skills-card {
+/* SVG wrapper */
+.skills-topology-wrapper {
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: 12px;
-    /* Upgraded to modern rounded cards */
-    padding: 1.25rem;
-}
-
-.skills-card h4 {
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 0.75rem;
-    color: var(--text-primary);
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 0.25rem;
-}
-
-.skills-card ul {
-    list-style: none;
-}
-
-.skills-card li {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    margin-bottom: 0.4rem;
+    padding: 1rem;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
 }
 
-.skills-card li::before {
-    content: "•";
-    color: var(--accent-blue);
+/* Subtiele raster-achtergrondwatermerk */
+.skills-topology-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(128, 128, 128, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(128, 128, 128, 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
+}
+
+/* Connection lines styling */
+.topo-link {
+    fill: none;
+    stroke: var(--text-muted);
+    stroke-width: 1px;
+    opacity: 0.15;
+    transition: stroke 0.3s ease, stroke-width 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hover highlights for paths */
+.topo-link.active {
+    stroke: #BEA36B; /* accent gold */
+    stroke-width: 1.5px;
+    opacity: 1;
+}
+
+.topo-link.dimmed {
+    opacity: 0.05;
+}
+
+/* Node circle/text styling */
+.topo-node {
+    cursor: pointer;
+}
+
+.topo-node circle {
+    fill: var(--bg-card);
+    stroke: var(--border-color);
+    stroke-width: 1.5px;
+    transition: fill 0.3s ease, stroke 0.3s ease, stroke-width 0.3s ease;
+}
+
+.topo-node text {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    fill: var(--text-muted);
+    transition: fill 0.3s ease, font-weight 0.3s ease, opacity 0.3s ease;
+    user-select: none;
+    pointer-events: none;
+}
+
+/* Center node specifics */
+.center-node circle {
+    fill: #11213D;
+    stroke: #BEA36B;
+    stroke-width: 2px;
+}
+
+.center-node text {
+    fill: #BEA36B;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+/* Category hub node specifics */
+.hub-node circle {
+    fill: var(--bg-card);
+    stroke: var(--text-muted);
+    stroke-width: 1.5px;
+}
+
+.hub-node text {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 16.5px;
+    fill: var(--text-primary);
+}
+
+/* Hover node overrides */
+.topo-node:hover circle,
+.topo-node.active circle {
+    fill: #BEA36B;
+    stroke: #BEA36B;
+    filter: url(#node-glow);
+}
+
+.topo-node:hover text,
+.topo-node.active text {
+    fill: var(--text-primary);
+    font-weight: 600;
+    opacity: 1;
+}
+
+/* Dimming unrelated nodes */
+.topo-node.dimmed {
+    opacity: 0.25;
+}
+
+/* Details Sidebar */
+.skills-details-sidebar {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.skills-details-inner {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.skills-details-inner h4 {
+    color: #BEA36B;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.skills-details-content p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+}
+
+.skill-meta-item {
+    margin-bottom: 1rem;
+}
+
+.skill-meta-item .meta-label {
+    display: block;
+    font-size: 0.7rem;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.25rem;
+}
+
+.proficiency-badge {
+    display: inline-block;
+    background-color: rgba(190, 163, 107, 0.1);
+    border: 1px solid rgba(190, 163, 107, 0.25);
+    color: #BEA36B;
+    font-size: 0.75rem;
     font-weight: bold;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+}
+
+#skill-meta-integration {
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    margin-bottom: 0;
+}
+
+/* Mobile responsive override */
+@media (max-width: 768px) {
+    .skills-layout-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
 }
 
 .timeline-title-wrapper {

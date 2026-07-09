@@ -991,3 +991,211 @@ const translations = {
         ]
     }
 };
+
+// --- Skills Data for the Interactive Topology Diagram ---
+const skillsData = {
+    nl: {
+        default_title: "Kernvaardigheden",
+        default_desc: "Beweeg je muis over een onderdeel in het diagram om details, beheersingsniveau en homelab-integratie te bekijken.",
+        categories: {
+            cat_os: {
+                name: "Besturingssystemen",
+                desc: "Ervaring met diverse Unix-based servers en Windows client/server-infrastructuren."
+            },
+            cat_net_sec: {
+                name: "Netwerken & Security",
+                desc: "Beheer van routering, DNS-filtering, beveiligde VPN tunnels en reverse proxies."
+            },
+            cat_virt_cont: {
+                name: "Virtualisatie & Containers",
+                desc: "Schaalbaar beheer van geisoleerde containers en hypervisor-omgevingen."
+            },
+            cat_auto_tools: {
+                name: "Automatisering & Tools",
+                desc: "Scripting en infrastructuur-as-code voor netwerkmonitoring en smart home dashboards."
+            }
+        },
+        skills: {
+            linux: {
+                name: "Linux (Debian/Ubuntu)",
+                proficiency: "Expert",
+                integration: "Basis-OS voor alle containers en virtualisatieomgevingen.",
+                desc: "Uitgebreide ervaring met CLI-beheer, rechtenbeheer, systeemconfiguratie en service-optimalisatie voor Debian-gebaseerde systemen."
+            },
+            windows: {
+                name: "Windows Server & Client",
+                proficiency: "Gevorderd",
+                integration: "Beheer van Active Directory en testclients in de lab-omgeving.",
+                desc: "Kennis van groepsbeleid (GPO), Active Directory domeinbeheer en Windows client troubleshooting."
+            },
+            esphome: {
+                name: "ESPHome & Embedded",
+                proficiency: "Gevorderd",
+                integration: "Custom firmware voor ESP32 microcontrollers in de slimme meter en sensoren.",
+                desc: "Schrijven van YAML-gebaseerde firmware voor IoT-apparaten, integratie van sensoren en optimalisatie van lokale dataoverdracht."
+            },
+            tcpip: {
+                name: "TCP/IP & Subnetting",
+                proficiency: "Expert",
+                integration: "Segmentatie en VLAN-routing van het homelab netwerk.",
+                desc: "Diepgaand begrip van OSI-lagen, IP-routering, netwerksegmentatie (CIDR) en het analyseren van netwerkverkeer."
+            },
+            dns_dhcp: {
+                name: "DHCP & DNS (Pi-hole)",
+                proficiency: "Expert",
+                integration: "Dual Pi-hole setup met redundantie voor netwerk-brede ad-blocking.",
+                desc: "Inrichten van lokale DNS-zones, forwarders, DHCP-leases en DNS-sinkholing voor netwerkbeveiliging en tracking-preventie."
+            },
+            vpn: {
+                name: "VPN (WireGuard/Tailscale)",
+                proficiency: "Expert",
+                integration: "Beveiligde remote access en mesh-koppelingen tussen locaties.",
+                desc: "Inrichten van site-to-site en client-to-site tunnels via WireGuard en mesh-netwerken via Tailscale voor extern beheer."
+            },
+            nginx: {
+                name: "Nginx Proxy Manager",
+                proficiency: "Gevorderd",
+                integration: "Reverse proxy voor beveiligde SSL-routes naar homelab services.",
+                desc: "Beheer van inkomend webverkeer via reverse proxies, automatische SSL-certificaten (Let's Encrypt) en toegangscontrole."
+            },
+            docker: {
+                name: "Docker & Compose",
+                proficiency: "Expert",
+                integration: "Containerisatie van downloads, media en monitoring op de Pi 5.",
+                desc: "Bouwen van custom Docker-images en orchestreren van multi-container applicaties via Docker Compose met volume-binds."
+            },
+            portainer: {
+                name: "Portainer",
+                proficiency: "Gevorderd",
+                integration: "Grafisch beheer en statusmonitoring van Docker stacks.",
+                desc: "Beheren van container-lifecycles, bekijken van logs en beheren van volumes/netwerken via een gecentraliseerd dashboard."
+            },
+            proxmox: {
+                name: "Proxmox VE",
+                proficiency: "Expert",
+                integration: "Type-1 Hypervisor op de thin client voor LXC containers en test-VM's.",
+                desc: "Virtualisatiebeheer, back-up schema's, opslag-pools (ZFS) en LXC container resources optimalisatie."
+            },
+            yaml: {
+                name: "YAML & Home Assistant",
+                proficiency: "Expert",
+                integration: "Infrastructuur configuratie en geavanceerde smarthome automatiseringen.",
+                desc: "Configuratie van dashboards, integraties en complexe triggers voor Home Assistant en diverse Docker Compose stacks."
+            },
+            bash: {
+                name: "Bash & Linux CLI",
+                proficiency: "Gevorderd",
+                integration: "Automatische back-ups, database-dumps en cronjobs op servers.",
+                desc: "Schrijven van scripting-automatiseringen voor routinetaken, serveronderhoud en data-backups via de Linux Terminal."
+            },
+            uptime_kuma: {
+                name: "Uptime Kuma",
+                proficiency: "Gevorderd",
+                integration: "Actieve uptime-monitoring en push-notificaties voor alle netwerkservices.",
+                desc: "Inrichten van ping-, HTTP- en port-monitors voor serverinfrastructuur, gekoppeld aan meldingen bij downtime."
+            }
+        }
+    },
+    en: {
+        default_title: "Core Skills",
+        default_desc: "Hover your mouse over any element in the diagram to view details, proficiency level, and homelab integration.",
+        categories: {
+            cat_os: {
+                name: "Operating Systems",
+                desc: "Experience managing Unix-based servers and Windows client/server environments."
+            },
+            cat_net_sec: {
+                name: "Networking & Security",
+                desc: "Administration of routing, DNS filtering, secure VPN tunnels, and reverse proxies."
+            },
+            cat_virt_cont: {
+                name: "Virtualization & Containers",
+                desc: "Scalable management of isolated containers and hypervisor platforms."
+            },
+            cat_auto_tools: {
+                name: "Automation & Tools",
+                desc: "Scripting and infrastructure-as-code for monitoring and smart home dashboards."
+            }
+        },
+        skills: {
+            linux: {
+                name: "Linux (Debian/Ubuntu)",
+                proficiency: "Expert",
+                integration: "Base OS for all server containers and virtualization layers.",
+                desc: "Extensive CLI administration, user permissions management, configuration tuning, and optimization of Debian-based systems."
+            },
+            windows: {
+                name: "Windows Server & Client",
+                proficiency: "Advanced",
+                integration: "Active Directory hosting and test client machines in the lab.",
+                desc: "Knowledge of Group Policies (GPO), DHCP/DNS roles, Active Directory domain management, and Windows troubleshooting."
+            },
+            esphome: {
+                name: "ESPHome & Embedded",
+                proficiency: "Advanced",
+                integration: "Custom firmware configurations for ESP32 smart-meter readers and sensors.",
+                desc: "Writing YAML-based firmware configurations for IoT nodes, sensor integration, and local data packet optimization."
+            },
+            tcpip: {
+                name: "TCP/IP & Subnetting",
+                proficiency: "Expert",
+                integration: "Network segmenting and VLAN routing across the homelab infrastructure.",
+                desc: "In-depth understanding of OSI layers, IP routing, subnet allocation (CIDR), and packet analysis."
+            },
+            dns_dhcp: {
+                name: "DHCP & DNS (Pi-hole)",
+                proficiency: "Expert",
+                integration: "Dual-redundant Pi-hole installation for network-wide ad-blocking.",
+                desc: "Configuring local DNS zones, forwarders, static DHCP bindings, and DNS sinkholing for network security."
+            },
+            vpn: {
+                name: "VPN (WireGuard/Tailscale)",
+                proficiency: "Expert",
+                integration: "Secure remote administration access and site-to-site tunnels.",
+                desc: "Establishing secure client-to-site WireGuard gateways and decentralized Tailscale mesh connections."
+            },
+            nginx: {
+                name: "Nginx Proxy Manager",
+                proficiency: "Advanced",
+                integration: "Reverse proxy routing secure HTTPS traffic to internal services.",
+                desc: "Managing edge web routing, automated SSL certificate generation (Let's Encrypt), and request access controls."
+            },
+            docker: {
+                name: "Docker & Compose",
+                proficiency: "Expert",
+                integration: "Containerized download managers, media stacks, and utilities on Pi 5.",
+                desc: "Building custom images and orchestrating multi-container systems via Docker Compose volume mapping."
+            },
+            portainer: {
+                name: "Portainer",
+                proficiency: "Advanced",
+                integration: "GUI manager for visual container health and stack monitoring.",
+                desc: "Controlling container lifecycles, diagnosing via stdout logs, and configuring volume mappings."
+            },
+            proxmox: {
+                name: "Proxmox VE",
+                proficiency: "Expert",
+                integration: "Type-1 Hypervisor on the thin client for LXC containers and test VMs.",
+                desc: "Hypervisor administration, backup scheduling, local storage arrays (ZFS), and LXC container optimization."
+            },
+            yaml: {
+                name: "YAML & Home Assistant",
+                proficiency: "Expert",
+                integration: "Infrastructure configuration and automated smart-home triggers.",
+                desc: "Developing UI dashboards, binding third-party integrations, and scripting automation conditions."
+            },
+            bash: {
+                name: "Bash & Linux CLI",
+                proficiency: "Advanced",
+                integration: "Automated backups, scheduled maintenance, and utility scripts.",
+                desc: "Writing cronjob tasks, system status check scripts, and automating backups via the terminal interface."
+            },
+            uptime_kuma: {
+                name: "Uptime Kuma",
+                proficiency: "Advanced",
+                integration: "Proactive status monitoring and outage notifications for all servers.",
+                desc: "Deploying status checks via Ping, HTTP, and Port checks, bound to real-time Telegram/Discord alerts."
+            }
+        }
+    }
+};

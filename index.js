@@ -131,6 +131,14 @@ function setLanguage(lang) {
     if (typeof updateStepView === 'function') {
         updateStepView();
     }
+
+    // Refresh skills details and labels
+    if (typeof updateSkillLabels === 'function') {
+        updateSkillLabels(lang);
+    }
+    if (typeof renderSkillDetails === 'function') {
+        renderSkillDetails(activeSkillKey);
+    }
 }
 
 // --- DOM elements ---
@@ -703,6 +711,17 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Initialize skills topology map and details
+    if (typeof initSkillsTopologyMap === 'function') {
+        initSkillsTopologyMap();
+    }
+    if (typeof updateSkillLabels === 'function') {
+        updateSkillLabels(getLanguage());
+    }
+    if (typeof renderSkillDetails === 'function') {
+        renderSkillDetails(null);
+    }
 });
 
 // --- Supabase Connection for Tetris Leaderboard ---
@@ -834,6 +853,131 @@ function closeHighscoreOverlay() {
     
     // Focus back on the game canvas
     if (tetrisCanvas) tetrisCanvas.focus();
+}
+
+// --- Skills Topology Map Interaction Logic ---
+let activeSkillKey = null;
+
+function updateSkillLabels(lang) {
+    if (typeof skillsData === 'undefined' || !skillsData[lang]) return;
+    
+    document.querySelectorAll('.topo-node[data-skill]').forEach(el => {
+        const skillKey = el.getAttribute('data-skill');
+        const textEl = el.querySelector('text');
+        if (!textEl) return;
+        
+        if (skillsData[lang].skills[skillKey]) {
+            textEl.textContent = skillsData[lang].skills[skillKey].name;
+        } else if (skillsData[lang].categories[skillKey]) {
+            textEl.textContent = skillsData[lang].categories[skillKey].name;
+        }
+    });
+}
+
+function renderSkillDetails(skillKey) {
+    const titleEl = document.getElementById('skill-details-title');
+    const descEl = document.getElementById('skill-details-desc');
+    const metaBlock = document.getElementById('skill-details-meta');
+    const proficiencyEl = document.getElementById('skill-meta-proficiency');
+    const integrationEl = document.getElementById('skill-meta-integration');
+    
+    if (!titleEl || !descEl) return;
+    
+    const lang = getLanguage();
+    if (typeof skillsData === 'undefined' || !skillsData[lang]) return;
+    
+    if (!skillKey) {
+        titleEl.textContent = skillsData[lang].default_title;
+        descEl.textContent = skillsData[lang].default_desc;
+        if (metaBlock) metaBlock.style.display = 'none';
+        return;
+    }
+    
+    // Check if it's a category
+    if (skillsData[lang].categories[skillKey]) {
+        const cat = skillsData[lang].categories[skillKey];
+        titleEl.textContent = cat.name;
+        descEl.textContent = cat.desc;
+        if (metaBlock) metaBlock.style.display = 'none';
+    } 
+    // Check if it's a sub-skill
+    else if (skillsData[lang].skills[skillKey]) {
+        const skill = skillsData[lang].skills[skillKey];
+        titleEl.textContent = skill.name;
+        descEl.textContent = skill.desc;
+        
+        if (proficiencyEl) proficiencyEl.textContent = skill.proficiency;
+        if (integrationEl) integrationEl.textContent = skill.integration;
+        if (metaBlock) metaBlock.style.display = 'block';
+    }
+}
+
+function initSkillsTopologyMap() {
+    const topoNodes = document.querySelectorAll('.topo-node');
+    const topoLinks = document.querySelectorAll('.topo-link');
+    
+    topoNodes.forEach(node => {
+        const skillKey = node.getAttribute('data-skill');
+        if (!skillKey) return; // Skip center node or nodes without keys
+        
+        const category = node.getAttribute('data-category');
+        
+        // Mouse Enter / Touch Start
+        const handleEnter = (e) => {
+            activeSkillKey = skillKey;
+            renderSkillDetails(skillKey);
+            
+            // Highlight node path
+            topoNodes.forEach(n => {
+                if (n === node) {
+                    n.classList.add('active');
+                    n.classList.remove('dimmed');
+                } else {
+                    n.classList.remove('active');
+                    n.classList.add('dimmed');
+                }
+            });
+            
+            // Highlight links
+            topoLinks.forEach(link => {
+                const linkId = link.getAttribute('id');
+                const isDirectLink = linkId === `link-${skillKey}`;
+                const isCategoryLink = linkId === `link-${category}`;
+                
+                if (isDirectLink || isCategoryLink) {
+                    link.classList.add('active');
+                    link.classList.remove('dimmed');
+                } else {
+                    link.classList.remove('active');
+                    link.classList.add('dimmed');
+                }
+            });
+        };
+        
+        // Mouse Leave / Touch End
+        const handleLeave = (e) => {
+            activeSkillKey = null;
+            renderSkillDetails(null);
+            
+            // Reset all nodes
+            topoNodes.forEach(n => {
+                n.classList.remove('active', 'dimmed');
+            });
+            
+            // Reset all links
+            topoLinks.forEach(link => {
+                link.classList.remove('active', 'dimmed');
+            });
+        };
+        
+        node.addEventListener('mouseenter', handleEnter);
+        node.addEventListener('mouseleave', handleLeave);
+        node.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            handleEnter(e);
+        });
+        node.addEventListener('touchend', handleLeave);
+    });
 }
 
 // --- Tetris Game Engine & Easter Egg Logic ---

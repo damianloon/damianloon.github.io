@@ -548,38 +548,38 @@
 
                             <!-- Connection Lines (Backbone) -->
                             <g class="topo-links-backbone">
-                                <path class="topo-link" id="link-cat_os" d="M 250 160 L 190 160 L 140 110 L 140 80" />
+                                <path class="topo-link" id="link-cat_systems_cloud" d="M 250 160 L 190 160 L 140 110 L 140 80" />
                                 <path class="topo-link" id="link-cat_net_sec" d="M 250 160 L 190 160 L 140 210 L 140 240" />
-                                <path class="topo-link" id="link-cat_virt_cont" d="M 250 160 L 310 160 L 360 110 L 360 80" />
-                                <path class="topo-link" id="link-cat_auto_tools" d="M 250 160 L 310 160 L 360 210 L 360 240" />
+                                <path class="topo-link" id="link-cat_iot_auto" d="M 250 160 L 310 160 L 360 110 L 360 80" />
+                                <path class="topo-link" id="link-cat_support" d="M 250 160 L 310 160 L 360 210 L 360 240" />
                             </g>
 
-                            <!-- Connection Lines (OS Branch) -->
-                            <g class="topo-links-branch cat_os">
+                            <!-- Connection Lines (Systems & Cloud Branch) -->
+                            <g class="topo-links-branch cat_systems_cloud">
                                 <path class="topo-link" id="link-linux" d="M 140 80 L 140 50 L 40 50" />
-                                <path class="topo-link" id="link-windows" d="M 140 80 L 140 85 L 40 85" />
-                                <path class="topo-link" id="link-esphome" d="M 140 80 L 140 120 L 40 120" />
+                                <path class="topo-link" id="link-windows_ad" d="M 140 80 L 140 85 L 40 85" />
+                                <path class="topo-link" id="link-virt_cloud" d="M 140 80 L 140 120 L 40 120" />
                             </g>
 
                             <!-- Connection Lines (NetSec Branch) -->
                             <g class="topo-links-branch cat_net_sec">
-                                <path class="topo-link" id="link-tcpip" d="M 140 240 L 140 205 L 40 205" />
-                                <path class="topo-link" id="link-dns_dhcp" d="M 140 240 L 40 240" />
-                                <path class="topo-link" id="link-vpn" d="M 140 240 L 140 275 L 40 275" />
+                                <path class="topo-link" id="link-net_mgmt" d="M 140 240 L 140 205 L 40 205" />
+                                <path class="topo-link" id="link-vpn_security" d="M 140 240 L 40 240" />
+                                <path class="topo-link" id="link-monitoring" d="M 140 240 L 140 275 L 40 275" />
                             </g>
 
-                            <!-- Connection Lines (VirtCont Branch) -->
-                            <g class="topo-links-branch cat_virt_cont">
-                                <path class="topo-link" id="link-docker" d="M 360 80 L 360 50 L 460 50" />
-                                <path class="topo-link" id="link-portainer" d="M 360 80 L 360 85 L 460 85" />
-                                <path class="topo-link" id="link-proxmox" d="M 360 80 L 360 120 L 460 120" />
+                            <!-- Connection Lines (IoT & Automation Branch) -->
+                            <g class="topo-links-branch cat_iot_auto">
+                                <path class="topo-link" id="link-iot_integration" d="M 360 80 L 360 50 L 460 50" />
+                                <path class="topo-link" id="link-docker_backup" d="M 360 80 L 360 85 L 460 85" />
+                                <path class="topo-link" id="link-sys_automation" d="M 360 80 L 360 120 L 460 120" />
                             </g>
 
-                            <!-- Connection Lines (AutoTools Branch) -->
-                            <g class="topo-links-branch cat_auto_tools">
-                                <path class="topo-link" id="link-yaml" d="M 360 240 L 360 205 L 460 205" />
-                                <path class="topo-link" id="link-bash" d="M 360 240 L 460 240" />
-                                <path class="topo-link" id="link-uptime_kuma" d="M 360 240 L 360 275 L 460 275" />
+                            <!-- Connection Lines (Support & Communication Branch) -->
+                            <g class="topo-links-branch cat_support">
+                                <path class="topo-link" id="link-customer_support" d="M 360 240 L 360 205 L 460 205" />
+                                <path class="topo-link" id="link-troubleshooting" d="M 360 240 L 460 240" />
+                                <path class="topo-link" id="link-documentation" d="M 360 240 L 360 275 L 460 275" />
                             </g>
 
                             <!-- Nodes & Text Elements -->
@@ -590,77 +590,77 @@
                             </g>
 
                             <!-- Category Hubs -->
-                            <g class="topo-node hub-node" data-category="cat_os" data-skill="cat_os">
+                            <g class="topo-node hub-node" data-category="cat_systems_cloud" data-skill="cat_systems_cloud">
                                 <circle cx="140" cy="80" r="7" />
-                                <text x="140" y="65" text-anchor="middle" data-i18n="skills_os">Besturingssystemen</text>
+                                <text x="140" y="65" text-anchor="middle" data-i18n="skills_systems_cloud">Systemen & Cloud</text>
                             </g>
                             <g class="topo-node hub-node" data-category="cat_net_sec" data-skill="cat_net_sec">
                                 <circle cx="140" cy="240" r="7" />
                                 <text x="140" y="225" text-anchor="middle" data-i18n="skills_net_sec">Netwerken & Security</text>
                             </g>
-                            <g class="topo-node hub-node" data-category="cat_virt_cont" data-skill="cat_virt_cont">
+                            <g class="topo-node hub-node" data-category="cat_iot_auto" data-skill="cat_iot_auto">
                                 <circle cx="360" cy="80" r="7" />
-                                <text x="360" y="65" text-anchor="middle" data-i18n="skills_virt_cont">Virtualisatie & Containers</text>
+                                <text x="360" y="65" text-anchor="middle" data-i18n="skills_iot_auto">IoT & Automatisering</text>
                             </g>
-                            <g class="topo-node hub-node" data-category="cat_auto_tools" data-skill="cat_auto_tools">
+                            <g class="topo-node hub-node" data-category="cat_support" data-skill="cat_support">
                                 <circle cx="360" cy="240" r="7" />
-                                <text x="360" y="225" text-anchor="middle" data-i18n="skills_auto_tools">Automatisering & Tools</text>
+                                <text x="360" y="225" text-anchor="middle" data-i18n="skills_support">Support & Communicatie</text>
                             </g>
 
-                            <!-- OS Sub-nodes -->
-                            <g class="topo-node sub-node" data-category="cat_os" data-skill="linux">
+                            <!-- Systems & Cloud Sub-nodes -->
+                            <g class="topo-node sub-node" data-category="cat_systems_cloud" data-skill="linux">
                                 <circle cx="40" cy="50" r="5" />
-                                <text x="30" y="54" text-anchor="end">Linux (Debian/Ubuntu)</text>
+                                <text x="30" y="54" text-anchor="end">Linux Server</text>
                             </g>
-                            <g class="topo-node sub-node" data-category="cat_os" data-skill="windows">
+                            <g class="topo-node sub-node" data-category="cat_systems_cloud" data-skill="windows_ad">
                                 <circle cx="40" cy="85" r="5" />
-                                <text x="30" y="89" text-anchor="end">Windows Server & Client</text>
+                                <text x="30" y="89" text-anchor="end">Windows Server & AD</text>
                             </g>
-                            <g class="topo-node sub-node" data-category="cat_os" data-skill="esphome">
+                            <g class="topo-node sub-node" data-category="cat_systems_cloud" data-skill="virt_cloud">
                                 <circle cx="40" cy="120" r="5" />
-                                <text x="30" y="124" text-anchor="end">ESPHome & Embedded</text>
+                                <text x="30" y="124" text-anchor="end">Virtualisatie & Cloud</text>
                             </g>
 
                             <!-- NetSec Sub-nodes -->
-                            <g class="topo-node sub-node" data-category="cat_net_sec" data-skill="tcpip">
+                            <g class="topo-node sub-node" data-category="cat_net_sec" data-skill="net_mgmt">
                                 <circle cx="40" cy="205" r="5" />
-                                <text x="30" y="209" text-anchor="end">TCP/IP & Subnetting</text>
+                                <text x="30" y="209" text-anchor="end">Netwerkbeheer</text>
                             </g>
-                            <g class="topo-node sub-node" data-category="cat_net_sec" data-skill="dns_dhcp">
+                            <g class="topo-node sub-node" data-category="cat_net_sec" data-skill="vpn_security">
                                 <circle cx="40" cy="240" r="5" />
-                                <text x="30" y="244" text-anchor="end">DHCP & DNS (Pi-hole)</text>
+                                <text x="30" y="244" text-anchor="end">VPN & Proxying</text>
                             </g>
-                            <g class="topo-node sub-node" data-category="cat_net_sec" data-skill="vpn">
+                            <g class="topo-node sub-node" data-category="cat_net_sec" data-skill="monitoring">
                                 <circle cx="40" cy="275" r="5" />
-                                <text x="30" y="279" text-anchor="end">VPN (WireGuard/Tailscale)</text>
+                                <text x="30" y="279" text-anchor="end">Uptime Monitoring</text>
                             </g>
 
-                            <!-- VirtCont Sub-nodes -->
-                            <g class="topo-node sub-node" data-category="cat_virt_cont" data-skill="docker">
+                            <!-- IoT & Automation Sub-nodes -->
+                            <g class="topo-node sub-node" data-category="cat_iot_auto" data-skill="iot_integration">
                                 <circle cx="460" cy="50" r="5" />
-                                <text x="470" y="54" text-anchor="start">Docker & Compose</text>
+                                <text x="470" y="54" text-anchor="start">IoT & Smart Home</text>
                             </g>
-                            <g class="topo-node sub-node" data-category="cat_virt_cont" data-skill="portainer">
+                            <g class="topo-node sub-node" data-category="cat_iot_auto" data-skill="docker_backup">
                                 <circle cx="460" cy="85" r="5" />
-                                <text x="470" y="89" text-anchor="start">Portainer</text>
+                                <text x="470" y="89" text-anchor="start">Docker & Databeheer</text>
                             </g>
-                            <g class="topo-node sub-node" data-category="cat_virt_cont" data-skill="proxmox">
+                            <g class="topo-node sub-node" data-category="cat_iot_auto" data-skill="sys_automation">
                                 <circle cx="460" cy="120" r="5" />
-                                <text x="470" y="124" text-anchor="start">Proxmox VE</text>
+                                <text x="470" y="124" text-anchor="start">Systeemautomatisering</text>
                             </g>
 
-                            <!-- AutoTools Sub-nodes -->
-                            <g class="topo-node sub-node" data-category="cat_auto_tools" data-skill="yaml">
+                            <!-- Support & Communication Sub-nodes -->
+                            <g class="topo-node sub-node" data-category="cat_support" data-skill="customer_support">
                                 <circle cx="460" cy="205" r="5" />
-                                <text x="470" y="209" text-anchor="start">YAML & Home Assistant</text>
+                                <text x="470" y="209" text-anchor="start">Klantenservice / Helpdesk</text>
                             </g>
-                            <g class="topo-node sub-node" data-category="cat_auto_tools" data-skill="bash">
+                            <g class="topo-node sub-node" data-category="cat_support" data-skill="troubleshooting">
                                 <circle cx="460" cy="240" r="5" />
-                                <text x="470" y="244" text-anchor="start">Bash & Linux CLI</text>
+                                <text x="470" y="244" text-anchor="start">1e & 2e Lijns Support</text>
                             </g>
-                            <g class="topo-node sub-node" data-category="cat_auto_tools" data-skill="uptime_kuma">
+                            <g class="topo-node sub-node" data-category="cat_support" data-skill="documentation">
                                 <circle cx="460" cy="275" r="5" />
-                                <text x="470" y="279" text-anchor="start">Uptime Kuma</text>
+                                <text x="470" y="279" text-anchor="start">Documentatie & Kennisbeheer</text>
                             </g>
                         </svg>
                     </div>

@@ -64,11 +64,11 @@
 // --- Language Dictionary Logic (i18n) ---
 function getLanguage() {
     const saved = localStorage.getItem('language');
-    if (saved && (saved === 'nl' || saved === 'en' || saved === 'de')) {
+    if (saved && (saved === 'nl' || saved === 'en')) {
         return saved;
     }
     const browserLang = navigator.language.substring(0, 2).toLowerCase();
-    if (browserLang === 'nl' || browserLang === 'en' || browserLang === 'de') {
+    if (browserLang === 'nl' || browserLang === 'en') {
         return browserLang;
     }
     return 'nl';

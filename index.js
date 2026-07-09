@@ -454,6 +454,9 @@ function initStepsMenu() {
         btn.innerHTML = `<strong>${stepLabel} ${step.number}</strong><br>${step.title}`;
         
         btn.addEventListener('click', () => {
+            if (typeof tetrisIsActive !== 'undefined' && tetrisIsActive) {
+                minimizeTetrisGame();
+            }
             currentStep = step.number;
             updateStepView();
         });
@@ -1122,19 +1125,21 @@ if (startTetrisBtn) {
     });
 }
 
+function minimizeTetrisGame() {
+    tetrisIsActive = false;
+    isSoftDropping = false;
+    window.removeEventListener('keydown', handleKeyDown);
+    window.removeEventListener('keyup', handleKeyUp);
+
+    if (stepGrid) stepGrid.classList.remove('tetris-active');
+    if (tetrisView) tetrisView.classList.remove('active');
+
+    imgTabBtns.forEach(btn => btn.style.pointerEvents = 'auto');
+    showImageView('action');
+
+    if (tetrisStartOverlay) tetrisStartOverlay.style.display = 'flex';
+}
+
 if (tetrisMinimizeBtn) {
-    tetrisMinimizeBtn.addEventListener('click', () => {
-        tetrisIsActive = false;
-        isSoftDropping = false;
-        window.removeEventListener('keydown', handleKeyDown);
-        window.removeEventListener('keyup', handleKeyUp);
-
-        if (stepGrid) stepGrid.classList.remove('tetris-active');
-        if (tetrisView) tetrisView.classList.remove('active');
-
-        imgTabBtns.forEach(btn => btn.style.pointerEvents = 'auto');
-        showImageView('action');
-
-        if (tetrisStartOverlay) tetrisStartOverlay.style.display = 'flex';
-    });
+    tetrisMinimizeBtn.addEventListener('click', minimizeTetrisGame);
 }

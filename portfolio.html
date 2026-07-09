@@ -925,21 +925,12 @@
                                                 <button class="btn btn-primary" id="start-tetris-btn"
                                                     data-i18n="modal_tetris_start">Start
                                                     Game</button>
-                                                
-                                                <!-- Global Leaderboard Box -->
-                                                <div class="tetris-leaderboard-box">
-                                                    <h4 class="leaderboard-title">🏆 GLOBAL TOP 5 🏆</h4>
-                                                    <ol id="tetris-leaderboard-list">
-                                                        <li>Laden van scores...</li>
-                                                    </ol>
-                                                </div>
                                             </div>
                                         </div>
 
                                         <!-- Tetris Highscore Submission Overlay -->
                                         <div id="tetris-highscore-overlay" class="tetris-overlay" style="display: none;">
                                             <div class="overlay-content">
-                                                <span class="overlay-icon">🏆</span>
                                                 <h3 style="color: #BEA36B; margin: 0 0 0.5rem 0; font-size: 1.25rem;">Nieuwe Highscore!</h3>
                                                 <p style="font-size: 0.85rem; margin-bottom: 1rem; color: var(--text-secondary); line-height: 1.4;">Je hebt met <strong id="highscore-value-display" style="color: #BEA36B;">0</strong> punten de top 5 bereikt! Voer je naam in voor het scorebord:</p>
                                                 <div style="display: flex; flex-direction: column; gap: 0.75rem; align-items: center; width: 100%; max-width: 240px; margin: 0 auto 1.25rem;">
@@ -979,6 +970,13 @@
                                                                 height="60"></canvas>
                                                         </div>
                                                     </div>
+                                                </div>
+                                                <!-- Highscore list on the right -->
+                                                <div class="tetris-leaderboard-box">
+                                                    <h4 class="leaderboard-title">TOP 5</h4>
+                                                    <ol id="tetris-leaderboard-list">
+                                                        <li>Laden van scores...</li>
+                                                    </ol>
                                                 </div>
                                             </div>
                                         </div>

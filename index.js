@@ -476,7 +476,6 @@ function updateTetrisOverlayState(stepNum, imgType) {
 
     if (stepNum === 10 && imgType === 'action') {
         tetrisStartOverlay.style.display = 'flex';
-        updateLeaderboardUI(); // Refresh global highscores
         if (actionView) {
             actionView.style.cursor = 'pointer';
             actionView.onclick = openTetrisFromFrame;
@@ -1207,6 +1206,7 @@ function initGame() {
     tetrisIsPaused = false;
     tetrisNextPiece = null;
     updateDisplays();
+    updateLeaderboardUI(); // Load/Refresh Top 5 scoreboard on start
     playerReset();
     startLoop();
 }

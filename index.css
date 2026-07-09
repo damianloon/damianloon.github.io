@@ -1972,8 +1972,7 @@ body {
     background-color: #ffffff;
 }
 
-.image-view#manual-view img,
-.image-view#action-view img {
+.image-view#manual-view img {
     object-fit: contain;
 }
 

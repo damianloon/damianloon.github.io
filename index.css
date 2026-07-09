@@ -1321,17 +1321,22 @@ body {
     flex-shrink: 0;
     border-radius: 8px;
     padding: 6px;
-    background: rgba(190, 163, 107, 0.08);
-    border: 1px solid rgba(190, 163, 107, 0.15);
+    background: transparent;
+    border: 1px solid transparent;
     opacity: 0;
     transform: scale(0.85);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    /* Geen transitie bij verbergen — logo verdwijnt direct */
+    transition: none;
     pointer-events: none;
 }
 
 .skill-logo.visible {
     opacity: 1;
     transform: scale(1);
+    background: rgba(190, 163, 107, 0.08);
+    border: 1px solid rgba(190, 163, 107, 0.15);
+    /* Alleen fade-in transitie bij tonen */
+    transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .skills-details-content p {

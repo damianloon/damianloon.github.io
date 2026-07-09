@@ -412,26 +412,16 @@
 
                     <div class="project-details">
                         <div class="detail-block">
-                            <h4 data-i18n="project_homelab_prob_title">Het Probleem</h4>
-                            <p data-i18n="project_homelab_prob_desc">Om theorieën uit mijn ICT-opleiding en
-                                systeembeheer in de praktijk te testen, en
-                                services (zoals DNS, smart home en media) centraal en veilig binnen het huishouden te
-                                hosten, is een flexibele, betrouwbare en efficiënte infrastructuur vereist.</p>
+                            <h4 data-i18n="project_homelab_arch_title">De Setup & Architectuur</h4>
+                            <p data-i18n="project_homelab_arch_desc">Een dual-node lab bestaande uit een Raspberry Pi 5 (Ubuntu Server) en een HP Thin Client T620 (Proxmox VE hypervisor) fysiek gemonteerd in de meterkast met 3D-geprinte brackets. De services draaien in Proxmox VM's/LXC-containers en Docker.</p>
                         </div>
                         <div class="detail-block">
-                            <h4 data-i18n="project_homelab_sol_title">De Oplossing</h4>
-                            <p data-i18n="project_homelab_sol_desc">Een dual-node lab bestaande uit een Raspberry Pi 5
-                                (Docker-host & SambaNAS-opslag) en een
-                                HP Thin Client T620 (Proxmox VE hypervisor). De opzet is redundant uitgevoerd met een
-                                dubbele Pi-hole (DNS failover), cross-monitoring via Uptime Kuma, en automatische,
-                                versleutelde off-site backups naar Oracle Cloud en Tuxis PBS.</p>
+                            <h4 data-i18n="project_homelab_integ_title">Integratie & Automatisering</h4>
+                            <p data-i18n="project_homelab_integ_desc">Centraal netwerkbeheer via een Nginx Reverse Proxy met automatische SSL-certificaten. Services praten onderling via API's en Docker-netwerken, met een SambaNAS-configuratie op de Pi 5 die shares levert aan Proxmox-nodes.</p>
                         </div>
                         <div class="detail-block">
-                            <h4 data-i18n="project_homelab_lessons_title">Geleerde Lessen</h4>
-                            <p data-i18n="project_homelab_lessons_desc">Ervaring met virtualisatie (LXC/VM's),
-                                Linux-systeembeheer (Ubuntu Server CLI),
-                                opslagprotocollen (SMB/NFS), netwerkbeheer (Tailscale VPN gateway) en het implementeren
-                                van een solide 3-2-1 back-up- en disaster recovery-strategie.</p>
+                            <h4 data-i18n="project_homelab_res_title">Redundantie & Back-ups</h4>
+                            <p data-i18n="project_homelab_res_desc">Uitgevoegd met een dubbele Pi-hole (DNS failover) zodat het internet niet uitvalt bij onderhoud. Voorzien van cross-monitoring via Uptime Kuma en automatische, versleutelde off-site backups naar Oracle Cloud en Tuxis PBS (3-2-1 back-upstrategie).</p>
                         </div>
                     </div>
                     <button class="btn btn-primary" id="btn-view-infrastructure"
@@ -451,16 +441,16 @@
 
                     <div class="project-details">
                         <div class="detail-block">
-                            <h4 data-i18n="project_nas_prob_title">Het Probleem</h4>
-                            <p data-i18n="project_nas_prob_desc">Het handmatig downloaden, hernoemen, sorteren en streamen van media naar verschillende apparaten in huis is tijdrovend. Daarnaast is downloaden via openbare netwerken onveilig en is er een centrale, veilige opslaglocatie nodig.</p>
+                            <h4 data-i18n="project_nas_arch_title">De Architectuur</h4>
+                            <p data-i18n="project_nas_arch_desc">Gedistribueerd over twee fysieke machines. De Raspberry Pi 5 fungeert als Docker-host voor de opslag (SambaNAS) en streaming (Plex/Jellyfin), terwijl de HP Thin Client (Proxmox VE) de management- en automatiseringsstack host.</p>
                         </div>
                         <div class="detail-block">
-                            <h4 data-i18n="project_nas_sol_title">De Oplossing</h4>
-                            <p data-i18n="project_nas_sol_desc">Een gedistribueerde media-infrastructuur over twee nodes: een Raspberry Pi 5 (Docker-host & SambaNAS-opslag) en een HP Thin Client (Proxmox hypervisor). De automatiseringstools (Sonarr/Radarr) communiceren direct via API's met de Pi 5.</p>
+                            <h4 data-i18n="project_nas_integ_title">Integratie & Automatisering</h4>
+                            <p data-i18n="project_nas_integ_desc">De automatiseringstools (Sonarr/Radarr) communiceren direct via API's met indexers (Prowlarr), verzoeken (Overseerr) en downloaders (qBittorrent/SabNZB) op de Pi 5 om downloads volautomatisch te starten, te hernoemen en te sorteren.</p>
                         </div>
                         <div class="detail-block">
-                            <h4 data-i18n="project_nas_lessons_title">Geleerde Lessen</h4>
-                            <p data-i18n="project_nas_lessons_desc">Configuratie van API-communicatie tussen fysieke servers (Multi-Node), containerverkeer routeren via een VPN-container met kill-switch, en rechtenbeheer (PUID/PGID) bij SMB/NFS-shares.</p>
+                            <h4 data-i18n="project_nas_res_title">Netwerk & Beveiliging</h4>
+                            <p data-i18n="project_nas_res_desc">Veilige netwerkroutering waarbij alle download-containers via Docker-netwerken door een dedicated VPN-container met actieve kill-switch worden geleid om datalekken te voorkomen. Opslagrechten zijn strikt afgeschermd via PUID/PGID-permissies.</p>
                         </div>
                     </div>
                 </div>

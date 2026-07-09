@@ -45,7 +45,7 @@ const translations = {
             project_nas_integ_title: "Integratie & Automatisering",
             project_nas_integ_desc: "De automatiseringstools (Sonarr/Radarr) communiceren direct via API's met indexers (Prowlarr), verzoeken (Overseerr) en downloaders (qBittorrent/SabNZB) op de Pi 5 om downloads volautomatisch te starten, te hernoemen en te sorteren.",
             project_nas_res_title: "Netwerk & Beveiliging",
-            project_nas_res_desc: "Veilige netwerkroutering waarbij alle download-containers via Docker-netwerken door een dedicated VPN-container met actieve kill-switch worden geleid om datalekken te voorkomen. Opslagrechten zijn strikt afgeschermd via PUID/PGID-permissies.",
+            project_nas_res_desc: "Veilige netwerkroutering waarbij alle download-containers via Docker-netwerken door een VPN-container(Gluetun) met actieve kill-switch worden geleid om datalekken te voorkomen.",
             project_arcade_title: "3D-Geprinte Mini Arcade Machine",
             project_arcade_desc: "Een zelfgebouwde bartop arcade machine aangedreven door een Raspberry Pi met Batocera en premium Sanwa arcade-besturing.",
             project_arcade_concept_title: "Het Concept",
@@ -389,7 +389,7 @@ const translations = {
             }
         ]
     },
-        en: {
+    en: {
         ui: {
             maintenance_title: "Damian van Loon | Under Maintenance",
             maintenance_desc: "The website of Damian van Loon is currently undergoing maintenance.",
@@ -436,7 +436,7 @@ const translations = {
             project_nas_integ_title: "Integration & Automation",
             project_nas_integ_desc: "Automation tools (Sonarr/Radarr) communicate directly via APIs with indexers (Prowlarr), requests (Overseerr), and downloaders (qBittorrent/SabNZB) on the Pi 5 to automatically start, rename, and sort downloads.",
             project_nas_res_title: "Network & Security",
-            project_nas_res_desc: "Secure network routing where all download containers are routed through a dedicated VPN container with an active kill switch via Docker networks to prevent data leaks. Storage rights are strictly managed using PUID/PGID permissions.",
+            project_nas_res_desc: "Secure network routing where all download containers are routed through a VPN container(Gluetun) with an active kill switch via Docker networks to prevent data leaks.",
             project_arcade_title: "3D-Printed Mini Arcade Machine",
             project_arcade_desc: "A self-built bartop arcade machine powered by a Raspberry Pi running Batocera and premium Sanwa arcade controls.",
             project_arcade_concept_title: "The Concept",

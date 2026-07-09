@@ -246,8 +246,8 @@ const translations = {
                     "Schroef voor plastic D2x12 (4x)"
                 ],
                 description: "Ik begon met het leggen van Panel A (rechterzijpaneel) op een vlakke ondergrond. Vervolgens monteerde ik de grote 12V 12.5A voeding en de 3D-geprinte support voor de USB-encoder op het paneel met M3x6 schroeven. Daarna bevestigde ik de Zero Delay USB-encoder op de support met de vier plastic schroeven. Hierbij lette ik goed op de oriëntatie van de voeding: de 12V-uitgang moest naar de bovenkant wijzen.",
-                photo: "assets/logos/arcade/Stap_1_Mijn_Foto.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_1.png"
+                photo: "assets/projects/arcade/Stap_1_Mijn_Foto.jpg",
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_1.png"
             },
             {
                 number: 2,
@@ -260,7 +260,7 @@ const translations = {
                 ],
                 description: "Ik schoof twee vierkante M3-moeren in de montage-slots aan de uiteinden van Panel B. Vervolgens drukte ik de rode Sanwa 24mm drukknop in het ronde gat aan de voorzijde van het paneel. Deze knop fungeert als de 'Insert Coin' knop voor de arcade-emulatie.",
                 photo: "",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_2.png"
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_2.png"
             },
             {
                 number: 3,
@@ -276,7 +276,7 @@ const translations = {
                 ],
                 description: "Ik assembleerde eerst de Sanwa joystick op de groene 3D-geprinte joystick adapterplaat met de M5-bouten, sluitringen en borgmoeren. Deze adapter bevestigde ik aan de onderzijde van Panel C met vier M3x14 schroeven en vierkante moeren. Daarna drukte ik de 6 gekleurde Sanwa-knoppen en de 5 mini-schakelaars in de gaten aan de bovenzijde van het bedieningspaneel.",
                 photo: "",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_3.png"
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_3.png"
             },
             {
                 number: 4,
@@ -296,7 +296,7 @@ const translations = {
                 ],
                 description: "Op Panel D installeerde ik de schermcontroller en schroefde het LG LCD-scherm vast in de uitsparing. Vervolgens monteerde ik de luidsprekers en de grilles op Panel E. De audioversterker werd vastgezet op de 3D-geprinte versterkerhouder en de 3-inch subwoofer werd gemonteerd in de subwoofer-behuizing aan de onderzijde van Panel E.",
                 photo: "",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_4.png"
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_4.png"
             },
             {
                 number: 5,
@@ -312,8 +312,8 @@ const translations = {
                     "Schroef voor plastic D3x12 (2x)"
                 ],
                 description: "Ik plakte de LED-strip aan de binnenkant van Panel F voor de verlichting van de marquee (de lichtbak aan de bovenkant) en sloot deze aan op een DC Jack adapter. Op Panel H (het achterpaneel) monteerde ik de Raspberry Pi 4B met vier kleine schroeven rechtstreeks op de 3D-geprinte standoffs.",
-                photo: "assets/logos/arcade/Stap_5-6_Mijn_Foto.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_5.png"
+                photo: "assets/projects/arcade/Stap_5-6_Mijn_Foto.jpg",
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_5.png"
             },
             {
                 number: 6,
@@ -327,8 +327,8 @@ const translations = {
                     "Schroef M3x14 DIN-912 & vierkante moer M3 (6x)"
                 ],
                 description: "Ik legde Panel A plat neer en schoof vierkante M3-moeren in de slots van Panel I, J en K. Vervolgens schroefde ik deze drie panelen rechtop vast aan Panel A met M3x14 bouten. Hierdoor ontstond de basisvorm en de rechterhelft van het arcade-kabinet.",
-                photo: "assets/logos/arcade/Stap_5-6_Mijn_Foto.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_6.png"
+                photo: "assets/projects/arcade/Stap_5-6_Mijn_Foto.jpg",
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_6.png"
             },
             {
                 number: 7,
@@ -341,7 +341,7 @@ const translations = {
                 ],
                 description: "Ik schoof achtereenvolgens Panel B (muntinworp), Panel C (bedieningspaneel), Panel D (scherm) en Panel E (speakers) in de daarvoor bestemde gleuven en geleiders van het rechterzijpaneel (Panel A). Elk paneel werd met M3x14 schroeven en vierkante moeren stevig aan het frame verankerd.",
                 photo: "",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_7.png"
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_7.png"
             },
             {
                 number: 8,
@@ -355,8 +355,8 @@ const translations = {
                     "Diverse jumperdraden & stroomkabels"
                 ],
                 description: "Dit was de meest complexe stap. Ik installeerde de tweede voeding (12V 3A) speciaal voor de versterker om audio-ruis te minimaliseren. Vervolgens bedraadde ik de C14-stroomaansluiting met de hoofdschakelaar en zekering naar beide voedingen. Ik sloot de knoppen en joystick aan op de USB-encoder en verbond de schermcontroller, versterker en voedingen met de Raspberry Pi.",
-                photo: "assets/logos/arcade/Stap_8_Mijn_Foto.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_8.png"
+                photo: "assets/projects/arcade/Stap_8_Mijn_Foto.jpg",
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_8.png"
             },
             {
                 number: 9,
@@ -369,8 +369,8 @@ const translations = {
                     "Schroef M3x14 DIN-912 (14x)"
                 ],
                 description: "Na het dubbelchecken van alle bedrading en stroomcircuits, legde ik Panel L (linkerzijpaneel) op het kabinet. Ik schoof 14 vierkante M3-moeren in de corresponderende montage-slots van de verbindende panelen (I, J, K, B, C, D, E). Vervolgens schroefde ik Panel L met 14 stuks M3x14 bouten vast om de behuizing volledig te sluiten.",
-                photo: "assets/logos/arcade/photo-assembly-1.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_9.png"
+                photo: "assets/projects/arcade/photo-assembly-1.jpg",
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_9.png"
             },
             {
                 number: 10,
@@ -383,9 +383,9 @@ const translations = {
                     "Marquee plexiglas & Marquee poster (1x)"
                 ],
                 description: "Als laatste schoof ik Panel H (achterpaneel) op zijn plek en zette dit vast met vier M3x14 schroeven. Ik plaatste de geprinte marquee-poster achter het plexiglas aan de voorzijde. Daarna was het tijd voor de eerste boot-test: de Raspberry Pi startte perfect op in Batocera, de controls reageerden direct en het 2.1-geluid klonk fantastisch!",
-                photo: "assets/logos/arcade/Final-Look-Kast.jpg",
-                inActionPhoto: "assets/logos/arcade/In_actie_tetris.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_10.png"
+                photo: "assets/projects/arcade/Final-Look-Kast.jpg",
+                inActionPhoto: "assets/projects/arcade/In_actie_tetris.jpg",
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_10.png"
             }
         ]
     },
@@ -637,8 +637,8 @@ const translations = {
                     "Screw for plastic D2x12 (4x)"
                 ],
                 description: "I started by placing Panel A (right side panel) on a flat surface. Next, I mounted the large 12V 12.5A power supply and the 3D-printed support for the USB encoder onto the panel using M3x6 screws. Then, I attached the Zero Delay USB encoder to the support with the four plastic screws. I paid close attention to the orientation of the power supply: the 12V output had to face upwards.",
-                photo: "assets/logos/arcade/Stap_1_Mijn_Foto.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_1.png"
+                photo: "assets/projects/arcade/Stap_1_Mijn_Foto.jpg",
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_1.png"
             },
             {
                 number: 2,
@@ -651,7 +651,7 @@ const translations = {
                 ],
                 description: "I slid two square M3 nuts into the mounting slots at the ends of Panel B. Then, I pressed the red Sanwa 24mm push button into the round hole on the front of the panel. This button acts as the 'Insert Coin' button for the arcade emulation.",
                 photo: "",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_2.png"
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_2.png"
             },
             {
                 number: 3,
@@ -667,7 +667,7 @@ const translations = {
                 ],
                 description: "I first assembled the Sanwa joystick onto the green 3D-printed joystick adapter plate using the M5 bolts, washers, and locknuts. I attached this adapter to the underside of Panel C with four M3x14 screws and square nuts. Then, I pressed the 6 colored Sanwa buttons and the 5 mini-switches into the holes on the top of the control panel.",
                 photo: "",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_3.png"
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_3.png"
             },
             {
                 number: 4,
@@ -687,7 +687,7 @@ const translations = {
                 ],
                 description: "On Panel D, I installed the screen controller and screwed the LG LCD screen into the cutout. Then, I mounted the speakers and grilles on Panel E. The audio amplifier was secured to its 3D-printed mount, and the 3-inch subwoofer was mounted in its enclosure at the bottom of Panel E.",
                 photo: "",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_4.png"
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_4.png"
             },
             {
                 number: 5,
@@ -703,8 +703,8 @@ const translations = {
                     "Screw for plastic D3x12 (2x)"
                 ],
                 description: "I taped the LED strip to the inside of Panel F to light up the marquee (the lightbox at the top) and connected it to a DC Jack adapter. On Panel H (the back panel), I mounted the Raspberry Pi 4B with four small screws directly onto the 3D-printed standoffs.",
-                photo: "assets/logos/arcade/Stap_5-6_Mijn_Foto.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_5.png"
+                photo: "assets/projects/arcade/Stap_5-6_Mijn_Foto.jpg",
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_5.png"
             },
             {
                 number: 6,
@@ -718,8 +718,8 @@ const translations = {
                     "Screw M3x14 DIN-912 & square nut M3 (6x)"
                 ],
                 description: "I laid Panel A flat and slid square M3 nuts into the slots of Panels I, J, and K. Next, I screwed these three panels upright onto Panel A using M3x14 bolts. This established the base shape and the right half of the arcade cabinet.",
-                photo: "assets/logos/arcade/Stap_5-6_Mijn_Foto.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_6.png"
+                photo: "assets/projects/arcade/Stap_5-6_Mijn_Foto.jpg",
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_6.png"
             },
             {
                 number: 7,
@@ -732,7 +732,7 @@ const translations = {
                 ],
                 description: "I slid Panel B (coin entry), Panel C (control panel), Panel D (screen), and Panel E (speakers) successively into the designated tracks and guides of the right side panel (Panel A). Each panel was securely anchored to the frame using M3x14 screws and square nuts.",
                 photo: "",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_7.png"
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_7.png"
             },
             {
                 number: 8,
@@ -746,8 +746,8 @@ const translations = {
                     "Various jumper wires & power cables"
                 ],
                 description: "This was the most complex step. I installed the second power supply (12V 3A) specifically for the amplifier to minimize audio hum. Then, I wired the C14 power inlet with the main switch and fuse to both power supplies. I connected the buttons and joystick to the USB encoder, and hooked up the screen controller, amplifier, and power supplies to the Raspberry Pi.",
-                photo: "assets/logos/arcade/Stap_8_Mijn_Foto.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_8.png"
+                photo: "assets/projects/arcade/Stap_8_Mijn_Foto.jpg",
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_8.png"
             },
             {
                 number: 9,
@@ -760,8 +760,8 @@ const translations = {
                     "Screw M3x14 DIN-912 (14x)"
                 ],
                 description: "After double-checking all wiring and power circuits, I placed Panel L (left side panel) onto the cabinet. I slid 14 square M3 nuts into the corresponding mounting slots of the connecting panels (I, J, K, B, C, D, E). Then, I secured Panel L using 14 M3x14 bolts to fully close the enclosure.",
-                photo: "assets/logos/arcade/photo-assembly-1.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_9.png"
+                photo: "assets/projects/arcade/photo-assembly-1.jpg",
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_9.png"
             },
             {
                 number: 10,
@@ -774,9 +774,9 @@ const translations = {
                     "Marquee plexiglass & Marquee poster (1x)"
                 ],
                 description: "Finally, I slid Panel H (back panel) into place and secured it with four M3x14 screws. I placed the printed marquee poster behind the plexiglass at the front. Then, it was time for the first boot test: the Raspberry Pi booted perfectly into Batocera, the controls responded immediately, and the 2.1 audio sounded fantastic!",
-                photo: "assets/logos/arcade/Final-Look-Kast.jpg",
-                inActionPhoto: "assets/logos/arcade/In_actie_tetris.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_10.png"
+                photo: "assets/projects/arcade/Final-Look-Kast.jpg",
+                inActionPhoto: "assets/projects/arcade/In_actie_tetris.jpg",
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_10.png"
             }
         ]
     },
@@ -1026,8 +1026,8 @@ const translations = {
                     "Schraube für Kunststoff D2x12 (4x)"
                 ],
                 description: "Ich begann damit, Platte A (rechte Seitenwand) auf eine ebene Fläche zu legen. Als Nächstes montierte ich das große 12V 12.5A Netzteil und die 3D-gedruckte Halterung für den USB-Encoder mit M3x6 Schrauben auf der Platte. Danach befestigte ich den Zero-Delay-USB-Encoder mit den vier Kunststoffschrauben an der Halterung. Dabei achtete ich genau auf die Ausrichtung des Netzteils: Der 12V-Ausgang musste nach oben zeigen.",
-                photo: "assets/logos/arcade/Stap_1_Mijn_Foto.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_1.png"
+                photo: "assets/projects/arcade/Stap_1_Mijn_Foto.jpg",
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_1.png"
             },
             {
                 number: 2,
@@ -1040,7 +1040,7 @@ const translations = {
                 ],
                 description: "Ich schob zwei Vierkantmuttern M3 in die Montageschlitze an den Enden von Platte B. Dann drückte ich die rote Sanwa 24mm Drucktaste in das runde Loch auf der Vorderseite der Platte. Diese Taste fungiert als 'Insert Coin'-Taste für die Arcade-Emulation.",
                 photo: "",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_2.png"
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_2.png"
             },
             {
                 number: 3,
@@ -1056,7 +1056,7 @@ const translations = {
                 ],
                 description: "Ich montierte zuerst den Sanwa-Joystick auf der grünen 3D-gedruckten Joystick-Adapterplatte mit den M5-Schrauben, Unterlegscheiben und Sicherungsmuttern. Diesen Adapter befestigte ich mit vier M3x14 Schrauben und Vierkantmuttern an der Unterseite von Platte C. Dann drückte ich die 6 farbigen Sanwa-Tasten und die 5 Mini-Schalter in die Löcher auf der Oberseite des Bedienfelds.",
                 photo: "",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_3.png"
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_3.png"
             },
             {
                 number: 4,
@@ -1076,7 +1076,7 @@ const translations = {
                 ],
                 description: "Auf Platte D installierte ich den Bildschirm-Controller und schraubte den LG LCD-Bildschirm in den Ausschnitt. Dann montierte ich die Lautsprecher und Gitter auf Platte E. Der Audio-Verstärker wurde an seiner 3D-gedruckten Halterung befestigt und der 3-Zoll-Subwoofer wurde in seinem Gehäuse an der Unterseite von Platte E montiert.",
                 photo: "",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_4.png"
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_4.png"
             },
             {
                 number: 5,
@@ -1092,8 +1092,8 @@ const translations = {
                     "Schraube für Kunststoff D3x12 (2x)"
                 ],
                 description: "Ich klebte den LED-Streifen auf die Innenseite von Platte F, um das Marquee (den Leuchtkasten oben) zu beleuchten, und schloss ihn an einen DC-Klinkenadapter an. Auf Platte H (der Rückwand) montierte ich den Raspberry Pi 4B mit vier kleinen Schrauben direkt auf den 3D-gedruckten Abstandshaltern.",
-                photo: "assets/logos/arcade/Stap_5-6_Mijn_Foto.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_5.png"
+                photo: "assets/projects/arcade/Stap_5-6_Mijn_Foto.jpg",
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_5.png"
             },
             {
                 number: 6,
@@ -1107,8 +1107,8 @@ const translations = {
                     "Schraube M3x14 DIN-912 & Vierkantmutter M3 (6x)"
                 ],
                 description: "Ich legte Platte A flach hin und schob Vierkantmuttern M3 in die Schlitze der Platten I, J und K. Als Nächstes schraubte ich diese drei Platten mit M3x14 Schrauben aufrecht auf Platte A. Dadurch entstanden die Grundform und die rechte Hälfte des Arcade-Gehäuses.",
-                photo: "assets/logos/arcade/Stap_5-6_Mijn_Foto.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_6.png"
+                photo: "assets/projects/arcade/Stap_5-6_Mijn_Foto.jpg",
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_6.png"
             },
             {
                 number: 7,
@@ -1121,7 +1121,7 @@ const translations = {
                 ],
                 description: "Ich schob nacheinander Platte B (Münzeinwurf), Platte C (Bedienfeld), Platte D (Bildschirm) und Platte E (Lautsprecher) in die vorgesehenen Führungen der rechten Seitenwand (Platte A). Jede Platte wurde mit M3x14 Schrauben und Vierkantmuttern fest am Rahmen verankert.",
                 photo: "",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_7.png"
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_7.png"
             },
             {
                 number: 8,
@@ -1135,8 +1135,8 @@ const translations = {
                     "Verschiedene Überbrückungsdrähte & Stromkabel"
                 ],
                 description: "Dies war der komplexeste Schritt. Ich installierte das zweite Netzteil (12V 3A) speziell für den Verstärker, um Brummen zu minimieren. Dann verkabelte ich den C14-Netzeingang mit dem Hauptschalter und der Sicherung zu beiden Netzteilen. Ich schloss die Tasten und den Joystick an den USB-Encoder an und verband den Bildschirm-Controller, den Verstärker und die Netzteile mit dem Raspberry Pi.",
-                photo: "assets/logos/arcade/Stap_8_Mijn_Foto.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_8.png"
+                photo: "assets/projects/arcade/Stap_8_Mijn_Foto.jpg",
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_8.png"
             },
             {
                 number: 9,
@@ -1149,8 +1149,8 @@ const translations = {
                     "Schraube M3x14 DIN-912 (14x)"
                 ],
                 description: "Nachdem ich alle Verkabelungen und Stromkreise überprüft hatte, legte ich Platte L (linke Seitenwand) auf das Gehäuse. Ich schob 14 Vierkantmuttern M3 in die entsprechenden Montageschlitze der verbindenden Platten (I, J, K, B, C, D, E). Dann sicherte ich Platte L mit 14 M3x14 Schrauben, um das Gehäuse vollständig zu schließen.",
-                photo: "assets/logos/arcade/photo-assembly-1.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_9.png"
+                photo: "assets/projects/arcade/photo-assembly-1.jpg",
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_9.png"
             },
             {
                 number: 10,
@@ -1163,9 +1163,9 @@ const translations = {
                     "Marquee-Plexiglas & Marquee-Poster (1x)"
                 ],
                 description: "Schließlich schob ich Platte H (Rückwand) an ihren Platz und befestigte sie mit vier M3x14 Schrauben. Ich platzierte das gedruckte Marquee-Poster hinter dem Plexiglas an der Vorderseite. Dann war es Zeit für den ersten Boot-Test: Der Raspberry Pi startete perfekt in Batocera, die Steuerung reagierte sofort und der 2.1-Sound klang fantastisch!",
-                photo: "assets/logos/arcade/Final-Look-Kast.jpg",
-                inActionPhoto: "assets/logos/arcade/In_actie_tetris.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_10.png"
+                photo: "assets/projects/arcade/Final-Look-Kast.jpg",
+                inActionPhoto: "assets/projects/arcade/In_actie_tetris.jpg",
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_10.png"
             }
         ]
     }

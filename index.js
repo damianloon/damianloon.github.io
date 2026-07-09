@@ -527,9 +527,16 @@ function updateStepView() {
         });
     }
 
-    // Prev/Next buttons disabled state
+    // Prev/Next buttons state (disabled or hidden)
     if (prevStepBtn) prevStepBtn.disabled = currentStep === 1;
-    if (nextStepBtn) nextStepBtn.disabled = currentStep === arcadeSteps.length;
+    if (nextStepBtn) {
+        if (currentStep === arcadeSteps.length) {
+            nextStepBtn.style.display = 'none';
+        } else {
+            nextStepBtn.style.display = '';
+            nextStepBtn.disabled = false;
+        }
+    }
 
     // Render the SVG manual drawing
     renderStepSvg(step.number);

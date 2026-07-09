@@ -874,6 +874,45 @@ function updateSkillLabels(lang) {
     });
 }
 
+// Logo mapping per skill — Simple Icons CDN met huisstijl goudkleur
+// Let op: Microsoft-logo's zijn verwijderd van Simple Icons (trademark verzoek 2024)
+// Windows logo is embedded als inline SVG data-URI
+const WINDOWS_LOGO_SVG = `data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23BEA36B' d='M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801'/></svg>`;
+
+const SKILL_LOGOS = {
+    linux:            'https://cdn.simpleicons.org/linux/BEA36B',
+    windows_ad:       WINDOWS_LOGO_SVG,
+    virt_cloud:       'https://cdn.simpleicons.org/proxmox/BEA36B',
+    net_mgmt:         'https://cdn.simpleicons.org/pihole/BEA36B',
+    vpn_security:     'https://cdn.simpleicons.org/wireguard/BEA36B',
+    monitoring:       'https://cdn.simpleicons.org/uptimekuma/BEA36B',
+    iot_integration:  'https://cdn.simpleicons.org/homeassistant/BEA36B',
+    docker_backup:    'https://cdn.simpleicons.org/docker/BEA36B',
+    sys_automation:   'https://cdn.simpleicons.org/gnubash/BEA36B',
+    customer_support: 'https://cdn.simpleicons.org/zendesk/BEA36B',
+    troubleshooting:  'https://cdn.simpleicons.org/jira/BEA36B',
+    documentation:    'https://cdn.simpleicons.org/bookstack/BEA36B',
+    cat_systems_cloud:'https://cdn.simpleicons.org/proxmox/BEA36B',
+    cat_net_sec:      'https://cdn.simpleicons.org/wireshark/BEA36B',
+    cat_iot_auto:     'https://cdn.simpleicons.org/homeassistant/BEA36B',
+    cat_support:      'https://cdn.simpleicons.org/zendesk/BEA36B',
+};
+
+function setSkillLogo(skillKey) {
+    const logoEl = document.getElementById('skill-logo');
+    if (!logoEl) return;
+    const url = SKILL_LOGOS[skillKey];
+    if (url) {
+        logoEl.src = url;
+        logoEl.alt = skillKey;
+        logoEl.classList.add('visible');
+        logoEl.onerror = () => { logoEl.classList.remove('visible'); };
+    } else {
+        logoEl.classList.remove('visible');
+        logoEl.src = '';
+    }
+}
+
 function renderSkillDetails(skillKey) {
     const titleEl = document.getElementById('skill-details-title');
     const descEl = document.getElementById('skill-details-desc');
@@ -890,6 +929,7 @@ function renderSkillDetails(skillKey) {
         titleEl.textContent = skillsData[lang].default_title;
         descEl.textContent = skillsData[lang].default_desc;
         if (metaBlock) metaBlock.style.display = 'none';
+        setSkillLogo(null);
         return;
     }
     
@@ -899,6 +939,7 @@ function renderSkillDetails(skillKey) {
         titleEl.textContent = cat.name;
         descEl.textContent = cat.desc;
         if (metaBlock) metaBlock.style.display = 'none';
+        setSkillLogo(skillKey);
     } 
     // Check if it's a sub-skill
     else if (skillsData[lang].skills[skillKey]) {
@@ -909,6 +950,7 @@ function renderSkillDetails(skillKey) {
         if (proficiencyEl) proficiencyEl.textContent = skill.proficiency;
         if (integrationEl) integrationEl.textContent = skill.integration;
         if (metaBlock) metaBlock.style.display = 'block';
+        setSkillLogo(skillKey);
     }
 }
 

@@ -4,6 +4,8 @@
     /* Off-black charcoal with dark blue tint */
     --bg-card: #11213D;
     /* Secondary Color: Deep Navy Blue */
+    --bg-card-selected: #18233C;
+    /* Opaque blend for selected states to prevent transparent background bleed-through */
     --bg-input: #1a2d4c;
     /* Lighter navy for text fields and inputs */
     --border-color: #26354d;
@@ -47,6 +49,8 @@
     /* Clean light grey background */
     --bg-card: #ffffff;
     /* Pure white cards */
+    --bg-card-selected: #FAF6EE;
+    /* Opaque blend for selected states in light mode */
     --bg-input: #e4e7eb;
     /* Light grey inputs/badges */
     --border-color: #d1d5db;
@@ -2642,7 +2646,7 @@ html.splash-active .site-header {
 .pipeline-node.selected > circle {
     stroke: #BEA36B;
     stroke-width: 2px;
-    fill: rgba(190, 163, 107, 0.08);
+    fill: var(--bg-card-selected); /* Fully opaque highlight */
 }
 
 /* --- Animated Gegevensstroom (Flow) Styles --- */

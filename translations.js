@@ -1071,7 +1071,7 @@ const skillsData = {
                 desc: "Schrijven van scripts om repeterende netwerktaken te automatiseren en automatische database-backups te verzorgen."
             },
             customer_support: {
-                name: "Klantenservice / Helpdesk",
+                name: "Klantenservice",
                 proficiency: "Expert",
                 integration: "Dagelijkse fulltime werkzaamheden als helpdeskmedewerker bij Nedsoft B.V.",
                 desc: "Klantvriendelijke communicatie via telefoon en e-mail, oplossen van storingen onder tijdsdruk en het ontzorgen van eindgebruikers."
@@ -1083,7 +1083,7 @@ const skillsData = {
                 desc: "Analyseren van data-logs, diagnosticeren van hardwarestoringen en het escaleren van complexe bugs naar software developers."
             },
             documentation: {
-                name: "Documentatie & Kennisbeheer",
+                name: "Documentatie",
                 proficiency: "Gevorderd",
                 integration: "Schrijven van handleidingen en interne handleidingen voor collega's en klanten.",
                 desc: "Bijhouden van documentatie (zoals interne wiki's) en het vertalen van complexe technische procedures naar heldere stappenplannen."
@@ -1167,7 +1167,7 @@ const skillsData = {
                 desc: "Writing automation scripts to handle repetitive network tasks and automated database dumps."
             },
             customer_support: {
-                name: "Customer Service / Helpdesk",
+                name: "Customer Service",
                 proficiency: "Expert",
                 integration: "Daily full-time helpdesk support duties at Nedsoft B.V.",
                 desc: "Client-focused phone and email communication, solving software issues under pressure, and assisting end-users."
@@ -1179,7 +1179,7 @@ const skillsData = {
                 desc: "Analyzing data logs, diagnosing hardware faults, and escalating complex bugs to software developers."
             },
             documentation: {
-                name: "Documentation & Knowledge Base",
+                name: "Documentation",
                 proficiency: "Advanced",
                 integration: "Writing manuals and internal guides for colleagues and customers.",
                 desc: "Maintaining documentation (such as internal wikis) and translating complex technical procedures into clean guides."

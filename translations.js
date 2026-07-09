@@ -1018,7 +1018,7 @@ const skillsData = {
         skills: {
             linux: {
                 name: "Linux Server",
-                proficiency: "Expert",
+                proficiency: "Bekwaam",
                 integration: "Basis-OS voor alle containers en virtualisatieomgevingen in het homelab.",
                 desc: "Diepgaande kennis van Linux CLI, rechtenstructuren, servicebeheer (systemd) en optimalisatie van Debian/Ubuntu servers."
             },
@@ -1030,25 +1030,25 @@ const skillsData = {
             },
             virt_cloud: {
                 name: "Virtualisatie & Cloud",
-                proficiency: "Expert",
+                proficiency: "Bekwaam",
                 integration: "Proxmox VE hypervisor draaiend op thin-clients voor LXC containers en VM's.",
                 desc: "Beheer van hypervisors, hardware passthrough, resource allocation, storage pools (ZFS) en provisioning van virtuele machines."
             },
             net_mgmt: {
                 name: "Netwerkbeheer",
-                proficiency: "Expert",
+                proficiency: "Gevorderd",
                 integration: "Segmentatie, DHCP-scopes en DNS routing in het interne LAN.",
                 desc: "Kennis van TCP/IP routing, DNS-sinkholing (dual Pi-hole voor adblocking) en het analyseren van netwerkverkeer."
             },
             vpn_security: {
                 name: "VPN & Proxying",
-                proficiency: "Expert",
+                proficiency: "Bekwaam",
                 integration: "Nginx Proxy Manager reverse proxy en beveiligde WireGuard/Tailscale tunnels.",
                 desc: "Opzetten van encryptie voor inkomend verkeer (SSL/TLS Let's Encrypt) en veilige site-to-site en client-to-site VPN verbindingen."
             },
             monitoring: {
                 name: "Uptime Monitoring",
-                proficiency: "Gevorderd",
+                proficiency: "Bekwaam",
                 integration: "Uptime Kuma dashboard voor live status-checks van alle homelab services.",
                 desc: "Inrichten van actieve poort-, ping- en HTTP-monitors inclusief push-notificaties (Discord/Telegram) bij downtime."
             },
@@ -1060,7 +1060,7 @@ const skillsData = {
             },
             docker_backup: {
                 name: "Docker & Databeheer",
-                proficiency: "Expert",
+                proficiency: "Gevorderd",
                 integration: "Orkestratie van download-pipelines en automatische ZFS/tar backups.",
                 desc: "Schrijven van Docker Compose stacks, volume mapping en het opzetten van redundante back-up schema's naar netwerkschijven."
             },
@@ -1114,7 +1114,7 @@ const skillsData = {
         skills: {
             linux: {
                 name: "Linux Server",
-                proficiency: "Expert",
+                proficiency: "Proficient",
                 integration: "Base OS for all server containers and virtualization layers in the homelab.",
                 desc: "In-depth knowledge of Linux CLI, permissions mapping, systemd service management, and Debian/Ubuntu server tuning."
             },
@@ -1126,25 +1126,25 @@ const skillsData = {
             },
             virt_cloud: {
                 name: "Virtualization & Cloud",
-                proficiency: "Expert",
+                proficiency: "Proficient",
                 integration: "Proxmox VE hypervisor running on thin-clients for LXC containers and VMs.",
                 desc: "Hypervisor administration, hardware passthrough, resource allocation, storage pools (ZFS), and provisioning virtual machines."
             },
             net_mgmt: {
                 name: "Network Management",
-                proficiency: "Expert",
+                proficiency: "Advanced",
                 integration: "Segmentation, DHCP scopes, and DNS routing in the internal LAN.",
                 desc: "Knowledge of TCP/IP routing, DNS sinkholing (dual Pi-hole for adblocking), and network traffic analysis."
             },
             vpn_security: {
                 name: "VPN & Proxying",
-                proficiency: "Expert",
+                proficiency: "Proficient",
                 integration: "Nginx Proxy Manager reverse proxy and secure WireGuard/Tailscale tunnels.",
                 desc: "Configuring transport encryption (SSL/TLS Let's Encrypt) and building secure site-to-site or client-to-site VPN paths."
             },
             monitoring: {
                 name: "Uptime Monitoring",
-                proficiency: "Advanced",
+                proficiency: "Proficient",
                 integration: "Uptime Kuma dashboard for live status-checks of all homelab services.",
                 desc: "Setting up active port, ping, and HTTP monitors with instant push notifications (Discord/Telegram) on downtime."
             },
@@ -1156,7 +1156,7 @@ const skillsData = {
             },
             docker_backup: {
                 name: "Docker & Data Management",
-                proficiency: "Expert",
+                proficiency: "Advanced",
                 integration: "Orchestration of download pipelines and automated ZFS/tar backups.",
                 desc: "Writing Docker Compose stacks, volume mapping, and creating redundant backup schedules to network storage."
             },

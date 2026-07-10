@@ -2591,6 +2591,11 @@ body {
     height: 400px;
 }
 
+:root[data-theme="light"] #tetris-canvas {
+    background-color: #e8eaf0;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.08);
+}
+
 .tetris-sidebar {
     display: flex;
     flex-direction: column;
@@ -2635,6 +2640,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+:root[data-theme="light"] .tetris-next-box {
+    background-color: #e8eaf0;
 }
 
 #tetris-next-canvas {

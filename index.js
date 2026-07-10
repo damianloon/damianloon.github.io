@@ -759,11 +759,15 @@ async function updateLeaderboardUI() {
     const listElement = document.getElementById('tetris-leaderboard-list');
     if (!listElement) return;
 
-    listElement.innerHTML = '<li>Laden van scores...</li>';
+    const lang = getLanguage();
+    const loadingText = (typeof translations !== 'undefined' && translations[lang] && translations[lang].ui && translations[lang].ui.tetris_leaderboard_loading) || 'Laden van scores...';
+    const noScoresText = (typeof translations !== 'undefined' && translations[lang] && translations[lang].ui && translations[lang].ui.tetris_leaderboard_empty) || 'Geen scores gevonden of offline';
+
+    listElement.innerHTML = `<li>${loadingText}</li>`;
     globalTopScores = await fetchGlobalHighscores();
 
     if (globalTopScores.length === 0) {
-        listElement.innerHTML = '<li>Geen scores gevonden of offline</li>';
+        listElement.innerHTML = `<li>${noScoresText}</li>`;
         return;
     }
 

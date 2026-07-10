@@ -120,6 +120,14 @@ const translations = {
             modal_tetris_desc: "Klik om de ingebouwde retro-emulator te starten en te spelen!",
             modal_tetris_start: "Start Game",
             modal_tetris_minimize: "&minus; Minimaliseer",
+            tetris_controls_title: "BESTURING",
+            tetris_controls_move: "Verplaatsen",
+            tetris_controls_rotate: "Draaien",
+            tetris_controls_drop: "Versnellen",
+            tetris_controls_pause: "Pauze",
+            tetris_key_space: "Spatie",
+            tetris_leaderboard_loading: "Laden van scores...",
+            tetris_leaderboard_empty: "Geen scores gevonden of offline",
             project_view_pipeline: "Bekijk Gegevensstroom",
             modal_pipeline_title: "Media Pipeline Gegevensstroom",
             pipeline_details_title: "Component Details",
@@ -616,6 +624,14 @@ const translations = {
             modal_tetris_desc: "Click to start the built-in retro emulator and play!",
             modal_tetris_start: "Start Game",
             modal_tetris_minimize: "&minus; Minimize",
+            tetris_controls_title: "CONTROLS",
+            tetris_controls_move: "Move",
+            tetris_controls_rotate: "Rotate",
+            tetris_controls_drop: "Soft Drop",
+            tetris_controls_pause: "Pause",
+            tetris_key_space: "Space",
+            tetris_leaderboard_loading: "Loading scores...",
+            tetris_leaderboard_empty: "No scores found or offline",
             project_view_pipeline: "View Data Flow",
             modal_pipeline_title: "Media Pipeline Data Flow",
             pipeline_details_title: "Component Details",
@@ -989,6 +1005,22 @@ const translations = {
                 manualImage: "assets/projects/arcade/bouwtekeningen/Stap_10.png"
             }
         ]
+    },
+    de: {
+        ui: {
+            modal_tetris_title: "Klassisches Tetris spielen",
+            modal_tetris_desc: "Klicken Sie, um den integrierten Retro-Emulator zu starten und zu spielen!",
+            modal_tetris_start: "Spiel starten",
+            modal_tetris_minimize: "&minus; Minimieren",
+            tetris_controls_title: "STEUERUNG",
+            tetris_controls_move: "Bewegen",
+            tetris_controls_rotate: "Drehen",
+            tetris_controls_drop: "Beschleunigen",
+            tetris_controls_pause: "Pause",
+            tetris_key_space: "Leertaste",
+            tetris_leaderboard_loading: "Lade Ergebnisse...",
+            tetris_leaderboard_empty: "Keine Ergebnisse gefunden oder offline"
+        }
     }
 };
 
@@ -1185,5 +1217,11 @@ const skillsData = {
                 desc: "Maintaining documentation (such as internal wikis) and translating complex technical procedures into clean guides."
             }
         }
+    },
+    de: {
+        default_title: "Kernkompetenzen",
+        default_desc: "Bewegen Sie die Maus über einen Bereich im Diagramm, um Details anzuzeigen.",
+        categories: {},
+        skills: {}
     }
 };

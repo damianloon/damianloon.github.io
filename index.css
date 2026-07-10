@@ -2429,8 +2429,9 @@ body {
 .tetris-leaderboard-column {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    justify-content: space-between;
     width: 120px;
+    align-self: stretch;
 }
 
 /* Leaderboard Styles */

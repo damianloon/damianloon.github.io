@@ -4,6 +4,8 @@
     /* Off-black charcoal with dark blue tint */
     --bg-card: #11213D;
     /* Secondary Color: Deep Navy Blue */
+    --bg-card-selected: #18233C;
+    /* Opaque blend for selected states to prevent transparent background bleed-through */
     --bg-input: #1a2d4c;
     /* Lighter navy for text fields and inputs */
     --border-color: #26354d;
@@ -47,6 +49,8 @@
     /* Clean light grey background */
     --bg-card: #ffffff;
     /* Pure white cards */
+    --bg-card-selected: #FAF6EE;
+    /* Opaque blend for selected states in light mode */
     --bg-input: #e4e7eb;
     /* Light grey inputs/badges */
     --border-color: #d1d5db;
@@ -398,7 +402,8 @@ body {
 }
 
 /* --- Interactive SVG Styling --- */
-.network-svg path {
+.network-svg path,
+.pipeline-svg path {
     fill: none;
 }
 
@@ -1118,46 +1123,267 @@ body {
     padding-bottom: 0.5rem;
 }
 
-.skills-grid {
+/* Layout container */
+.skills-layout-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: 1.65fr 0.85fr;
+    gap: 1.75rem;
+    align-items: stretch;
 }
 
-.skills-card {
+/* SVG wrapper */
+.skills-topology-wrapper {
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: 12px;
-    /* Upgraded to modern rounded cards */
-    padding: 1.25rem;
-}
-
-.skills-card h4 {
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 0.75rem;
-    color: var(--text-primary);
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 0.25rem;
-}
-
-.skills-card ul {
-    list-style: none;
-}
-
-.skills-card li {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    margin-bottom: 0.4rem;
+    padding: 1rem;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    /* Vaste hoogte zodat de wrapper nooit kan verschuiven */
+    height: 360px;
 }
 
-.skills-card li::before {
-    content: "•";
-    color: var(--accent-blue);
+.skills-topology-svg {
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    height: 100%;
+    /* Vaste aspect-ratio op basis van de viewBox (800x320) */
+    aspect-ratio: 800 / 320;
+    max-height: 320px;
+}
+
+/* Subtiele raster-achtergrondwatermerk */
+.skills-topology-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(128, 128, 128, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(128, 128, 128, 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
+}
+
+/* Connection lines styling */
+.topo-link {
+    fill: none;
+    stroke: var(--text-muted);
+    stroke-width: 1px;
+    opacity: 0.15;
+    transition: stroke 0.3s ease, stroke-width 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hover highlights for paths */
+.topo-link.active {
+    stroke: #BEA36B; /* accent gold */
+    stroke-width: 1.5px;
+    opacity: 1;
+}
+
+.topo-link.dimmed {
+    opacity: 0.05;
+}
+
+/* Onzichtbare hitzone voor makkelijker hoveren/klikken */
+.node-hitzone {
+    fill: transparent;
+    stroke: none;
+    pointer-events: all;
+    cursor: pointer;
+}
+
+/* Node circle/text styling */
+.topo-node {
+    cursor: pointer;
+    will-change: opacity;
+}
+
+.topo-node circle:not(.node-hitzone) {
+    fill: var(--bg-card);
+    stroke: var(--border-color);
+    stroke-width: 1.5px;
+    transition: fill 0.3s ease, stroke 0.3s ease, stroke-width 0.3s ease, filter 0.3s ease;
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+.topo-node text {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    fill: var(--text-muted);
+    transition: fill 0.3s ease, font-weight 0.3s ease, opacity 0.3s ease;
+    user-select: none;
+    /* Tekst ook klikbaar maken als onderdeel van de node-hitzone */
+    pointer-events: all;
+    cursor: pointer;
+}
+
+/* Center node specifics */
+.center-node circle {
+    fill: #11213D;
+    stroke: #BEA36B;
+    stroke-width: 2px;
+}
+
+.center-node text {
+    fill: #BEA36B;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+/* Category hub node specifics */
+.hub-node circle:not(.node-hitzone) {
+    fill: var(--bg-card);
+    stroke: var(--text-muted);
+    stroke-width: 1.5px;
+}
+
+.hub-node text {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 16.5px;
+    fill: var(--text-primary);
+}
+
+/* Hover node overrides */
+.topo-node:hover circle:not(.node-hitzone),
+.topo-node.active circle:not(.node-hitzone) {
+    fill: #BEA36B;
+    stroke: #BEA36B;
+    /* CSS drop-shadow ipv SVG filter — veroorzaakt geen layout-shift */
+    filter: drop-shadow(0 0 4px rgba(190, 163, 107, 0.8));
+}
+
+.topo-node:hover text,
+.topo-node.active text {
+    fill: var(--text-primary);
+    /* font-weight NIET aanpassen: dat vergroot de tekst en veroorzaakt layout-shift */
+    opacity: 1;
+}
+
+/* Dimming unrelated nodes */
+.topo-node.dimmed {
+    opacity: 0.25;
+}
+
+/* Details Sidebar */
+.skills-details-sidebar {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.skill-details-inner {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header: titel links, logo rechts */
+.skill-details-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.skill-details-header h4 {
+    color: #BEA36B;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+    transition: color 0.3s ease;
+    flex: 1;
+    min-width: 0;
+}
+
+/* Skill logo — rechtsboven, subtiel */
+.skill-logo {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+    flex-shrink: 0;
+    border-radius: 8px;
+    padding: 6px;
+    background: transparent;
+    border: 1px solid transparent;
+    opacity: 0;
+    transform: scale(0.85);
+    /* Geen transitie bij verbergen — logo verdwijnt direct */
+    transition: none;
+    pointer-events: none;
+}
+
+.skill-logo.visible {
+    opacity: 1;
+    transform: scale(1);
+    background: rgba(190, 163, 107, 0.08);
+    border: 1px solid rgba(190, 163, 107, 0.15);
+    /* Alleen fade-in transitie bij tonen */
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.skills-details-content p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+}
+
+.skill-meta-item {
+    margin-bottom: 1rem;
+}
+
+.skill-meta-item .meta-label {
+    display: block;
+    font-size: 0.7rem;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.25rem;
+}
+
+.proficiency-badge {
+    display: inline-block;
+    background-color: rgba(190, 163, 107, 0.1);
+    border: 1px solid rgba(190, 163, 107, 0.25);
+    color: #BEA36B;
+    font-size: 0.75rem;
     font-weight: bold;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+}
+
+#skill-meta-integration {
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    margin-bottom: 0;
+}
+
+/* Mobile responsive override */
+@media (max-width: 768px) {
+    .skills-layout-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
 }
 
 .timeline-title-wrapper {
@@ -1972,8 +2198,7 @@ body {
     background-color: #ffffff;
 }
 
-.image-view#manual-view img,
-.image-view#action-view img {
+.image-view#manual-view img {
     object-fit: contain;
 }
 
@@ -2151,7 +2376,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(12, 13, 18, 0.95);
+    background-color: rgba(17, 33, 61, 0.95);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2162,6 +2387,10 @@ body {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.25s ease;
+}
+
+:root[data-theme="light"] .tetris-overlay {
+    background-color: rgba(244, 245, 247, 0.95);
 }
 
 .image-display-frame:hover .tetris-overlay {
@@ -2194,6 +2423,129 @@ body {
     line-height: 1.4;
 }
 
+#tetris-highscore-overlay[style*="display: flex"],
+#tetris-highscore-overlay.active {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+/* Leaderboard & Controls Column */
+.tetris-leaderboard-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 120px;
+    align-self: stretch;
+}
+
+/* Leaderboard Styles */
+.tetris-leaderboard-box {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 0.5rem;
+    width: 120px;
+    box-sizing: border-box;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Controls Guide Box */
+.tetris-controls-box {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 0.4rem;
+    width: 120px;
+    box-sizing: border-box;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.tetris-controls-box .control-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    margin-bottom: 0.4rem;
+    text-align: center;
+}
+
+.tetris-controls-box .control-row:last-child {
+    margin-bottom: 0;
+}
+
+.tetris-controls-box .control-keys {
+    display: flex;
+    gap: 0.15rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.tetris-controls-box kbd {
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-bottom: 2px solid var(--border-hover);
+    border-radius: 3px;
+    color: var(--text-primary);
+    padding: 0.05rem 0.2rem;
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    font-weight: 600;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+    display: inline-block;
+    line-height: 1;
+}
+
+.tetris-controls-box kbd.kbd-space {
+    min-width: 45px;
+    text-align: center;
+}
+
+.tetris-controls-box .control-desc {
+    font-size: 0.5rem;
+    color: var(--text-muted);
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.leaderboard-title {
+    color: var(--text-muted);
+    font-size: 0.6rem;
+    font-weight: bold;
+    margin: 0 0 0.4rem 0;
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+#tetris-leaderboard-list {
+    margin: 0;
+    padding: 0 0 0 1.15rem;
+    text-align: left;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+}
+
+#tetris-leaderboard-list li {
+    margin-bottom: 0.35rem;
+    line-height: 1.3;
+}
+
+#tetris-leaderboard-list li::marker {
+    color: var(--text-muted);
+}
+
+#tetris-leaderboard-list li span.score {
+    float: right;
+    color: var(--accent-blue);
+    font-weight: bold;
+}
+
+:root[data-theme="light"] #tetris-leaderboard-list li span.score {
+    color: var(--text-primary);
+}
+
 /* Tetris Game View Layout */
 .image-view#tetris-view {
     flex-direction: column;
@@ -2202,7 +2554,7 @@ body {
     width: 100%;
     height: 100%;
     padding: 1.5rem 1rem 1rem 1rem;
-    background-color: #0c0d12;
+    background-color: var(--bg-inset);
     position: relative;
 }
 
@@ -2220,7 +2572,7 @@ body {
 }
 
 .tetris-minimize-btn:hover {
-    color: #BEA36B;
+    color: var(--accent-blue);
 }
 
 .tetris-game-layout {
@@ -2239,6 +2591,11 @@ body {
     height: 400px;
 }
 
+:root[data-theme="light"] #tetris-canvas {
+    background-color: #e8eaf0;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.08);
+}
+
 .tetris-sidebar {
     display: flex;
     flex-direction: column;
@@ -2247,7 +2604,7 @@ body {
 }
 
 .tetris-panel {
-    background-color: #11213D;
+    background-color: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: 6px;
     padding: 0.4rem;
@@ -2266,19 +2623,27 @@ body {
 .tetris-panel div {
     font-size: 0.85rem;
     font-weight: 700;
-    color: #BEA36B;
+    color: var(--accent-blue);
+}
+
+:root[data-theme="light"] .tetris-panel div {
+    color: var(--text-primary);
 }
 
 .tetris-next-box {
     width: 60px;
     height: 60px;
     margin: 0.25rem auto 0 auto;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: #000000;
     border: 1px solid var(--border-color);
     border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+:root[data-theme="light"] .tetris-next-box {
+    background-color: #e8eaf0;
 }
 
 #tetris-next-canvas {
@@ -2520,4 +2885,209 @@ html.splash-active .site-header {
         r: 9px;
         opacity: 0;
     }
+}
+
+/* --- Pipeline Modal & Diagram CSS Styles --- */
+.pipeline-grid {
+    display: grid;
+    grid-template-columns: 2.2fr 0.8fr;
+    gap: 1.5rem;
+    height: 100%;
+    min-height: 0;
+}
+
+@media (max-width: 968px) {
+    .pipeline-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        overflow-y: auto;
+    }
+}
+
+.pipeline-diagram-container {
+    background-color: rgba(12, 13, 18, 0.4);
+    border: 1px solid rgba(128, 128, 128, 0.15);
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 380px;
+}
+
+:root[data-theme="light"] .pipeline-diagram-container {
+    background-color: rgba(248, 250, 252, 0.8);
+}
+
+.pipeline-svg {
+    width: 100%;
+    height: auto;
+    max-height: 480px;
+}
+
+.pipeline-details-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.pipeline-details-card {
+    background-color: var(--bg-card);
+    border: 1px solid rgba(128, 128, 128, 0.15);
+    border-radius: 8px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.pipeline-details-content {
+    padding: 1.25rem;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.pipeline-spec-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+    font-size: 0.9rem;
+}
+
+.pipeline-spec-label {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.pipeline-spec-value {
+    color: var(--text-primary);
+    font-family: monospace;
+}
+
+.pipeline-desc-block {
+    margin-top: 1.25rem;
+}
+
+.pipeline-desc-title {
+    color: #BEA36B;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.pipeline-desc-text {
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+}
+
+/* Pipeline SVG Node Interactions */
+.pipeline-node {
+    cursor: pointer;
+}
+
+.pipeline-node > rect,
+.pipeline-node > circle {
+    fill: var(--bg-card);
+    stroke: var(--border-color);
+    transition: all 0.15s ease-in-out;
+}
+
+.pipeline-node text {
+    user-select: none;
+}
+
+.pipeline-node:hover > rect,
+.pipeline-node:hover > circle {
+    stroke: var(--text-secondary);
+}
+
+.pipeline-node.selected > rect,
+.pipeline-node.selected > circle {
+    stroke: #BEA36B;
+    stroke-width: 2px;
+    fill: var(--bg-card-selected); /* Fully opaque highlight */
+}
+
+/* --- Animated Gegevensstroom (Flow) Styles --- */
+.pipeline-flow-path {
+    fill: none;
+    stroke-width: 6px; /* Diameter of the dot */
+    stroke-linecap: round;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    pointer-events: none;
+    filter: url(#pipeline-glow); /* Enterprise laser glow effect */
+}
+
+.pipeline-flow-path.active {
+    opacity: 0.9;
+    animation: pipeline-flow-anim 0.8s linear infinite; /* Light-speed data flow */
+}
+
+@keyframes pipeline-flow-anim {
+    0% {
+        stroke-dasharray: 0.1, 70; /* Wider spacing to make individual high-speed pulses distinct */
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dasharray: 0.1, 70;
+        stroke-dashoffset: -140px; /* Seamless loop multiple of spacing */
+    }
+}
+
+/* --- Enterprise Flow Controls Overlay --- */
+.pipeline-controls {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.pipeline-control-btn {
+    background: rgba(17, 33, 61, 0.7);
+    border: 1px solid rgba(128, 128, 128, 0.25);
+    color: var(--text-primary);
+    padding: 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+    width: 32px;
+    height: 32px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.pipeline-control-btn:hover {
+    background: rgba(190, 163, 107, 0.18);
+    border-color: #BEA36B;
+    color: #BEA36B;
+    transform: translateY(-1px);
+}
+
+.pipeline-control-btn:active {
+    transform: translateY(0);
+}
+
+:root[data-theme="light"] .pipeline-control-btn {
+    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(0, 0, 0, 0.12);
+    color: var(--text-primary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+:root[data-theme="light"] .pipeline-control-btn:hover {
+    background: rgba(190, 163, 107, 0.12);
+    border-color: #BEA36B;
+    color: #BEA36B;
+}
+
+.control-icon {
+    display: block;
+    pointer-events: none;
 }

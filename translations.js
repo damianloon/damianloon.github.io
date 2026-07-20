@@ -15,7 +15,7 @@ const translations = {
             nav_experience: "CV & Ervaring",
             nav_contact: "Contact",
             hero_badge: "ICT System Engineer in Opleiding (Mbo 4)",
-            hero_subtitle: "Helpdeskmedewerker en IT-engineer in wording met een passie voor Linux, Docker, netwerken en smart home automatisering. Bouwt en beheert een homelab om enterprise-technologieën in de praktijk te testen.",
+            hero_subtitle: "Helpdeskmedewerker en IT-engineer in wording met een passie voor Linux, Docker, netwerken en smart home automatisering. Bouwt en beheert een homelab om enterprise-technologieÃ«n in de praktijk te testen.",
             hero_location: "Ridderkerk, NL",
             hero_job: "Helpdeskmedewerker @ Nedsoft B.V.",
             hero_school: "ROC Midden Nederland",
@@ -32,24 +32,24 @@ const translations = {
             project_view_net: "Bekijk Netwerktekening",
             project_view_steps: "Bekijk Bouwstappen",
             project_homelab_desc: "Een geavanceerde en redundante test- en productieomgeving in mijn meterkast, ingericht met Proxmox VE, Docker en op maat gemaakte 3D-geprinte hardware.",
-            project_homelab_prob_title: "Het Probleem",
-            project_homelab_prob_desc: "Om theorieën uit mijn ICT-opleiding en systeembeheer in de praktijk te testen, en services (zoals DNS, smart home en media) centraal en veilig binnen het huishouden te hosten, is een flexibele, betrouwbare en efficiënte infrastructuur vereist.",
-            project_homelab_sol_title: "De Oplossing",
-            project_homelab_sol_desc: "Een dual-node lab bestaande uit een Raspberry Pi 5 (Docker-host & SambaNAS-opslag) en een HP Thin Client T620 (Proxmox VE hypervisor). De opzet is redundant uitgevoerd met een dubbele Pi-hole (DNS failover), cross-monitoring via Uptime Kuma, en automatische, versleutelde off-site backups naar Oracle Cloud en Tuxis PBS.",
-            project_homelab_lessons_title: "Geleerde Lessen",
-            project_homelab_lessons_desc: "Ervaring met virtualisatie (LXC/VM's), Linux-systeembeheer (Ubuntu Server CLI), opslagprotocollen (SMB/NFS), netwerkbeheer (Tailscale VPN gateway) en het implementeren van een solide 3-2-1 back-up- en disaster recovery-strategie.",
-            project_voice_title: "Lokale Privacy-Vriendelijke Spraakassistent",
-            project_voice_desc: "Een volledig lokaal draaiende spraakassistent die is geïntegreerd met Home Assistant, zonder cloud-afhankelijkheid.",
-            project_voice_prob_title: "Het Probleem",
-            project_voice_prob_desc: "Commerciële spraakassistenten sturen audiogegevens naar cloudservers, wat privacyrisico's oplevert en cloud-afhankelijkheid creëert.",
-            project_voice_sol_title: "De Oplossing",
-            project_voice_sol_desc: "Een op maat gebouwde assistant met een ReSpeaker Lite (ESP32-S3) in een zelf-geprinte akoestische behuizing. Communiceert lokaal via Wyoming (Whisper & Piper).",
-            project_voice_lessons_title: "Geleerde Lessen",
-            project_voice_lessons_desc: "Signaalverwerking en akoestische demping, microcontrollers configureren met ESPHome, en lokale AI-modellen optimaliseren op latency.",
+            project_homelab_arch_title: "De Setup & Architectuur",
+            project_homelab_arch_desc: "Een dual-node lab bestaande uit een Raspberry Pi 5 (Ubuntu Server) en een HP Thin Client T620 (Proxmox VE hypervisor) fysiek gemonteerd in de meterkast met 3D-geprinte brackets. De services draaien in Proxmox VM's/LXC-containers en Docker.",
+            project_homelab_integ_title: "Integratie & Automatisering",
+            project_homelab_integ_desc: "Centraal netwerkbeheer via een Nginx Reverse Proxy met automatische SSL-certificaten. Services praten onderling via API's en Docker-netwerken, met een SambaNAS-configuratie op de Pi 5 die shares levert aan Proxmox-nodes.",
+            project_homelab_res_title: "Redundantie & Back-ups",
+            project_homelab_res_desc: "Uitgevoerd met een dubbele Pi-hole (DNS failover) zodat het internet niet uitvalt bij onderhoud. Voorzien van cross-monitoring via Uptime Kuma en automatische, versleutelde off-site backups naar Oracle Cloud en Tuxis PBS (3-2-1 back-upstrategie).",
+            project_nas_title: "Geautomatiseerde Media Pipeline & SambaNAS",
+            project_nas_desc: "Een gecentraliseerde netwerkopslag (NAS) en geautomatiseerde download- en mediapipeline draaiend op een energiezuinige Raspberry Pi 5.",
+            project_nas_arch_title: "De Architectuur",
+            project_nas_arch_desc: "Gedistribueerd over twee fysieke machines. De Raspberry Pi 5 fungeert als Docker-host voor de opslag (SambaNAS) en streaming (Plex/Jellyfin), terwijl de HP Thin Client (Proxmox VE) de management- en automatiseringsstack host.",
+            project_nas_integ_title: "Integratie & Automatisering",
+            project_nas_integ_desc: "De automatiseringstools (Sonarr/Radarr) communiceren direct via API's met indexers (Prowlarr), verzoeken (Overseerr) en downloaders (qBittorrent/SabNZB) op de Pi 5 om downloads volautomatisch te starten, te hernoemen en te sorteren.",
+            project_nas_res_title: "Netwerk & Beveiliging",
+            project_nas_res_desc: "Veilige netwerkroutering waarbij alle download-containers via Docker-netwerken door een VPN-container(Gluetun) met actieve kill-switch worden geleid om datalekken te voorkomen.",
             project_arcade_title: "3D-Geprinte Mini Arcade Machine",
             project_arcade_desc: "Een zelfgebouwde bartop arcade machine aangedreven door een Raspberry Pi met Batocera en premium Sanwa arcade-besturing.",
             project_arcade_concept_title: "Het Concept",
-            project_arcade_concept_desc: "Een compact tafelmodel arcadekast, geprint in PLA, uitgerust met een authentiek 4:3 LCD-scherm, geïntegreerd 2.1-geluid en sfeervolle LED-verlichting.",
+            project_arcade_concept_desc: "Een compact tafelmodel arcadekast, geprint in PLA, uitgerust met een authentiek 4:3 LCD-scherm, geÃ¯ntegreerd 2.1-geluid en sfeervolle LED-verlichting.",
             project_arcade_elec_title: "De Elektronica",
             project_arcade_elec_desc: "Raspberry Pi 4B, Zero Delay USB encoder, audioversterker met actieve subwoofer en een dual-voedingssysteem voor stabiele stroomvoorziening.",
             project_arcade_process_title: "Het Bouwproces",
@@ -57,10 +57,10 @@ const translations = {
             skills_career_title: "Vaardigheden & Loopbaan",
             skills_career_subtitle: "Een overzicht van mijn technische vaardigheden, professionele achtergrond en studie.",
             skills_core_title: "Kernvaardigheden",
-            skills_os: "Besturingssystemen",
+            skills_systems_cloud: "Systemen & Cloud",
             skills_net_sec: "Netwerken & Security",
-            skills_virt_cont: "Virtualisatie & Containers",
-            skills_auto_tools: "Automatisering & Tools",
+            skills_iot_auto: "IoT & Automatisering",
+            skills_support: "Support & Communicatie",
             experience_education_title: "Werkervaring & Opleiding",
             exp_roc_date: "2025 - 2027 (Verwacht)",
             exp_roc_title: "Mbo ICT System Engineer (Niveau 4)",
@@ -85,8 +85,8 @@ const translations = {
             modal_tab_overview: "Specificaties & Materialen",
             modal_tab_steps: "Stap-voor-stap Montage",
             modal_project_title: "Het Project",
-            modal_project_desc_1: "Dit project is een volledig functionele mini-bartop arcade machine, geprint met de Bambu Lab A1 3D Printer en aangedreven door een Raspberry Pi 4B. De machine is uitgerust met Sanwa controls, een 4:3 LCD-scherm dat perfect is voor klassieke retro games, en een geïntegreerd 2.1-audiosysteem met een actieve subwoofer voor diepe, volle retro geluidseffecten.",
-            modal_project_desc_2: "De software draait op het Batocera retro-gaming besturingssysteem, geladen op een 128 GB micro-SD-kaart. Hiermee worden consoles zoals NES, SNES, Sega Genesis, MAME (arcade) en meer vlekkeloos geëmuleerd.",
+            modal_project_desc_1: "Dit project is een volledig functionele mini-bartop arcade machine, geprint met de Bambu Lab A1 3D Printer en aangedreven door een Raspberry Pi 4B. De machine is uitgerust met Sanwa controls, een 4:3 LCD-scherm dat perfect is voor klassieke retro games, en een geÃ¯ntegreerd 2.1-audiosysteem met een actieve subwoofer voor diepe, volle retro geluidseffecten.",
+            modal_project_desc_2: "De software draait op het Batocera retro-gaming besturingssysteem, geladen op een 128 GB micro-SD-kaart. Hiermee worden consoles zoals NES, SNES, Sega Genesis, MAME (arcade) en meer vlekkeloos geÃ«muleerd.",
             modal_specs_title: "Specificaties",
             modal_spec_size: "<strong>Formaat:</strong> Bartop (tafelmodel)",
             modal_spec_screen: "<strong>Beeldscherm:</strong> 9.7 inch LG LCD 4:3 (1024x768)",
@@ -119,7 +119,20 @@ const translations = {
             modal_tetris_title: "Speel Classic Tetris",
             modal_tetris_desc: "Klik om de ingebouwde retro-emulator te starten en te spelen!",
             modal_tetris_start: "Start Game",
-            modal_tetris_minimize: "&minus; Minimaliseer"
+            modal_tetris_minimize: "&minus; Minimaliseer",
+            tetris_controls_title: "BESTURING",
+            tetris_controls_move: "Verplaatsen",
+            tetris_controls_rotate: "Draaien",
+            tetris_controls_drop: "Versnellen",
+            tetris_controls_pause: "Pauze",
+            tetris_key_space: "Spatie",
+            tetris_leaderboard_loading: "Laden van scores...",
+            tetris_leaderboard_empty: "Geen scores gevonden of offline",
+            project_view_pipeline: "Bekijk Gegevensstroom",
+            modal_pipeline_title: "Media Pipeline Gegevensstroom",
+            pipeline_details_title: "Component Details",
+            pipeline_desc_title: "Beschrijving & Werking",
+            pipeline_bind_mount_label: "LXC Bind-mount: Bestandsimport (Downloads &rarr; Media)"
         },
         nodeData: {
             remote: {
@@ -142,7 +155,7 @@ const translations = {
                     "Gateway IP": "192.168.2.254",
                     "DNS Instelling": "Dual DNS (Pi-hole 1 & 2)"
                 },
-                description: "De centrale router van KPN beheert de internetverbinding (WAN), deelt lokale IP-adressen uit via DHCP en is handmatig geconfigureerd met twee DNS-servers: de primaire Pi-hole op de Raspberry Pi 5 en de back-up Pi-hole op Proxmox. Hierdoor is advertentievrij browsen gegarandeerd en blijft internet werken, zelfs als één van de servers offline gaat."
+                description: "De centrale router van KPN beheert de internetverbinding (WAN), deelt lokale IP-adressen uit via DHCP en is handmatig geconfigureerd met twee DNS-servers: de primaire Pi-hole op de Raspberry Pi 5 en de back-up Pi-hole op Proxmox. Hierdoor is advertentievrij browsen gegarandeerd en blijft internet werken, zelfs als Ã©Ã©n van de servers offline gaat."
             },
             pi: {
                 name: "Raspberry Pi 5",
@@ -207,7 +220,7 @@ const translations = {
                     "Protocol": "Zigbee 3.0 (IEEE 802.15.4)",
                     "Apparaten": "Slimme lampen, sensoren en schakelaars"
                 },
-                description: "De Sonoff Zigbee USB Dongle dient als de centrale coördinator van het Zigbee mesh-netwerk. Via Home Assistant communiceren alle draadloze temperatuursensoren, slimme schakelaars en lampen in de woning direct en lokaal met het systeem."
+                description: "De Sonoff Zigbee USB Dongle dient als de centrale coÃ¶rdinator van het Zigbee mesh-netwerk. Via Home Assistant communiceren alle draadloze temperatuursensoren, slimme schakelaars en lampen in de woning direct en lokaal met het systeem."
             },
             oracle: {
                 name: "Oracle Cloud Back-up",
@@ -232,6 +245,106 @@ const translations = {
                 description: "De HP Thin Client T620 (Proxmox VE) maakt direct verbinding met de externe PBS-omgeving van Tuxis. Hier worden dagelijks incrementele, blok-level backups van alle actieve LXC-containers en VM's naartoe geschreven met automatische deduplicatie en encryptie."
             }
         },
+        pipelineData: {
+            client: {
+                name: "Client / Gebruiker",
+                role: "LAN / Tailscale Client",
+                specs: {
+                    "Type": "Smartphone / TV / PC",
+                    "VPN": "Tailscale Actief",
+                    "Protocollen": "HTTP / Plex-app"
+                },
+                description: "De eindgebruiker die media aanvraagt en streamt. Dit kan lokaal binnen het thuisnetwerk (LAN) of buitenshuis via een beveiligde Tailscale VPN-tunnel, waardoor er geen poorten opengezet hoeven te worden op de router."
+            },
+            overseerr: {
+                name: "Overseerr",
+                role: "Verzoekenbeheerder (LXC)",
+                specs: {
+                    "Type": "LXC Container",
+                    "OS": "Debian 12",
+                    "Poort": "5055 (HTTP)",
+                    "Netwerk": "LAN & Tailscale"
+                },
+                description: "De front-end interface van de pipeline. Hier kunnen gebruikers eenvoudig films en series zoeken en aanvragen. Overseerr controleert automatisch of media al aanwezig is in Plex en stuurt nieuwe verzoeken door naar Sonarr/Radarr via API-koppelingen."
+            },
+            prowlarr: {
+                name: "Prowlarr",
+                role: "Indexer Manager (LXC)",
+                specs: {
+                    "Type": "LXC Container",
+                    "OS": "Debian 12",
+                    "Poort": "9696 (HTTP)",
+                    "Netwerk": "Intern Netwerk"
+                },
+                description: "Beheert en synchroniseert alle Usenet- en torrent-indexers (zoekmachines). Zodra een nieuwe indexer wordt toegevoegd aan Prowlarr, synchroniseert hij deze direct via API's met Sonarr en Radarr, zodat de downloaders altijd over de nieuwste zoekbronnen beschikken."
+            },
+            sonarr_radarr: {
+                name: "Sonarr & Radarr",
+                role: "Media Beheerders (LXC)",
+                specs: {
+                    "Type": "LXC Containers",
+                    "OS": "Debian 12 (x2)",
+                    "Poort": "8989 / 7878",
+                    "Netwerk": "Intern Netwerk"
+                },
+                description: "Monitoren de gewenste media. Radarr beheert films, Sonarr beheert series. Ze zoeken automatisch via Prowlarr naar releases, sturen opdrachten naar SabNZBD/qBittorrent via API's, en verplaatsen/hernoemen de voltooide bestanden naar de SambaNAS-shares."
+            },
+            vpn: {
+                name: "Gluetun VPN",
+                role: "VPN Gateway Container (Docker)",
+                specs: {
+                    "Type": "Docker Container",
+                    "OS": "Raspberry Pi OS",
+                    "Protocol": "WireGuard",
+                    "Beveiliging": "Actieve Kill-Switch"
+                },
+                description: "Zorgt voor een veilige netwerkroutering. De qBittorrent-container is gekoppeld aan de Gluetun-netwerkstack. Als de VPN-verbinding wegvalt, blokkeert de kill-switch direct al het inkomende en uitgaande verkeer om datalekken te voorkomen."
+            },
+            qbittorrent: {
+                name: "qBittorrent",
+                role: "Veilige Torrent Downloader (Docker)",
+                specs: {
+                    "Type": "Docker Container",
+                    "OS": "Raspberry Pi OS",
+                    "Poort": "8080 (Web UI)",
+                    "Netwerk": "Gerouteerd via VPN"
+                },
+                description: "Verwerkt torrent-downloads. De qBittorrent-container deelt de netwerkstack van de Gluetun VPN-container. Hierdoor wordt al het torrent-verkeer versleuteld en anoniem afgehandeld over de VPN-tunnel."
+            },
+            sabnzbd: {
+                name: "SabNZB",
+                role: "Usenet Downloader (Docker)",
+                specs: {
+                    "Type": "Docker Container",
+                    "OS": "Raspberry Pi OS",
+                    "Poort": "8089 (Web UI)",
+                    "Netwerk": "SSL Direct"
+                },
+                description: "Downloadt media met maximale snelheid via nieuwsgroepen (Usenet). Maakt gebruik van directe SSL-verbindingen met nieuwsservers, waardoor er geen extra VPN nodig is voor privacy en veiligheid tijdens het downloaden."
+            },
+            nas: {
+                name: "SambaNAS Opslag",
+                role: "Centrale Netwerkopslag",
+                specs: {
+                    "Type": "Fysieke Pi 5 NVMe",
+                    "Protocol": "Samba (SMB)",
+                    "Rechten": "PUID/PGID Beheer",
+                    "Mappen": "/Plex/Downloads, /Movies, /Series"
+                },
+                description: "De centrale opslaglocatie voor alle media. De LXC-containers op de HP Thin Client hebben direct toegang via bind-mounts in hun .conf bestanden. Hierdoor kunnen Sonarr en Radarr bestanden direct op de NAS hernoemen en verplaatsen zonder netwerkoverhead."
+            },
+            plex: {
+                name: "Plex Media Server",
+                role: "Streaming & Transcoding (Docker)",
+                specs: {
+                    "Type": "Docker Container",
+                    "OS": "Raspberry Pi OS",
+                    "Poort": "32400 (Web)",
+                    "Database": "SambaNAS Gekoppeld"
+                },
+                description: "Scant de `/Plex/Movies` en `/Plex/Series` mappen op de SambaNAS. Organiseert media met metadata, posters en ondertitels, en streamt films en series in hoge kwaliteit naar tv's, telefoons en mobiele apparaten (lokaal en extern)."
+            }
+        },
         arcadeSteps: [
             {
                 number: 1,
@@ -245,9 +358,9 @@ const translations = {
                     "Schroef M3x6 DIN-912 & sluitring M3 (2x)",
                     "Schroef voor plastic D2x12 (4x)"
                 ],
-                description: "Ik begon met het leggen van Panel A (rechterzijpaneel) op een vlakke ondergrond. Vervolgens monteerde ik de grote 12V 12.5A voeding en de 3D-geprinte support voor de USB-encoder op het paneel met M3x6 schroeven. Daarna bevestigde ik de Zero Delay USB-encoder op de support met de vier plastic schroeven. Hierbij lette ik goed op de oriëntatie van de voeding: de 12V-uitgang moest naar de bovenkant wijzen.",
-                photo: "assets/logos/arcade/Stap_1_Mijn_Foto.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_1.png"
+                description: "Ik begon met het leggen van Panel A (rechterzijpaneel) op een vlakke ondergrond. Vervolgens monteerde ik de grote 12V 12.5A voeding en de 3D-geprinte support voor de USB-encoder op het paneel met M3x6 schroeven. Daarna bevestigde ik de Zero Delay USB-encoder op de support met de vier plastic schroeven. Hierbij lette ik goed op de oriÃ«ntatie van de voeding: de 12V-uitgang moest naar de bovenkant wijzen.",
+                photo: "assets/projects/arcade/Stap_1_Mijn_Foto.jpg",
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_1.png"
             },
             {
                 number: 2,
@@ -260,7 +373,7 @@ const translations = {
                 ],
                 description: "Ik schoof twee vierkante M3-moeren in de montage-slots aan de uiteinden van Panel B. Vervolgens drukte ik de rode Sanwa 24mm drukknop in het ronde gat aan de voorzijde van het paneel. Deze knop fungeert als de 'Insert Coin' knop voor de arcade-emulatie.",
                 photo: "",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_2.png"
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_2.png"
             },
             {
                 number: 3,
@@ -276,7 +389,7 @@ const translations = {
                 ],
                 description: "Ik assembleerde eerst de Sanwa joystick op de groene 3D-geprinte joystick adapterplaat met de M5-bouten, sluitringen en borgmoeren. Deze adapter bevestigde ik aan de onderzijde van Panel C met vier M3x14 schroeven en vierkante moeren. Daarna drukte ik de 6 gekleurde Sanwa-knoppen en de 5 mini-schakelaars in de gaten aan de bovenzijde van het bedieningspaneel.",
                 photo: "",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_3.png"
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_3.png"
             },
             {
                 number: 4,
@@ -296,7 +409,7 @@ const translations = {
                 ],
                 description: "Op Panel D installeerde ik de schermcontroller en schroefde het LG LCD-scherm vast in de uitsparing. Vervolgens monteerde ik de luidsprekers en de grilles op Panel E. De audioversterker werd vastgezet op de 3D-geprinte versterkerhouder en de 3-inch subwoofer werd gemonteerd in de subwoofer-behuizing aan de onderzijde van Panel E.",
                 photo: "",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_4.png"
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_4.png"
             },
             {
                 number: 5,
@@ -312,8 +425,8 @@ const translations = {
                     "Schroef voor plastic D3x12 (2x)"
                 ],
                 description: "Ik plakte de LED-strip aan de binnenkant van Panel F voor de verlichting van de marquee (de lichtbak aan de bovenkant) en sloot deze aan op een DC Jack adapter. Op Panel H (het achterpaneel) monteerde ik de Raspberry Pi 4B met vier kleine schroeven rechtstreeks op de 3D-geprinte standoffs.",
-                photo: "assets/logos/arcade/Stap_5-6_Mijn_Foto.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_5.png"
+                photo: "assets/projects/arcade/Stap_5-6_Mijn_Foto.jpg",
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_5.png"
             },
             {
                 number: 6,
@@ -327,8 +440,8 @@ const translations = {
                     "Schroef M3x14 DIN-912 & vierkante moer M3 (6x)"
                 ],
                 description: "Ik legde Panel A plat neer en schoof vierkante M3-moeren in de slots van Panel I, J en K. Vervolgens schroefde ik deze drie panelen rechtop vast aan Panel A met M3x14 bouten. Hierdoor ontstond de basisvorm en de rechterhelft van het arcade-kabinet.",
-                photo: "assets/logos/arcade/Stap_5-6_Mijn_Foto.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_6.png"
+                photo: "assets/projects/arcade/Stap_5-6_Mijn_Foto.jpg",
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_6.png"
             },
             {
                 number: 7,
@@ -341,7 +454,7 @@ const translations = {
                 ],
                 description: "Ik schoof achtereenvolgens Panel B (muntinworp), Panel C (bedieningspaneel), Panel D (scherm) en Panel E (speakers) in de daarvoor bestemde gleuven en geleiders van het rechterzijpaneel (Panel A). Elk paneel werd met M3x14 schroeven en vierkante moeren stevig aan het frame verankerd.",
                 photo: "",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_7.png"
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_7.png"
             },
             {
                 number: 8,
@@ -355,8 +468,8 @@ const translations = {
                     "Diverse jumperdraden & stroomkabels"
                 ],
                 description: "Dit was de meest complexe stap. Ik installeerde de tweede voeding (12V 3A) speciaal voor de versterker om audio-ruis te minimaliseren. Vervolgens bedraadde ik de C14-stroomaansluiting met de hoofdschakelaar en zekering naar beide voedingen. Ik sloot de knoppen en joystick aan op de USB-encoder en verbond de schermcontroller, versterker en voedingen met de Raspberry Pi.",
-                photo: "assets/logos/arcade/Stap_8_Mijn_Foto.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_8.png"
+                photo: "assets/projects/arcade/Stap_8_Mijn_Foto.jpg",
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_8.png"
             },
             {
                 number: 9,
@@ -369,8 +482,8 @@ const translations = {
                     "Schroef M3x14 DIN-912 (14x)"
                 ],
                 description: "Na het dubbelchecken van alle bedrading en stroomcircuits, legde ik Panel L (linkerzijpaneel) op het kabinet. Ik schoof 14 vierkante M3-moeren in de corresponderende montage-slots van de verbindende panelen (I, J, K, B, C, D, E). Vervolgens schroefde ik Panel L met 14 stuks M3x14 bouten vast om de behuizing volledig te sluiten.",
-                photo: "assets/logos/arcade/photo-assembly-1.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_9.png"
+                photo: "assets/projects/arcade/photo-assembly-1.jpg",
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_9.png"
             },
             {
                 number: 10,
@@ -383,13 +496,13 @@ const translations = {
                     "Marquee plexiglas & Marquee poster (1x)"
                 ],
                 description: "Als laatste schoof ik Panel H (achterpaneel) op zijn plek en zette dit vast met vier M3x14 schroeven. Ik plaatste de geprinte marquee-poster achter het plexiglas aan de voorzijde. Daarna was het tijd voor de eerste boot-test: de Raspberry Pi startte perfect op in Batocera, de controls reageerden direct en het 2.1-geluid klonk fantastisch!",
-                photo: "assets/logos/arcade/Final-Look-Kast.jpg",
-                inActionPhoto: "assets/logos/arcade/In_actie_tetris.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_10.png"
+                photo: "assets/projects/arcade/Final-Look-Kast.jpg",
+                inActionPhoto: "assets/projects/arcade/In_actie_tetris.jpg",
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_10.png"
             }
         ]
     },
-        en: {
+    en: {
         ui: {
             maintenance_title: "Damian van Loon | Under Maintenance",
             maintenance_desc: "The website of Damian van Loon is currently undergoing maintenance.",
@@ -423,20 +536,20 @@ const translations = {
             project_view_net: "View Network Diagram",
             project_view_steps: "View Assembly Steps",
             project_homelab_desc: "An advanced and redundant test and production environment in my meter cupboard, set up with Proxmox VE, Docker, and custom 3D-printed hardware.",
-            project_homelab_prob_title: "The Problem",
-            project_homelab_prob_desc: "To test theories from my ICT studies and systems administration in practice, and to host services (like DNS, smart home, and media) centrally and securely within the household, a flexible, reliable, and efficient infrastructure is required.",
-            project_homelab_sol_title: "The Solution",
-            project_homelab_sol_desc: "A dual-node lab consisting of a Raspberry Pi 5 (Docker host & SambaNAS storage) and an HP Thin Client T620 (Proxmox VE hypervisor). The setup is redundant with double Pi-holes (DNS failover), cross-monitoring via Uptime Kuma, and automatic, encrypted off-site backups to Oracle Cloud and Tuxis PBS.",
-            project_homelab_lessons_title: "Lessons Learned",
-            project_homelab_lessons_desc: "Experience with virtualization (LXC/VMs), Linux systems administration (Ubuntu Server CLI), storage protocols (SMB/NFS), network management (Tailscale VPN gateway), and implementing a solid 3-2-1 backup and disaster recovery strategy.",
-            project_voice_title: "Local Privacy-Friendly Voice Assistant",
-            project_voice_desc: "A fully locally running voice assistant integrated with Home Assistant, without cloud dependency.",
-            project_voice_prob_title: "The Problem",
-            project_voice_prob_desc: "Commercial voice assistants send audio data to cloud servers, posing privacy risks and creating cloud dependencies.",
-            project_voice_sol_title: "The Solution",
-            project_voice_sol_desc: "A custom-built assistant using a ReSpeaker Lite (ESP32-S3) in a self-printed acoustic enclosure. Communicates locally via Wyoming (Whisper & Piper).",
-            project_voice_lessons_title: "Lessons Learned",
-            project_voice_lessons_desc: "Signal processing and acoustic damping, configuring microcontrollers with ESPHome, and optimizing local AI models for latency.",
+            project_homelab_arch_title: "Setup & Architecture",
+            project_homelab_arch_desc: "A dual-node lab consisting of a Raspberry Pi 5 (Ubuntu Server) and an HP Thin Client T620 (Proxmox VE hypervisor) physically mounted in the meter cupboard using 3D-printed brackets. Services run in Proxmox VMs/LXC containers and Docker.",
+            project_homelab_integ_title: "Integration & Automation",
+            project_homelab_integ_desc: "Centralized network management using Nginx Reverse Proxy with automated SSL certificates. Services communicate internally via APIs and Docker networks, with a SambaNAS setup on the Pi 5 delivering shares to Proxmox nodes.",
+            project_homelab_res_title: "Redundancy & Backups",
+            project_homelab_res_desc: "Implemented with dual Pi-holes (DNS failover) to prevent internet downtime during maintenance. Equipped with cross-monitoring via Uptime Kuma and automatic, encrypted off-site backups to Oracle Cloud and Tuxis PBS (3-2-1 strategy).",
+            project_nas_title: "Automated Media Pipeline & SambaNAS",
+            project_nas_desc: "A centralized network storage (NAS) and automated download and media pipeline running on an energy-efficient Raspberry Pi 5.",
+            project_nas_arch_title: "The Architecture",
+            project_nas_arch_desc: "Distributed across two physical machines. The Raspberry Pi 5 acts as a Docker host for storage (SambaNAS) and streaming (Plex/Jellyfin), while the HP Thin Client (Proxmox VE) hosts the management and automation stack.",
+            project_nas_integ_title: "Integration & Automation",
+            project_nas_integ_desc: "Automation tools (Sonarr/Radarr) communicate directly via APIs with indexers (Prowlarr), requests (Overseerr), and downloaders (qBittorrent/SabNZB) on the Pi 5 to automatically start, rename, and sort downloads.",
+            project_nas_res_title: "Network & Security",
+            project_nas_res_desc: "Secure network routing where all download containers are routed through a VPN container(Gluetun) with an active kill switch via Docker networks to prevent data leaks.",
             project_arcade_title: "3D-Printed Mini Arcade Machine",
             project_arcade_desc: "A self-built bartop arcade machine powered by a Raspberry Pi running Batocera and premium Sanwa arcade controls.",
             project_arcade_concept_title: "The Concept",
@@ -448,10 +561,10 @@ const translations = {
             skills_career_title: "Skills & Career",
             skills_career_subtitle: "An overview of my technical skills, professional background, and education.",
             skills_core_title: "Core Skills",
-            skills_os: "Operating Systems",
+            skills_systems_cloud: "Systems & Cloud",
             skills_net_sec: "Networking & Security",
-            skills_virt_cont: "Virtualization & Containers",
-            skills_auto_tools: "Automation & Tools",
+            skills_iot_auto: "IoT & Automation",
+            skills_support: "Support & Communication",
             experience_education_title: "Work Experience & Education",
             exp_roc_date: "2025 - 2027 (Expected)",
             exp_roc_title: "Mbo ICT System Engineer (Level 4)",
@@ -510,7 +623,20 @@ const translations = {
             modal_tetris_title: "Play Classic Tetris",
             modal_tetris_desc: "Click to start the built-in retro emulator and play!",
             modal_tetris_start: "Start Game",
-            modal_tetris_minimize: "&minus; Minimize"
+            modal_tetris_minimize: "&minus; Minimize",
+            tetris_controls_title: "CONTROLS",
+            tetris_controls_move: "Move",
+            tetris_controls_rotate: "Rotate",
+            tetris_controls_drop: "Soft Drop",
+            tetris_controls_pause: "Pause",
+            tetris_key_space: "Space",
+            tetris_leaderboard_loading: "Loading scores...",
+            tetris_leaderboard_empty: "No scores found or offline",
+            project_view_pipeline: "View Data Flow",
+            modal_pipeline_title: "Media Pipeline Data Flow",
+            pipeline_details_title: "Component Details",
+            pipeline_desc_title: "Description & Operation",
+            pipeline_bind_mount_label: "LXC Bind-mount: File Import (Downloads &rarr; Media)"
         },
         nodeData: {
             remote: {
@@ -623,6 +749,106 @@ const translations = {
                 description: "The HP Thin Client T620 (Proxmox VE) connects directly to Tuxis's external PBS environment. Daily incremental, block-level backups of all active LXC containers and VMs are written here with automatic deduplication and encryption."
             }
         },
+        pipelineData: {
+            client: {
+                name: "Client / User",
+                role: "LAN / Tailscale Client",
+                specs: {
+                    "Type": "Smartphone / TV / PC",
+                    "VPN": "Tailscale Active",
+                    "Protocols": "HTTP / Plex app"
+                },
+                description: "The end user requesting and streaming media. This can be done locally within the home network (LAN) or remotely via a secure Tailscale VPN tunnel, eliminating the need to expose ports on the router."
+            },
+            overseerr: {
+                name: "Overseerr",
+                role: "Request Manager (LXC)",
+                specs: {
+                    "Type": "LXC Container",
+                    "OS": "Debian 12",
+                    "Port": "5055 (HTTP)",
+                    "Network": "LAN & Tailscale"
+                },
+                description: "The front-end user interface of the pipeline. Here, users can easily search and request movies and series. Overseerr automatically checks if the media is already present in Plex and forwards new requests to Sonarr/Radarr via APIs."
+            },
+            prowlarr: {
+                name: "Prowlarr",
+                role: "Indexer Manager (LXC)",
+                specs: {
+                    "Type": "LXC Container",
+                    "OS": "Debian 12",
+                    "Port": "9696 (HTTP)",
+                    "Network": "Internal Network"
+                },
+                description: "Manages and synchronizes all Usenet and torrent indexers (search engines). When a new indexer is added to Prowlarr, it immediately syncs it via APIs with Sonarr and Radarr, ensuring downloaders always have the latest search sources."
+            },
+            sonarr_radarr: {
+                name: "Sonarr & Radarr",
+                role: "Media Managers (LXC)",
+                specs: {
+                    "Type": "LXC Containers",
+                    "OS": "Debian 12 (x2)",
+                    "Port": "8989 / 7878",
+                    "Network": "Internal Network"
+                },
+                description: "Monitor desired media. Radarr manages movies, Sonarr manages series. They automatically search for releases via Prowlarr, send download commands to SabNZBD/qBittorrent via APIs, and move/rename completed files to the SambaNAS shares."
+            },
+            vpn: {
+                name: "Gluetun VPN",
+                role: "VPN Gateway Container (Docker)",
+                specs: {
+                    "Type": "Docker Container",
+                    "OS": "Raspberry Pi OS",
+                    "Protocol": "WireGuard",
+                    "Security": "Active Kill-Switch"
+                },
+                description: "Ensures secure network routing. The qBittorrent container is bound to the Gluetun network stack. If the VPN connection drops, the kill switch instantly blocks all traffic to prevent IP leaks."
+            },
+            qbittorrent: {
+                name: "qBittorrent",
+                role: "Secure Torrent Downloader (Docker)",
+                specs: {
+                    "Type": "Docker Container",
+                    "OS": "Raspberry Pi OS",
+                    "Port": "8080 (Web UI)",
+                    "Network": "Routed via VPN"
+                },
+                description: "Processes torrent downloads. The qBittorrent container shares the network stack of the Gluetun VPN container, meaning all torrent traffic is encrypted and handled anonymously over the VPN tunnel."
+            },
+            sabnzbd: {
+                name: "SabNZBD",
+                role: "Usenet Downloader (Docker)",
+                specs: {
+                    "Type": "Docker Container",
+                    "OS": "Raspberry Pi OS",
+                    "Port": "8089 (Web UI)",
+                    "Network": "SSL Direct"
+                },
+                description: "Downloads media at maximum speed via newsgroups (Usenet). Uses direct SSL connections with news servers, eliminating the need for an additional VPN for privacy and security while downloading."
+            },
+            nas: {
+                name: "SambaNAS Storage",
+                role: "Central Network Storage",
+                specs: {
+                    "Type": "Physical Pi 5 NVMe",
+                    "Protocol": "Samba (SMB)",
+                    "Permissions": "PUID/PGID Managed",
+                    "Folders": "/Plex/Downloads, /Movies, /Series"
+                },
+                description: "The central storage location for all media. The LXC containers on the HP Thin Client have direct access via bind-mounts in their .conf files. This allows Sonarr and Radarr to rename and move files directly on the NAS without network overhead."
+            },
+            plex: {
+                name: "Plex Media Server",
+                role: "Streaming & Transcoding (Docker)",
+                specs: {
+                    "Type": "Docker Container",
+                    "OS": "Raspberry Pi OS",
+                    "Port": "32400 (Web)",
+                    "Database": "SambaNAS Linked"
+                },
+                description: "Scans the `/Plex/Movies` and `/Plex/Series` folders on the SambaNAS. Organizes media with metadata, posters and subtitles, and streams movies and series in high quality to TVs, phones, and mobile devices (locally and remotely)."
+            }
+        },
         arcadeSteps: [
             {
                 number: 1,
@@ -637,8 +863,8 @@ const translations = {
                     "Screw for plastic D2x12 (4x)"
                 ],
                 description: "I started by placing Panel A (right side panel) on a flat surface. Next, I mounted the large 12V 12.5A power supply and the 3D-printed support for the USB encoder onto the panel using M3x6 screws. Then, I attached the Zero Delay USB encoder to the support with the four plastic screws. I paid close attention to the orientation of the power supply: the 12V output had to face upwards.",
-                photo: "assets/logos/arcade/Stap_1_Mijn_Foto.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_1.png"
+                photo: "assets/projects/arcade/Stap_1_Mijn_Foto.jpg",
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_1.png"
             },
             {
                 number: 2,
@@ -651,7 +877,7 @@ const translations = {
                 ],
                 description: "I slid two square M3 nuts into the mounting slots at the ends of Panel B. Then, I pressed the red Sanwa 24mm push button into the round hole on the front of the panel. This button acts as the 'Insert Coin' button for the arcade emulation.",
                 photo: "",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_2.png"
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_2.png"
             },
             {
                 number: 3,
@@ -667,7 +893,7 @@ const translations = {
                 ],
                 description: "I first assembled the Sanwa joystick onto the green 3D-printed joystick adapter plate using the M5 bolts, washers, and locknuts. I attached this adapter to the underside of Panel C with four M3x14 screws and square nuts. Then, I pressed the 6 colored Sanwa buttons and the 5 mini-switches into the holes on the top of the control panel.",
                 photo: "",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_3.png"
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_3.png"
             },
             {
                 number: 4,
@@ -687,7 +913,7 @@ const translations = {
                 ],
                 description: "On Panel D, I installed the screen controller and screwed the LG LCD screen into the cutout. Then, I mounted the speakers and grilles on Panel E. The audio amplifier was secured to its 3D-printed mount, and the 3-inch subwoofer was mounted in its enclosure at the bottom of Panel E.",
                 photo: "",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_4.png"
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_4.png"
             },
             {
                 number: 5,
@@ -703,8 +929,8 @@ const translations = {
                     "Screw for plastic D3x12 (2x)"
                 ],
                 description: "I taped the LED strip to the inside of Panel F to light up the marquee (the lightbox at the top) and connected it to a DC Jack adapter. On Panel H (the back panel), I mounted the Raspberry Pi 4B with four small screws directly onto the 3D-printed standoffs.",
-                photo: "assets/logos/arcade/Stap_5-6_Mijn_Foto.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_5.png"
+                photo: "assets/projects/arcade/Stap_5-6_Mijn_Foto.jpg",
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_5.png"
             },
             {
                 number: 6,
@@ -718,8 +944,8 @@ const translations = {
                     "Screw M3x14 DIN-912 & square nut M3 (6x)"
                 ],
                 description: "I laid Panel A flat and slid square M3 nuts into the slots of Panels I, J, and K. Next, I screwed these three panels upright onto Panel A using M3x14 bolts. This established the base shape and the right half of the arcade cabinet.",
-                photo: "assets/logos/arcade/Stap_5-6_Mijn_Foto.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_6.png"
+                photo: "assets/projects/arcade/Stap_5-6_Mijn_Foto.jpg",
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_6.png"
             },
             {
                 number: 7,
@@ -732,7 +958,7 @@ const translations = {
                 ],
                 description: "I slid Panel B (coin entry), Panel C (control panel), Panel D (screen), and Panel E (speakers) successively into the designated tracks and guides of the right side panel (Panel A). Each panel was securely anchored to the frame using M3x14 screws and square nuts.",
                 photo: "",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_7.png"
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_7.png"
             },
             {
                 number: 8,
@@ -746,8 +972,8 @@ const translations = {
                     "Various jumper wires & power cables"
                 ],
                 description: "This was the most complex step. I installed the second power supply (12V 3A) specifically for the amplifier to minimize audio hum. Then, I wired the C14 power inlet with the main switch and fuse to both power supplies. I connected the buttons and joystick to the USB encoder, and hooked up the screen controller, amplifier, and power supplies to the Raspberry Pi.",
-                photo: "assets/logos/arcade/Stap_8_Mijn_Foto.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_8.png"
+                photo: "assets/projects/arcade/Stap_8_Mijn_Foto.jpg",
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_8.png"
             },
             {
                 number: 9,
@@ -760,8 +986,8 @@ const translations = {
                     "Screw M3x14 DIN-912 (14x)"
                 ],
                 description: "After double-checking all wiring and power circuits, I placed Panel L (left side panel) onto the cabinet. I slid 14 square M3 nuts into the corresponding mounting slots of the connecting panels (I, J, K, B, C, D, E). Then, I secured Panel L using 14 M3x14 bolts to fully close the enclosure.",
-                photo: "assets/logos/arcade/photo-assembly-1.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_9.png"
+                photo: "assets/projects/arcade/photo-assembly-1.jpg",
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_9.png"
             },
             {
                 number: 10,
@@ -774,399 +1000,228 @@ const translations = {
                     "Marquee plexiglass & Marquee poster (1x)"
                 ],
                 description: "Finally, I slid Panel H (back panel) into place and secured it with four M3x14 screws. I placed the printed marquee poster behind the plexiglass at the front. Then, it was time for the first boot test: the Raspberry Pi booted perfectly into Batocera, the controls responded immediately, and the 2.1 audio sounded fantastic!",
-                photo: "assets/logos/arcade/Final-Look-Kast.jpg",
-                inActionPhoto: "assets/logos/arcade/In_actie_tetris.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_10.png"
+                photo: "assets/projects/arcade/Final-Look-Kast.jpg",
+                inActionPhoto: "assets/projects/arcade/In_actie_tetris.jpg",
+                manualImage: "assets/projects/arcade/bouwtekeningen/Stap_10.png"
             }
         ]
     },
     de: {
         ui: {
-            maintenance_title: "Damian van Loon | In Wartung",
-            maintenance_desc: "Die Website von Damian van Loon wird derzeit gewartet.",
-            maintenance_mode: "Wartungsmodus",
-            maintenance_subtitle: "Diese Website ist vorübergehend nicht verfügbar. Bei dringenden Fragen können Sie mich direkt über die Schaltflächen unten kontaktieren.",
-            linkedin_btn: "Siehe LinkedIn",
-            email_btn: "E-Mail senden",
-            portfolio_title: "Damian van Loon | IT-Systemingenieur & Homelab-Portfolio",
-            portfolio_meta_desc: "Portfolio und Homelab-Infrastruktur von Damian van Loon. Systemadministration, Netzwerke, Docker und Smart-Home-Automatisierung.",
-            nav_infrastructure: "Infrastruktur",
-            nav_projects: "Projekte",
-            nav_experience: "Lebenslauf & Erfahrung",
-            nav_contact: "Kontakt",
-            hero_badge: "IT-Systemingenieur in Ausbildung (Mbo 4)",
-            hero_subtitle: "Helpdesk-Mitarbeiter und angehender IT-Ingenieur mit einer Leidenschaft für Linux, Docker, Netzwerke und Smart-Home-Automatisierung. Baut und verwaltet ein Homelab, um Enterprise-Technologien in der Praxis zu testen.",
-            hero_location: "Ridderkerk, NL",
-            hero_job: "Helpdesk-Mitarbeiter @ Nedsoft B.V.",
-            hero_school: "ROC Midden Nederland",
-            download_cv: "Lebenslauf herunterladen (PDF)",
-            net_diagram_title: "Netzwerkarchitektur",
-            net_diagram_subtitle: "Klicken Sie auf ein Element im Diagramm, um dessen Spezifikationen und aktive Dienste anzuzeigen.",
-            details_title: "Infrastrukturdetails",
-            details_empty_title: "Kein Element ausgewählt",
-            details_empty_desc: "Klicken Sie auf einen der Server oder Netzwerkkomponenten im Diagramm, um Spezifikationen, IP-Adressen und aktive Dienste anzuzeigen.",
-            details_active_services: "Aktive Dienste",
-            details_description_title: "Beschreibung & Funktion",
-            projects_title: "Projekte",
-            projects_subtitle: "Ein Überblick über Systeme und Infrastrukturen, die ich selbstständig aufgebaut und gepflegt habe.",
-            project_view_net: "Netzwerkdiagramm anzeigen",
-            project_view_steps: "Bauschritte anzeigen",
-            project_homelab_desc: "Eine fortschrittliche und redundante Test- und Produktionsumgebung in meinem Zählerschrank, eingerichtet mit Proxmox VE, Docker und maßgeschneiderter 3D-gedruckter Hardware.",
-            project_homelab_prob_title: "Das Problem",
-            project_homelab_prob_desc: "Um Theorien aus meiner IT-Ausbildung und Systemadministration in der Praxis zu testen und Dienste (wie DNS, Smart Home und Medien) zentral und sicher im Haushalt bereitzustellen, ist eine flexible, zuverlässige und effiziente Infrastruktur erforderlich.",
-            project_homelab_sol_title: "Die Lösung",
-            project_homelab_sol_desc: "Ein Dual-Node-Labor bestehend aus einem Raspberry Pi 5 (Docker-Host & SambaNAS-Speicher) und einem HP Thin Client T620 (Proxmox VE Hypervisor). Das Setup ist redundant ausgelegt mit doppelten Pi-holes (DNS-Failover), Cross-Monitoring über Uptime Kuma und automatischen, verschlüsselten Off-Site-Backups auf Oracle Cloud und Tuxis PBS.",
-            project_homelab_lessons_title: "Erkenntnisse",
-            project_homelab_lessons_desc: "Erfahrung mit Virtualisierung (LXC/VMs), Linux-Systemadministration (Ubuntu Server CLI), Speicherprotokollen (SMB/NFS), Netzwerkverwaltung (Tailscale VPN Gateway) und der Implementierung einer soliden Backup- und Disaster-Recovery-Strategie.",
-            project_voice_title: "Lokaler datenschutzfreundlicher Sprachassistent",
-            project_voice_desc: "Ein vollständig lokal laufender Sprachassistent, der in Home Assistant integriert ist, ohne Cloud-Abhängigkeit.",
-            project_voice_prob_title: "Das Problem",
-            project_voice_prob_desc: "Kommerzielle Sprachassistenten senden Audiodaten an Cloud-Server, was Datenschutzrisiken birgt und Cloud-Abhängigkeiten schafft.",
-            project_voice_sol_title: "Die Lösung",
-            project_voice_sol_desc: "Ein maßgeschneiderter Assistent mit einem ReSpeaker Lite (ESP32-S3) in einem selbstgedruckten Akustikgehäuse. Kommuniziert lokal über Wyoming (Whisper & Piper).",
-            project_voice_lessons_title: "Erkenntnisse",
-            project_voice_lessons_desc: "Signalverarbeitung und akustische Dämpfung, Konfiguration von Mikrocontrollern mit ESPHome und Optimierung lokaler KI-Modelle für Latenz.",
-            project_arcade_title: "3D-gedruckter Mini-Arcade-Automat",
-            project_arcade_desc: "Ein selbstgebauter Bartop-Arcade-Automat, angetrieben von einem Raspberry Pi mit Batocera und Premium-Sanwa-Arcade-Steuerung.",
-            project_arcade_concept_title: "Das Konzept",
-            project_arcade_concept_desc: "Ein kompakter Tisch-Arcade-Automat, gedruckt in PLA, ausgestattet mit einem authentischen 4:3-LCD-Bildschirm, integriertem 2.1-Sound und stimmungsvoller LED-Beleuchtung.",
-            project_arcade_elec_title: "Die Elektronik",
-            project_arcade_elec_desc: "Raspberry Pi 4B, Zero Delay USB-Encoder, Audioverstärker mit aktivem Subwoofer und ein duales Netzteilsystem für eine stabile Stromversorgung.",
-            project_arcade_process_title: "Der Bauprozess",
-            project_arcade_process_desc: "Klicken Sie auf diese Karte, um die vollständige Anleitung und Schritt-für-Schritt-Fotos der physischen Montage und Verkabelung anzuzeigen.",
-            skills_career_title: "Fähigkeiten & Werdegang",
-            skills_career_subtitle: "Ein Überblick über meine technischen Fähigkeiten, meinen beruflichen Werdegang und meine Ausbildung.",
-            skills_core_title: "Kernkompetenzen",
-            skills_os: "Betriebssysteme",
-            skills_net_sec: "Netzwerke & Sicherheit",
-            skills_virt_cont: "Virtualisierung & Container",
-            skills_auto_tools: "Automatisierung & Tools",
-            experience_education_title: "Berufserfahrung & Ausbildung",
-            exp_roc_date: "2025 - 2027 (Voraussichtlich)",
-            exp_roc_title: "Fachinformatiker für Systemintegration (BBL)",
-            exp_roc_inst: "ROC Midden Nederland",
-            exp_roc_desc: "<strong>Verkürzte Ausbildung:</strong> Aufgrund meines Engagements und guter Ergebnisse wurde ich nach einem halben Jahr im ersten Jahr direkt ins zweite Lehrjahr versetzt. Dadurch überspringe ich ein ganzes Studienjahr und mache meinen Abschluss in zwei statt in drei Jahren.",
-            exp_nedsoft_date: "2019 - Heute",
-            exp_nedsoft_title: "Helpdesk-Mitarbeiter (Vollzeit)",
-            exp_nedsoft_inst: "Nedsoft B.V. / Loca / Nedtrack",
-            exp_nedsoft_desc: "Verantwortlich für Kundenbetreuung und Fehlerbehebung (1. und 2. Level Support) für GPS-Ortungshardware und Fahrtenbuchsoftware. Analyse von Daten, Behebung von Konnektivitätsproblemen und Beitrag zur Produktverbesserung basierend auf Benutzerfeedback.",
-            exp_davinci_date: "2017 - 2019",
-            exp_davinci_title: "Mbo IT-Support-Spezialist (Niveau 3)",
-            exp_davinci_inst: "ROC Da Vinci College",
-            exp_gemini_date: "2014 - 2017",
-            exp_gemini_title: "VMBO IT-Zweig",
-            exp_gemini_inst: "Gemini Lekkerkerk",
-            footer_copyright: "&copy; 2026 Damian van Loon. Handgemachtes Portfolio.",
-            footer_status: "STATUS: ONLINE",
-            footer_servers: "[SERVER: 17/17 UP]",
-            footer_vpn: "[VPN: SICHER]",
-            modal_arcade_title: "3D-gedruckter Mini-Arcade-Automat",
-            modal_arcade_subtitle: "Bartop Retro-Konsole & Homelab-Projekt",
-            modal_tab_overview: "Spezifikationen & Materialien",
-            modal_tab_steps: "Schritt-für-Schritt-Montage",
-            modal_project_title: "Das Projekt",
-            modal_project_desc_1: "Dieses Projekt ist ein voll funktionsfähiger Mini-Bartop-Arcade-Automat, gedruckt mit dem Bambu Lab A1 3D-Drucker und angetrieben von einem Raspberry Pi 4B. Das Gerät ist mit Sanwa-Steuerungen, einem 4:3-LCD-Bildschirm, der sich perfekt für klassische Retro-Spiele eignet, und einem integrierten 2.1-Audiosystem mit einem aktiven Subwoofer für satten Retro-Sound ausgestattet.",
-            modal_project_desc_2: "Die Software läuft auf dem Batocera-Retro-Gaming-Betriebssystem, das auf eine 128-GB-Micro-SD-Karte geladen ist. Dies emuliert Konsolen wie NES, SNES, Sega Genesis, MAME (Arcade) und mehr fehlerfrei.",
-            modal_specs_title: "Spezifikationen",
-            modal_spec_size: "<strong>Format:</strong> Bartop (Tischmodell)",
-            modal_spec_screen: "<strong>Bildschirm:</strong> 9.7 Zoll LG LCD 4:3 (1024x768)",
-            modal_spec_cpu: "<strong>Prozessor:</strong> Raspberry Pi 4B (Quad-Core)",
-            modal_spec_controls: "<strong>Steuerung:</strong> Sanwa Joystick (JLF) & OBSF-24 Tasten",
-            modal_spec_audio: "<strong>Sound:</strong> 2.1 Kanal + Aktiver Subwoofer",
-            modal_spec_led: "<strong>Beleuchtung:</strong> Einstellbare LED-Streifen (unten & Marquee)",
-            modal_spec_os: "<strong>Betriebssystem:</strong> Batocera OS (128GB MicroSD)",
-            modal_spec_materials: "<strong>Materialien:</strong> PLA (3D-Druck)",
-            modal_bom_title: "Stückliste (BOM)",
-            modal_bom_subtitle: "Für dieses Projekt waren verschiedene mechanische und elektronische Teile erforderlich. Hier sind die wichtigsten Komponenten:",
-            modal_bom_rpi: "<strong>Raspberry Pi 4B</strong><span>Das Herzstück der Arcade-Maschine, auf dem die Emulation läuft.</span>",
-            modal_bom_screen: "<strong>LG LCD LP097X02 Bildschirm + Treibersatz</strong><span>9.7\" LCD-Bildschirm mit originalem 4:3-Verhältnis für authentische Retro-Wiedergabe.</span>",
-            modal_bom_controls: "<strong>Sanwa Joystick JLF & OBSF-24 Tasten</strong><span>Professionelle japanische Arcade-Steuerung, bekannt für ihre Präzision und Langlebigkeit.</span>",
-            modal_bom_audio: "<strong>AIYIMA 2.1 Verstärker & 3\" Subwoofer</strong><span>Soundsystem für kraftvollen Bass und klare Retro-Soundeffekte.</span>",
-            modal_bom_encoder: "<strong>Zero Delay USB-Encoder</strong><span>Sorgt für extrem niedrige Eingabelatenz von den Joysticks und Tasten zum Pi.</span>",
-            modal_bom_power: "<strong>Duales Netzteil-Setup (150W + 36W)</strong><span>Separates 12V 12.5A Netzteil für die Hauptstromversorgung und 12V 3A Netzteil für das Audio.</span>",
-            modal_bom_case: "<strong>3D-gedrucktes Gehäuse (Platten A bis L)</strong><span>Gedruckte Platten, die zusammen das komplette Bartop-Gehäuse bilden.</span>",
-            modal_choose_step: "Wählen Sie einen Bauschritt",
-            modal_parts_needed: "Teile für diesen Schritt:",
-            modal_instruction_title: "Anleitung:",
-            modal_btn_prev: "Zurück",
-            modal_btn_next: "Weiter",
-            modal_progress_prefix: "Schritt",
-            modal_progress_of: "von",
-            modal_tab_manual: "Bauzeichnung",
-            modal_tab_photo: "Mein Foto",
-            modal_tab_action: "In Aktion",
-            modal_photo_placeholder_text: "Für diesen Zwischenschritt ist kein Foto verfügbar. Die Zeichnung links zeigt die Anleitung.",
             modal_tetris_title: "Klassisches Tetris spielen",
             modal_tetris_desc: "Klicken Sie, um den integrierten Retro-Emulator zu starten und zu spielen!",
             modal_tetris_start: "Spiel starten",
-            modal_tetris_minimize: "&minus; Minimieren"
-        },
-        nodeData: {
-            remote: {
-                name: "Remote Client (Tailscale)",
-                role: "Sicherer Fernzugriff",
-                specs: {
-                    "Protokoll": "WireGuard / Tailscale",
-                    "Zugriff": "Verschlüsselt (Zero-Trust)",
-                    "Ports": "Keine Ports geöffnet",
-                    "Routing": "Über Docker-Container auf Pi 5"
-                },
-                description: "Wenn ich nicht zu Hause bin, verbinde ich mich über den Tailscale-VPN-Client. Da Tailscale als Docker-Container auf dem Raspberry Pi 5 läuft, kann ich sicher auf mein gesamtes Netzwerk (einschließlich meiner Proxmox-Umgebung) zugreifen, ohne dass ich eine Portweiterleitung an meinem KPN-Router konfigurieren muss."
+            modal_tetris_minimize: "&minus; Minimieren",
+            tetris_controls_title: "STEUERUNG",
+            tetris_controls_move: "Bewegen",
+            tetris_controls_rotate: "Drehen",
+            tetris_controls_drop: "Beschleunigen",
+            tetris_controls_pause: "Pause",
+            tetris_key_space: "Leertaste",
+            tetris_leaderboard_loading: "Lade Ergebnisse...",
+            tetris_leaderboard_empty: "Keine Ergebnisse gefunden oder offline"
+        }
+    }
+};
+
+// --- Skills Data for the Interactive Topology Diagram ---
+const skillsData = {
+    nl: {
+        default_title: "Kernvaardigheden",
+        default_desc: "Beweeg je muis over een onderdeel in het diagram om details, beheersingsniveau en homelab-integratie te bekijken.",
+        categories: {
+            cat_systems_cloud: {
+                name: "Systemen & Cloud",
+                desc: "Beheer van on-premise operating systems, active directory infrastructuren en bare-metal hypervisors."
             },
-            router: {
-                name: "KPN Router (Gateway)",
-                role: "Zentrale Netzwerkverwaltung",
-                specs: {
-                    "Modell": "Standard KPN Router",
-                    "Subnetz": "192.168.2.0/24",
-                    "Gateway IP": "192.168.2.254",
-                    "DNS-Einstellung": "Duales DNS (Pi-hole 1 & 2)"
-                },
-                description: "Der zentrale KPN-Router verwaltet die Internetverbindung (WAN), verteilt lokale IP-Adressen über DHCP und is manuell mit zwei DNS-Servern konfiguriert: dem primären Pi-hole auf dem Raspberry Pi 5 und dem Backup-Pi-hole auf Proxmox. Dies garantiert werbefreies Surfen und hält das Internet am Laufen, selbst wenn einer der Server offline geht."
+            cat_net_sec: {
+                name: "Netwerken & Security",
+                desc: "Inrichting en segmentatie van lokale LAN/VLAN structuren, veilige tunnels en monitoring."
             },
-            pi: {
-                name: "Raspberry Pi 5",
-                role: "Hauptanwendungen & Speicher (SambaNAS)",
-                specs: {
-                    "Prozessor": "Broadcom BCM2712 (Quad-Core)",
-                    "Speicher": "16 GB LPDDR5 RAM",
-                    "Speichermedium": "32GB MicroSD + 2TB USB SSD",
-                    "Montage": "Zählerschrank (3D-Halterung)"
-                },
-                description: "Der Raspberry Pi 5 läuft rund um die Uhr und hostet die wichtigsten Dienste für den Haushalt. Über Samba teilt er die 2 TB SSD als SambaNAS-Freigabe für allgemeine Backups und Medien im Netzwerk.",
-                services: [
-                    { name: "Home Assistant", desc: "Zentrale Smart-Home-Zentrale mit Zigbee-Integration" },
-                    { name: "Plex & Jellyfin", desc: "Duale Medien-Streaming-Server" },
-                    { name: "SambaNAS", desc: "SMB-Netzwerkfreigaben für Speicher und Backups" },
-                    { name: "Immich", desc: "Datenschutzfreundliche Foto- und Videosicherung" },
-                    { name: "BookStack Wiki", desc: "System- und Netzwerkdokumentation" },
-                    { name: "Pi-hole (Primair)", desc: "Netwerkweiter Werbeblocker & primärer DNS" },
-                    { name: "EZbookkeeping", desc: "Persönliches Finanzverwaltungssystem" },
-                    { name: "qBittorrent & SabNZB", desc: "Download-Clients (qBittorrent hinter VPN)" },
-                    { name: "Tailscale", desc: "VPN-Gateway für den Remote-Netzwerkzugriff" },
-                    { name: "Uptime Kuma (Pi)", desc: "Überwacht Proxmox (Cross-Checking)" },
-                    { name: "Portainer", desc: "Grafische Benutzeroberfläche für Docker-Container" }
-                ]
+            cat_iot_auto: {
+                name: "IoT & Automatisering",
+                desc: "Orkestratie van smarthome platforms, containerisatie van microservices en geautomatiseerde back-ups."
             },
-            proxmox: {
-                name: "HP Thin Client T620 (Proxmox VE)",
-                role: "Virtualisierungs- & Verwaltungsnode",
-                specs: {
-                    "Prozessor": "AMD GX-420GI Quad-Core",
-                    "Speicher": "16 GB DDR3 RAM",
-                    "Speichermedium": "1 TB externe Festplatte",
-                    "Montage": "Zählerschrank (3D-Halterung)"
-                },
-                description: "Der HP Thin Client führt Proxmox VE aus und ist für die Ausführung leichterer Linux-Container (LXC) und virtueller Maschinen konfiguriert. Dies trennt die Automatisierung von der tatsächlichen Datenspeicherung auf dem Pi.",
-                services: [
-                    { name: "Nginx Proxy Manager", desc: "Reverse Proxy mit automatischem SSL/HTTPS" },
-                    { name: "Pi-hole (Sekundär)", desc: "Backup-DNS-Server bei Pi-Wartung/Ausfällen" },
-                    { name: "Sonarr & Radarr", desc: "Automatische Indizierung von Serien und Filmen" },
-                    { name: "Prowlarr & Overseerr", desc: "Indexer-Verwaltung und Medienschnittstelle" },
-                    { name: "Speedtest Tracker", desc: "Regelmäßige Protokollierung der Internetgeschwindigkeit" },
-                    { name: "Uptime Kuma (Px)", desc: "Überwacht Pi 5 Docker-Container (Cross-Checking)" }
-                ]
-            },
-            voice: {
-                name: "ESP32-S3 Sprachassistent",
-                role: "Lokale, datenschutzfreundliche Sprach-KI",
-                specs: {
-                    "Chipsatz": "ESP32-S3 Dual-Core Xtensa",
-                    "Audio/Mikro": "ReSpeaker Lite 2-Mic Array & 3W Lautsprecher",
-                    "Gehäuse": "3D-gedruckt mit akustischer Dämpfung",
-                    "Verbindung": "WLAN (Lokales Netzwerk)"
-                },
-                description: "Ein maßgeschneiderter Sprachassistent, der vollständig lokal arbeitet (keine Google/Alexa Cloud-Verbindung). Er sendet Audiodaten über ESPHome und das Wyoming-Protokoll an Home Assistant auf dem Pi 5, wo Whisper (STT) und Piper (TTS) die Verarbeitung übernehmen."
-            },
-            zigbee: {
-                name: "Zigbee Mesh-Netzwerk",
-                role: "Drahtlose Smart-Home-Steuerung",
-                specs: {
-                    "Koordinator": "Sonoff Zigbee 3.0 USB Dongle Plus",
-                    "Anschluss": "USB (am Raspberry Pi 5)",
-                    "Protokoll": "Zigbee 3.0 (IEEE 802.15.4)",
-                    "Geräte": "Smarte Glühbirnen, Sensoren und Schalter"
-                },
-                description: "Der Sonoff Zigbee USB Dongle dient als zentraler Koordinator des Zigbee Mesh-Netzwerks. Über Home Assistant kommunizieren alle drahtlosen Temperatursensoren, smarten Schalter und Lampen im Haus direkt und lokal mit dem System."
-            },
-            oracle: {
-                name: "Oracle Cloud Backup",
-                role: "Offsite-Archivierung & Docker-Sicherung",
-                specs: {
-                    "Software": "Duplicati (auf Raspberry Pi 5)",
-                    "Ziel": "Oracle Cloud Object Storage (Amsterdam)",
-                    "Intervall": "Tägliche verschlüsselte Sicherung",
-                    "Verschlüsselung": "AES-256 (Clientseitig)"
-                },
-                description: "Der Raspberry Pi 5 verwendet Duplicati, um wichtige Docker-Konfigurationen, Datenbanken (wie EZbookkeeping und Bookstack) und Anwendungsdaten lokal zu verschlüsseln und sicher in den Oracle Cloud Object Storage hochzuladen."
-            },
-            tuxis: {
-                name: "Tuxis Proxmox Backup Server (PBS)",
-                role: "Offsite Disaster Recovery & VM-Schnappschüsse",
-                specs: {
-                    "Software": "Proxmox Backup Server (PBS) Client",
-                    "Ziel": "Tuxis Cloud (niederländisches Rechenzentrum)",
-                    "Intervall": "Tägliche Schnappschüsse & Backups",
-                    "Aufbewahrung": "7 Tage / 4 Wochen / 12 Monaten"
-                },
-                description: "Der HP Thin Client T620 (Proxmox VE) verbindet sich direkt mit der externen PBS-Umgebung von Tuxis. Täglich werden inkrementelle Backups aller LXC-Container und VMs auf Blockebene mit automatischer Deduplizierung und Verschlüsselung geschrieben."
+            cat_support: {
+                name: "Support & Communicatie",
+                desc: "Professionele helpdesk support, incidentafhandeling en het vertalen van techniek naar bruikbare klantdocumentatie."
             }
         },
-        arcadeSteps: [
-            {
-                number: 1,
-                title: "Montage der rechten Seitenwand (Platte A)",
-                phase: "Phase 1: Platten vorbereiten",
-                parts: [
-                    "Panel A (Rechte Seitenwand) (1x)",
-                    "Netzteil 12V 12.5A 150W S-150-12 (1x)",
-                    "USB-Encoder-Halterung (1x)",
-                    "Zero-Delay-USB-Encoder (1x)",
-                    "Schraube M3x6 DIN-912 & Unterlegscheibe M3 (2x)",
-                    "Schraube für Kunststoff D2x12 (4x)"
-                ],
-                description: "Ich begann damit, Platte A (rechte Seitenwand) auf eine ebene Fläche zu legen. Als Nächstes montierte ich das große 12V 12.5A Netzteil und die 3D-gedruckte Halterung für den USB-Encoder mit M3x6 Schrauben auf der Platte. Danach befestigte ich den Zero-Delay-USB-Encoder mit den vier Kunststoffschrauben an der Halterung. Dabei achtete ich genau auf die Ausrichtung des Netzteils: Der 12V-Ausgang musste nach oben zeigen.",
-                photo: "assets/logos/arcade/Stap_1_Mijn_Foto.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_1.png"
+        skills: {
+            linux: {
+                name: "Linux Server",
+                proficiency: "Bekwaam",
+                integration: "Basis-OS voor alle containers en virtualisatieomgevingen in het homelab.",
+                desc: "Diepgaande kennis van Linux CLI, rechtenstructuren, servicebeheer (systemd) en optimalisatie van Debian/Ubuntu servers."
             },
-            {
-                number: 2,
-                title: "Münzeinwurf-Platte (Platte B)",
-                phase: "Phase 1: Platten vorbereiten",
-                parts: [
-                    "Panel B (Münzeinwurf-Platte) (1x)",
-                    "Sanwa-Drucktaste OBSF-24 (Rot) (1x)",
-                    "M3 Vierkantmutter DIN-557 (2x)"
-                ],
-                description: "Ich schob zwei Vierkantmuttern M3 in die Montageschlitze an den Enden von Platte B. Dann drückte ich die rote Sanwa 24mm Drucktaste in das runde Loch auf der Vorderseite der Platte. Diese Taste fungiert als 'Insert Coin'-Taste für die Arcade-Emulation.",
-                photo: "",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_2.png"
+            windows_ad: {
+                name: "Windows Server & AD",
+                proficiency: "Gevorderd",
+                integration: "Hosting van Active Directory Domain Services (AD DS) voor lokale authenticatie-tests.",
+                desc: "Ervaring met Active Directory-gebruikersbeheer, groepsbeleidsobjecten (GPOs) en DNS/DHCP server-rollen."
             },
-            {
-                number: 3,
-                title: "Das Bedienfeld (Platte C)",
-                phase: "Phase 1: Platten vorbereiten",
-                parts: [
-                    "Panel C (Bedienfeld) (1x)",
-                    "Sanwa Joystick JLF-TP-8Y & Joystick-Adapter (1x)",
-                    "Sanwa Drucktaste OBSF-24 (Farbig) (6x)",
-                    "Mini-Schalter 12mm PBS-33b (4x farbig, 1x weiß)",
-                    "Schraube M5x12 ISO-7380 & Sicherungsmutter M5 (4x)",
-                    "Schraube M3x14 DIN-912 & Vierkantmutter M3 (4x)"
-                ],
-                description: "Ich montierte zuerst den Sanwa-Joystick auf der grünen 3D-gedruckten Joystick-Adapterplatte mit den M5-Schrauben, Unterlegscheiben und Sicherungsmuttern. Diesen Adapter befestigte ich mit vier M3x14 Schrauben und Vierkantmuttern an der Unterseite von Platte C. Dann drückte ich die 6 farbigen Sanwa-Tasten und die 5 Mini-Schalter in die Löcher auf der Oberseite des Bedienfelds.",
-                photo: "",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_3.png"
+            virt_cloud: {
+                name: "Virtualisatie & Cloud",
+                proficiency: "Bekwaam",
+                integration: "Proxmox VE hypervisor draaiend op thin-clients voor LXC containers en VM's.",
+                desc: "Beheer van hypervisors, hardware passthrough, resource allocation, storage pools (ZFS) en provisioning van virtuele machines."
             },
-            {
-                number: 4,
-                title: "Bildschirm & Audio (Platte D & E)",
-                phase: "Phase 1: Platten vorbereiten",
-                parts: [
-                    "Panel D (Bildschirmplatte) & Panel E (Lautsprecherplatte) (1x)",
-                    "LG LCD 4:3 Display (LP097X02) + Controller-Rahmen (1x)",
-                    "AIYIMA Audio-Verstärker 2.1 (1x)",
-                    "Visaton Lautsprecher FR 7 - 4 Ohm (2x)",
-                    "Visaton Lautsprechergitter FR 7 (2x)",
-                    "Subwoofer-Halterung (1x)",
-                    "Subwoofer-Einheit 3 Zoll (1x)",
-                    "Schraube M3x14 DIN-912 & Vierkantmutter M3 (8x)",
-                    "Schraube für Kunststoff D2x12 (4x)",
-                    "Schraube für Kunststoff D3x12 (8x)"
-                ],
-                description: "Auf Platte D installierte ich den Bildschirm-Controller und schraubte den LG LCD-Bildschirm in den Ausschnitt. Dann montierte ich die Lautsprecher und Gitter auf Platte E. Der Audio-Verstärker wurde an seiner 3D-gedruckten Halterung befestigt und der 3-Zoll-Subwoofer wurde in seinem Gehäuse an der Unterseite von Platte E montiert.",
-                photo: "",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_4.png"
+            net_mgmt: {
+                name: "Netwerkbeheer",
+                proficiency: "Gevorderd",
+                integration: "Segmentatie, DHCP-scopes en DNS routing in het interne LAN.",
+                desc: "Kennis van TCP/IP routing, DNS-sinkholing (dual Pi-hole voor adblocking) en het analyseren van netwerkverkeer."
             },
-            {
-                number: 5,
-                title: "Marquee & Raspberry Pi (Platte F, G & H)",
-                phase: "Phase 1: Platten vorbereiten",
-                parts: [
-                    "Panel F (Marquee oben) & Panel G (Marquee unten) (1x)",
-                    "Panel H (Rückwand) (1x)",
-                    "Raspberry Pi 4B (1x)",
-                    "LED-Streifen 12V (weiß, ~20cm) (1x)",
-                    "Mini-DC-Klinkenadapter (1x)",
-                    "Schraube für Kunststoff D2x12 (4x)",
-                    "Schraube für Kunststoff D3x12 (2x)"
-                ],
-                description: "Ich klebte den LED-Streifen auf die Innenseite von Platte F, um das Marquee (den Leuchtkasten oben) zu beleuchten, und schloss ihn an einen DC-Klinkenadapter an. Auf Platte H (der Rückwand) montierte ich den Raspberry Pi 4B mit vier kleinen Schrauben direkt auf den 3D-gedruckten Abstandshaltern.",
-                photo: "assets/logos/arcade/Stap_5-6_Mijn_Foto.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_5.png"
+            vpn_security: {
+                name: "VPN & Proxying",
+                proficiency: "Bekwaam",
+                integration: "Nginx Proxy Manager reverse proxy en beveiligde WireGuard/Tailscale tunnels.",
+                desc: "Opzetten van encryptie voor inkomend verkeer (SSL/TLS Let's Encrypt) en veilige site-to-site en client-to-site VPN verbindingen."
             },
-            {
-                number: 6,
-                title: "Verbinden der Seitenwände (Platte A, I, J & K)",
-                phase: "Phase 2: Gehäuse zusammenbauen",
-                parts: [
-                    "Montierte Platte A (Rechte Seitenwand) (1x)",
-                    "Panel I (Boden) (1x)",
-                    "Panel J (Front unten) (1x)",
-                    "Panel K (Deckel) (1x)",
-                    "Schraube M3x14 DIN-912 & Vierkantmutter M3 (6x)"
-                ],
-                description: "Ich legte Platte A flach hin und schob Vierkantmuttern M3 in die Schlitze der Platten I, J und K. Als Nächstes schraubte ich diese drei Platten mit M3x14 Schrauben aufrecht auf Platte A. Dadurch entstanden die Grundform und die rechte Hälfte des Arcade-Gehäuses.",
-                photo: "assets/logos/arcade/Stap_5-6_Mijn_Foto.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_6.png"
+            monitoring: {
+                name: "Uptime Monitoring",
+                proficiency: "Bekwaam",
+                integration: "Uptime Kuma dashboard voor live status-checks van alle homelab services.",
+                desc: "Inrichten van actieve poort-, ping- en HTTP-monitors inclusief push-notificaties (Discord/Telegram) bij downtime."
             },
-            {
-                number: 7,
-                title: "Interne Platten installieren (Platte B, C, D & E)",
-                phase: "Phase 2: Gehäuse zusammenbauen",
-                parts: [
-                    "Montierter Rahmen (Schritt 6) (1x)",
-                    "Montierte Platten B, C, D & E (1x)",
-                    "Schraube M3x14 DIN-912 & Vierkantmutter M3 (8x)"
-                ],
-                description: "Ich schob nacheinander Platte B (Münzeinwurf), Platte C (Bedienfeld), Platte D (Bildschirm) und Platte E (Lautsprecher) in die vorgesehenen Führungen der rechten Seitenwand (Platte A). Jede Platte wurde mit M3x14 Schrauben und Vierkantmuttern fest am Rahmen verankert.",
-                photo: "",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_7.png"
+            iot_integration: {
+                name: "IoT & Smart Home",
+                proficiency: "Expert",
+                integration: "Home Assistant server gekoppeld aan ESP32 sensoren en slimme meter lezers.",
+                desc: "Koppelen van diverse netwerkprotocollen (Zigbee, ESPHome) en het ontwerpen van complexe automatiseringen en live dashboards."
             },
-            {
-                number: 8,
-                title: "Verkabelung & Stromverteilung",
-                phase: "Phase 3: Elektronik & Verkabelung",
-                parts: [
-                    "Montierter Rahmen mit allen Platten (1x)",
-                    "Audio-Verstärker-Netzteil 12V 3A 36W S-36-12 (1x)",
-                    "C14-Netzbuchse mit Schalter & Sicherung (1x)",
-                    "USB-Kabel & Audiokabel Klinke 3.5mm auf Cinch (1x)",
-                    "Verschiedene Überbrückungsdrähte & Stromkabel"
-                ],
-                description: "Dies war der komplexeste Schritt. Ich installierte das zweite Netzteil (12V 3A) speziell für den Verstärker, um Brummen zu minimieren. Dann verkabelte ich den C14-Netzeingang mit dem Hauptschalter und der Sicherung zu beiden Netzteilen. Ich schloss die Tasten und den Joystick an den USB-Encoder an und verband den Bildschirm-Controller, den Verstärker und die Netzteile mit dem Raspberry Pi.",
-                photo: "assets/logos/arcade/Stap_8_Mijn_Foto.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_8.png"
+            docker_backup: {
+                name: "Docker & Databeheer",
+                proficiency: "Gevorderd",
+                integration: "Orkestratie van download-pipelines en automatische ZFS/tar backups.",
+                desc: "Schrijven van Docker Compose stacks, volume mapping en het opzetten van redundante back-up schema's naar netwerkschijven."
             },
-            {
-                number: 9,
-                title: "Schließen mit linker Seitenwand (Platte L)",
-                phase: "Phase 4: Fertigstellung",
-                parts: [
-                    "Montierter Rahmen mit Verkabelung (1x)",
-                    "Panel L (Linke Seitenwand) (1x)",
-                    "M3 Vierkantmutter DIN-557 (14x)",
-                    "Schraube M3x14 DIN-912 (14x)"
-                ],
-                description: "Nachdem ich alle Verkabelungen und Stromkreise überprüft hatte, legte ich Platte L (linke Seitenwand) auf das Gehäuse. Ich schob 14 Vierkantmuttern M3 in die entsprechenden Montageschlitze der verbindenden Platten (I, J, K, B, C, D, E). Dann sicherte ich Platte L mit 14 M3x14 Schrauben, um das Gehäuse vollständig zu schließen.",
-                photo: "assets/logos/arcade/photo-assembly-1.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_9.png"
+            sys_automation: {
+                name: "Systeemautomatisering",
+                proficiency: "Gevorderd",
+                integration: "Cronjobs en Bash scripts voor geautomatiseerd serveronderhoud en dumps.",
+                desc: "Schrijven van scripts om repeterende netwerktaken te automatiseren en automatische database-backups te verzorgen."
             },
-            {
-                number: 10,
-                title: "Rückwand & Testen (Platte H)",
-                phase: "Phase 4: Fertigstellung",
-                parts: [
-                    "Geschlossenes Arcade-Gehäuse (1x)",
-                    "Montierte Platte H (Rückwand mit Pi) (1x)",
-                    "Schraube M3x14 DIN-912 (4x)",
-                    "Marquee-Plexiglas & Marquee-Poster (1x)"
-                ],
-                description: "Schließlich schob ich Platte H (Rückwand) an ihren Platz und befestigte sie mit vier M3x14 Schrauben. Ich platzierte das gedruckte Marquee-Poster hinter dem Plexiglas an der Vorderseite. Dann war es Zeit für den ersten Boot-Test: Der Raspberry Pi startete perfekt in Batocera, die Steuerung reagierte sofort und der 2.1-Sound klang fantastisch!",
-                photo: "assets/logos/arcade/Final-Look-Kast.jpg",
-                inActionPhoto: "assets/logos/arcade/In_actie_tetris.jpg",
-                manualImage: "assets/logos/arcade/bouwtekeningen/Stap_10.png"
+            customer_support: {
+                name: "Klantenservice",
+                proficiency: "Expert",
+                integration: "Dagelijkse fulltime werkzaamheden als helpdeskmedewerker bij Nedsoft B.V.",
+                desc: "Klantvriendelijke communicatie via telefoon en e-mail, oplossen van storingen onder tijdsdruk en het ontzorgen van eindgebruikers."
+            },
+            troubleshooting: {
+                name: "1e & 2e Lijns Support",
+                proficiency: "Expert",
+                integration: "Troubleshooting van GPS hardware-connectiviteit en rittenregistratiesoftware.",
+                desc: "Analyseren van data-logs, diagnosticeren van hardwarestoringen en het escaleren van complexe bugs naar software developers."
+            },
+            documentation: {
+                name: "Documentatie",
+                proficiency: "Gevorderd",
+                integration: "Schrijven van handleidingen en interne handleidingen voor collega's en klanten.",
+                desc: "Bijhouden van documentatie (zoals interne wiki's) en het vertalen van complexe technische procedures naar heldere stappenplannen."
             }
-        ]
+        }
+    },
+    en: {
+        default_title: "Core Skills",
+        default_desc: "Hover your mouse over any element in the diagram to view details, proficiency level, and homelab integration.",
+        categories: {
+            cat_systems_cloud: {
+                name: "Systems & Cloud",
+                desc: "Administration of on-premise operating systems, active directory infrastructures, and bare-metal hypervisors."
+            },
+            cat_net_sec: {
+                name: "Networking & Security",
+                desc: "Design and segmentation of local LAN/VLAN structures, secure tunnels, and monitoring."
+            },
+            cat_iot_auto: {
+                name: "IoT & Automation",
+                desc: "Orchestration of smart home platforms, containerization of microservices, and automated backups."
+            },
+            cat_support: {
+                name: "Support & Communication",
+                desc: "Professional helpdesk support, incident handling, and translating tech into user-friendly documentation."
+            }
+        },
+        skills: {
+            linux: {
+                name: "Linux Server",
+                proficiency: "Proficient",
+                integration: "Base OS for all server containers and virtualization layers in the homelab.",
+                desc: "In-depth knowledge of Linux CLI, permissions mapping, systemd service management, and Debian/Ubuntu server tuning."
+            },
+            windows_ad: {
+                name: "Windows Server & AD",
+                proficiency: "Advanced",
+                integration: "Active Directory Domain Services (AD DS) setup for local authentication tests.",
+                desc: "Experience with Active Directory user administration, Group Policy Objects (GPOs), and DNS/DHCP server roles."
+            },
+            virt_cloud: {
+                name: "Virtualization & Cloud",
+                proficiency: "Proficient",
+                integration: "Proxmox VE hypervisor running on thin-clients for LXC containers and VMs.",
+                desc: "Hypervisor administration, hardware passthrough, resource allocation, storage pools (ZFS), and provisioning virtual machines."
+            },
+            net_mgmt: {
+                name: "Network Management",
+                proficiency: "Advanced",
+                integration: "Segmentation, DHCP scopes, and DNS routing in the internal LAN.",
+                desc: "Knowledge of TCP/IP routing, DNS sinkholing (dual Pi-hole for adblocking), and network traffic analysis."
+            },
+            vpn_security: {
+                name: "VPN & Proxying",
+                proficiency: "Proficient",
+                integration: "Nginx Proxy Manager reverse proxy and secure WireGuard/Tailscale tunnels.",
+                desc: "Configuring transport encryption (SSL/TLS Let's Encrypt) and building secure site-to-site or client-to-site VPN paths."
+            },
+            monitoring: {
+                name: "Uptime Monitoring",
+                proficiency: "Proficient",
+                integration: "Uptime Kuma dashboard for live status-checks of all homelab services.",
+                desc: "Setting up active port, ping, and HTTP monitors with instant push notifications (Discord/Telegram) on downtime."
+            },
+            iot_integration: {
+                name: "IoT & Smart Home",
+                proficiency: "Expert",
+                integration: "Home Assistant server bound to ESP32 sensors and smart-meter readers.",
+                desc: "Binding diverse network protocols (Zigbee, ESPHome) and designing complex automations and live dashboards."
+            },
+            docker_backup: {
+                name: "Docker & Data Management",
+                proficiency: "Advanced",
+                integration: "Orchestration of download pipelines and automated ZFS/tar backups.",
+                desc: "Writing Docker Compose stacks, volume mapping, and creating redundant backup schedules to network storage."
+            },
+            sys_automation: {
+                name: "System Automation",
+                proficiency: "Advanced",
+                integration: "Cronjobs and Bash scripts for automated server maintenance and dumps.",
+                desc: "Writing automation scripts to handle repetitive network tasks and automated database dumps."
+            },
+            customer_support: {
+                name: "Customer Service",
+                proficiency: "Expert",
+                integration: "Daily full-time helpdesk support duties at Nedsoft B.V.",
+                desc: "Client-focused phone and email communication, solving software issues under pressure, and assisting end-users."
+            },
+            troubleshooting: {
+                name: "1st & 2nd Line Support",
+                proficiency: "Expert",
+                integration: "Troubleshooting GPS tracker hardware connectivity and mileage software.",
+                desc: "Analyzing data logs, diagnosing hardware faults, and escalating complex bugs to software developers."
+            },
+            documentation: {
+                name: "Documentation",
+                proficiency: "Advanced",
+                integration: "Writing manuals and internal guides for colleagues and customers.",
+                desc: "Maintaining documentation (such as internal wikis) and translating complex technical procedures into clean guides."
+            }
+        }
+    },
+    de: {
+        default_title: "Kernkompetenzen",
+        default_desc: "Bewegen Sie die Maus über einen Bereich im Diagramm, um Details anzuzeigen.",
+        categories: {},
+        skills: {}
     }
 };

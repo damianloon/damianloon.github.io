@@ -64,11 +64,11 @@
 // --- Language Dictionary Logic (i18n) ---
 function getLanguage() {
     const saved = localStorage.getItem('language');
-    if (saved && (saved === 'nl' || saved === 'en' || saved === 'de')) {
+    if (saved && (saved === 'nl' || saved === 'en')) {
         return saved;
     }
     const browserLang = navigator.language.substring(0, 2).toLowerCase();
-    if (browserLang === 'nl' || browserLang === 'en' || browserLang === 'de') {
+    if (browserLang === 'nl' || browserLang === 'en') {
         return browserLang;
     }
     return 'nl';
@@ -117,12 +117,27 @@ function setLanguage(lang) {
         renderNodeDetails(nodeKey);
     }
     
+    // Refresh pipeline details panel if a pipeline node is currently selected
+    const activePipelineNode = document.querySelector('.pipeline-node.selected');
+    if (activePipelineNode) {
+        const nodeKey = activePipelineNode.getAttribute('data-node');
+        renderPipelineDetails(nodeKey);
+    }
+    
     // Refresh steps UI
     if (typeof initStepsMenu === 'function') {
         initStepsMenu();
     }
     if (typeof updateStepView === 'function') {
         updateStepView();
+    }
+
+    // Refresh skills details and labels
+    if (typeof updateSkillLabels === 'function') {
+        updateSkillLabels(lang);
+    }
+    if (typeof renderSkillDetails === 'function') {
+        renderSkillDetails(activeSkillKey);
     }
 }
 
@@ -454,6 +469,9 @@ function initStepsMenu() {
         btn.innerHTML = `<strong>${stepLabel} ${step.number}</strong><br>${step.title}`;
         
         btn.addEventListener('click', () => {
+            if (typeof tetrisIsActive !== 'undefined' && tetrisIsActive) {
+                minimizeTetrisGame();
+            }
             currentStep = step.number;
             updateStepView();
         });
@@ -461,7 +479,6 @@ function initStepsMenu() {
     });
 }
 
-// Helper to update Tetris overlay visibility based on step and image type
 function updateTetrisOverlayState(stepNum, imgType) {
     if (typeof tetrisStartOverlay === 'undefined' || !tetrisStartOverlay) return;
 
@@ -527,9 +544,16 @@ function updateStepView() {
         });
     }
 
-    // Prev/Next buttons disabled state
+    // Prev/Next buttons state (disabled or hidden)
     if (prevStepBtn) prevStepBtn.disabled = currentStep === 1;
-    if (nextStepBtn) nextStepBtn.disabled = currentStep === arcadeSteps.length;
+    if (nextStepBtn) {
+        if (currentStep === arcadeSteps.length) {
+            nextStepBtn.style.display = 'none';
+        } else {
+            nextStepBtn.style.display = '';
+            nextStepBtn.disabled = false;
+        }
+    }
 
     // Render the SVG manual drawing
     renderStepSvg(step.number);
@@ -665,7 +689,343 @@ function renderStepSvg(stepNum) {
 // Initialize step menu on page load
 window.addEventListener('DOMContentLoaded', () => {
     initStepsMenu();
+    
+    // Bind highscore submit & cancel event listeners
+    const submitBtn = document.getElementById('submit-highscore-btn');
+    if (submitBtn) {
+        submitBtn.addEventListener('click', handleHighscoreSubmission);
+    }
+
+    const cancelBtn = document.getElementById('cancel-highscore-btn');
+    if (cancelBtn) {
+        cancelBtn.addEventListener('click', closeHighscoreOverlay);
+    }
+    
+    // Support submitting by pressing Enter in the input field
+    const nameInput = document.getElementById('highscore-name-input');
+    if (nameInput) {
+        nameInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                handleHighscoreSubmission();
+            }
+        });
+    }
+
+    // Initialize skills topology map and details
+    if (typeof initSkillsTopologyMap === 'function') {
+        initSkillsTopologyMap();
+    }
+    if (typeof updateSkillLabels === 'function') {
+        updateSkillLabels(getLanguage());
+    }
+    if (typeof renderSkillDetails === 'function') {
+        renderSkillDetails(null);
+    }
 });
+
+// --- Supabase Connection for Tetris Leaderboard ---
+const supabaseUrl = 'https://mmeucjfhxdejlbwvcbxt.supabase.co';
+const supabaseKey = 'sb_publishable_6XslWYpajXk_8Ynoc7wfew_RWOrgnpP';
+let supabaseClient = null;
+
+if (typeof supabase !== 'undefined') {
+    supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+}
+
+let isHighscoreOverlayOpen = false;
+let globalTopScores = [];
+
+// Fetch global highscores from Supabase
+async function fetchGlobalHighscores() {
+    if (!supabaseClient) return [];
+    try {
+        const { data, error } = await supabaseClient
+            .from('highscores')
+            .select('name, score')
+            .order('score', { ascending: false })
+            .limit(5);
+
+        if (error) throw error;
+        return data || [];
+    } catch (err) {
+        console.error('Fout bij ophalen highscores:', err);
+        return [];
+    }
+}
+
+// Render the highscore list to the DOM
+async function updateLeaderboardUI() {
+    const listElement = document.getElementById('tetris-leaderboard-list');
+    if (!listElement) return;
+
+    const lang = getLanguage();
+    const loadingText = (typeof translations !== 'undefined' && translations[lang] && translations[lang].ui && translations[lang].ui.tetris_leaderboard_loading) || 'Laden van scores...';
+    const noScoresText = (typeof translations !== 'undefined' && translations[lang] && translations[lang].ui && translations[lang].ui.tetris_leaderboard_empty) || 'Geen scores gevonden of offline';
+
+    listElement.innerHTML = `<li>${loadingText}</li>`;
+    globalTopScores = await fetchGlobalHighscores();
+
+    if (globalTopScores.length === 0) {
+        listElement.innerHTML = `<li>${noScoresText}</li>`;
+        return;
+    }
+
+    listElement.innerHTML = '';
+    globalTopScores.forEach((entry) => {
+        const li = document.createElement('li');
+        const cleanName = entry.name.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        li.innerHTML = `${cleanName} <span class="score">${entry.score.toLocaleString()}</span>`;
+        listElement.appendChild(li);
+    });
+}
+
+// Checks if score is in the top 5 and opens the submission overlay if it qualifies
+function checkAndSubmitHighScore(score) {
+    if (!supabaseClient || score <= 0) return;
+
+    // A score qualifies if:
+    // - There are fewer than 5 scores on the leaderboard
+    // - OR the current score is higher than the 5th place score
+    const qualifies = globalTopScores.length < 5 || score > globalTopScores[globalTopScores.length - 1].score;
+
+    if (qualifies) {
+        const overlay = document.getElementById('tetris-highscore-overlay');
+        const scoreDisplay = document.getElementById('highscore-value-display');
+        const nameInput = document.getElementById('highscore-name-input');
+        
+        if (overlay && scoreDisplay && nameInput) {
+            scoreDisplay.textContent = score.toLocaleString();
+            nameInput.value = '';
+            isHighscoreOverlayOpen = true;
+            overlay.style.display = 'flex';
+            
+            // Focus input box immediately
+            setTimeout(() => nameInput.focus(), 100);
+        }
+    }
+}
+
+// Submit score function
+async function handleHighscoreSubmission() {
+    const nameInput = document.getElementById('highscore-name-input');
+    if (!nameInput) return;
+
+    const rawName = nameInput.value.trim();
+    if (!rawName) {
+        alert('Voer een geldige naam in.');
+        return;
+    }
+
+    const cleanName = rawName.replace(/[^a-zA-Z0-9\s-_]/g, '').substring(0, 15);
+    if (!cleanName) {
+        alert('Je naam mag alleen letters, cijfers, spaties of -/_ bevatten.');
+        return;
+    }
+
+    const submitBtn = document.getElementById('submit-highscore-btn');
+    if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Bezig...';
+    }
+
+    try {
+        const { error } = await supabaseClient
+            .from('highscores')
+            .insert([{ name: cleanName, score: tetrisScoreVal }]);
+
+        if (error) throw error;
+        
+        closeHighscoreOverlay();
+        await updateLeaderboardUI();
+    } catch (err) {
+        console.error('Fout bij opslaan:', err);
+        alert('Er ging iets fout bij het opslaan van je score. Probeer het opnieuw.');
+        if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Opslaan';
+        }
+    }
+}
+
+function closeHighscoreOverlay() {
+    const overlay = document.getElementById('tetris-highscore-overlay');
+    if (overlay) {
+        overlay.style.display = 'none';
+    }
+    isHighscoreOverlayOpen = false;
+    
+    // Focus back on the game canvas
+    if (tetrisCanvas) tetrisCanvas.focus();
+}
+
+// --- Skills Topology Map Interaction Logic ---
+let activeSkillKey = null;
+
+function updateSkillLabels(lang) {
+    if (typeof skillsData === 'undefined' || !skillsData[lang]) return;
+    
+    document.querySelectorAll('.topo-node[data-skill]').forEach(el => {
+        const skillKey = el.getAttribute('data-skill');
+        const textEl = el.querySelector('text');
+        if (!textEl) return;
+        
+        if (skillsData[lang].skills[skillKey]) {
+            textEl.textContent = skillsData[lang].skills[skillKey].name;
+        } else if (skillsData[lang].categories[skillKey]) {
+            textEl.textContent = skillsData[lang].categories[skillKey].name;
+        }
+    });
+}
+
+// Logo mapping per skill — officiële brandkleuren via Simple Icons CDN
+// Let op: Microsoft-logo's zijn verwijderd van Simple Icons (trademark verzoek 2024)
+// Windows logo is embedded als inline SVG data-URI in officieel Windows-blauw
+const WINDOWS_LOGO_SVG = `data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%230078D4' d='M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801'/></svg>`;
+
+const SKILL_LOGOS = {
+    linux:            'https://cdn.simpleicons.org/linux',
+    windows_ad:       WINDOWS_LOGO_SVG,
+    virt_cloud:       'https://cdn.simpleicons.org/proxmox',
+    net_mgmt:         'https://cdn.simpleicons.org/pihole',
+    vpn_security:     'https://cdn.simpleicons.org/wireguard',
+    monitoring:       'https://cdn.simpleicons.org/uptimekuma',
+    iot_integration:  'https://cdn.simpleicons.org/homeassistant',
+    docker_backup:    'https://cdn.simpleicons.org/docker',
+    sys_automation:   null,
+    customer_support: null,
+    troubleshooting:  null,
+    documentation:    null,
+    // Categorie-nodes krijgen geen logo
+    cat_systems_cloud: null,
+    cat_net_sec:       null,
+    cat_iot_auto:      null,
+    cat_support:       null,
+};
+
+function setSkillLogo(skillKey) {
+    const logoEl = document.getElementById('skill-logo');
+    if (!logoEl) return;
+    const url = SKILL_LOGOS[skillKey];
+    if (url) {
+        logoEl.src = url;
+        logoEl.alt = skillKey;
+        logoEl.classList.add('visible');
+        logoEl.onerror = () => { logoEl.classList.remove('visible'); };
+    } else {
+        logoEl.classList.remove('visible');
+        logoEl.src = '';
+    }
+}
+
+function renderSkillDetails(skillKey) {
+    const titleEl = document.getElementById('skill-details-title');
+    const descEl = document.getElementById('skill-details-desc');
+    const metaBlock = document.getElementById('skill-details-meta');
+    const proficiencyEl = document.getElementById('skill-meta-proficiency');
+    const integrationEl = document.getElementById('skill-meta-integration');
+    
+    if (!titleEl || !descEl) return;
+    
+    const lang = getLanguage();
+    if (typeof skillsData === 'undefined' || !skillsData[lang]) return;
+    
+    if (!skillKey) {
+        titleEl.textContent = skillsData[lang].default_title;
+        descEl.textContent = skillsData[lang].default_desc;
+        if (metaBlock) metaBlock.style.display = 'none';
+        setSkillLogo(null);
+        return;
+    }
+    
+    // Check if it's a category
+    if (skillsData[lang].categories[skillKey]) {
+        const cat = skillsData[lang].categories[skillKey];
+        titleEl.textContent = cat.name;
+        descEl.textContent = cat.desc;
+        if (metaBlock) metaBlock.style.display = 'none';
+        setSkillLogo(skillKey);
+    } 
+    // Check if it's a sub-skill
+    else if (skillsData[lang].skills[skillKey]) {
+        const skill = skillsData[lang].skills[skillKey];
+        titleEl.textContent = skill.name;
+        descEl.textContent = skill.desc;
+        
+        if (proficiencyEl) proficiencyEl.textContent = skill.proficiency;
+        if (integrationEl) integrationEl.textContent = skill.integration;
+        if (metaBlock) metaBlock.style.display = 'block';
+        setSkillLogo(skillKey);
+    }
+}
+
+function initSkillsTopologyMap() {
+    const topoNodes = document.querySelectorAll('.topo-node');
+    const topoLinks = document.querySelectorAll('.topo-link');
+    
+    topoNodes.forEach(node => {
+        const skillKey = node.getAttribute('data-skill');
+        if (!skillKey) return; // Skip center node or nodes without keys
+        
+        const category = node.getAttribute('data-category');
+        
+        // Mouse Enter / Touch Start
+        const handleEnter = (e) => {
+            activeSkillKey = skillKey;
+            renderSkillDetails(skillKey);
+            
+            // Highlight node path
+            topoNodes.forEach(n => {
+                if (n === node) {
+                    n.classList.add('active');
+                    n.classList.remove('dimmed');
+                } else {
+                    n.classList.remove('active');
+                    n.classList.add('dimmed');
+                }
+            });
+            
+            // Highlight links
+            topoLinks.forEach(link => {
+                const linkId = link.getAttribute('id');
+                const isDirectLink = linkId === `link-${skillKey}`;
+                const isCategoryLink = linkId === `link-${category}`;
+                
+                if (isDirectLink || isCategoryLink) {
+                    link.classList.add('active');
+                    link.classList.remove('dimmed');
+                } else {
+                    link.classList.remove('active');
+                    link.classList.add('dimmed');
+                }
+            });
+        };
+        
+        // Mouse Leave / Touch End
+        const handleLeave = (e) => {
+            activeSkillKey = null;
+            renderSkillDetails(null);
+            
+            // Reset all nodes
+            topoNodes.forEach(n => {
+                n.classList.remove('active', 'dimmed');
+            });
+            
+            // Reset all links
+            topoLinks.forEach(link => {
+                link.classList.remove('active', 'dimmed');
+            });
+        };
+        
+        node.addEventListener('mouseenter', handleEnter);
+        node.addEventListener('mouseleave', handleLeave);
+        node.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            handleEnter(e);
+        });
+        node.addEventListener('touchend', handleLeave);
+    });
+}
 
 // --- Tetris Game Engine & Easter Egg Logic ---
 const tetrisStartOverlay = document.getElementById('tetris-start-overlay');
@@ -811,6 +1171,7 @@ function playerReset() {
         tetrisGameOver = true;
         tetrisIsActive = false;
         draw();
+        checkAndSubmitHighScore(tetrisScoreVal);
     }
 }
 
@@ -1036,11 +1397,13 @@ function initGame() {
     tetrisIsPaused = false;
     tetrisNextPiece = null;
     updateDisplays();
+    updateLeaderboardUI(); // Load/Refresh Top 5 scoreboard on start
     playerReset();
     startLoop();
 }
 
 function handleKeyDown(e) {
+    if (isHighscoreOverlayOpen) return; // Ignore keys if highscore submission dialog is open
     if (!tetrisIsActive && !tetrisGameOver) return;
 
     const activeKeys = ['ArrowLeft', 'ArrowRight', 'ArrowDown', 'ArrowUp', 'KeyA', 'KeyD', 'KeyS', 'KeyW', 'Space', 'KeyP', 'Escape'];
@@ -1115,19 +1478,231 @@ if (startTetrisBtn) {
     });
 }
 
+function minimizeTetrisGame() {
+    tetrisIsActive = false;
+    isSoftDropping = false;
+    window.removeEventListener('keydown', handleKeyDown);
+    window.removeEventListener('keyup', handleKeyUp);
+
+    // Hide highscore overlay if it was open
+    const hsOverlay = document.getElementById('tetris-highscore-overlay');
+    if (hsOverlay) hsOverlay.style.display = 'none';
+    isHighscoreOverlayOpen = false;
+
+    if (stepGrid) stepGrid.classList.remove('tetris-active');
+    if (tetrisView) tetrisView.classList.remove('active');
+
+    imgTabBtns.forEach(btn => btn.style.pointerEvents = 'auto');
+    showImageView('action');
+
+    if (tetrisStartOverlay) tetrisStartOverlay.style.display = 'flex';
+}
+
 if (tetrisMinimizeBtn) {
-    tetrisMinimizeBtn.addEventListener('click', () => {
-        tetrisIsActive = false;
-        isSoftDropping = false;
-        window.removeEventListener('keydown', handleKeyDown);
-        window.removeEventListener('keyup', handleKeyUp);
+    tetrisMinimizeBtn.addEventListener('click', minimizeTetrisGame);
+}
 
-        if (stepGrid) stepGrid.classList.remove('tetris-active');
-        if (tetrisView) tetrisView.classList.remove('active');
+// --- DOM Elements for Pipeline Modal ---
+const pipelineModal = document.getElementById('pipeline-modal');
+const openPipelineBtn = document.getElementById('btn-view-pipeline');
+const closePipelineBtn = document.getElementById('close-pipeline-modal');
+const pipelineNodes = document.querySelectorAll('.pipeline-node');
+const pipelineDetailsContent = document.getElementById('pipeline-details-content');
 
-        imgTabBtns.forEach(btn => btn.style.pointerEvents = 'auto');
-        showImageView('action');
+function openPipelineModal() {
+    if (pipelineModal) {
+        pipelineModal.classList.add('active');
+        pipelineModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        
+        // Select Overseerr by default on open
+        selectPipelineNode('overseerr');
+        
+        // Reset toggle button UI to running
+        isPipelineFlowRunning = true;
+        const btn = document.getElementById('btn-toggle-flow');
+        if (btn) {
+            const pauseIcon = btn.querySelector('.icon-pause');
+            const playIcon = btn.querySelector('.icon-play');
+            if (pauseIcon) pauseIcon.style.display = 'block';
+            if (playIcon) playIcon.style.display = 'none';
+            btn.setAttribute('title', 'Schakel Gegevensstroom uit');
+        }
 
-        if (tetrisStartOverlay) tetrisStartOverlay.style.display = 'flex';
+        // Start simulated data flow
+        startPipelineFlowAnimation();
+    }
+}
+
+function closePipelineModal() {
+    if (pipelineModal) {
+        pipelineModal.classList.remove('active');
+        pipelineModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        
+        // Stop simulated data flow
+        stopPipelineFlowAnimation();
+    }
+}
+
+if (openPipelineBtn) {
+    openPipelineBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openPipelineModal();
+    });
+}
+
+if (closePipelineBtn) {
+    closePipelineBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closePipelineModal();
+    });
+}
+
+if (pipelineModal) {
+    pipelineModal.addEventListener('click', (e) => {
+        if (e.target === pipelineModal) {
+            closePipelineModal();
+        }
+    });
+}
+
+function selectPipelineNode(nodeKey) {
+    // Highlight node in SVG
+    pipelineNodes.forEach(node => {
+        if (node.getAttribute('data-node') === nodeKey) {
+            node.classList.add('selected');
+        } else {
+            node.classList.remove('selected');
+        }
+    });
+
+    // Render details
+    renderPipelineDetails(nodeKey);
+}
+
+// Add click listeners to pipeline nodes
+pipelineNodes.forEach(node => {
+    node.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const nodeGroup = e.target.closest('.pipeline-node');
+        if (nodeGroup) {
+            const nodeKey = nodeGroup.getAttribute('data-node');
+            selectPipelineNode(nodeKey);
+        }
+    });
+});
+
+function renderPipelineDetails(nodeKey) {
+    const lang = getLanguage();
+    const translationObject = translations[lang];
+    if (!translationObject || !translationObject.pipelineData) return;
+    
+    const data = translationObject.pipelineData[nodeKey];
+    if (!data) return;
+
+    const descriptionTitle = translationObject.ui.pipeline_desc_title || 'Beschrijving & Werking';
+
+    // Generate specs list
+    let specsHtml = '';
+    for (const [key, value] of Object.entries(data.specs)) {
+        specsHtml += `
+            <div class="pipeline-spec-item">
+                <span class="pipeline-spec-label">${key}</span>
+                <span class="pipeline-spec-value">${value}</span>
+            </div>
+        `;
+    }
+
+    if (pipelineDetailsContent) {
+        pipelineDetailsContent.innerHTML = `
+            <div class="pipeline-details-header">
+                <h3 style="color: #BEA36B; margin: 0 0 0.25rem 0; font-size: 1.25rem; font-weight: bold;">${data.name}</h3>
+                <p style="color: var(--text-secondary); margin: 0 0 1rem 0; font-size: 0.9rem; font-style: italic;">${data.role}</p>
+            </div>
+            <div class="pipeline-specs-list" style="margin-bottom: 1.25rem;">
+                ${specsHtml}
+            </div>
+            <div class="pipeline-desc-block">
+                <h4 class="pipeline-desc-title">${descriptionTitle}</h4>
+                <p class="pipeline-desc-text" style="margin: 0; font-size: 0.9rem; line-height: 1.5; color: var(--text-secondary);">${data.description}</p>
+            </div>
+        `;
+    }
+}
+
+// --- Gegevensstroom (Flow) Simulation Animation Switcher ---
+let pipelineFlowInterval = null;
+let currentFlowType = 'usenet'; // 'usenet' or 'torrent'
+let isPipelineFlowRunning = true;
+
+function startPipelineFlowAnimation() {
+    stopPipelineFlowAnimation();
+    
+    const usenetPath = document.getElementById('flow-path-usenet');
+    const torrentPath = document.getElementById('flow-path-torrent');
+    
+    if (usenetPath && torrentPath) {
+        usenetPath.classList.add('active');
+        torrentPath.classList.remove('active');
+        currentFlowType = 'usenet';
+    }
+
+    pipelineFlowInterval = setInterval(() => {
+        const uPath = document.getElementById('flow-path-usenet');
+        const tPath = document.getElementById('flow-path-torrent');
+        if (!uPath || !tPath) return;
+
+        if (currentFlowType === 'usenet') {
+            uPath.classList.remove('active');
+            tPath.classList.add('active');
+            currentFlowType = 'torrent';
+        } else {
+            tPath.classList.remove('active');
+            uPath.classList.add('active');
+            currentFlowType = 'usenet';
+        }
+    }, 3000); // Switches path flow every 3 seconds
+}
+
+function stopPipelineFlowAnimation() {
+    if (pipelineFlowInterval) {
+        clearInterval(pipelineFlowInterval);
+        pipelineFlowInterval = null;
+    }
+    const usenetPath = document.getElementById('flow-path-usenet');
+    const torrentPath = document.getElementById('flow-path-torrent');
+    if (usenetPath) usenetPath.classList.remove('active');
+    if (torrentPath) torrentPath.classList.remove('active');
+}
+
+function togglePipelineFlowAnimation() {
+    const btn = document.getElementById('btn-toggle-flow');
+    if (!btn) return;
+    
+    const pauseIcon = btn.querySelector('.icon-pause');
+    const playIcon = btn.querySelector('.icon-play');
+    
+    if (isPipelineFlowRunning) {
+        stopPipelineFlowAnimation();
+        isPipelineFlowRunning = false;
+        if (pauseIcon) pauseIcon.style.display = 'none';
+        if (playIcon) playIcon.style.display = 'block';
+        btn.setAttribute('title', 'Schakel Gegevensstroom in');
+    } else {
+        startPipelineFlowAnimation();
+        isPipelineFlowRunning = true;
+        if (pauseIcon) pauseIcon.style.display = 'block';
+        if (playIcon) playIcon.style.display = 'none';
+        btn.setAttribute('title', 'Schakel Gegevensstroom uit');
+    }
+}
+
+// Bind controls panel toggle button
+const btnToggleFlow = document.getElementById('btn-toggle-flow');
+if (btnToggleFlow) {
+    btnToggleFlow.addEventListener('click', (e) => {
+        e.stopPropagation();
+        togglePipelineFlowAnimation();
     });
 }
